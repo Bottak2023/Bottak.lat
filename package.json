@@ -1,0 +1,47 @@
+{
+  "name": "cambios-app-v4",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+<<<<<<< HEAD
+    "@everapi/currencyapi-js": "^1.0.6",
+    "@react-input/mask": "^1.0.14",
+    "@react-pdf/renderer": "^3.1.12",
+    "@yudiel/react-qr-scanner": "^1.1.10",
+=======
+    "@react-input/mask": "^1.0.14",
+    "@react-pdf/renderer": "^3.1.12",
+>>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+    "autoprefixer": "10.4.14",
+    "currency-list": "^1.0.8",
+    "face-api.js": "^0.22.2",
+    "firebase": "^10.1.0",
+    "next": "13.4.12",
+    "next-pwa": "^5.6.0",
+    "postcss": "8.4.27",
+<<<<<<< HEAD
+    "puppeteer": "^21.3.8",
+    "qrcode-parser": "^2.1.3",
+=======
+>>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+    "qrcode.react": "^3.1.0",
+    "react": "18.2.0",
+    "react-confetti": "^6.1.0",
+    "react-currency-flags": "^0.1.2",
+    "react-dom": "18.2.0",
+<<<<<<< HEAD
+    "react-quill": "^2.0.0",
+    "react-webcam": "^7.1.1",
+    "stripe": "^13.5.0",
+=======
+    "react-webcam": "^7.1.1",
+>>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+    "tailwindcss": "3.3.3"
+  }
+}
