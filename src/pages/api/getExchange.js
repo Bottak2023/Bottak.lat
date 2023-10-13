@@ -24,9 +24,8 @@ export default async function webScraping(req, res) {
 
 
     const obj = await req.body.divisas.reduce(async (previousPromise, i) => {
-      
-
-            let acc = await previousPromise;
+      try  {
+          let acc = await previousPromise;
             const search2 = await page.waitForSelector('#APjFqb')
             await search2.type(`USD to ${i}`)
             await page.keyboard.press('Enter')
@@ -36,6 +35,12 @@ export default async function webScraping(req, res) {
             await page.click('[class="M2vV3 vOY7J"]')
 
             return {...acc, [i]: value}
+      } catch (error) {
+        console.log(error)
+        return {}
+      }
+
+          
 
        
 
