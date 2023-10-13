@@ -9,7 +9,7 @@ export function UserProvider({ children }) {
 	const [user, setUser] = useState(undefined)
 	const [users, setUsers] = useState(undefined)
 	const [userDB, setUserDB] = useState(undefined)
-<<<<<<< HEAD
+
 	const [divisas, setDivisas] = useState(undefined)
 	const [envios, setEnvios] = useState(undefined)
 	const [exchange, setExchange] = useState({})
@@ -31,14 +31,7 @@ export function UserProvider({ children }) {
 	const [filter, setFilter] = useState(null)
 	const [filterQR, setFilterQR] = useState(null)
 
-=======
-	const [success, setSuccess] = useState('')
-	const [state, setState] = useState('Remesas')
-	const [nav, setNav] = useState(false)
-	const [modal, setModal] = useState('modal')
-	const [currency, setCurrency] = useState("BOB");
-	const [select, setSelect] = useState('BOB')
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 	const [transferencia, setTransferencia] = useState('')
 	const [destinatario, setDestinatario] = useState({})
 	const [item, setItem] = useState(null)
@@ -66,7 +59,7 @@ export function UserProvider({ children }) {
 	}
 
 	const setUserSuccess = (data) => {
-<<<<<<< HEAD
+
 		if (success === null) {
 			setSuccess(data)
 			const timer = setTimeout(() => {
@@ -76,11 +69,7 @@ export function UserProvider({ children }) {
 			}, 6000)
 		
 		}
-=======
-		setSuccess(data)
-		setTimeout(() => { setSuccess(null) }, 6000)
 
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 	}
 
 	const value = useMemo(() => {
@@ -100,7 +89,7 @@ export function UserProvider({ children }) {
 			webcamRef1, item, setItem,
 			webcamRef2,
 			webcamRef3,
-<<<<<<< HEAD
+
 			exchange, setExchange,
 			webScann, setWebScann,
 			filter, setFilter,
@@ -114,10 +103,7 @@ export function UserProvider({ children }) {
 			fecha, qr, setQr, QRurl, 
 			select3, setSelect3,
 			setQRurl, 
-			setFecha,
-=======
-			fecha, qr, setQr, QRurl, setQRurl, setFecha,
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 			setDestinatario,
 			setUsers,
 			setSelect,
@@ -131,7 +117,7 @@ export function UserProvider({ children }) {
 			setUserSuccess
 
 		})
-<<<<<<< HEAD
+
 	}, [user, userDB, success, state, nav, modal, transferencia, currency, select, select2, select3, isSelect, isSelect2, isSelect3, users, destinatario, image1, image2, image3, item, webcamRef1,
 		webcamRef2,
 		webcamRef3,
@@ -139,12 +125,7 @@ export function UserProvider({ children }) {
 		webScann,
 		filter,
 		filterQR, exchange])
-=======
-	}, [user, userDB, success, state, nav, modal, transferencia, currency, select, users, destinatario, image1, image2, image3, item, webcamRef1,
-		webcamRef2,
-		webcamRef3,
-		fecha, qr, QRurl,])
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
 	return (
 		<UserContext.Provider value={value} >

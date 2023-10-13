@@ -27,11 +27,9 @@ const InvoicePDF = dynamic(() => import("@/components/pdf"), {
 function Home() {
     const router = useRouter()
 
-<<<<<<< HEAD
+
     const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
-=======
-    const { user, userDB, setUserData, setUserSuccess, destinatario, transferencia, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
     const [state, setState] = useState({})
 
     const [postImage, setPostImage] = useState(null)
@@ -88,13 +86,10 @@ function Home() {
     useEffect(() => {
         document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
 
-<<<<<<< HEAD
+
         // const dataURL = user.uuid
         // handlerQRUrl(dataURL)
-=======
-        const dataURL = user.uuid
-        handlerQRUrl(dataURL)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
 
         const date = getDayMonthYear()
@@ -133,7 +128,7 @@ function Home() {
                                 Destinatario
                             </td>
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-<<<<<<< HEAD
+
                                 {destinatario.destinatario && destinatario.destinatario}
                             </td>
                         </tr>
@@ -143,9 +138,7 @@ function Home() {
                             </td>
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {destinatario.celular && destinatario.celular}
-=======
-                                {destinatario.nombre && destinatario.nombre}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                             </td>
                         </tr>
                         <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
@@ -153,27 +146,20 @@ function Home() {
                                 Cuenta destinatario:
                             </td>
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-<<<<<<< HEAD
+
                                 {destinatario['cuenta destinatario'] && destinatario['cuenta destinatario']}
-=======
-                                {destinatario.tarjeta && destinatario.tarjeta}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                             </td>
                         </tr>
                         <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-<<<<<<< HEAD
+
                                 Divisa de envio:
                             </td>
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {select}
-=======
-                                Divisa:
-                            </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-                                BOB
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                             </td>
                         </tr>
                         <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
@@ -188,7 +174,7 @@ function Home() {
                         <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-<<<<<<< HEAD
+
                                 Divisa de receptor:
                             </td>
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
@@ -207,8 +193,7 @@ function Home() {
                         <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                                 Fecha:
                             </td>
 
@@ -236,7 +221,7 @@ function Home() {
                             </td>
                         </tr>
 
-<<<<<<< HEAD
+
                         <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
@@ -247,18 +232,14 @@ function Home() {
                             </td>
                         </tr>
                     </tbody>
-=======
 
-                    </tbody>
-
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
                 </table>
 
 
 
                 <div className='flex flex-col justify-center items-center w-full'>
                     <div className='w-[150px] h-[150px]'>
-<<<<<<< HEAD
+
                         {destinatario.uuid && <QRCode
                             id='qr'
                             size={256}
@@ -273,17 +254,7 @@ function Home() {
                                 width: 100,
                                 height: 100
                             }}
-=======
-                        {qr !== '' && <QRCode
-                            id='qr'
-                            size={256}
-                            style={{ height: "auto", maxWidth: "100%", width: "100%", border: 'none', backgroundColor: 'red' }}
-                            value={qr}
-                            level={'H'}
-                            includeMargin={false}
-                            renderAs={'canvas'}
-                            viewBox={`0 0 256 256`}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                         />}
 
                     </div>

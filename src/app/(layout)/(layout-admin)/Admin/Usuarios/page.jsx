@@ -3,32 +3,20 @@
 import Button from '@/components/Button'
 import Subtitle from '@/components/Subtitle'
 import Modal from '@/components/Modal'
-<<<<<<< HEAD
+
 // import ModalMSG from '@/components/ModalMSG'
 import { writeUserData, getSpecificData, removeData } from '@/firebase/database'
 // import TextEditor from '@/components/TextEditor'
 
 import { useUser } from '@/context/Context.js'
 
-=======
-import { writeUserData, getSpecificData, removeData } from '@/firebase/database'
 
-// import Select from '@/components/Select'
-import { useUser } from '@/context/Context.js'
-
-// import Tag from '@/components/Tag'
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 import { useRouter } from 'next/navigation';
 
 import { WithAuth } from '@/HOCs/WithAuth'
 import { useEffect, useState } from 'react'
-<<<<<<< HEAD
-=======
-// import { writeUserData, readUserData, updateUserData, deleteUserData } from '@/supabase/utils'
-// import { uploadStorage } from '@/supabase/storage'
-// import LoaderBlack from '@/components/LoaderBlack'
-// import { disponibilidad as dispo} from '@/constants'
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
+
 
 function Home() {
     const { user, userDB, users, setUsers, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, item, setItem, modal, setModal } = useUser()
@@ -37,19 +25,8 @@ function Home() {
     const [filter, setFilter] = useState('')
     const [state, setState] = useState({})
     async function save(i) {
-<<<<<<< HEAD
-=======
-        // console.log(state[i.uuid]['nombre de producto 1'])
-        // setUserSuccess('Cargando')
-        // await updateUserData('Producto', state[i.uuid], i.uuid)
-        // postImage[i.uuid] && await uploadStorage('Producto', postImage[i.uuid], i.uuid, updateUserData, true)
-        // const obj = { ...state }
-        // delete obj[i.uuid]
-        // setState(obj)
-        // setUserSuccess('')
-        // // state[i.uuid]['nombre de producto 1'] !== undefined && setUserDistributorPDB(undefined)
-        // return  readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
+
     }
 
 
@@ -84,13 +61,11 @@ function Home() {
         setModal(data)
         console.log(users[item])
     }
-<<<<<<< HEAD
+
     function handlerWhatsapp(i) {
         window.open('')
     }
-=======
 
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
     function redirect() {
         router.push('Administrador/Plantilla/Agregar')
     }
@@ -101,10 +76,8 @@ function Home() {
         return 0
     }
 
-<<<<<<< HEAD
-=======
-    console.log(users)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
+
     useEffect(() => {
         users === undefined && getSpecificData(`/users/`, setUsers)
 
@@ -116,40 +89,20 @@ function Home() {
                 {modal === 'Delete' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
                 {modal === 'Habilitar' && <Modal theme="Primary" button="Habilitar" funcion={habilitarConfirm}>Estas seguro de habilitar al siguiente usuario:  {item['nombre']}</Modal>}
                 {modal === 'Desabilitar' && <Modal theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}>Estas seguro de Desabilitar al siguiente usuario:  {item['nombre']}</Modal>}
-<<<<<<< HEAD
+
                 {/* {modal === 'SendMSG' && <ModalMSG theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}></ModalMSG>} */}
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
                 <h3 className='font-medium text-[16px]'>Lista De Usuarios</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario' />
                 <br />
                 <br />
-<<<<<<< HEAD
+
 
 
                 <table class="w-full overflow-visible min-w-[1900px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
-=======
-                {/* <div className='min-w-[1900px] flex justify-start items-center my-5 '>
-                <h3 className="flex pr-12 text-[14px]" htmlFor="">Disponibilidad</h3>
-                <div className="grid grid-cols-3 gap-4 w-[500px] ">
-                    <Tag theme={disponibilidad == 'En 24 hrs' ? 'Primary' : 'Secondary'} click={() => setDisponibilidad(disponibilidad == 'En 24 hrs' ? '' : 'En 24 hrs')}>En 24 hrs</Tag>
-                    <Tag theme={disponibilidad == 'Inmediato' ? 'Primary' : 'Secondary'} click={() => setDisponibilidad(disponibilidad == 'Inmediato' ? '' : 'Inmediato')}>Inmediato</Tag>
-                    <Tag theme={disponibilidad == 'No disponible' ? 'Primary' : 'Secondary'} click={() => setDisponibilidad(disponibilidad == 'No disponible' ? '' : 'No disponible')}>No disponible</Tag>
-                </div>
-            </div>
-            <div className='min-w-[1900px] flex justify-start items-center my-5  '>
-                <h3 className="flex pr-12 text-[14px]">Categorias</h3>
-                <div className="grid grid-cols-3 gap-4 w-[500px] " >
-                    <Tag theme={categoria == 'Titanio' ? 'Primary' : 'Secondary'} click={() => setCategoria(categoria == 'Titanio' ? '' : 'Titanio')}>Titanio</Tag>
-                    <Tag theme={categoria == 'Acero' ? 'Primary' : 'Secondary'} click={() => setCategoria(categoria == 'Acero' ? '' : 'Acero')}>Acero</Tag>
-                    <Tag theme={categoria == 'Otros' ? 'Primary' : 'Secondary'} click={() => setCategoria(categoria == 'Otros' ? '' : 'Otros')}>Otros</Tag>
-                </div>
-            </div> */}
 
-                <table class="w-full overflow-visible min-w-[1500px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
                     <thead class="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-3 py-3">
@@ -174,7 +127,7 @@ function Home() {
                                 Foto 3
                             </th>
                             <th scope="col" class="px-8 py-3">
-<<<<<<< HEAD
+
                                 Celular
                             </th>
 
@@ -188,14 +141,7 @@ function Home() {
                                 Mensaje
                             </th>
                             <th scope="col" class="px-3 py-3 ">
-=======
-                                WhatsApp
-                            </th>
-                            <th scope="col" class="px-3 py-3">
-                                Habilitar
-                            </th>
-                            <th scope="col" class="px-3 py-3">
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                                 Eliminar
                             </th>
                         </tr>
@@ -203,11 +149,9 @@ function Home() {
                     <tbody>
                         {users && users !== undefined && Object.keys(users).map((i, index) => {
 
-<<<<<<< HEAD
+
                             return users[i].profile['nombre'].toLowerCase().includes(filter.toLowerCase()) && <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
-=======
-                            return users[i].profile['nombre'].includes(filter) && <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                                 <td class="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
@@ -221,11 +165,9 @@ function Home() {
                                     {users[i].profile['pais']}
                                 </td>
                                 <td class="w-32 p-4">
-<<<<<<< HEAD
+
                                     <img src={users[i].profile.image1} className='' alt="Apple Watch" />
-=======
-                                    <img src={users[i].profile.image1} alt="Apple Watch" />
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                                 </td>
                                 <td class="w-32 p-4">
                                     <img src={users[i].profile.image2} alt="Apple Watch" />
@@ -236,17 +178,15 @@ function Home() {
                                 <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                     {users[i].profile['whatsapp']}
                                 </td>
-<<<<<<< HEAD
+
                                 <td class="px-3 py-4 ">
-=======
-                                <td class="px-3 py-4">
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                                     {users && users[i].profile['habilitado'] === false
                                         ? <Button theme={"Primary"} click={() => manage(i, 'Habilitar')}>Habilitar</Button>
                                         : <Button theme={"Danger"} click={() => manage(i, 'Desabilitar')}>Desabilitar</Button>
                                     }
                                 </td>
-<<<<<<< HEAD
+
 
                                 <td class="px-3 py-4">
                                     <div className='flex w-full justify-center'>
@@ -281,12 +221,7 @@ function Home() {
                                 </td>
                                 <td class="px-3 py-4 ">
                                     <Button theme={"Danger"} click={() => manage(i, 'Delete')}>Eliminar</Button>
-=======
-                                <td class="px-3 py-4">
 
-                                    <Button theme={"Danger"} click={() => manage(i, 'Delete')}>Eliminar</Button>
-
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
                                 </td>
                             </tr>
                         })

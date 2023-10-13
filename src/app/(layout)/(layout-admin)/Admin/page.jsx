@@ -9,10 +9,9 @@ import Error from '@/components/Error'
 
 import Input from '@/components/Input'
 import { useRouter } from 'next/navigation';
-<<<<<<< HEAD
+
 import {getCurrencyExchange} from '@/currency'
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
 
 
@@ -33,7 +32,7 @@ export default function Home() {
   }, [user, success]);
 
 
-<<<<<<< HEAD
+
 
   return (
 
@@ -42,15 +41,7 @@ export default function Home() {
           <h1 className='text-[#FFF500] text-[16px]  hidden lg:block'>Cambios App</h1>
           <h3 className='text-white text-[16px]  hidden lg:block'>Tus transferencias mas faciles y seguras</h3>
           */}
-=======
-  return (
 
-    <main className='w-full h-full relative top-0 flex flex-col justify-center  lg:justify-start items-center lg:py-[50px]'>
-          <img src="/logo.svg" className='h-[200px] w-[200px] hidden lg:block' alt="User" />
-          <h1 className='text-[#FFF500] text-[16px]  hidden lg:block'>Cambios App</h1>
-          <h3 className='text-white text-[16px]  hidden lg:block'>Tus transferencias mas faciles y seguras</h3>
-         
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
       <div className='space-y-12 lg:grid  lg:grid-cols-3  lg:gap-5 justify-between items-end '>
 
@@ -69,7 +60,7 @@ export default function Home() {
           <br />
           <Button theme='Primary'>Cambios y comisiones</Button>
         </div>
-<<<<<<< HEAD
+
         <div className='w-[350px] flex flex-col justify-center items-center' onClick={()=>handlerRedirect('Admin/Transacciones')}>
           <svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50.6831 100.677C23.0681 100.677 0.683105 78.2916 0.683105 50.6766C0.683105 23.0616 23.0681 0.676636 50.6831 0.676636C78.2981 0.676636 100.683 23.0616 100.683 50.6766C100.683 78.2916 78.2981 100.677 50.6831 100.677ZM50.6831 35.6766H30.6831V45.6766H75.6831L50.6831 20.6766V35.6766ZM25.6831 55.6766L50.6831 80.6766V65.6766H70.6831V55.6766H25.6831Z" fill="white" />
@@ -77,8 +68,7 @@ export default function Home() {
           <br />
           <Button theme='Primary'>Transacciones</Button>
         </div>
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
         <div className='w-[350px] flex flex-col justify-center items-center' onClick={()=>handlerRedirect('Admin/Historial')}>
           <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M31.25 0C26.6211 0 22.5781 2.51953 20.4297 6.25H9.375C4.19922 6.25 0 10.4492 0 15.625V78.125C0 83.3008 4.19922 87.5 9.375 87.5H37.5V34.375C37.5 25.7422 44.4922 18.75 53.125 18.75H62.5V15.625C62.5 10.4492 58.3008 6.25 53.125 6.25H42.0703C39.9219 2.51953 35.8789 0 31.25 0ZM53.125 25C47.9492 25 43.75 29.1992 43.75 34.375V90.625C43.75 95.8008 47.9492 100 53.125 100H90.625C95.8008 100 100 95.8008 100 90.625V50H81.25C77.793 50 75 47.207 75 43.75V25H53.125ZM31.25 7.8125C32.4932 7.8125 33.6855 8.30636 34.5646 9.18544C35.4436 10.0645 35.9375 11.2568 35.9375 12.5C35.9375 13.7432 35.4436 14.9355 34.5646 15.8146C33.6855 16.6936 32.4932 17.1875 31.25 17.1875C30.0068 17.1875 28.8145 16.6936 27.9354 15.8146C27.0564 14.9355 26.5625 13.7432 26.5625 12.5C26.5625 11.2568 27.0564 10.0645 27.9354 9.18544C28.8145 8.30636 30.0068 7.8125 31.25 7.8125ZM81.25 25V43.75H100L81.25 25Z" fill="white" />

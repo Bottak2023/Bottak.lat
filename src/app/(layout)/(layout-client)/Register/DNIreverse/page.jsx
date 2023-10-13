@@ -14,27 +14,20 @@ import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
-<<<<<<< HEAD
+
 import Error from '@/components/msg'
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
 
 function Home() {
     const router = useRouter()
-<<<<<<< HEAD
+
     const { user, userDB, setUserData, success, setUserSuccess, 		image1, setImage1, image2, setImage2, image3, setImage3,  webcamRef1, webcamRef2, webcamRef3,  } = useUser()
 
     function save(e) {
         e.preventDefault()
         image3 ? router.push('/Register/Usuario') : setUserSuccess('Capture')
-=======
-    const { user, userDB, setUserData, setUserSuccess, 		image1, setImage1, image2, setImage2, image3, setImage3,  webcamRef1, webcamRef2, webcamRef3,  } = useUser()
 
-    function save(e) {
-        e.preventDefault()
-        router.push('/Register/Usuario')
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
     }
 
     return (
@@ -45,14 +38,11 @@ function Home() {
             <Button theme="Primary">Sube una foto del reverso de tu DNI</Button>
             <WebCamp  takePhoto='Capture3' />
             <div className='flex w-full justify-around'>
-<<<<<<< HEAD
+
                 <Button theme={image3 ? 'Primary' : 'Disable'} click={save}>Continuar</Button>
             </div>
             {success == 'Capture' && <Error>ERROR: Debe tomar una foto</Error>}
-=======
-                <Button theme='Primary' click={save}>Continuar</Button>
-            </div>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
         </div>
     )
 }

@@ -13,17 +13,13 @@ export function WithAuth(Component) {
         const router = useRouter()
 
         useEffect(() => {
-<<<<<<< HEAD
+
             if (user === undefined) onAuth(setUserProfile)
             // if(user === null) router.push('/')
             if (user !== undefined && user !== null && userDB === undefined) getSpecificData(`/users/${user.uid}`, setUserData)
             // if(user !== undefined && user !== null ) {
             //     console.log('get')
-=======
-            if(user === undefined) onAuth(setUserProfile)
-            // if(user === null) router.push('/')
-            if(user !== undefined && user !== null && userDB === undefined)getSpecificData(`/users/${user.uid}`, setUserData)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
             //    getSpecificData(`/users/${user.uuid}`, setUserData) 
             // } 

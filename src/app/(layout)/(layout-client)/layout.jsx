@@ -19,11 +19,9 @@ import { usePathname } from 'next/navigation'
 import style from '@/app/(layout)/style.module.css'
 
 export default function Home({ children }) {
-<<<<<<< HEAD
+
   const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, transferencia, divisas, setDivisas, select,  setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setIsSelect3} = useUser()
-=======
-  const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, transferencia } = useUser()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
   const router = useRouter()
   const pathname = usePathname()
 
@@ -55,7 +53,7 @@ export default function Home({ children }) {
   function redirect (data) {
     router.push(data)
   }
-<<<<<<< HEAD
+
   // console.log(pathname)
 
 
@@ -67,25 +65,14 @@ const mainClick = (e) => {
 
 }
 
-=======
-  console.log(pathname)
 
-  useEffect(() => {
-    // console.log(user)
-    // if (user) {
-    //   transferencia ? router.push('/') : router.push('/Register')
-    // }
-  }, [user]);
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
   return (
 
 
-<<<<<<< HEAD
+
     <main className='relative w-full h-full flex flex-col items-center justify-center' onClick={(e)=>mainClick(e)}>
-=======
-    <main className='relative w-full h-full flex flex-col items-center justify-center' >
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
       <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] lg:h-screen flex flex-col justify-between h-[750px] pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
         <div className={`lg:flex flex-col justify-center items-center h-[300px] lg:h-auto hidden `}>

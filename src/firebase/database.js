@@ -22,17 +22,14 @@ async function getSpecificData(query, setUserSpecificData) {
   try {
     const snapshot = await get(child(dbRef, `${query}`))
 
-<<<<<<< HEAD
+
     console.log(snapshot.exists())
 
     if (snapshot.exists()) {
       setUserSpecificData(snapshot.val())
       console.log(snapshot.val())
 
-=======
-    if (snapshot.exists()) {
-      setUserSpecificData(snapshot.val())
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
       return snapshot.val()
     } else {
       return null
@@ -47,11 +44,9 @@ function writeUserData(rute, object, setUserSuccess) {
   console.log(rute)
   update(ref(db, rute), object)
     .then(() => setUserSuccess !== null ? setUserSuccess('save') : '')
-<<<<<<< HEAD
+
     .catch((err) => console.log(err))
-=======
-    .catch(() => setUserSuccess('repeat'))
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 }
 
 async function removeData(rute, setUserSuccess) {

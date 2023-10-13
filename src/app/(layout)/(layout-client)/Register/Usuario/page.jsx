@@ -11,10 +11,9 @@ import Label from '@/components/Label'
 import Checkbox from '@/components/Checkbox'
 import { arrPaises } from '@/constants'
 
-<<<<<<< HEAD
+
 import SelectCountry from '@/components/SelectCountry'
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
 import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
@@ -25,11 +24,9 @@ import { WithAuth } from '@/HOCs/WithAuth'
 function Home() {
     const router = useRouter()
 
-<<<<<<< HEAD
+
     const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia } = useUser()
-=======
-    const { user, userDB, setUserData, setUserSuccess, 		image1, setImage1, image2, setImage2, image3, setImage3,  webcamRef1, webcamRef2, webcamRef3,  } = useUser()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
     const [state, setState] = useState({})
 
     const [postImage, setPostImage] = useState(null)
@@ -62,37 +59,26 @@ function Home() {
     function onChangeHandler(e) {
         setState({ ...state, [e.target.name]: e.target.value })
     }
-<<<<<<< HEAD
+
     const handlerSelect = (i) => {
         setSelect3(i)
 
     }
     const handlerIsSelect = () => {
         setIsSelect3(!isSelect3)
-=======
-    function onChangeHandlerCheck(e) {
-        setState({ ...state, [e.target.name]: e.target.checked })
-    }
-    function onClickHandler(name, value) {
-        setState({ ...state, [name]: value })
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
     }
     console.log(user)
     console.log(state)
     function save(e) {
         e.preventDefault()
-<<<<<<< HEAD
+
         writeUserData(`users/${user.uid}/profile`, { ...state, image1, image2, image3 }, setUserSuccess,)
         // uploadStorage('Clinica', postImage, user.uuid, updateUserData)
         // router.push('/Clinica/Perfil')
         transferencia ? router.push('/Register/Destinatario') : router.push('/')
 
-=======
-        writeUserData(`users/${user.uid}/profile`, {...state, image1, image2, image3 }, setUserSuccess, )
-        // uploadStorage('Clinica', postImage, user.uuid, updateUserData)
-        // router.push('/Clinica/Perfil')
-        router.push('/Register/Tarjeta')
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
     }
     return (
@@ -103,7 +89,7 @@ function Home() {
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div className=' space-y-5'>
                     <Label htmlFor="">Nombre</Label>
-<<<<<<< HEAD
+
                     <Input type="text" name="nombre" onChange={onChangeHandler} require />
                 </div>
                 <div className=' space-y-5'>
@@ -121,25 +107,7 @@ function Home() {
                 <div className=' space-y-5'>
                     <Label htmlFor="">Whatsapp</Label>
                     <Input type="text" name="whatsapp" onChange={onChangeHandler} reference={inputRefWhatsApp} require />
-=======
-                    <Input type="text" name="nombre" onChange={onChangeHandler} require/>
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">DNI</Label>
-                    <Input type="text" name="dni" onChange={onChangeHandler} require/>
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Pais</Label>
-                    <Select arr={arrPaises} name='pais' click={onClickHandler} />
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Dirección</Label>
-                    <Input type="text" name="direccion"  onChange={onChangeHandler} require/>
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Whatsapp</Label>
-                    <Input type="text" name="whatsapp" onChange={onChangeHandler} reference={inputRefWhatsApp} require/>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                 </div>
             </div>
             <div className='flex w-full justify-around'>

@@ -11,13 +11,10 @@ const videoConstraints = {
     facingMode: "user"
 };
 
-<<<<<<< HEAD
+
 export default function WebCamp({ takePhoto }) {
     const { image1, setImage1, image2, setImage2, image3, setImage3, webcamRef1, webcamRef2, webcamRef3, } = useUser()
-=======
-export default function WebCamp({takePhoto}) {
-    const { image1, setImage1, image2, setImage2, image3, setImage3,  webcamRef1, webcamRef2, webcamRef3,  } = useUser()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
     // function Base64ToImage(base64img) {
     //     var img = new Image();
@@ -25,24 +22,18 @@ export default function WebCamp({takePhoto}) {
     //     return img;
     // }
 
-<<<<<<< HEAD
+
     const height = 360
     const width = 360
-=======
-const height = 360
-const width = 360
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
 
     const capture1 = React.useCallback(
         () => {
             const imageSrc = webcamRef1.current.getScreenshot();
-<<<<<<< HEAD
+
             //    const img = Base64ToImage(imageSrc)
             //    console.log(img)
-=======
-        //    const img = Base64ToImage(imageSrc)
-        //    console.log(img)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
             setImage1(imageSrc)
         },
         [webcamRef1]
@@ -67,43 +58,18 @@ const width = 360
             return <div className="relative">
                 <div className="relative rounded-[20px] overflow-hidden border-[3px] ">
                     {image1 && <img src={image1} className="absolute h-full w-full z-20" alt="" />}
-<<<<<<< HEAD
+
                         <Webcam
                             audio={false}
                             height={height}
                             ref={webcamRef1}
-=======
-                    <Webcam
-                        audio={false}
-                        height={height}
-                        ref={webcamRef1}
-                        screenshotFormat="image/webp"
-                        width={width}
-                        videoConstraints={videoConstraints}
-                        mirrored={true}
-                    />
-                </div>
-                <button
-                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
-                    onClick={capture1}>
-                    <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
-                </button>
-            </div>
-             case 'Capture2':
-                return <div className="relative">
-                    <div className="relative rounded-[20px] overflow-hidden border-[3px] ">
-                        {image2 && <img src={image2} className="absolute h-full w-full z-20" alt="" />}
-                        <Webcam
-                            audio={false}
-                            height={height}
-                            ref={webcamRef2}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                             screenshotFormat="image/webp"
                             width={width}
                             videoConstraints={videoConstraints}
                             mirrored={true}
                         />
-<<<<<<< HEAD
+
                 </div>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
@@ -170,36 +136,7 @@ const width = 360
                     <span className="sr-only">Close modal</span>
                 </button>}
             </div>
-=======
-                    </div>
-                    <button
-                        className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
-                        onClick={capture2}>
-                        <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
-                    </button>
-                </div>
-                 case 'Capture3':
-                    return <div className="relative">
-                        <div className="relative rounded-[20px] overflow-hidden border-[3px] ">
-                            {image3 && <img src={image3} className="absolute h-full w-full z-20" alt="" />}
-                            <Webcam
-                                audio={false}
-                                height={height}
-                                ref={webcamRef3}
-                                screenshotFormat="image/webp"
-                                width={width}
-                                videoConstraints={videoConstraints}
-                                mirrored={true}
 
-                            />
-                        </div>
-                        <button
-                            className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
-                            onClick={capture3}>
-                            <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
-                        </button>
-                    </div>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
         default:
     }

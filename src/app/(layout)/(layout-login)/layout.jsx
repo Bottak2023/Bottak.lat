@@ -11,10 +11,8 @@ import Input from '@/components/Input'
 import Msg from '@/components/Msg'
 import NavInit from '@/components/NavInit'
 
-<<<<<<< HEAD
-=======
-import Error from '@/components/Error'
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
+
 import SelectWithFlag from '@/components/SelectWithFlag'
 import { useRouter } from 'next/navigation';
 import style from '@/app/(layout)/style.module.css'
@@ -34,11 +32,9 @@ export default function Home({children}) {
     const res = await signInWithEmail(email, password, setUserProfile)
 
     if (res == null) {
-<<<<<<< HEAD
+
       setUserSuccess('Intente')
-=======
-      setUserSuccess('Error')
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
       return
     }
 
@@ -76,14 +72,11 @@ export default function Home({children}) {
           {children}
         </div>
         <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>
-<<<<<<< HEAD
+
         {success == 'Intente' && <Msg>Cuenta inexistente</Msg>}
         {success == 'Existe' && <Msg>Cuenta ya registrada</Msg>}
         {success == 'Complete' && <Msg>Llene todo el formulario</Msg>}
-=======
-        {/* {success == false && <Error>ERROR: verifique e intente nuevamente</Error>}
-        {success == 'complete' && <Error>Llene todo el formulario</Error>} */}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
       </div>
     </main>
   )}

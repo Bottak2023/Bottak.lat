@@ -17,20 +17,14 @@ import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 // import { WithAuth } from '@/HOCs/WithAuth'
 import { WithAuth } from '@/HOCs/WithAuth'
-<<<<<<< HEAD
+
 import {generateUUID} from '@/utils/UUIDgenerator'
 function Home() {
     const router = useRouter()
 
     // const { user, userDB, setUserData, setUserSuccess, setDestinatario, destinatario } = useUser()
     const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario,  setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2,  setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas ,destinatario,  fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
-=======
 
-function Home() {
-    const router = useRouter()
-
-    const { user, userDB, setUserData, setUserSuccess, setDestinatario, destinatario } = useUser()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
     const [postImage, setPostImage] = useState(null)
     const [urlPostImage, setUrlPostImage] = useState(null)
@@ -71,18 +65,16 @@ function Home() {
     console.log(destinatario)
     function save(e) {
         e.preventDefault()
-<<<<<<< HEAD
+
         const uuid = generateUUID()
         writeUserData(`users/${user.uid}/destinatarios/${destinatario['cuenta destinario']}`, {...destinatario, [uuid]: uuid}, setUserSuccess,)
-=======
-        writeUserData(`users/${user.uid}/destinatarios/${destinatario['tarjeta']}`, destinatario, setUserSuccess,)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
         router.push('/Transferencias/Exitoso')
         // e.preventDefault()
         // writeUserData('Clinica', { ...state, uuid: user.uuid }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente', 'Perfil')
         // uploadStorage('Clinica', postImage, user.uuid, updateUserData)
         // router.push('/Clinica/Perfil')
-<<<<<<< HEAD
+
         setDestinatario({ ...destinatario, uuid })
         writeUserData(`envios/${uuid}`, {
             ...destinatario, 
@@ -99,11 +91,7 @@ function Home() {
     }
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
-=======
-    }
-    return (
-        <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5'>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
                 <h3 className='text-center pb-3 text-white  text-right'>Destinatario</h3>
             </div>
@@ -111,13 +99,10 @@ function Home() {
                     <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de tarjeta</h3>
                 </div>
                 <div className=' space-y-5'>
-<<<<<<< HEAD
+
                     <Label htmlFor="">Número de Cuenta</Label>
                     <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} reference={inputRefCard} require />
-=======
-                    <Label htmlFor="">Número de tarjeta</Label>
-                    <Input type="text" name="tarjeta" onChange={onChangeHandler} reference={inputRefCard} require />
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                 </div>
 
                 <div className='lg:hidden'>
@@ -125,11 +110,9 @@ function Home() {
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Nombre</Label>
-<<<<<<< HEAD
+
                     <Input type="text" name="destinatario" onChange={onChangeHandler} require />
-=======
-                    <Input type="text" name="nombre" onChange={onChangeHandler} require />
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                 </div>
          
        
@@ -146,17 +129,14 @@ function Home() {
                     <Label htmlFor="">Dirección</Label>
                     <Input type="text" name="direccion" onChange={onChangeHandler} require />
                 </div>
-<<<<<<< HEAD
+
                 <div className=' space-y-5'>
                     <Label htmlFor="">Numero de celular</Label>
                     <Input type="text" name="celular" onChange={onChangeHandler} require />
                 </div>
             <div className='flex w-full justify-around items-end'>
                 <Button theme='Primary' >Guardar</Button>
-=======
-            <div className='flex w-full justify-around items-end'>
-                <Button theme='Primary' click={save}>Guardar</Button>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
             </div>
         </form>
     )

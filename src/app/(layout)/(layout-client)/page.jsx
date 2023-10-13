@@ -11,7 +11,7 @@ import SelectWithFlag from '@/components/SelectWithFlag'
 import { useState, useEffect } from "react";
 import { WithAuth } from '@/HOCs/WithAuth'
 import { useRouter, usePathname } from 'next/navigation';
-<<<<<<< HEAD
+
 import ModalINFO from '@/components/ModalINFO'
 
 function Page() {
@@ -19,13 +19,7 @@ function Page() {
   const router = useRouter()
   const pathname = usePathname()
   const [modalInfo, setModalInfo] = useState(false)
-=======
 
-function Page() {
-  const { nav, setNav, user, userDB, setUserProfile, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia } = useUser()
-  const router = useRouter()
-  const pathname = usePathname()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
   // const signInHandler = (e) => {
   //   e.preventDefault()
@@ -44,7 +38,7 @@ function Page() {
     router.push(data)
     console.log('click')
   }
-<<<<<<< HEAD
+
   // console.log(divisas)
   function redirect(e) {
     if (user == null && user == undefined) {
@@ -82,41 +76,18 @@ function Page() {
     if (user && userDB == null) {
       console.log('registrate')
 
-=======
-  console.log(transferencia)
 
-
-  function handlerTransfer(e) {
-    e.preventDefault()
-    console.log('click')
-    if (user == null && user == undefined) {
-      setModal('registrate')
-      return
-    }
-    
-    if (user && userDB == null) {
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
       router.push('/Register')
       return
     }
 
     if (user && userDB) {
-<<<<<<< HEAD
+
       console.log('Destinatario')
       router.push('/Register/Destinatario')
       return
     }
-=======
-      router.push('/Register/Destinatario')
-      return
-    }
-    // setNav(!nav)
-    // user !== null && user !== undefined
-    //   ? console.log('si usuario')
-    //   : setModal('Registrate o inicia sesión para completar tu transferencia')
-    // return   console.log(modal)
 
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
   }
 
 
@@ -126,7 +97,7 @@ function Page() {
     setModal('')
   }
 
-<<<<<<< HEAD
+
 
 
   const handlerSelect = (i) => {
@@ -182,38 +153,12 @@ function Page() {
           <span className='text-[#FFF500] text-[14px] font-light'>Divisa de receptor:</span>
           <SelectWithFlag value={true} propHandlerSelect={handlerSelect2} propSelect={select2} propHandlerIsSelect={handlerIsSelect2} propIsSelect={isSelect2} />
           <Button theme='Primary'>Efectuar transferencia</Button >
-=======
-  useEffect(()=>{
-    if(user === undefined) onAuth(setUserProfile)
-  user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
-}, [user, userDB])
 
-
-  return (
-    <>
-    <NavInit mobile={true} />
-    <div className={`flex flex-col justify-center items-center h-[300px] lg:h-auto lg:hidden `}>
-      <img src="/logo.svg" className={`h-[200px] w-[200px] ${style.logo}`} alt="User" />
-      <h1 className='text-[#FFF500] text-[14px] font-light'>Cambios App</h1>
-      <h3 className='text-white text-[14px] font-light'>Tus transferencias mas faciles y seguras</h3>
-      <br />
-      <div className='hidden lg:grid lg:grid-cols-2 lg:grid-gap-2 w-full '>
-        <Button type="submit" theme={"Transparent"}>Registrate</Button>
-        <Button type="submit" theme={"Primary"}>Iniciar Sesión</Button>
-      </div>
-    </div>
-        <div className='lg:h-full lg:py-20 w-full flex flex-col justify-between items-center h-[350px]'>
-          <NavInit mobile={false} />
-          <SelectWithFlag onChange="Transference" placeholder='Monto a transferir' />
-          <span className='text-[#FFF500] text-[14px] font-light'>Divisa de receptor:</span>
-          <SelectWithFlag value={true} />
-          <Button theme='Primary' click={handlerTransfer}>   Transferir   </Button >
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
           <div className="">
             <div className='grid grid-cols-2 gap-[15px]'><span className='text-white text-[14px] font-light'>Tasa de cambio </span><span className='text-white text-[14px] font-light'>1$ = 697 BOB</span></div>
             <div className='grid grid-cols-2 gap-[15px]'><span className='text-white text-[14px] font-light'>Comisiones</span><span className='text-white text-[14px] font-light'>5 $</span></div>
           </div>
-<<<<<<< HEAD
+
         </form>
         : <div className='lg:h-full lg:py-20 w-full flex flex-col justify-around items-center h-[350px]'>
           <NavInit mobile={false} />
@@ -265,11 +210,7 @@ function Page() {
         </div>
       }
     </>
-=======
-    </div>
-    </>
 
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
   )
 }
 
@@ -277,138 +218,8 @@ export default Page
 
 
 
-<<<<<<< HEAD
-=======
-{/*   {success == 'AccountNonExist' && <Error>Cuenta inexistente</Error>}
-        {success == 'Complete' && <Error>Complete el formulario</Error>} */}
-{/* <p className='text-white underline'>Politicas De Servicio</p> */ }
-{/* <div className='grid grid-cols-2 gap-[15px]'><span className='text-white'>Pagas</span><span className='text-white'>0 $</span></div> */ }
 
 
-
-
-// 'use client'
-// import { useUser } from '@/context/Context'
-// import { onAuth } from '@/firebase/utils'
-// import Image from 'next/image'
-// import Button from '@/components/Button'
-// import Modal from '@/components/Modal'
-// import NavInit from '@/components/NavInit'
-// import { getSpecificData, } from '@/firebase/database'
-// import style from '@/app/(layout)/style.module.css'
-// import SelectWithFlag from '@/components/SelectWithFlag'
-// import { useState, useEffect } from "react";
-// import { WithAuth } from '@/HOCs/WithAuth'
-// import { useRouter, usePathname } from 'next/navigation';
-
-// function Page() {
-//   const { nav, setNav, user, userDB, setUserProfile, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia } = useUser()
-//   const router = useRouter()
-//   const pathname = usePathname()
-
-//   // const signInHandler = (e) => {
-//   //   e.preventDefault()
-//   //   let email = e.target[0].value
-//   //   let password = e.target[1].value
-//   //   email.length !== 0 && password.length !== 0 ? signInWithEmailAndPassword(email, password, setUserSuccess) : setUserSuccess('Complete')
-//   // }
-//   // useEffect(() => {
-//   //   user === undefined && onAuth(setUserProfile)
-//   //   if (user !== undefined && user !== null) router.replace('/Cliente')
-//   // }, [user]);
-
-
-//   function handlerMode(e, data) {
-//     setState(data)
-//     router.push(data)
-//     console.log('click')
-//   }
-//   console.log(transferencia)
-
-
-//   function handlerTransfer(e) {
-//     e.preventDefault()
-//     console.log('click')
-//     if (user == null && user == undefined) {
-//       setModal('registrate')
-//       return
-//     }
-    
-//     if (user && userDB == null) {
-//       router.push('/Register')
-//       return
-//     }
-
-//     if (user && userDB) {
-//       router.push('/Register/Destinatario')
-//       return
-//     }
-//     // setNav(!nav)
-//     // user !== null && user !== undefined
-//     //   ? console.log('si usuario')
-//     //   : setModal('Registrate o inicia sesión para completar tu transferencia')
-//     // return   console.log(modal)
-
-//   }
-
-
-
-//   const handlerRedirect = (rute) => {
-//     router.push(rute)
-//     setModal('')
-//   }
-
-//   useEffect(()=>{
-//     if(user === undefined) onAuth(setUserProfile)
-//   user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
-// }, [user, userDB])
-
-
-//   return (
-
-//     <main className='relative w-full h-full flex flex-col items-center justify-center' >
-//       {modal == 'registrate' && <Modal theme="Success" button='Si, continuar' funcion={() => handlerRedirect('/Login')}>Inicia sesión o registrate para concretar tu tranferencia.</Modal>}
-
-//       <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] lg:h-screen flex flex-col justify-between h-[750px] pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
-//         <NavInit mobile={true} />
-//         <div className={`flex flex-col justify-center items-center h-[300px] lg:h-auto  `}>
-//           <img src="/logo.svg" className={`h-[200px] w-[200px] ${style.logo}`} alt="User" />
-//           <h1 className='text-[#FFF500] text-[14px] font-light'>Cambios App</h1>
-//           <h3 className='text-white text-[14px] font-light'>Tus transferencias mas faciles y seguras</h3>
-//           <br />
-//           <div className='hidden lg:grid lg:grid-cols-2 lg:grid-gap-2 w-full '>
-//             <Button type="submit" theme={"Transparent"}>Registrate</Button>
-//             <Button type="submit" theme={"Primary"}>Iniciar Sesión</Button>
-//           </div>
-//         </div>
-//         <div className='lg:h-full lg:py-20 w-full flex flex-col justify-between items-center h-[350px]'>
-//           <NavInit mobile={false} />
-//           <SelectWithFlag onChange="Transference" placeholder='Monto a transferir' />
-//           <span className='text-[#FFF500] text-[14px] font-light'>Divisa de receptor:</span>
-//           <SelectWithFlag value={true} />
-//           <Button theme='Primary' click={handlerTransfer}>   Transferir   </Button >
-//           <div className="">
-//             <div className='grid grid-cols-2 gap-[15px]'><span className='text-white text-[14px] font-light'>Tasa de cambio </span><span className='text-white text-[14px] font-light'>1$ = 697 BOB</span></div>
-//             <div className='grid grid-cols-2 gap-[15px]'><span className='text-white text-[14px] font-light'>Comisiones</span><span className='text-white text-[14px] font-light'>5 $</span></div>
-//           </div>
-//         </div>
-//       </div>
-
-//     </main>
-//   )
-// }
-
-// export default Page
-
-
-
-
-
-
-
-
-
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
 
 

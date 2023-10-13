@@ -31,7 +31,7 @@ export default function Home() {
     const res = await signInWithEmail(email, password, setUserProfile)
 
     if (res == null) {
-<<<<<<< HEAD
+
       setUserSuccess('Intente')
       return
     }
@@ -49,20 +49,7 @@ export default function Home() {
     }
   }
 
-=======
-      setUserSuccess('Error')
-      return
-    }
 
-    if (res && (userDB == null || userDB == undefined)) {
-      const data = await getSpecificData(`/users/${res.uid}`)
-      data == null ? router.push('/Register') : router.push('/Register/Destinatario')
-    }
-    console.log()
-  }
-
-  console.log(user)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
 
   useEffect(() => {
     // console.log(user)

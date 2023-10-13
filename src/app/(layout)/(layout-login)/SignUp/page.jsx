@@ -17,7 +17,7 @@ export default function Home() {
   const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG } = useUser()
   const router = useRouter()
 
-<<<<<<< HEAD
+
   // const signInHandler = async (e) => {
   //   e.preventDefault()
   //   let email = e.target[0].value
@@ -61,17 +61,7 @@ export default function Home() {
 
 
 
-=======
 
-  const signUpHandler = (e) => {
-    e.preventDefault()
-    router.push('/Register')
-    e.preventDefault()
-    let email = e.target[0].value
-    let password = e.target[1].value
-    console.log(email, password)
-    signUpWithEmail(email, password, setUserProfile)
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
   }
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 'use client'
 // import style from '../styles/Loader.module.css' 
 import { useUser } from '@/context/Context.js'
-<<<<<<< HEAD
+
 
 export default function Modal ({children, funcion, alert}) {
 
@@ -26,55 +26,13 @@ export default function Modal ({children, funcion, alert}) {
                         <button type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg  inline-flex items-center px-5 py-4 text-center" onClick={funcion}>
                             Si, confirmar.
                         </button></>}
-=======
-import Button from '@/components/Button'
-export default function Modal({ children, theme, button, funcion, alert }) {
-    const { nav, setNav, user, userDB, setUserProfile, state, setState, modal, setModal } = useUser()
 
-
-    return (
-        <div className="fixed top-0 left-0 w-screen min-h-screen z-50"
-            style={{
-                backgroundImage: 'url(/background.png)',
-                backgroundAttachment: 'fixed',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-            }}>
-            <div class={`h-screen w-screen flex justify-center items-center  fixed top-0 left-0  z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-[#000000c7]`}>
-                <div class={`relative max-w-[500px] w-full ${theme == 'Success' && 'bg-[#29802731]'}  ${theme == 'Danger' && 'bg-[#AF3D5231]'} rounded-lg shadow p-5 `}>
-                    <div className='w-full flex justify-center'>
-                        <img src="/logo.svg" className='w-[100px]' alt="User" />
-                    </div>
-                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setModal('')}>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="black" strokeLinecap="round" stroke-linejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="p-6 text-center">
-                        <h3 class="mb-2 text-[16px] font-normal text-gray-50 dark:text-gray-400 pb-3">{children}</h3>
-                        {!alert && <>
-                            <Button theme='Blank' click={() => setModal('')}></Button>
-                            <Button theme={theme} click={funcion}>{button}</Button>
-                        </>}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
+
 
     )
 }
-=======
-    )
-}
 
-
-
-{/* 
-<svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-<path stroke="currentColor" strokeLinecap="round" stroke-linejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-</svg> 
-*/}
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d

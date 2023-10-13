@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { onAuth, handleSignOut } from '@/firebase/utils'
 import { useRouter } from 'next/navigation';
 import Particles from '@/components/Particles'
-<<<<<<< HEAD
+
 import { useEffect } from 'react'
 import { getSpecificData } from '@/firebase/database'
 
@@ -12,20 +12,14 @@ export default function RootLayout({ children }) {
 
     const { user, userDB, setUserProfile, nav, setNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas } = useUser()
     const { } = useUser()
-=======
 
-export default function RootLayout({ children }) {
-
-    const { user, userDB, setUserProfile, nav, setNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG } = useUser()
-    const {  } = useUser()
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
     const router = useRouter()
 
     const signOutHandler = () => {
         handleSignOut()
         router.push('/')
         setUserProfile(null)
-<<<<<<< HEAD
+
         setNav(false)
 
     }
@@ -45,12 +39,6 @@ export default function RootLayout({ children }) {
     }, [user, userDB, divisas])
 
   
-
-=======
-        setNav(false)   
-
-     }
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
     return (
         <div className={`w-full`}>
             <nav className="w-screen fixed top-0 z-30 " style={{
@@ -72,12 +60,11 @@ export default function RootLayout({ children }) {
 
             <div className={`absolute min-h-screen bg-transparent  top-0 pt-[60px] items-center justify-between  w-[100vw] md:min-h-[70px] md:flex md:w-auto  transition-all	z-20 md:justify-end md:fixed md:top-[0px] md:z-50 md:p-0 md:w-[650px] md:right-[20px]  ${nav ? 'left-0 md:left-auto' : 'left-[-100vw] lg:left-auto'}`} >
                 <ul className="flex flex-col bg-transparent p-4 border-t-[2px] border-gray-100 md:p-0 mt-4 font-regular text-[14px] lg:font-normal md:flex-row md:space-x-8 md:mt-0 md:border-0  ">
-<<<<<<< HEAD
+
                     {userDB && userDB.rol && userDB.rol === 'Admin' && <li>
                         <Link href="/Admin" className="block py-2 pl-3 pr-4 text-gray-200 rounded md:bg-transparent md:p-0 " onClick={() => setNav(false)}>Admin</Link>
                     </li>}
-=======
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                     <li>
                         <Link href="/" className="block py-2 pl-3 pr-4 text-gray-200 rounded md:bg-transparent md:p-0 " onClick={() => setNav(false)}>Remesas</Link>
                     </li>
@@ -93,18 +80,14 @@ export default function RootLayout({ children }) {
                     <li>
                         <Link href="#" className="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" onClick={() => setNav(false)}>Politicas</Link>
                     </li>
-<<<<<<< HEAD
+
                     <li>
                         <Link href="/Tracking" className="block py-2 pl-3 pr-4 text-gray-200 rounded md:bg-transparent md:p-0 " onClick={() => setNav(false)}>Tracking</Link>
                     </li>
                     {user !== null && user !== undefined
                         ? <li>
                             <button className="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" onClick={signOutHandler}>Cerrar sesión</button>
-=======
-                    {user !== null
-                        ? <li>
-                            <button className="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" onClick={ signOutHandler }>Cerrar sesión</button>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
                         </li>
                         : <li>
                             <Link href="/Login" className="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" onClick={() => setNav(false)}>Iniciar Sesión</Link>
@@ -113,15 +96,11 @@ export default function RootLayout({ children }) {
                 </ul>
             </div>
 
-<<<<<<< HEAD
+
             {divisas && divisas !== undefined && <div className={`absolute top-0 w-screen  h-screen p-[20px] lg:pb-0 pt-[90px] min-h-full  ${nav ? 'left-[-100vw]' : 'left-0'}`}>
                 {children}
             </div>}
-=======
-            <div className={`absolute top-0 w-screen  h-screen p-[20px] lg:pb-0 pt-[90px] min-h-full  ${nav ? 'left-[-100vw]' : 'left-0'}`}>
-                {children}
-            </div>
->>>>>>> 8ef581cdda53cf380dceb7ba3c7a754c490b107d
+
             <Particles />
         </div>
     )
