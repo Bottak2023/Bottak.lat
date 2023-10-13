@@ -1,5 +1,4 @@
 import puppeteer from "puppeteer";
-import { accessibilityProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 
 export default async function webScraping(req, res) {
 
