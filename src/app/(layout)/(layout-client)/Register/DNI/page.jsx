@@ -15,7 +15,7 @@ import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
 
-import Error from '@/components/msg'
+import Error from '@/components/Msg'
 
 function Home() {
     const router = useRouter()
