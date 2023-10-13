@@ -1,11 +1,16 @@
-import puppeteer from "puppeteer";
-
+import puppeteer from "puppeteer-core";
+import edgeChromium from "chrome-aws-lambda"
 export default async function webScraping(req, res) {
 
     console.log('node')
     console.log(req.body.divisas)
 
+
+    const executablePath = await edgeChromium.executablePath
+
     const browser = await puppeteer.launch({
+        executablePath,
+        args: edgeChromium.args,
         headless: 'new',
     });
 
@@ -24,8 +29,8 @@ export default async function webScraping(req, res) {
 
 
     const obj = await req.body.divisas.reduce(async (previousPromise, i) => {
-      try  {
-          let acc = await previousPromise;
+        try {
+            let acc = await previousPromise;
             const search2 = await page.waitForSelector('#APjFqb')
             await search2.type(`USD to ${i}`)
             await page.keyboard.press('Enter')
@@ -34,15 +39,15 @@ export default async function webScraping(req, res) {
             console.log(value)
             await page.click('[class="M2vV3 vOY7J"]')
 
-            return {...acc, [i]: value}
-      } catch (error) {
-        console.log(error)
-        return {}
-      }
+            return { ...acc, [i]: value }
+        } catch (error) {
+            console.log(error)
+            return {}
+        }
 
-          
 
-       
+
+
 
 
     }, Promise.resolve({}));
@@ -50,7 +55,7 @@ export default async function webScraping(req, res) {
 
     console.log(obj)
 
-     return res.json(obj)
+    return res.json(obj)
 
 
 
