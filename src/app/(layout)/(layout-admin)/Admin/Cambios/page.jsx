@@ -67,6 +67,9 @@ const getCurrencyExchange = async (input, output) => {
   const res = await fetch(window.location.href.includes('https') ? 'https://tienda.preciojusto.pro/api/getExchange' : 'http://localhost:3000/api/getExchange', {
     method: 'POST',
     body: JSON.stringify({divisas: arr}),
+    headers: new Headers({
+        'Content-Type': 'application/json; charset=UTF-8'
+      })
   })
    const data = await res.json()
    setExchange(data) 
