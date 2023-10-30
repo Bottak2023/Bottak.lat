@@ -11,8 +11,8 @@ const nextConfig = {
   swcMinify: true,
 
   headers: { 
-     "Access-Control-Allow-Origin": ["https://bottak.lat", "https://wwww.bottak.lat"],
-     "Access-Control-Allow-Methods": ["GET","OPTIONS","PATCH","DELETE","POST","PUT"] 
+     "Access-Control-Allow-Origin": ["*"],
+     "Access-Control-Allow-Methods": ["GET","DELETE","POST","PUT"] 
     },
     
 
