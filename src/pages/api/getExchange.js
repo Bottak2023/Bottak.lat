@@ -47,7 +47,7 @@ export default async function webScraping(req, res) {
 
         await NextCors(req, res, {
             // Options
-            methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+            methods: ['GET',  'POST',],
             origin: '*',
             optionsSuccessStatus: 200,
         });
