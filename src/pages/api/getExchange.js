@@ -51,69 +51,6 @@ export default async function webScraping(req, res) {
     //     optionsSuccessStatus: 200,
     //  });
 
-    console.log(obj)
     return res.json(obj)
-
-
-
-
-   
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import puppeteer from "puppeteer";
-
-// export default async function webScraping(req, res) {
-
-// console.log('node')
-// console.log(req.body.divisas)
-
-// const browser = await puppeteer.launch({
-//     headless: 'new',
-// });
-
-// const page = await browser.newPage()
-// await page.setDefaultNavigationTimeout(0);
-
-// await page.goto('https://google.com/')
-
-// const search = await page.waitForSelector('#APjFqb')
-
-
-// await search.type(`1 ${req.body.input} to ${req.body.output}`)
-// await page.keyboard.press('Enter')
-
-// await page.waitForNavigation()
-// const value = await page.evaluate(() => {
-//     const value = document.querySelector('.SwHCTb').innerText
-//     return value
-// }
-// );
-// console.log(value)
-// await browser.close()
-
-// return res.json({exchange: value})
-
-
-
-
-// }
