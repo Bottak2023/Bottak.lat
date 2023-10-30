@@ -59,7 +59,6 @@ export default async function webScraping(req, res) {
 
     console.log(obj)
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Content-Type', 'application/json');
     return res.json(obj)
 
 
