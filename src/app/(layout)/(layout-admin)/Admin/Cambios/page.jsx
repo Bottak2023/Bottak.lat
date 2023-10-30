@@ -64,7 +64,7 @@ const getCurrencyExchange = async (input, output) => {
   const arr = Object.values(divisas).filter(i=>i.habilitado !== undefined && i.habilitado === true).map(i=>i.code)
 
   // console.log(Object.values(divisas))
-  const res = await fetch(window.location.href.includes('https') ? 'https://bottak.lat/api/getExchange' : 'http://localhost:3000/api/getExchange', {
+  const res = await fetch(window.location.href.includes('https') ? 'https://bottak.lat/api/getExchange/' : 'http://localhost:3000/api/getExchange', {
     method: 'POST',
     body: JSON.stringify({divisas: arr}),
     headers: new Headers({
