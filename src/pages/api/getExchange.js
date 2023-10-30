@@ -44,6 +44,15 @@ export default async function webScraping(req, res) {
 
         }, Promise.resolve({}));
 
+
+        await NextCors(req, res, {
+            // Options
+            methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+            origin: '*',
+            optionsSuccessStatus: 200,
+        });
+
+
         return res.json(obj)
 
 
@@ -53,14 +62,6 @@ export default async function webScraping(req, res) {
 
 
 
-
-
-    // await NextCors(req, res, {
-    //     // Options
-    //     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    //     origin: '*',
-    //     optionsSuccessStatus: 200,
-    //  });
 
 }
 
