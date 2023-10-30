@@ -49,11 +49,6 @@ export default async function webScraping(req, res) {
             return {}
         }
 
-
-
-
-
-
     }, Promise.resolve({}));
 
 
