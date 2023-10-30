@@ -6,16 +6,7 @@ export default async function webScraping(req, res) {
 
     console.log('node')
     console.log(req.body.divisas)
-    // res.setHeader('Access-Control-Allow-Credentials', false)
-    // res.setHeader('Access-Control-Allow-Origin', '*') 
-    // res.setHeader('Access-Control-Allow-Methods', 'GET,DELETE,PATCH,POST,PUT')
-    // res.setHeader(
-    //   'Access-Control-Allow-Headers',
-    //   'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-    // )
-    // const browser = await puppeteer.launch({       
-    //     headless: 'new',
-    // });
+
     const browser = await puppeteer.connect({
         browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
       })
@@ -57,7 +48,7 @@ export default async function webScraping(req, res) {
         // Options
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
         origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+        optionsSuccessStatus: 200,
      });
 
     console.log(obj)
@@ -66,31 +57,7 @@ export default async function webScraping(req, res) {
 
 
 
-    //     req.body.divisas.reduce(async (promise, i) => {
-    //         await promise
-    //         await page.click('[class="M2vV3 vOY7J"]')
-    //         const search2 = await page.waitForSelector('#APjFqb')
-    //         await search2.type(`USD to ${i}`)
-    //         await page.keyboard.press('Enter')
-    // return {...acc, i}
-
-    //     }, Promise.resolve({}))
-
-
-
-    // const value = await page.evaluate(() => {
-    //     const value = document.querySelector('.SwHCTb').innerText
-    //     return value
-    // }
-    // );
-    // console.log(value)
-    // await browser.close()
-
-    // return res.json({exchange: value})
-
-    // await page.focus('#APjFqb')
-    // await page.keyboard.press('End')
-    // await page.keyboard.press('Backspace')
+   
 
 
 }
