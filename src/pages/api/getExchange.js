@@ -9,7 +9,7 @@ export default async function webScraping(req, res) {
 
     const browser = await puppeteer.connect({
         browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
-      })
+    })
 
     const page = await browser.newPage()
     await page.setDefaultNavigationTimeout(0);
@@ -23,6 +23,10 @@ export default async function webScraping(req, res) {
     await page.keyboard.press('Enter')
     await page.waitForNavigation()
     await page.click('[class="M2vV3 vOY7J"]')
+
+    console.log(req.body.divisas)
+
+    // if (req.body.divisas !== undefined && req.body.divisas.length > 0) {
 
 
     const obj = await req.body.divisas.reduce(async (previousPromise, i) => {
@@ -43,6 +47,10 @@ export default async function webScraping(req, res) {
         }
 
     }, Promise.resolve({}));
+
+
+
+
 
     // await NextCors(req, res, {
     //     // Options
