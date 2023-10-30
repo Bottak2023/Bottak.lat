@@ -1,4 +1,6 @@
 import puppeteer from "puppeteer-core";
+import NextCors from 'nextjs-cors';
+
 // import chromium from "chrome-aws-lambda"
 export default async function webScraping(req, res) {
 
@@ -51,6 +53,12 @@ export default async function webScraping(req, res) {
 
     }, Promise.resolve({}));
 
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+     });
 
     console.log(obj)
     return res.json(obj)
