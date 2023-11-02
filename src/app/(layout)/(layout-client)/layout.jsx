@@ -66,11 +66,13 @@ const mainClick = (e) => {
 }
 
 
-
+useEffect(() => {
+  if (user === undefined) onAuth(setUserProfile)
+  user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
+  // divisas === undefined && getSpecificData('currencies', setDivisas)
+}, [user, userDB, divisas])
+console.log(divisas)
   return (
-
-
-
     <main className='relative w-full h-full flex flex-col items-center justify-center' onClick={(e)=>mainClick(e)}>
 
 

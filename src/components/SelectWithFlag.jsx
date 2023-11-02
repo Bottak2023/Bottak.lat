@@ -35,23 +35,23 @@ export default function App({ placeholder, value, onChange, propHandlerSelect, p
   }
 
   // console.log(Object.values(divisasJSON))
-  useEffect(() => {
-    // writeUserData('divisas', divisasJSON, setUserSuccess)
-    // setCurrency(CurrencyList.getAll('es_US'))
-    divisas === undefined && getSpecificData('divisas', setDivisas)
-  }, [divisas, propSelect]);
+  // useEffect(() => {
+  //   // writeUserData('divisas', divisasJSON, setUserSuccess)
+  //   // setCurrency(CurrencyList.getAll('es_US'))
+  //   divisas === undefined && getSpecificData('currencies', setDivisas)
+  // }, [divisas, propSelect]);
   // console.log(select)
   // console.log(propSelect)
 
 console.log(value && divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].cambioUSD / divisas[select].cambioUSD).toFixed(2))
 // console.log(divisas[select2].cambio)
 console.log(divisas)
-console.log(select2)
+console.log(divisas[select2])
 
   return (
     <div className={`relative w-[100%] max-w-[350px] bg-transparent border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-0 `} >
       <div className='relative w-full bg-transparent flex justify-between items-center'>
-        <input type="number" className='p-3 bg-transparent w-[65%] text-white text-center' step=".01" onChange={handlerOnChange} placeholder={placeholder} value={value && divisas && divisas[select] && divisas[select2] ? (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2) : null} required />
+        <input type="number" className='p-3 bg-transparent w-[65%] text-white text-center' step=".01" onChange={handlerOnChange} placeholder={placeholder} value={value && divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2)} required />
 
         <span className=" w-[15%] text-gray-100 p-3 " onClick={(e)=>handlerIsSelect(e)}>{propSelect}</span>
         {/* <span className='w-[auto] flex items.center rounded-[20px] '><CurrencyFlag currency={propSelect} size="xl" /></span> */}

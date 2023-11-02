@@ -18,32 +18,30 @@ function getData(setUserData) {
   });
 }
 
-async function getSpecificData(query, setUserSpecificData) {
+async function getSpecificData(query, setUserSpecificData, callback) {
   try {
     const snapshot = await get(child(dbRef, `${query}`))
-
-
     console.log(snapshot.exists())
-
     if (snapshot.exists()) {
       setUserSpecificData(snapshot.val())
-      console.log(snapshot.val())
-
-
+      callback && callback !== undefined ? callback() : ''
       return snapshot.val()
     } else {
+      callback && callback !== undefined ? callback() : ''
       return null
     }
-
   } catch (error) {
     console.error(error);
   }
 }
 
-function writeUserData(rute, object, setUserSuccess) {
+function writeUserData(rute, object, setUserSuccess, callback) {
   console.log(rute)
   update(ref(db, rute), object)
-    .then(() => setUserSuccess !== null ? setUserSuccess('save') : '')
+    .then(() => {
+      setUserSuccess !== null ? setUserSuccess('save') : ''
+      callback !== null ? callback() : ''
+    })
 
     .catch((err) => console.log(err))
 

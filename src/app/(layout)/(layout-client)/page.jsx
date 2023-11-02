@@ -118,12 +118,12 @@ function Page() {
   }
 
   // console.log(select2)
-  useEffect(() => {
-    if (user === undefined) onAuth(setUserProfile)
-    user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
-    Object.keys(divisas).length < 0 && getSpecificData('divisas', setDivisas)
+  // useEffect(() => {
+  //   if (user === undefined) onAuth(setUserProfile)
+  //   user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
+  //   divisas === undefined && getSpecificData('currencies', setDivisas)
 
-  }, [user, userDB, divisas])
+  // }, [user, userDB, divisas])
   console.log(user)
   console.log(userDB)
 

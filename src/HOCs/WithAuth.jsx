@@ -24,7 +24,7 @@ export function WithAuth(Component) {
             //    getSpecificData(`/users/${user.uuid}`, setUserData) 
             // } 
 
-            Object.keys(divisas).length < 0 && getSpecificData('divisas', setDivisas)
+            // Object.keys(divisas).length < 0 && getSpecificData('divisas', setDivisas)
         }, [user, userDB])
         console.log(divisas)
         return (

@@ -7,17 +7,12 @@ export default async function webScraping(req, res) {
     console.log('node')
     console.log(req.body.divisas)
 
-
-
-
-
     if (req.method === "POST") {
-
         const browser = await puppeteer.connect({
             browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
         })
         const page = await browser.newPage()
-        await page.setDefaultNavigationTimeout(100000000000);
+        await page.setDefaultNavigationTimeout(0);
         await page.goto('https://google.com/')
         const search = await page.waitForSelector('#APjFqb')
         await search.type(`exchange divisas`)
@@ -41,9 +36,10 @@ export default async function webScraping(req, res) {
                 console.log(error)
                 return {}
             }
-
         }, Promise.resolve({}));
-
+        return res.json(obj)
+    }
+}
 
         // await NextCors(req, res, {
         //     // Options
@@ -51,17 +47,3 @@ export default async function webScraping(req, res) {
         //     origin: '*',
         //     optionsSuccessStatus: 200,
         // });
-
-
-        return res.json(obj)
-
-
-    }
-
-
-
-
-
-
-}
-

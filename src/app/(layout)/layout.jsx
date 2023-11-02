@@ -11,7 +11,6 @@ import { getSpecificData } from '@/firebase/database'
 export default function RootLayout({ children }) {
 
     const { user, userDB, setUserProfile, nav, setNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas } = useUser()
-    const { } = useUser()
 
     const router = useRouter()
 
@@ -19,26 +18,17 @@ export default function RootLayout({ children }) {
         handleSignOut()
         router.push('/')
         setUserProfile(null)
-
         setNav(false)
-
     }
 
-
-
     useEffect(() => {
-         getSpecificData('divisas', setDivisas)
-    }, [])
+        onAuth(setUserProfile)
+        getSpecificData('currencies', setDivisas)  
+      }, [])
     useEffect(() => {
-        if (user === undefined) onAuth(setUserProfile)
-        // divisas === undefined && getSpecificData('divisas', setDivisas)
-
         user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
-        // Object.keys(divisas).length <= 0 && getSpecificData('currencies', setDivisas)
+    }, [user, userDB])
 
-    }, [user, userDB, divisas])
-
-  
     return (
         <div className={`w-full`}>
             <nav className="w-screen fixed top-0 z-30 " style={{
@@ -64,7 +54,6 @@ export default function RootLayout({ children }) {
                     {userDB && userDB.rol && userDB.rol === 'Admin' && <li>
                         <Link href="/Admin" className="block py-2 pl-3 pr-4 text-gray-200 rounded md:bg-transparent md:p-0 " onClick={() => setNav(false)}>Admin</Link>
                     </li>}
-
                     <li>
                         <Link href="/" className="block py-2 pl-3 pr-4 text-gray-200 rounded md:bg-transparent md:p-0 " onClick={() => setNav(false)}>Remesas</Link>
                     </li>
@@ -80,7 +69,6 @@ export default function RootLayout({ children }) {
                     <li>
                         <Link href="#" className="block py-2 pl-3 pr-4 text-gray-200 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0" onClick={() => setNav(false)}>Politicas</Link>
                     </li>
-
                     <li>
                         <Link href="/Tracking" className="block py-2 pl-3 pr-4 text-gray-200 rounded md:bg-transparent md:p-0 " onClick={() => setNav(false)}>Tracking</Link>
                     </li>

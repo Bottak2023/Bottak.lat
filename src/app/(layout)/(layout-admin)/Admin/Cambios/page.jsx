@@ -19,98 +19,92 @@ export default function Home() {
   const router = useRouter()
   const [filter, setFilter] = useState('')
   const [state, setState] = useState({})
+  const [temporal, setTemporal] = useState(undefined)
 
   function onChangeFilter(e) {
     setFilter(e.target.value)
-}
+  }
 
 
   function sortArray(x, y) {
-    if (x['name'].toLowerCase() < y['name'].toLowerCase()) { return -1 }
-    if (x['name'].toLowerCase() > y['name'].toLowerCase()) { return 1 }
+    if (x['translation']['spa']['common'].toLowerCase() < y['translation']['spa']['common'].toLowerCase()) { return -1 }
+    if (x['translation']['spa']['common'].toLowerCase() > y['translation']['spa']['common'].toLowerCase()) { return 1 }
     return 0
   }
   function onChangeHandler(e, i) {
-    setState({ ...state, [i.code]: { ...i, [e.target.name]: e.target.value } })
+    setState({ ...state, [i.cca3]: { ...state[i.cca3], [e.target.name]: e.target.value } })
   }
   function manage(i) {
     setItem(i)
     setModal('Disable')
   }
- function save(i) {
+  function save(i) {
     setItem(i)
     setModal('Save')
   }
   function disableConfirm() {
-    writeUserData(`divisas/${item.code}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true :false }, setUserSuccess)
-    return setModal('')
+    function callback() {
+      getSpecificData('currencies', setDivisas, () => { setModal('') })
+    }
 
+    setModal('Guardando...')
+    writeUserData(`currencies/${item.cca3}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true : false }, setUserSuccess, callback)
+    return
   }
   async function saveConfirm() {
-    console.log('funcionando')
+    function callback() {
+      getSpecificData('currencies', setDivisas, () => { setModal('') })
+    }
+
     setModal('Guardando...')
-    await writeUserData(`divisas/${item.code}`, state[item.code], setUserSuccess)
+    await writeUserData(`currencies/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
     const obj = { ...state }
-    delete obj[item.code]
+    delete obj[item.cca3]
     setState(obj)
-    return setModal('')
+    return
   }
   function round(num) {
     var m = Number((Math.abs(num) * 100).toPrecision(15));
     return Math.round(m) / 100 * Math.sign(num);
-}
+  }
 
-const getCurrencyExchange = async (input, output) => {
-  
-  const arr = Object.values(divisas).filter(i=>i.habilitado !== undefined && i.habilitado === true).map(i=>i.code)
+  const getCurrencyExchange = async (input, output) => {
 
-  // console.log(Object.values(divisas))
-  const res = await fetch('/api/getExchange', {
-    method: 'POST',
-    body: JSON.stringify({divisas: arr}),
-    headers: new Headers({
-        'Content-Type': 'application/json; charset=UTF-8'
-      })
-  })
-   const data = await res.json()
-   setExchange(data) 
-}
+    const arr = Object.values(divisas).filter(i => i.habilitado !== undefined && i.habilitado === true).map(i => i.code)
 
-console.log(state)
+    console.log(arr)
+    // const res = await fetch('/api/getExchange', {
+    //   method: 'POST',
+    //   body: JSON.stringify({divisas: arr}),
+    //   headers: new Headers({
+    //       'Content-Type': 'application/json; charset=UTF-8'
+    //     })
+    // })
+    //  const data = await res.json()
+    //  setExchange(data) 
+  }
 
 
 
-  // const getCurrentExchanges = async () => {
-
-  //   console.log(Object.keys(divisas))
-
-  //   // Object.keys(divisas).map(i=>{
-
-
-
-  //   //   // getCurrencyExchange('USD', i)
-  //   //   // console.log(i)
-  //   // })
-  //   }
-
-
+  console.log(item)
+  console.log(state)
   useEffect(() => {
     divisas !== undefined && getCurrencyExchange()
-  }, [divisas]);
+  }, [divisas, modal]);
 
   return (
     <main className='h-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
-      {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['name']}</Modal>}
-      {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR' } el siguiente item:  {item['name']}</Modal>}
+      {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
+      {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
 
-      <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">      
+      <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
         <h3 className='font-medium text-[16px]'>Lista De Cambios</h3>
-                <br />
-                <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
-                <br />
-                <br />
-        <table className="w-full overflow-visible min-w-[1500px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400" style={{minWidth: '1500px'}}>
+        <br />
+        <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
+        <br />
+        <br />
+        <table className="w-full overflow-visible min-w-[1500px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
           {/* <table className="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
           <thead className="text-[12px] text-gray-700 uppercase bg-white">
             <tr>
@@ -134,7 +128,7 @@ console.log(state)
               <th scope="col" className="text-center px-3 py-3">
                 Venta
               </th>
-              
+
               <th scope="col" className="text-center px-3 py-3">
                 Tarifa de Envio<br />
                 1 - 1000 USD
@@ -156,38 +150,37 @@ console.log(state)
             </tr>
           </thead>
           <tbody>
-            {divisas && divisas !== undefined && Object.values(divisas).map((i, index) => {
-
-              return i.name !== undefined && i.name.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[12px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
+            {divisas && divisas !== undefined && Object.values(divisas).sort(sortArray).map((i, index) => {
+              return i.currency !== undefined && i.currency.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[12px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
                 <td className="px-3 py-4  flex text-gray-900 dark:text-white">
                   <span className='h-full flex py-2'>{index + 1}</span>
                 </td>
                 <td className="px-3 py-4 text-gray-900 dark:text-white">
-                  {i.name}
+                  {i['translation']['spa']['common']}
                 </td>
                 <td className="px-3 py-4 text-gray-900 dark:text-white">
-                  {i.code}/{i.symbol}
+                  {i.code}/{i.currency}
                 </td>
                 <td className="w-[150px] px-3 py-4 text-gray-900 dark:text-white">
-                  1 USD = { exchange && exchange !== undefined && exchange[i.code] !== undefined && exchange[i.code]} {exchange && exchange !== undefined && exchange[i.code] !== undefined && `${i.code}`}
+                  1 USD = {exchange && exchange !== undefined && exchange[i.code] !== undefined && exchange[i.code]} {exchange && exchange !== undefined && exchange[i.code] !== undefined && `${i.code}`}
                 </td>
                 <td className="w-32 p-4">
-                  <input type="number" name="compra" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i.cambio !== undefined ? i.cambio : 0} />
+                  <input type="number" name="compra" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['compra'] !== undefined ? i['compra'] : 0} />
                 </td>
                 <td className="w-32 p-4">
-                  <input type="number" name="venta" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i.cambio !== undefined ? i.cambio : 0} />
+                  <input type="number" name="venta" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['venta'] !== undefined ? i['venta'] : 0} />
                 </td>
                 <td className="w-32 p-4">
-                  <input type="number" name="tarifa 1" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i.cambio !== undefined ? i.cambio : 0} />
+                  <input type="number" name="tarifa 1" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['tarifa 1'] !== undefined ? i['tarifa 1'] : 0} />
                 </td>
                 <td className="w-32 p-4">
-                  <input type="number" name="tarifa 2" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i.cambio !== undefined ? i.cambio : 0} />
+                  <input type="number" name="tarifa 2" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['tarifa 2'] !== undefined ? i['tarifa 2'] : 0} />
                 </td>
                 <td className="w-32 p-4">
-                  <input type="number" name="tarifa 3" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i.cambio !== undefined ? i.cambio : 0} />
+                  <input type="number" name="tarifa 3" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['tarifa 3'] !== undefined ? i['tarifa 3'] : 0} />
                 </td>
                 <td className="px-3 py-4">
-                  {state && state[i.code] !== undefined
+                  {state && state[i.cca3] !== undefined
                     ? <Button theme={"Success"} click={() => save(i)}>Guardar</Button>
                     : <Button theme={"Disable"} >Disable</Button>
                   }
