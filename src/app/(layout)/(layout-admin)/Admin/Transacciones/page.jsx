@@ -66,7 +66,7 @@ export default function Home() {
       {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['name']}</Modal>}
       {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item['habilitado'] !== undefined && item['habilitado'] === false ? 'HABILITAR' : 'DESABILITAR'} el siguiente item:  {item['name']}</Modal>}
 
-      <div class="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
+      <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
         {/* <table className="w-[00px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
         
         <h3 className='font-medium text-[16px]'>Lista De Transacciones</h3>
@@ -76,45 +76,45 @@ export default function Home() {
                 <br />
 
         
-        <table class="w-full overflow-visible min-w-[800px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
+        <table className="w-full overflow-visible min-w-[800px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
 
-          {/* <table class="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
-          <thead class="text-[12px] text-gray-700 uppercase bg-white">
+          {/* <table className="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
+          <thead className="text-[12px] text-gray-700 uppercase bg-white">
             <tr>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 #
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Remitente
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Divisa de envio
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Importe
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Cambio
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Receptor
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Divisa de receptor
               </th>
-              <th scope="col" class="text-center px-3 py-3">
+              <th scope="col" className="text-center px-3 py-3">
                 DNI
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Operacion
               </th>
-              <th scope="col" class=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3">
                 Tarjeta
               </th>
-              <th scope="col" class="text-center px-3 py-3">
+              <th scope="col" className="text-center px-3 py-3">
                 País
               </th>
-              <th scope="col" class="text-center px-3 py-3">
+              <th scope="col" className="text-center px-3 py-3">
                 Estado
               </th>
             </tr>
@@ -122,41 +122,41 @@ export default function Home() {
           <tbody>
             {envios && envios !== undefined && Object.values(envios).sort(sortArray).map((i, index) => {
 
-              return i.remitente.toLowerCase().includes(filter.toLocaleLowerCase()) && <tr class={`text-[12px] border-b  ${index % 2 === 0 ? 'bg-yellow-300' : 'bg-gray-200'} `} key={index}>
-                <td class="px-3 py-4  flex text-gray-900 dark:text-white">
+              return i.remitente.toLowerCase().includes(filter.toLocaleLowerCase()) && <tr className={`text-[12px] border-b  ${index % 2 === 0 ? 'bg-yellow-300' : 'bg-gray-200'} `} key={index}>
+                <td className="px-3 py-4  flex text-gray-900 dark:text-white">
                   <span className='h-full flex py-2'>{index + 1}</span>
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.remitente}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i['divisa de envio']}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.importe}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.cambio}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.destinatario}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                 {i['divisa de receptor']}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.dni}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.operacion}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i['cuenta destinatario']}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                   {i.pais}
                 </td>
-                <td class="px-3 py-4 text-gray-900 dark:text-white">
+                <td className="px-3 py-4 text-gray-900 dark:text-white">
                 {i.estado}
                 </td>
               </tr>

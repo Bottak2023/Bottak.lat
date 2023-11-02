@@ -86,7 +86,7 @@ function Home() {
             <div className='w-full border-b-[2px] border-gray-100 '>
                 <h3 className='text-center pb-3 text-white  text-right'>Completa tus datos</h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div className=' space-y-5'>
                     <Label htmlFor="">Nombre</Label>
 

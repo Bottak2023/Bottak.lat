@@ -88,7 +88,7 @@ function Home() {
 
     return (
         <div className='h-full'>
-            <div class="relative left-0 h-full overflow-x-auto shadow-md p-5 bg-white min-h-[80vh]">
+            <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 bg-white min-h-[80vh]">
                 {modal === 'Delete' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
                 {modal === 'Habilitar' && <Modal theme="Primary" button="Habilitar" funcion={habilitarConfirm}>Estas seguro de habilitar al siguiente usuario:  {item['nombre']}</Modal>}
                 {modal === 'Desabilitar' && <Modal theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}>Estas seguro de Desabilitar al siguiente usuario:  {item['nombre']}</Modal>}
@@ -115,37 +115,37 @@ function Home() {
                 </div>
             </div> */}
 
-                <table class="w-full overflow-visible min-w-[1500px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
-                    <thead class="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className="w-full overflow-visible min-w-[1500px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
+                    <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 #
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Nombre
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 DNI
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Pais
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Foto 1
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Foto 2
                             </th>
-                            <th scope="col" class="px-8 py-3">
+                            <th scope="col" className="px-8 py-3">
                                 Foto 3
                             </th>
-                            <th scope="col" class="px-8 py-3">
+                            <th scope="col" className="px-8 py-3">
                                 WhatsApp
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Habilitar
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Eliminar
                             </th>
                         </tr>
@@ -153,38 +153,38 @@ function Home() {
                     <tbody>
                         {users && users !== undefined && Object.keys(users).map((i, index) => {
 
-                            return users[i].profile['nombre'].includes(filter) && <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
-                                <td class="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
+                            return users[i].profile['nombre'].includes(filter) && <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
+                                <td className="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
-                                <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                     {users[i].profile['nombre']}
                                 </td>
-                                <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                     {users[i].profile['dni']}
                                 </td>
-                                <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                     {users[i].profile['pais']}
                                 </td>
-                                <td class="w-32 p-4">
+                                <td className="w-32 p-4">
                                     <img src={users[i].profile.image1} alt="Apple Watch" />
                                 </td>
-                                <td class="w-32 p-4">
+                                <td className="w-32 p-4">
                                     <img src={users[i].profile.image2} alt="Apple Watch" />
                                 </td>
-                                <td class="w-32 p-4">
+                                <td className="w-32 p-4">
                                     <img src={users[i].profile.image3} alt="Apple Watch" />
                                 </td>
-                                <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                     {users[i].profile['whatsapp']}
                                 </td>
-                                <td class="px-3 py-4">
+                                <td className="px-3 py-4">
                                     {users && users[i].profile['habilitado'] === false
                                         ? <Button theme={"Primary"} click={() => manage(i, 'Habilitar')}>Habilitar</Button>
                                         : <Button theme={"Danger"} click={() => manage(i, 'Desabilitar')}>Desabilitar</Button>
                                     }
                                 </td>
-                                <td class="px-3 py-4">
+                                <td className="px-3 py-4">
 
                                     <Button theme={"Danger"} click={() => manage(i, 'Delete')}>Eliminar</Button>
 

@@ -103,131 +103,131 @@ function Home() {
         <main>
             <Confeti />
             <div className='lg:grid lg:grid-cols-2 lg:gap-5'>
-                <table class=" w-[300px] lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500 rounded-[20px]">
-                    <thead class="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className=" w-[300px] lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500 rounded-[20px]">
+                    <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col-3" class="w-1/2 px-3 py-3">
+                            <th scope="col-3" className="w-1/2 px-3 py-3">
                                 Datos
                             </th>
-                            <th scope="col" class="px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Valores
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td class="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
                                 Remitente
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {userDB && userDB.profile && userDB.profile.nombre}
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td class="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
                                 Destinatario
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
                                 {destinatario.destinatario && destinatario.destinatario}
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td class="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
                                 Celular de destinatario
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {destinatario.celular && destinatario.celular}
 
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Cuenta destinatario:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
                                 {destinatario['cuenta destinatario'] && destinatario['cuenta destinatario']}
 
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
                                 Divisa de envio:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {select}
 
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Importe:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {transferencia}
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
                                 Divisa de receptor:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {select2}
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Importe Con el cambio aplicado:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {divisas && divisas[select] && divisas[select2] ? (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2) : ''}
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
                                 Fecha:
                             </td>
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {fecha}
                             </td>
                         </tr>
 
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Estado:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 En proceso
                             </td>
                         </tr>
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Operacion:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Envio
                             </td>
                         </tr>
 
 
-                        <tr class="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 ID de tracking:
                             </td>
-                            <td class="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {destinatario.uuid}
                             </td>
                         </tr>

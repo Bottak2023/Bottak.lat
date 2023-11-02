@@ -162,22 +162,22 @@ function Page() {
         </form>
         : <div className='lg:h-full lg:py-20 w-full flex flex-col justify-around items-center h-[350px]'>
           <NavInit mobile={false} />
-          <div id="alert-additional-content-5" class="p-4 lg:m-5 lg:mt-[30px] border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 dark:bg-gray-800" role="alert">
-            <div class="flex items-center">
-              <svg class="flex-shrink-0 w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#030712" viewBox="0 0 20 20">
+          <div id="alert-additional-content-5" className="p-4 lg:m-5 lg:mt-[30px] border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 dark:bg-gray-800" role="alert">
+            <div className="flex items-center">
+              <svg className="flex-shrink-0 w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#030712" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" fill="#030712" />
               </svg>
-              <span class="sr-only">Info</span>
-              <h3 class="text-lg font-medium text-gray-800 dark:text-gray-300">Servicio disponible mediante Atencion al Cliente unicamente</h3>
+              <span className="sr-only">Info</span>
+              <h3 className="text-lg font-medium text-gray-800 dark:text-gray-300">Servicio disponible mediante Atencion al Cliente unicamente</h3>
             </div>  
             <br />
-            <div class="mt-2 mb-4 text-[14px] text-gray-800">
+            <div className="mt-2 mb-4 text-[14px] text-gray-800">
               Estimado usuario, le comunicamos que estamos en mantenimiento, por lo cual para cualquier transaccion que desee relizar, COMUNIQUESE CON ATENCION AL CLIENTE, para efectuar el mismo, gracias por su comprensión.
             </div>
             <br />
-            <div class="flex w-full justify-center">
-              <button type="button" class="text-white hover:bg-gray-900 bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center" onClick={redirect}>
-                {/* <svg class="-ml-0.5 mr-2 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+            <div className="flex w-full justify-center">
+              <button type="button" className="text-white hover:bg-gray-900 bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center" onClick={redirect}>
+                {/* <svg className="-ml-0.5 mr-2 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
                   <path d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                 </svg> */}
                 <span className="pr-5">Atención al cliente </span>
@@ -202,7 +202,7 @@ function Page() {
                   </defs>
                 </svg>
               </button>
-              {/* <button type="button" class="text-gray-800 bg-transparent border border-gray-700 hover:bg-gray-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:ring-gray-800 dark:text-gray-300 dark:hover:text-white" data-dismiss-target="#alert-additional-content-5" aria-label="Close">
+              {/* <button type="button" className="text-gray-800 bg-transparent border border-gray-700 hover:bg-gray-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:ring-gray-800 dark:text-gray-300 dark:hover:text-white" data-dismiss-target="#alert-additional-content-5" aria-label="Close">
                 Atención al cliente
               </button> */}
             </div>
