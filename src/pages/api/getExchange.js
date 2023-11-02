@@ -17,7 +17,7 @@ export default async function webScraping(req, res) {
             browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
         })
         const page = await browser.newPage()
-        await page.setDefaultNavigationTimeout(0);
+        await page.setDefaultNavigationTimeout(100000000000);
         await page.goto('https://google.com/')
         const search = await page.waitForSelector('#APjFqb')
         await search.type(`exchange divisas`)
