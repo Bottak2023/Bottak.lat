@@ -54,7 +54,7 @@ function Page() {
     e.stopPropagation()
 
     // const res = await fetch('http://localhost:3000/api')
-    const res = await fetch(window.location.href.includes('https') ? 'https://bottak.lat/api' : 'http://localhost:3000/api', {
+    const res = await fetch('/api', {
       method: 'POST',
       body: JSON.stringify({ amount, }),
       headers: new Headers({

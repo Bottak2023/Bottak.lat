@@ -16,8 +16,8 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
-      success_url: "http://localhost:3000/Transferencias/Exitoso",
-      cancel_url: "http://localhost:3000/",
+      success_url: "/Transferencias/Exitoso",
+      cancel_url: "/localhost:3000/",
     });
 
     console.log(session.url);
