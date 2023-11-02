@@ -9,15 +9,33 @@ export default async function handler(req, res) {
   console.log(req.body.amount)
   try {
     const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
+
       line_items: [
         {
-          price: '123',
+          price_data: {
+            product_data: {
+              name: "Laptop",
+            },
+            currency: "usd",
+            unit_amount: 2000,
+          },
           quantity: 1,
         },
+        {
+          price_data: {
+            product_data: {
+              name: "TV",
+            },
+            currency: "usd",
+            unit_amount: 1000,
+          },
+          quantity: 2,
+        },
       ],
-      success_url: "/Transferencias/Exitoso",
-      cancel_url: "/localhost:3000/",
+      mode: "payment",
+
+      success_url: "https://bottak.lat/Transferencias/Exitoso",
+      cancel_url: "https://bottak.lat/",
     });
 
     console.log(session.url);

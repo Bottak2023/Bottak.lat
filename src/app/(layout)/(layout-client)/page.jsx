@@ -56,13 +56,14 @@ function Page() {
     // const res = await fetch('http://localhost:3000/api')
     const res = await fetch('/api', {
       method: 'POST',
-      body: JSON.stringify({ amount, }),
+      body: JSON.stringify({ amount:400 }),
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8'
       })
     })
-
     const data = await res.json()
+    console.log(data)
+
     console.log(data.url)
     window.open(data.url, "_self")
     return

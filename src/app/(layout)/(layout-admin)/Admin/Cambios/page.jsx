@@ -47,6 +47,7 @@ export default function Home() {
 
   }
   async function saveConfirm() {
+    console.log('funcionando')
     setModal('Guardando...')
     await writeUserData(`divisas/${item.code}`, state[item.code], setUserSuccess)
     const obj = { ...state }
@@ -75,7 +76,7 @@ const getCurrencyExchange = async (input, output) => {
    setExchange(data) 
 }
 
-console.log(exchange)
+console.log(state)
 
 
 
