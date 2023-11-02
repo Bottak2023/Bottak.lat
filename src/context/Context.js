@@ -12,7 +12,7 @@ export function UserProvider({ children }) {
 
 	const [divisas, setDivisas] = useState(undefined)
 	const [envios, setEnvios] = useState(undefined)
-	const [exchange, setExchange] = useState({})
+	const [exchange, setExchange] = useState(undefined)
 
 	const [success, setSuccess] = useState(null)
 	const [state, setState] = useState('Remesas')

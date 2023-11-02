@@ -6,9 +6,7 @@ const app = initializeApp(firebaseConfig)
 const db = getDatabase(app);
 const dbRef = ref(getDatabase());
 
-
-// // -------------------------------Firebase Realtime Database------------------------------------
-
+// -------------------------------Firebase Realtime Database------------------------------------
 
 function getData(setUserData) {
   onValue(ref(db, '/'), (snapshot) => {
@@ -42,14 +40,11 @@ function writeUserData(rute, object, setUserSuccess, callback) {
       setUserSuccess !== null ? setUserSuccess('save') : ''
       callback !== null ? callback() : ''
     })
-
     .catch((err) => console.log(err))
-
 }
 
 async function removeData(rute, setUserSuccess) {
   await remove(ref(db, rute)).then(() => setUserSuccess('save')).catch(() => setUserSuccess('repeat'));
-  // getData(setUserData)
 }
 
 

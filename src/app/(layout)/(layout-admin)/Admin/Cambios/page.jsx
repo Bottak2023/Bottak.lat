@@ -69,28 +69,28 @@ export default function Home() {
   }
 
   const getCurrencyExchange = async (input, output) => {
+    const arr = Object.values(divisas).filter(i => i.habilitado !== undefined && i.habilitado === true && i.code !== 'USD').map(i => i.code)
+    if(arr.length === 0){
+      return
+    }
+    const res = await fetch('/api/getExchange', {
+      method: 'POST',
+      body: JSON.stringify({divisas: arr}),
+      headers: new Headers({
+          'Content-Type': 'application/json; charset=UTF-8'
+        })
+    })
+     const data = await res.json()
+     console.log(data)
 
-    const arr = Object.values(divisas).filter(i => i.habilitado !== undefined && i.habilitado === true).map(i => i.code)
-
-    console.log(arr)
-    // const res = await fetch('/api/getExchange', {
-    //   method: 'POST',
-    //   body: JSON.stringify({divisas: arr}),
-    //   headers: new Headers({
-    //       'Content-Type': 'application/json; charset=UTF-8'
-    //     })
-    // })
-    //  const data = await res.json()
-    //  setExchange(data) 
+     setExchange(data) 
   }
-
-
 
   console.log(item)
   console.log(state)
   useEffect(() => {
-    divisas !== undefined && getCurrencyExchange()
-  }, [divisas, modal]);
+    divisas !== undefined && exchange === undefined && getCurrencyExchange()
+  }, [divisas]);
 
   return (
     <main className='h-full'>
