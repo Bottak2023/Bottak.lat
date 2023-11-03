@@ -31,30 +31,30 @@ export default function Home() {
 
     // console.log(pathname.toString().includes('Ca'))
 
-    function handlerTransfer(e) {
-        e.preventDefault()
-        console.log('click')
-        if (user == null && user == undefined) {
-          setModal('registrate')
-          return
-        }
+    // function handlerTransfer(e) {
+    //     e.preventDefault()
+    //     console.log('click')
+    //     if (user == null && user == undefined) {
+    //       setModal('registrate')
+    //       return
+    //     }
         
-        if (user && userDB == null) {
-          router.push('/Register')
-          return
-        }
+    //     if (user && userDB == null) {
+    //       router.push('/Register')
+    //       return
+    //     }
     
-        if (user && userDB) {
-          router.push('/Register/Destinatario')
-          return
-        }
-        // setNav(!nav)
-        // user !== null && user !== undefined
-        //   ? console.log('si usuario')
-        //   : setModal('Registrate o inicia sesión para completar tu transferencia')
-        // return   console.log(modal)
+    //     if (user && userDB) {
+    //       router.push('/Register/Destinatario')
+    //       return
+    //     }
+    //     // setNav(!nav)
+    //     // user !== null && user !== undefined
+    //     //   ? console.log('si usuario')
+    //     //   : setModal('Registrate o inicia sesión para completar tu transferencia')
+    //     // return   console.log(modal)
     
-      }
+    //   }
 
       const handlerSelect = (i) => {
         setSelect(i)
@@ -72,7 +72,51 @@ export default function Home() {
         setIsSelect(false)
       }
 
-
+      async function handlerTransfer(e) {
+        e.preventDefault()
+        e.stopPropagation()
+    
+        // const res = await fetch('http://localhost:3000/api')
+        const res = await fetch('/api', {
+          method: 'POST',
+          body: JSON.stringify({ 
+            type: 'Cambio de Divisa',
+            currency: select,
+            amount: 0
+           }),
+          headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8'
+          })
+        })
+        const data = await res.json()
+        console.log(data)
+    
+        console.log(data.url)
+        window.open(data.url, "_self")
+        return
+        console.log('click')
+        if (user == null && user == undefined) {
+          console.log('signup')
+          setModal('registrate')
+          return
+        }
+    
+        if (user && userDB == null) {
+          console.log('registrate')
+    
+    
+          router.push('/Register')
+          return
+        }
+    
+        if (user && userDB) {
+    
+          console.log('Destinatario')
+          router.push('/Register/Destinatario')
+          return
+        }
+    
+      }
     useEffect(() => {
         if (user === undefined) onAuth(setUserProfile)
         user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)

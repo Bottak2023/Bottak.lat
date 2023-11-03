@@ -17,7 +17,7 @@ export default async function handler(req, res) {
               name: req.body.type,
             },
             currency: req.body.currency,
-            unit_amount: req.body.amount
+            unit_amount: req.body.amount * 100,
           },
           quantity: 1,
         },
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
               name: "Comision",
             },
             currency: req.body.currency,
-            unit_amount: req.body.comision,
+            unit_amount: req.body.comision * 100,
           },
           quantity: 1,
         },
