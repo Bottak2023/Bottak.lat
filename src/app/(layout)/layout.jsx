@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
                     <a className="flex items-center">
                         <img src="/logo.svg" className="h-[50px]" alt="Flowbite Logo" />
                     </a>
-                    <button type="button" className="inline-flex items-center text-gray-100 lg:hidden" onClick={() => setNav(!nav)}>
+                    <button type="button" className="inline-flex items-center text-gray-100 md:hidden" onClick={() => setNav(!nav)}>
                         <span className="sr-only">Open menu</span>
                         <svg className="w-10 h-8" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"  ></path></svg>
                     </button>

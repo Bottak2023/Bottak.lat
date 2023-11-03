@@ -7,7 +7,7 @@ import { useUser } from '@/context/Context'
 import { writeUserData, getSpecificData } from "@/firebase/database"
 import divisasJSON from '@/utils/divisas'
 
-export default function App({ placeholder, value, onChange, propHandlerSelect, propSelect, propIsSelect, propHandlerIsSelect }) {
+export default function App({ placeholder, value, onChange, propHandlerSelect, propSelect, propIsSelect, propHandlerIsSelect, defaultValue }) {
   const { userDB, currency, setCurrency, setUserSuccess, select,  setSelect, select2, setSelect2, transferencia, setTransferencia, success, setuserSuccess, divisas, setDivisas, isSelect, setIsSelect, isSelect2, setIsSelect2, } = useUser()
 
 
@@ -51,7 +51,7 @@ console.log(divisas[select].venta)
   return (
     <div className={`relative w-[100%] max-w-[350px] bg-transparent border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-0 `} >
       <div className='relative w-full bg-transparent flex justify-between items-center'>
-        <input type="number" className='p-3 bg-transparent w-[65%] text-white text-center' step=".01" onChange={handlerOnChange} placeholder={placeholder} value={value && divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2)} required />
+        <input type="number" className='p-3 bg-transparent w-[65%] text-white text-center' step=".01" onChange={handlerOnChange} placeholder={placeholder} value={value && divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2)} defaultValue={defaultValue} required />
 
         <span className=" w-[15%] text-gray-100 p-3 " onClick={(e)=>handlerIsSelect(e)}>{propSelect}</span>
         {/* <span className='w-[auto] flex items.center rounded-[20px] '><CurrencyFlag currency={propSelect} size="xl" /></span> */}

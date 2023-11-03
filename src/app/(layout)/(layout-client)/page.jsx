@@ -150,7 +150,7 @@ function Page() {
         ? <form className='lg:h-full lg:py-20 w-full flex flex-col justify-between items-center h-[350px]' onSubmit={handlerTransfer}>
           <NavInit mobile={false} />
           <h3 className='text-[14px] text-[#FFF500]'>Envia tus Remesas facilmente</h3>
-          <SelectWithFlag onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect} />
+          <SelectWithFlag onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect} defaultValue={transferencia}/>
           <span className='text-[#FFF500] text-[14px] font-light'>Divisa de receptor:</span>
           <SelectWithFlag value={true} propHandlerSelect={handlerSelect2} propSelect={select2} propHandlerIsSelect={handlerIsSelect2} propIsSelect={isSelect2} />
           <Button theme='Primary'>Efectuar transferencia</Button >

@@ -13,7 +13,7 @@ import { WithAuth } from '@/HOCs/WithAuth'
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function Home() {
-    const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, state, setState, modal, setModal } = useUser()
+  const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas } = useUser()
     const pathname = usePathname()
     const router = useRouter()
 
@@ -29,11 +29,6 @@ export default function Home() {
     // }, [user]);
 
 
-    function handlerMode(e, data) {
-        setState(data)
-        router.push(data)
-        console.log('click')
-    }
     // console.log(pathname.toString().includes('Ca'))
 
     function handlerTransfer(e) {
@@ -61,7 +56,21 @@ export default function Home() {
     
       }
 
-
+      const handlerSelect = (i) => {
+        setSelect(i)
+    
+      }
+      const handlerSelect2 = (i) => {
+        setSelect2(i)
+      }
+      const handlerIsSelect = () => {
+        setIsSelect(!isSelect)
+        setIsSelect2(false)
+      }
+      const handlerIsSelect2 = () => {
+        setIsSelect2(!isSelect2)
+        setIsSelect(false)
+      }
 
 
     useEffect(() => {
@@ -89,13 +98,13 @@ export default function Home() {
                     <h3 className='text-[greenyellow] text-[14px] font-light'>Solo disponible para Bolivia</h3>
                     
                     <div className="relative flex justify-between  w-[100%] max-w-[350px] py-1 ">
-                        <span className="bg-transparent w-1/2 py-1 border-[1px] border-gray-200 text-gray-200 text-center">6.90</span>
+                        <span className="bg-transparent w-1/2 py-1 border-[1px] border-gray-200 text-gray-200 text-center">{divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined  && select && select !== undefined && (divisas[select].venta / divisas[select].venta).toFixed(2)} {select}</span>
                         <button className='absolute left-0 right-0 top-0 bottom-0 m-auto bg-[yellow] rounded-full w-[50px] h-[50px]'></button>
-                        <span className="bg-gray-200 w-1/2 py-1 border-[1px] border-gray-200 text-center">1</span>
+                        <span className="bg-gray-200 w-1/2 py-1 border-[1px] border-gray-200 text-center">{divisas && divisas !== undefined && divisas[select2] && divisas[select2] !== undefined && select2 && select2 !== undefined && (divisas[select2].venta / divisas[select].venta).toFixed(2)} {select2}</span>
                     </div>
-                    <SelectCambio />
+                    <SelectCambio onChange="Transference" placeholder='Monto a cambiar' propHandlerSelect={handlerSelect} propSelect={select} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect} defaultValue={transferencia}/>
                     <span className='text-[#FFF500] text-[14px] font-light'>Cambiar a:</span>
-                    <SelectCambio />
+                    <SelectCambio  value={true} propHandlerSelect={handlerSelect2} propSelect={select2} propHandlerIsSelect={handlerIsSelect2} propIsSelect={isSelect2} />
                     <Button theme='Primary' click={handlerTransfer}>   Cambiar   </Button >
                 </div>
                 </>
