@@ -1,8 +1,8 @@
 
 
 'use client'
-// import CurrencyFlag from 'react-currency-flags';
-// import CurrencyList from 'currency-list';
+import CurrencyFlag from 'react-currency-flags';
+import CurrencyList from 'currency-list';
 import React, { useState, useEffect } from "react";
 import { useUser } from '@/context/Context'
 
