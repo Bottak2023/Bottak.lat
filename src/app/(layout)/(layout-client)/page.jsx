@@ -73,7 +73,7 @@ function Page() {
     console.log(data)
 
     console.log(data.url)
-    window.open(data.url, "_self")
+    window.open(data.url, "_self")     
     return
     console.log('click')
     if (user == null && user == undefined) {
