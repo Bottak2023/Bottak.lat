@@ -10,7 +10,7 @@ import { getSpecificData } from '@/firebase/database'
 
 export default function RootLayout({ children }) {
 
-    const { user, userDB, setUserProfile, nav, setNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas } = useUser()
+    const { user, userDB, setUserProfile, nav, setNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
 
     const router = useRouter()
 
@@ -20,11 +20,13 @@ export default function RootLayout({ children }) {
         setUserProfile(null)
         setNav(false)
     }
-
+    console.log(user)
+    console.log(userDB)
     useEffect(() => {
         onAuth(setUserProfile)
-        getSpecificData('divisas', setDivisas)  
-      }, [])
+        getSpecificData('divisas', setDivisas)
+        getSpecificData(`/currencies/`, setCountries)
+    }, [])
     useEffect(() => {
         user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
     }, [user, userDB])

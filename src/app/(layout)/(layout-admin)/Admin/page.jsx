@@ -38,8 +38,8 @@ export default function Home() {
 
     <main className='w-full h-full relative top-0 flex flex-col justify-center  lg:justify-start items-center lg:py-[50px]'>
           {/* <img src="/logo.svg" className='h-[200px] w-[200px] hidden lg:block' alt="User" />
-          <h1 className='text-[#FFF500] text-[16px]  hidden lg:block'>Cambios App</h1>
-          <h3 className='text-white text-[16px]  hidden lg:block'>Tus transferencias mas faciles y seguras</h3>
+          <h1 className='text-[#FFF500] text-[14px]  hidden lg:block'>Cambios App</h1>
+          <h3 className='text-white text-[14px]  hidden lg:block'>Tus transferencias mas faciles y seguras</h3>
           */}
 
 

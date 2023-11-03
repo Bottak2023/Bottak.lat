@@ -7,7 +7,7 @@ import { writeUserData } from '@/firebase/database'
 import { useState } from 'react'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
-import Select from '@/components/Select'
+import SelectCountry from '@/components/SelectCountry'
 import Label from '@/components/Label'
 import Checkbox from '@/components/Checkbox'
 import { arrPaises } from '@/constants'
@@ -18,12 +18,12 @@ import { useRouter } from 'next/navigation';
 // import { WithAuth } from '@/HOCs/WithAuth'
 import { WithAuth } from '@/HOCs/WithAuth'
 
-import {generateUUID} from '@/utils/UUIDgenerator'
+import { generateUUID } from '@/utils/UUIDgenerator'
 function Home() {
     const router = useRouter()
 
     // const { user, userDB, setUserData, setUserSuccess, setDestinatario, destinatario } = useUser()
-    const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario,  setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2,  setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas ,destinatario,  fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
+    const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, isSelect3, setIsSelect3, select3, setSelect3, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
 
 
     const [postImage, setPostImage] = useState(null)
@@ -62,14 +62,53 @@ function Home() {
         setDestinatario({ ...destinatario, [name]: value })
     }
 
+
+    const handlerSelect = (i) => {
+        setSelect3(i)
+
+    }
+    const handlerIsSelect = () => {
+        setIsSelect3(!isSelect3)
+
+    }
     console.log(destinatario)
+
+    async function handlerTransfer() {
+    
+
+        // const res = await fetch('http://localhost:3000/api')
+        const res = await fetch('/api', {
+            method: 'POST',
+            body: JSON.stringify({
+                type: 'Envio de Remesa',
+                currency: select,
+                amount: transferencia,
+                comision: ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
+                    ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
+                    ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
+
+            }),
+            headers: new Headers({
+                'Content-Type': 'application/json; charset=UTF-8'
+            })
+        })
+        const data = await res.json()
+        console.log(data)
+
+        console.log(data.url)
+        window.open(data.url, "_self")
+        return
+        console.log('click')
+    }
+
+
     function save(e) {
         e.preventDefault()
-
+        e.stopPropagation()
         const uuid = generateUUID()
-        writeUserData(`users/${user.uid}/destinatarios/${destinatario['cuenta destinario']}`, {...destinatario, [uuid]: uuid}, setUserSuccess,)
+        writeUserData(`users/${user.uid}/destinatarios/${destinatario['cuenta destinario']}`, { ...destinatario, [uuid]: uuid }, setUserSuccess,)
 
-        router.push('/Transferencias/Exitoso')
+        // router.push('/Transferencias/Exitoso')
         // e.preventDefault()
         // writeUserData('Clinica', { ...state, uuid: user.uuid }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente', 'Perfil')
         // uploadStorage('Clinica', postImage, user.uuid, updateUserData)
@@ -77,17 +116,17 @@ function Home() {
 
         setDestinatario({ ...destinatario, uuid })
         writeUserData(`envios/${uuid}`, {
-            ...destinatario, 
-           remitente:  userDB && userDB.profile && userDB.profile.nombre,
-           ['divisa de envio']: select,
-           importe: transferencia,
-           ['divisa de receptor']: select2,
-           cambio: divisas && divisas[select] && divisas[select2] ? (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2): '',
-           fecha,
-           estado: 'en proceso',
-           operacion: 'envio',
-           uuid
-        }, setUserSuccess,)
+            ...destinatario,
+            remitente: userDB && userDB.profile && userDB.profile.nombre,
+            ['divisa de envio']: select,
+            importe: transferencia,
+            ['divisa de receptor']: select2,
+            cambio: divisas && divisas[select] && divisas[select2] ? (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2) : '',
+            fecha,
+            estado: 'en proceso',
+            operacion: 'envio',
+            uuid
+        }, setUserSuccess, handlerTransfer)
     }
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
@@ -95,45 +134,45 @@ function Home() {
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
                 <h3 className='text-center pb-3 text-white  text-right'>Destinatario</h3>
             </div>
-                <div className='lg:hidden'>
-                    <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de tarjeta</h3>
-                </div>
-                <div className=' space-y-5'>
-
-                    <Label htmlFor="">Número de Cuenta</Label>
-                    <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} reference={inputRefCard} require />
-
-                </div>
-
-                <div className='lg:hidden'>
-                    <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion personal</h3>
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Nombre</Label>
-
-                    <Input type="text" name="destinatario" onChange={onChangeHandler} require />
-
-                </div>
-         
-       
-                <div className=' space-y-5'>
-                    <Label htmlFor="">DNI</Label>
-                    <Input type="text" name="dni" onChange={onChangeHandler} require />
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Pais</Label>
-                    <Select arr={arrPaises} name='pais' click={onClickHandler} />
-                </div>
-         
+            <div className='lg:hidden'>
+                <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de tarjeta</h3>
+            </div>
             <div className=' space-y-5'>
-                    <Label htmlFor="">Dirección</Label>
-                    <Input type="text" name="direccion" onChange={onChangeHandler} require />
-                </div>
 
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Numero de celular</Label>
-                    <Input type="text" name="celular" onChange={onChangeHandler} require />
-                </div>
+                <Label htmlFor="">Número de Cuenta</Label>
+                <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} reference={inputRefCard} required />
+
+            </div>
+
+            <div className='lg:hidden'>
+                <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion personal</h3>
+            </div>
+            <div className=' space-y-5'>
+                <Label htmlFor="">Nombre</Label>
+
+                <Input type="text" name="destinatario" onChange={onChangeHandler} required />
+
+            </div>
+
+
+            <div className=' space-y-5'>
+                <Label htmlFor="">DNI</Label>
+                <Input type="text" name="dni" onChange={onChangeHandler} required />
+            </div>
+            <div className=' space-y-5'>
+                <Label htmlFor="">Pais</Label>
+                <SelectCountry onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select3} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} />
+            </div>
+
+            <div className=' space-y-5'>
+                <Label htmlFor="">Dirección</Label>
+                <Input type="text" name="direccion" onChange={onChangeHandler} required />
+            </div>
+
+            <div className=' space-y-5'>
+                <Label htmlFor="">Numero de celular</Label>
+                <Input type="text" name="celular" onChange={onChangeHandler} required />
+            </div>
             <div className='flex w-full justify-around items-end'>
                 <Button theme='Primary' >Guardar</Button>
 

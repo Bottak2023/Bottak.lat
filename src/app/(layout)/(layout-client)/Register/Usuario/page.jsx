@@ -25,7 +25,7 @@ function Home() {
     const router = useRouter()
 
 
-    const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia } = useUser()
+    const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia, countries, setCountries } = useUser()
 
     const [state, setState] = useState({})
 
@@ -73,16 +73,16 @@ function Home() {
     function save(e) {
         e.preventDefault()
 
-        writeUserData(`users/${user.uid}/profile`, { ...state, image1, image2, image3 }, setUserSuccess,)
+        writeUserData(`users/${user.uid}`, { ...state, image1, image2, image3, pais: select3, rol: 'Cliente'}, setUserSuccess,)
         // uploadStorage('Clinica', postImage, user.uuid, updateUserData)
         // router.push('/Clinica/Perfil')
         transferencia ? router.push('/Register/Destinatario') : router.push('/')
-
-
-
     }
+
+
+
     return (
-        <form className=' space-y-6 w-full'>
+        <form className=' space-y-6 w-full' onSubmit={save}>
             <div className='w-full border-b-[2px] border-gray-100 '>
                 <h3 className='text-center pb-3 text-white  text-right'>Completa tus datos</h3>
             </div>
@@ -90,11 +90,11 @@ function Home() {
                 <div className=' space-y-5'>
                     <Label htmlFor="">Nombre</Label>
 
-                    <Input type="text" name="nombre" onChange={onChangeHandler} require />
+                    <Input type="text" name="nombre" onChange={onChangeHandler} required />
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">DNI</Label>
-                    <Input type="text" name="dni" onChange={onChangeHandler} require />
+                    <Input type="text" name="dni" onChange={onChangeHandler} required />
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Pais</Label>
@@ -102,16 +102,16 @@ function Home() {
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Dirección</Label>
-                    <Input type="text" name="direccion" onChange={onChangeHandler} require />
+                    <Input type="text" name="direccion" onChange={onChangeHandler} required />
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Whatsapp</Label>
-                    <Input type="text" name="whatsapp" onChange={onChangeHandler} reference={inputRefWhatsApp} require />
+                    <Input type="text" name="whatsapp" onChange={onChangeHandler} reference={inputRefWhatsApp} required />
 
                 </div>
             </div>
             <div className='flex w-full justify-around'>
-                <Button theme='Primary' click={save}>Guardar</Button>
+                <Button theme='Primary'>Guardar</Button>
             </div>
         </form>
     )

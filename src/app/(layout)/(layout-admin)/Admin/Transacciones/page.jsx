@@ -69,7 +69,7 @@ export default function Home() {
       <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
         {/* <table className="w-[00px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
         
-        <h3 className='font-medium text-[16px]'>Lista De Transacciones</h3>
+        <h3 className='font-medium text-[14px]'>Lista De Transacciones</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Remitente' />
                 <br />

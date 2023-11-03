@@ -26,7 +26,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
                         <span className="sr-only">Close modal</span>
                     </button>
                     <div className="p-6 text-center">
-                        <h3 className="mb-2 text-[16px] font-normal text-gray-50 dark:text-gray-400 pb-3">{children}</h3>
+                        <h3 className="mb-2 text-[14px] font-normal text-gray-50 dark:text-gray-400 pb-3">{children}</h3>
                         {!alert && <>
                             <Button theme='Blank' click={() => setModal('')}></Button>
                             <Button theme={theme} click={funcion}>{button}</Button>

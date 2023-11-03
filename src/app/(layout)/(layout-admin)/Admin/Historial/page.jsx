@@ -93,7 +93,7 @@ function Home() {
                 {modal === 'Habilitar' && <Modal theme="Primary" button="Habilitar" funcion={habilitarConfirm}>Estas seguro de habilitar al siguiente usuario:  {item['nombre']}</Modal>}
                 {modal === 'Desabilitar' && <Modal theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}>Estas seguro de Desabilitar al siguiente usuario:  {item['nombre']}</Modal>}
 
-                <h3 className='font-medium text-[16px]'>Lista De Usuarios</h3>
+                <h3 className='font-medium text-[14px]'>Lista De Usuarios</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario' />
                 <br />

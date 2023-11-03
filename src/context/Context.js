@@ -21,7 +21,8 @@ export function UserProvider({ children }) {
 	const [currency, setCurrency] = useState("BOB");
 	const [select, setSelect] = useState('BOB')
 	const [select2, setSelect2] = useState('USD')
-	const [select3, setSelect3] = useState('USD')
+	const [select3, setSelect3] = useState('USA')
+	const [countries, setCountries] = useState("BOL");
 
 	const [isSelect, setIsSelect] = useState(false)
 	const [isSelect2, setIsSelect2] = useState(false)
@@ -102,6 +103,7 @@ export function UserProvider({ children }) {
 			isSelect3, setIsSelect3,
 			fecha, qr, setQr, QRurl, 
 			select3, setSelect3,
+			countries, setCountries,
 			setQRurl, 
 
 			setDestinatario,
@@ -124,7 +126,7 @@ export function UserProvider({ children }) {
 		fecha, qr, QRurl, divisas, envios,
 		webScann,
 		filter,
-		filterQR, exchange])
+		filterQR, exchange, countries])
 
 
 	return (

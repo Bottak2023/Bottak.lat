@@ -93,7 +93,7 @@ function Home() {
                 {/* {modal === 'SendMSG' && <ModalMSG theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}></ModalMSG>} */}
 
 
-                <h3 className='font-medium text-[16px]'>Lista De Usuarios</h3>
+                <h3 className='font-medium text-[14px]'>Lista De Usuarios</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario' />
                 <br />

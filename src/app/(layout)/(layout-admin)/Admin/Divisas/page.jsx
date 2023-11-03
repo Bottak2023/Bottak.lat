@@ -111,7 +111,7 @@ export default function Home() {
             {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
 
             <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
-                <h3 className='font-medium text-[16px]'>Lista De Cambios</h3>
+                <h3 className='font-medium text-[14px]'>Lista De Cambios</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
                 <br />

@@ -100,7 +100,7 @@ export default function Button({ styled, name, change }) {
 //             <h5 className="text-[24px] font-medium text-white text-center">Iniciar Sesión</h5>
 //             <div>
 //               <label htmlFor="email" className="block mb-2 text-[14px] font-light text-left  text-white">Email</label>
-//               <Input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-[16px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+//               <Input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-[14px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
 //             </div>
 //             <div>
 //               <label htmlFor="password" className="block mb-2  text-left  text-[14px] font-light text-white">Contraseña</label>

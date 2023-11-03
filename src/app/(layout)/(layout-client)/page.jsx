@@ -49,55 +49,64 @@ function Page() {
     window.open('https://api.whatsapp.com/send?phone=+59177455743&text=Hola%20BOTTAK,%20necesito%20hacer%20una%20transacci%C3%B3n...', '_blank')
   }
 
+  // async function handlerTransfer(e) {
+  //   e.preventDefault()
+  //   e.stopPropagation()
+
+  //   // const res = await fetch('http://localhost:3000/api')
+  //   const res = await fetch('/api', {
+  //     method: 'POST',
+  //     body: JSON.stringify({ 
+  //       type: 'Envio de Remesa',
+  //       currency: select,
+  //       amount: transferencia,
+  //       comision:  ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
+  //      ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
+  //       ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
+        
+  //      }),
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json; charset=UTF-8'
+  //     })
+  //   })
+  //   const data = await res.json()
+  //   console.log(data)
+
+  //   console.log(data.url)
+  //   window.open(data.url, "_self")     
+  //   return
+  //   console.log('click')
+  // }
+
+
+
+
+
+
   async function handlerTransfer(e) {
     e.preventDefault()
     e.stopPropagation()
 
-    // const res = await fetch('http://localhost:3000/api')
-    const res = await fetch('/api', {
-      method: 'POST',
-      body: JSON.stringify({ 
-        type: 'Envio de Remesa',
-        currency: select,
-        amount: transferencia,
-        comision:  ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
-       ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
-        ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
-        
-       }),
-      headers: new Headers({
-        'Content-Type': 'application/json; charset=UTF-8'
-      })
-    })
-    const data = await res.json()
-    console.log(data)
-
-    console.log(data.url)
-    window.open(data.url, "_self")     
-    return
-    console.log('click')
     if (user == null && user == undefined) {
       console.log('signup')
       setModal('registrate')
       return
     }
-
     if (user && userDB == null) {
       console.log('registrate')
-
-
       router.push('/Register')
       return
     }
-
     if (user && userDB) {
-
       console.log('Destinatario')
       router.push('/Register/Destinatario')
       return
     }
-
   }
+
+
+
+
 
 
 
@@ -171,9 +180,9 @@ function Page() {
             <div className='grid grid-cols-2 gap-[15px]'>
               <span className='text-white text-[14px] font-light'>Comisiones</span>
               <span className='text-white text-[14px] font-light'>
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1'] +  {select}} 
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2'] +  {select}} 
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']  +  {select}} 
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1'] + ' ' + select} 
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2'] +  ' ' + select}
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']  + ' ' + select}
                 {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && 'CONTACTESE CON SOPORTE'} 
                 </span>
             </div>
