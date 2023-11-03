@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
     useEffect(() => {
         onAuth(setUserProfile)
-        getSpecificData('currencies', setDivisas)  
+        getSpecificData('divisas', setDivisas)  
       }, [])
     useEffect(() => {
         user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)

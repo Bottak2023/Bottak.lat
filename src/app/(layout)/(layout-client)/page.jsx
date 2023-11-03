@@ -56,7 +56,7 @@ function Page() {
     // const res = await fetch('http://localhost:3000/api')
     const res = await fetch('/api', {
       method: 'POST',
-      body: JSON.stringify({ amount:400 }),
+      body: JSON.stringify({ amount: 400 }),
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8'
       })
@@ -156,8 +156,19 @@ function Page() {
           <Button theme='Primary'>Efectuar transferencia</Button >
 
           <div className="">
-            <div className='grid grid-cols-2 gap-[15px]'><span className='text-white text-[14px] font-light'>Tasa de cambio </span><span className='text-white text-[14px] font-light'>1$ = 697 BOB</span></div>
-            <div className='grid grid-cols-2 gap-[15px]'><span className='text-white text-[14px] font-light'>Comisiones</span><span className='text-white text-[14px] font-light'>5 $</span></div>
+            <div className='grid grid-cols-2 gap-[15px]'>
+              <span className='text-white text-[14px] font-light'>Tasa de cambio </span>
+              <span className='text-white text-[14px] font-light'>{divisas && divisas !== undefined && divisas[select2] && divisas[select2] !== undefined && select2 && select2 !== undefined && (divisas[select2].venta / divisas[select2].venta).toFixed(2)} {select2} = {divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined  && select && select !== undefined && (divisas[select].venta / divisas[select2].venta).toFixed(2)} {select}</span>
+            </div>
+            <div className='grid grid-cols-2 gap-[15px]'>
+              <span className='text-white text-[14px] font-light'>Comisiones</span>
+              <span className='text-white text-[14px] font-light'>
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1'] + ' $'} 
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2'] + ' $'} 
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']  + ' $'} 
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && 'CONTACTESE CON SOPORTE'} 
+                </span>
+            </div>
           </div>
 
         </form>
@@ -170,7 +181,7 @@ function Page() {
               </svg>
               <span className="sr-only">Info</span>
               <h3 className="text-lg font-medium text-gray-800 dark:text-gray-300">Servicio disponible mediante Atencion al Cliente unicamente</h3>
-            </div>  
+            </div>
             <br />
             <div className="mt-2 mb-4 text-[14px] text-gray-800">
               Estimado usuario, le comunicamos que estamos en mantenimiento, por lo cual para cualquier transaccion que desee relizar, COMUNIQUESE CON ATENCION AL CLIENTE, para efectuar el mismo, gracias por su comprensión.

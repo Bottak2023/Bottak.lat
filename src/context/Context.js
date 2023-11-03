@@ -18,10 +18,10 @@ export function UserProvider({ children }) {
 	const [state, setState] = useState('Remesas')
 	const [nav, setNav] = useState(false)
 	const [modal, setModal] = useState('modal')
-	const [currency, setCurrency] = useState("BOL");
-	const [select, setSelect] = useState('BOL')
-	const [select2, setSelect2] = useState('USA')
-	const [select3, setSelect3] = useState('USA')
+	const [currency, setCurrency] = useState("BOB");
+	const [select, setSelect] = useState('BOB')
+	const [select2, setSelect2] = useState('USD')
+	const [select3, setSelect3] = useState('USD')
 
 	const [isSelect, setIsSelect] = useState(false)
 	const [isSelect2, setIsSelect2] = useState(false)
