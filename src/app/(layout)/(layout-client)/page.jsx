@@ -56,7 +56,15 @@ function Page() {
     // const res = await fetch('http://localhost:3000/api')
     const res = await fetch('/api', {
       method: 'POST',
-      body: JSON.stringify({ amount: 400 }),
+      body: JSON.stringify({ 
+        type: 'Remesa',
+        currency: select,
+        amount: transferencia,
+        comision:  ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
+       ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
+        ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
+        
+       }),
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8'
       })

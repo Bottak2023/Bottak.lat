@@ -14,22 +14,22 @@ export default async function handler(req, res) {
         {
           price_data: {
             product_data: {
-              name: "Laptop",
+              name: req.body.type,
             },
-            currency: "usd",
-            unit_amount: 2000,
+            currency: req.body.currency,
+            unit_amount: req.body.amount
           },
           quantity: 1,
         },
         {
           price_data: {
             product_data: {
-              name: "TV",
+              name: "Comision",
             },
-            currency: "usd",
-            unit_amount: 1000,
+            currency: req.body.currency,
+            unit_amount: req.body.comision,
           },
-          quantity: 2,
+          quantity: 1,
         },
       ],
       mode: "payment",
