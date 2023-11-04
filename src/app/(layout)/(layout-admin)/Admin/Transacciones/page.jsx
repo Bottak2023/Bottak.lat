@@ -67,19 +67,19 @@ export default function Home() {
       {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item['habilitado'] !== undefined && item['habilitado'] === false ? 'HABILITAR' : 'DESABILITAR'} el siguiente item:  {item['name']}</Modal>}
 
       <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
-        {/* <table className="w-[00px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
+        {/* <table className="w-[00px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400"> */}
         
         <h3 className='font-medium text-[14px]'>Lista De Transacciones</h3>
                 <br />
-                <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Remitente' />
+                <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Remitente' />
                 <br />
                 <br />
 
         
-        <table className="w-full overflow-visible min-w-[800px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
+        <table className="w-full overflow-visible min-w-[800px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400">
 
-          {/* <table className="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
-          <thead className="text-[12px] text-gray-700 uppercase bg-white">
+          {/* <table className="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400"> */}
+          <thead className="text-[14px] text-gray-700 uppercase bg-white">
             <tr>
               <th scope="col" className=" px-3 py-3">
                 #
@@ -122,7 +122,7 @@ export default function Home() {
           <tbody>
             {envios && envios !== undefined && Object.values(envios).sort(sortArray).map((i, index) => {
 
-              return i.remitente.toLowerCase().includes(filter.toLocaleLowerCase()) && <tr className={`text-[12px] border-b  ${index % 2 === 0 ? 'bg-yellow-300' : 'bg-gray-200'} `} key={index}>
+              return i.remitente.toLowerCase().includes(filter.toLocaleLowerCase()) && <tr className={`text-[14px] border-b  ${index % 2 === 0 ? 'bg-yellow-300' : 'bg-gray-200'} `} key={index}>
                 <td className="px-3 py-4  flex text-gray-900 dark:text-white">
                   <span className='h-full flex py-2'>{index + 1}</span>
                 </td>

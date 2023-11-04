@@ -164,7 +164,7 @@ function Page() {
         </div>
       </div>
       {modalInfo === false
-        ? <form className='lg:h-full lg:py-20 w-full flex flex-col justify-between items-center h-[350px]' onSubmit={handlerTransfer}>
+        ? <form className='lg:h-full lg:py-[30px] w-full h-[350px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
           <NavInit mobile={false} />
           <h3 className='text-[14px] text-[#FFF500]'>Envia tus Remesas facilmente</h3>
           <SelectWithFlag onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect} defaultValue={transferencia}/>

@@ -73,10 +73,10 @@ useEffect(() => {
 }, [user, userDB, divisas])
 console.log(divisas)
   return (
-    <main className='relative w-full h-full flex flex-col items-center justify-center' onClick={(e)=>mainClick(e)}>
+    <main className='relative w-full  h-full' onClick={(e)=>mainClick(e)}>
 
 
-      <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] lg:h-screen flex flex-col justify-between h-[750px] pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
+      <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] flex flex-col min-h-full justify-between  pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
         <div className={`lg:flex flex-col justify-center items-center h-[300px] lg:h-auto hidden `}>
           <img src="/logo.svg" className={`h-[200px] w-[200px] ${style.logo}`} alt="User" />
           <h1 className='text-[#FFF500] text-[14px] font-light'>Cambios App</h1>
@@ -93,12 +93,11 @@ console.log(divisas)
             <p className='text-white underline text-[14px] font-light text-center'>Politicas De Servicio</p>
           </div>
         </div>
-        <div className='lg:h-full  w-full flex flex-col justify-between items-center min-h-[350px] '>
+        <div className='  w-full   h-full'>
           {children}
         </div>
         <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>
-        {/* {success == false && <Error>ERROR: verifique e intente nuevamente</Error>}
-        {success == 'complete' && <Error>Llene todo el formulario</Error>} */}
+        
       </div>
 
     </main>

@@ -113,12 +113,12 @@ export default function Home() {
             <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
                 <h3 className='font-medium text-[14px]'>Lista De Cambios</h3>
                 <br />
-                <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
+                <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
                 <br />
                 <br />
-                <table className="w-full overflow-visible min-w-[1500px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
-                    {/* <table className="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400"> */}
-                    <thead className="text-[12px] text-gray-700 uppercase bg-white">
+                <table className="w-full overflow-visible min-w-[1500px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
+                    {/* <table className="relative w-full overflow-scroll max-w-[800px] h-[50px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400"> */}
+                    <thead className="text-[14px] text-gray-700 uppercase bg-white">
                         <tr>
                             <th scope="col" className=" px-3 py-3">
                                 #
@@ -163,7 +163,7 @@ export default function Home() {
                     </thead>
                     <tbody>
                         {divisas && divisas !== undefined && Object.values(divisas).map((i, index) => {
-                            return i.currency !== undefined && i.currency.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[12px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
+                            return i.currency !== undefined && i.currency.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
                                 <td className="px-3 py-4  flex text-gray-900 dark:text-white">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>

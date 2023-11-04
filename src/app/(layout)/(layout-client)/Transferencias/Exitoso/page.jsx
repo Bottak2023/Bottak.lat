@@ -103,8 +103,8 @@ function Home() {
         <main>
             <Confeti />
             <div className='lg:grid lg:grid-cols-2 lg:gap-5'>
-                <table className=" w-[300px] lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500 rounded-[20px]">
-                    <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className=" w-[300px] lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
+                    <thead className="text-[14px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col-3" className="w-1/2 px-3 py-3">
                                 Datos
@@ -115,16 +115,16 @@ function Home() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
                                 Remitente
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {userDB && userDB.profile && userDB.profile.nombre}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
                                 Destinatario
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
@@ -132,8 +132,8 @@ function Home() {
                                 {destinatario.destinatario && destinatario.destinatario}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
                                 Celular de destinatario
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
@@ -141,7 +141,7 @@ function Home() {
 
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Cuenta destinatario:
                             </td>
@@ -151,7 +151,7 @@ function Home() {
 
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
@@ -162,7 +162,7 @@ function Home() {
 
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Importe:
@@ -171,7 +171,7 @@ function Home() {
                                 {transferencia}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
@@ -181,7 +181,7 @@ function Home() {
                                 {select2}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Importe Con el cambio aplicado:
@@ -190,7 +190,7 @@ function Home() {
                                 {divisas && divisas[select] && divisas[select2] ? (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2) : ''}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
 
@@ -202,7 +202,7 @@ function Home() {
                             </td>
                         </tr>
 
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Estado:
@@ -211,7 +211,7 @@ function Home() {
                                 En proceso
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Operacion:
@@ -222,7 +222,7 @@ function Home() {
                         </tr>
 
 
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 ID de tracking:

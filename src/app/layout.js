@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Logistics Gear" />
         <title>Bottak</title>
       </head>
-      <body className={`${inter.className} w-screen min-h-full`}
+      <body className={`${inter.className} relative w-screen min-h-screen`}
         style={{
           backgroundImage: 'url(/background.png)',
           backgroundAttachment: 'fixed',
@@ -29,14 +29,13 @@ export default function RootLayout({ children }) {
           backgroundSize: 'cover',
         }}>
         <UserProvider>
-          <div className="fixed top-0 w-screen h-full min-h-screen" style={{
+          <div className="relative w-screen  h-screen min-h-[500px]  overflow-x-hidden overflow-y-auto " style={{
             backgroundImage: 'linear-gradient(#000000c7, #000000c7)',
           }}>
-          </div>
-          {/* <Navbar /> */}
-          <div className=" pt-[70px]  min-h-screen">
             {children}
           </div>
+          {/* <Navbar /> */}
+
         </UserProvider>
       </body>
     </html>

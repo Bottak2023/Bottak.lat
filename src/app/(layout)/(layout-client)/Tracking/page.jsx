@@ -57,8 +57,8 @@ console.log(filterQR)
         </div>}
 
         {filterQR && <div className='relative h-[450px] overflow-y-auto'>
-            <table className=" w-[300px] lg:w-full  lg:min-w-auto text-[12px] text-left text-gray-500 rounded-[20px]">
-                    <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table className=" w-[300px] lg:w-full  lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
+                    <thead className="text-[14px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col-3" className="w-1/2 px-3 py-3">
                                 Datos
@@ -69,31 +69,31 @@ console.log(filterQR)
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
                                 Remitente
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {filterQR && filterQR.remitente}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
                             Destinatario
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {filterQR.destinatario && filterQR.destinatario}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-                            <td className="px-3 py-4  flex flex-col text-[12px] text-gray-700 dark:text-white">
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                            <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
                                 Celular de destinatario
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {filterQR.celular && filterQR.celular}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Cuenta de destinatario:
                             </td>
@@ -101,7 +101,7 @@ console.log(filterQR)
                                 {filterQR['cuenta destinatario'] && filterQR['cuenta destinatario']}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Divisa de envio:
@@ -110,7 +110,7 @@ console.log(filterQR)
                             {filterQR['divisa de envio'] && filterQR['divisa de envio']}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Importe:
@@ -119,7 +119,7 @@ console.log(filterQR)
                                 {filterQR.importe}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Divisa de receptor:
@@ -128,7 +128,7 @@ console.log(filterQR)
                             {filterQR['divisa de receptor']}
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Importe Con el cambio aplicado:
@@ -140,7 +140,7 @@ console.log(filterQR)
                         </tr>
                       
 
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Estado:
@@ -149,7 +149,7 @@ console.log(filterQR)
                                 En proceso
                             </td>
                         </tr>
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 Operacion:
@@ -159,7 +159,7 @@ console.log(filterQR)
                             </td>
                         </tr>
 
-                        <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                        <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
 
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 ID de tracking:

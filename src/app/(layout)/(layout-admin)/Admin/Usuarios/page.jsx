@@ -95,15 +95,15 @@ function Home() {
 
                 <h3 className='font-medium text-[14px]'>Lista De Usuarios</h3>
                 <br />
-                <input type="text" className='border-b-[1px] text-[12px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario' />
+                <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario' />
                 <br />
                 <br />
 
 
 
-                <table className="w-full overflow-visible min-w-[1900px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
+                <table className="w-full overflow-visible min-w-[1900px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400">
 
-                    <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-[14px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-3 py-3">
                                 #
@@ -150,7 +150,7 @@ function Home() {
                         {users && users !== undefined && Object.keys(users).map((i, index) => {
 
 
-                            return users[i].profile['nombre'].toLowerCase().includes(filter.toLowerCase()) && <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
+                            return users[i].profile['nombre'].toLowerCase().includes(filter.toLowerCase()) && <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
 
                                 <td className="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
                                     <span className='h-full flex py-2'>{index + 1}</span>
