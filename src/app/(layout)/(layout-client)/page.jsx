@@ -164,7 +164,7 @@ function Page() {
         </div>
       </div>
       {modalInfo === false
-        ? <form className='lg:h-full lg:py-[30px] w-full h-[350px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
+        ? <form className='lg:h-full lg:py-[30px] w-full h-[370px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
           <NavInit mobile={false} />
           <h3 className='text-[14px] text-[#FFF500]'>Envia tus Remesas facilmente</h3>
           <SelectWithFlag onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect} defaultValue={transferencia}/>
@@ -186,6 +186,8 @@ function Page() {
                 {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && 'CONTACTESE CON SOPORTE'} 
                 </span>
             </div>
+            <br />
+            <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>
           </div>
 
         </form>

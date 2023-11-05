@@ -49,7 +49,7 @@ console.log(divisas)
 console.log(divisas[select].venta)
 
   return (
-    <div className={`relative w-[100%] max-w-[350px] bg-transparent border border-gray-300 text-gray-900 text-[14px] rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-0 `} >
+    <div className={`relative w-[100%] sm:max-w-[380px] bg-transparent border border-gray-300 text-gray-900 text-[14px] rounded-xl focus:ring-blue-500 focus:border-blue-500 block  p-0 `} >
       <div className='relative w-full bg-transparent flex justify-between items-center'>
         <input type="number" className='p-3 bg-transparent w-[65%] text-white text-center' step=".01" onChange={handlerOnChange} placeholder={placeholder} value={value && divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2)} defaultValue={defaultValue} required />
 

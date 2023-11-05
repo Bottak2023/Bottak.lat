@@ -77,6 +77,7 @@ console.log(divisas)
 
 
       <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] flex flex-col min-h-full justify-between  pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
+        
         <div className={`lg:flex flex-col justify-center items-center h-[300px] lg:h-auto hidden `}>
           <img src="/logo.svg" className={`h-[200px] w-[200px] ${style.logo}`} alt="User" />
           <h1 className='text-[#FFF500] text-[14px] font-light'>Cambios App</h1>
@@ -95,9 +96,7 @@ console.log(divisas)
         </div>
         <div className='  w-full   h-full'>
           {children}
-        </div>
-        <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>
-        
+        </div>        
       </div>
 
     </main>

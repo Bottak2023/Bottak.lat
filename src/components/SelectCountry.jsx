@@ -55,7 +55,7 @@ export default function App({ placeholder, value, onChange, propHandlerSelect, p
  
 console.log(countries)
     return (
-        <div className={`relative w-[100%] max-w-[350px] bg-transparent border border-gray-300 text-gray-900 text-[14px] rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-0 `} >
+        <div className={`relative w-[100%] sm:max-w-[380px] bg-transparent border border-gray-300 text-gray-900 text-[14px] rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-0 `} >
             <div className='relative w-full bg-transparent flex justify-between items-center'>
                 <span className=" w-full text-gray-100 p-3 " onClick={(e) => handlerIsSelect(e)}>{countries && countries[propSelect] && countries[propSelect].translation.spa.common }</span>
                 <span className='w-[auto] flex items-center rounded-[20px] '><img src={countries && countries[propSelect] && countries[propSelect].flagPNG} className="max-w-[50px] h-[30px]" alt="" /></span>
