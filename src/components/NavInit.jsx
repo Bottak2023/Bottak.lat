@@ -21,7 +21,7 @@ export default function Button({ mobile }) {
 
 
     return (
-        <div className={`w-full  flex justify-center items-end z-20 ${style.translate} ${mobile ? 'lg:hidden' : 'hidden lg:flex'}`}>
+        <div className={`w-full flex justify-center items-end z-20 ${style.translate} ${mobile ? 'lg:hidden' : 'hidden lg:flex'}`}>
             <div className='flex justify-between items-center pr-[40px] '>
                 <div className={`flex justify-between items-center pb-2 cursor-pointer ${pathname === '/' ? 'border-b-2 border-gray-300' : 'border-b-2 border-transparent'}`} onClick={(e) => handlerMode(e, '/')} >
                     <svg width="30" height="30" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
