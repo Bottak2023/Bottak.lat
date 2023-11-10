@@ -3,8 +3,17 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useUser } from '@/context/Context'
 import { useRouter } from 'next/navigation';
-import Tag from '@/components/Tag'
 import { handleSignOut } from '@/firebase/utils'
+import Button from '@/components/Button'
+
+function Profile() {
+    return <span className='inline-block p-5 rounded-full bg-[black]'>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.3635 8.72728C16.3635 9.88459 15.9038 10.9945 15.0854 11.8128C14.2671 12.6312 13.1572 13.0909 11.9999 13.0909C10.8426 13.0909 9.73265 12.6312 8.91431 11.8128C8.09597 10.9945 7.63623 9.88459 7.63623 8.72728C7.63623 7.56998 8.09597 6.46007 8.91431 5.64173C9.73265 4.82339 10.8426 4.36365 11.9999 4.36365C13.1572 4.36365 14.2671 4.82339 15.0854 5.64173C15.9038 6.46007 16.3635 7.56998 16.3635 8.72728ZM14.1817 8.72728C14.1817 9.30594 13.9518 9.86089 13.5426 10.2701C13.1335 10.6792 12.5785 10.9091 11.9999 10.9091C11.4212 10.9091 10.8663 10.6792 10.4571 10.2701C10.0479 9.86089 9.81805 9.30594 9.81805 8.72728C9.81805 8.14863 10.0479 7.59368 10.4571 7.18451C10.8663 6.77534 11.4212 6.54547 11.9999 6.54547C12.5785 6.54547 13.1335 6.77534 13.5426 7.18451C13.9518 7.59368 14.1817 8.14863 14.1817 8.72728Z" fill="white" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37273 0 0 5.37273 0 12C0 18.6273 5.37273 24 12 24C18.6273 24 24 18.6273 24 12C24 5.37273 18.6273 0 12 0ZM2.18182 12C2.18182 14.28 2.95964 16.3789 4.26327 18.0458C5.1788 16.8435 6.35989 15.8692 7.71429 15.1989C9.06869 14.5286 10.5597 14.1805 12.0709 14.1818C13.5625 14.1804 15.0348 14.5195 16.3756 15.1732C17.7163 15.827 18.8901 16.7781 19.8076 17.9542C20.7529 16.7145 21.3893 15.2675 21.6642 13.733C21.9392 12.1985 21.8448 10.6206 21.3889 9.1298C20.933 7.63902 20.1286 6.27823 19.0423 5.16004C17.9561 4.04185 16.6192 3.19839 15.1422 2.69946C13.6653 2.20054 12.0908 2.06048 10.5489 2.29088C9.00711 2.52128 7.54232 3.11552 6.27575 4.02442C5.00918 4.93333 3.97725 6.13077 3.26534 7.51767C2.55343 8.90457 2.18202 10.4411 2.18182 12ZM12 21.8182C9.74613 21.8216 7.56029 21.0462 5.81236 19.6233C6.51592 18.6161 7.45237 17.7937 8.54203 17.2262C9.63169 16.6587 10.8423 16.3628 12.0709 16.3636C13.2842 16.3627 14.4802 16.6512 15.5596 17.2052C16.6389 17.7592 17.5706 18.5628 18.2771 19.5491C16.5156 21.0182 14.2937 21.8214 12 21.8182Z" fill="white" />
+        </svg>
+    </span>
+}
 function Historial() {
     return <span className='inline-block p-5 rounded-full bg-[black]'>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +42,13 @@ function Tracking() {
         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.1537 5.61536H7.46139C6.44179 5.61536 5.61523 6.44191 5.61523 7.46151V11.1538C5.61523 12.1734 6.44179 13 7.46139 13H11.1537C12.1733 13 12.9998 12.1734 12.9998 11.1538V7.46151C12.9998 6.44191 12.1733 5.61536 11.1537 5.61536Z" stroke="#FFF7F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M5.61538 1H2.84615C2.35652 1 1.88695 1.1945 1.54073 1.54073C1.1945 1.88695 1 2.35652 1 2.84615V5.61538M20.3846 1H23.1538C23.6435 1 24.1131 1.1945 24.4593 1.54073C24.8055 1.88695 25 2.35652 25 2.84615V5.61538M5.61538 25H2.84615C2.35652 25 1.88695 24.8055 1.54073 24.4593C1.1945 24.1131 1 23.6435 1 23.1538V20.3846M20.3846 25H23.1538C23.6435 25 24.1131 24.8055 24.4593 24.4593C24.8055 24.1131 25 23.6435 25 23.1538V20.3846M5.61538 17.6154V20.3846H8.38462M13 20.3846V17.6154H10.2308M20.3846 8.38462H17.6154V5.61538M20.3846 14.8462V12.0769H17.6154M17.6154 17.6154V20.3846H20.3846" stroke="#FFF7F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </span>
+}
+function Tarifas() {
+    return <span className='inline-block p-5 rounded-full bg-[black]'>
+        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.66667 4.66663C4.66667 6.13746 3.47083 7.33329 2 7.33329V14C3.47083 14 4.66667 15.1958 4.66667 16.6666H19.3333C19.3333 15.1958 20.5292 14 22 14V7.33329C20.5292 7.33329 19.3333 6.13746 19.3333 4.66663H4.66667ZM0 5.33329C0 3.86246 1.19583 2.66663 2.66667 2.66663H21.3333C22.8042 2.66663 24 3.86246 24 5.33329V16C24 17.4708 22.8042 18.6666 21.3333 18.6666H2.66667C1.19583 18.6666 0 17.4708 0 16V5.33329ZM7.33333 10.6666C7.33333 10.0538 7.45404 9.44696 7.68856 8.88077C7.92308 8.31458 8.26683 7.80013 8.70017 7.36679C9.13351 6.93345 9.64796 6.58971 10.2141 6.35519C10.7803 6.12067 11.3872 5.99996 12 5.99996C12.6128 5.99996 13.2197 6.12067 13.7859 6.35519C14.352 6.58971 14.8665 6.93345 15.2998 7.36679C15.7332 7.80013 16.0769 8.31458 16.3114 8.88077C16.546 9.44696 16.6667 10.0538 16.6667 10.6666C16.6667 11.2795 16.546 11.8863 16.3114 12.4525C16.0769 13.0187 15.7332 13.5331 15.2998 13.9665C14.8665 14.3998 14.352 14.7435 13.7859 14.9781C13.2197 15.2126 12.6128 15.3333 12 15.3333C11.3872 15.3333 10.7803 15.2126 10.2141 14.9781C9.64796 14.7435 9.13351 14.3998 8.70017 13.9665C8.26683 13.5331 7.92308 13.0187 7.68856 12.4525C7.45404 11.8863 7.33333 11.2795 7.33333 10.6666ZM10.6667 8.66663C10.6667 9.03329 10.9667 9.33329 11.3333 9.33329V12H11C10.6333 12 10.3333 12.3 10.3333 12.6666C10.3333 13.0333 10.6333 13.3333 11 13.3333H13C13.3667 13.3333 13.6667 13.0333 13.6667 12.6666C13.6667 12.3 13.3667 12 13 12H12.6667V8.66663C12.6667 8.29996 12.3667 7.99996 12 7.99996H11.3333C10.9667 7.99996 10.6667 8.29996 10.6667 8.66663Z" fill="white" />
         </svg>
     </span>
 }
@@ -75,9 +91,10 @@ export default function Navbar({ children }) {
         handleSignOut()
         router.push('/')
         setUserProfile(null)
+        setUserData(null)
         setNav(false)
     }
-
+console.log(userDB)
 
     return (
         <>
@@ -120,30 +137,32 @@ export default function Navbar({ children }) {
                 </div>
             </nav>
 
-            <ul className={`absolute top-0 pt-[60px]  w-[100vw]  sm:max-w-[350px] transition-all	z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-auto sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} >
+            <ul className={`fixed  top-0 pt-[60px] w-[100vw]  sm:max-w-[450px] transition-all  z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} >
 
                 {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={() => handlerNavItem('Mi cuenta')}>
                     <h3 className='text-[12px] text-white py-5 cursor-pointer'>MI CUENTA</h3>
-                    <div className={`relative sm:absolute sm:top-[90px] sm:right-[20px] sm:w-[350px]  sm:bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
+                    <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[350px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
                         {userDB && userDB.rol && userDB.rol === 'Admin' &&
-                            <Link href="/Admin" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]  sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                            <Link href="/Admin" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]  hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                                <Profile />
                                 Admin
                             </Link>
                         }
                         {userDB && userDB.rol && userDB.rol === 'Cliente' && <>
-                            <Link href="/Cliente" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]  sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Link href="/Cliente" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]  hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                                <Profile />
                                 Perfil
                             </Link>
-                            <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                                 <Historial />
                                 Mis Transacciones
                             </Link>
                             {user !== null && user !== undefined
-                                ? <button className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px] hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-yellow-300" onClick={signOutHandler}>
+                                ? <button className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px] hover:bg-gray-100 hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={signOutHandler}>
                                     <Logout />
                                     Cerrar sesión
                                 </button>
-                                : <Link href="/Login" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                                : <Link href="/Login" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px] hover:bg-gray-100 sm:hover:bg-transparent hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                                     <Logout />
                                     Iniciar Sesión
                                 </Link>
@@ -154,19 +173,20 @@ export default function Navbar({ children }) {
 
                 <li onClick={() => handlerNavItem('Servicios')}>
                     <h3 className='text-[12px] text-white py-5 cursor-pointer'>SERVICIOS</h3>
-                    <div className={`relative sm:absolute sm:top-[90px] sm:right-[20px] sm:w-[350px]  sm:bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Servicios' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
-                        <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                    <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[350px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Servicios' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
+                        <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px] hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                             <Remesas />
                             Remesas
                         </Link>
-                        <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                        <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                             <Cambios />
                             Cambios
                         </Link>
-                        <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                        <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                            <Tarifas />
                             Tarifas y comisiones
                         </Link>
-                        <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300 lg:hidden" onClick={() => setNav(false)}>
+                        <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                             <Tracking />
                             Tracking
                         </Link>
@@ -175,32 +195,41 @@ export default function Navbar({ children }) {
 
                 <li onClick={() => handlerNavItem('Acerca')}>
                     <h3 className='text-[12px] text-white py-5 cursor-pointer'>ACERCA DE</h3>
-                    <div className={`relative sm:absolute sm:top-[90px] sm:right-[20px] sm:w-[350px]  sm:bg-blue-950  grid grid-cols-2 gap-[20px]  rounded-2xl z-20   ${navItem === 'Acerca' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
-                        <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                    <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[350px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20   ${navItem === 'Acerca' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
+                        <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                             <Nosotros />
                             Nosotros
                         </Link>
-                        <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px] hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                        <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px] hover:bg-gray-100 sm:hover:bg-transparent hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                             <Politicas />
                             Politicas
                         </Link>
                     </div>
                 </li>
 
-                <li className='hidden sm:inline-block'>
-                    {user !== null && user !== undefined
+                <li className='hidden sm:inline-block '>
+                    {user !== null && user !== undefined && userDB !== null && userDB !== undefined
                         ? <button type="button" className=" items-center text-gray-100 ml-4 inline-flex " onClick={() => setNav(!nav)}>
-                        <span className="sr-only">Open menu</span>
-                        <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 13.2C15.5313 13.2 15.9769 13.0848 16.3369 12.8544C16.6969 12.624 16.8762 12.3392 16.875 12V8.4C16.875 8.06 16.695 7.7748 16.335 7.5444C15.975 7.314 15.53 7.1992 15 7.2C14.4688 7.2 14.0231 7.3152 13.6631 7.5456C13.3031 7.776 13.1238 8.0608 13.125 8.4V12C13.125 12.34 13.305 12.6252 13.665 12.8556C14.025 13.086 14.47 13.2008 15 13.2ZM15 16.8C15.5313 16.8 15.9769 16.6848 16.3369 16.4544C16.6969 16.224 16.8762 15.9392 16.875 15.6C16.875 15.26 16.695 14.9748 16.335 14.7444C15.975 14.514 15.53 14.3992 15 14.4C14.4688 14.4 14.0231 14.5152 13.6631 14.7456C13.3031 14.976 13.1238 15.2608 13.125 15.6C13.125 15.94 13.305 16.2252 13.665 16.4556C14.025 16.686 14.47 16.8008 15 16.8ZM1.87501 20.4C1.34376 20.4 0.898131 20.2848 0.538132 20.0544C0.178132 19.824 -0.00124351 19.5392 6.48787e-06 19.2C6.48787e-06 18.86 0.180007 18.5748 0.540006 18.3444C0.900006 18.114 1.34501 17.9992 1.87501 18H3.75001V9.6C3.75001 7.94 4.53125 6.4648 6.09375 5.1744C7.65625 3.884 9.6875 3.0392 12.1875 2.64V1.8C12.1875 1.3 12.4613 0.874803 13.0087 0.524403C13.5562 0.174003 14.22 -0.000797266 15 2.73348e-06C15.7813 2.73348e-06 16.4456 0.175203 16.9931 0.525603C17.5406 0.876002 17.8137 1.3008 17.8125 1.8V2.64C20.3125 3.04 22.3437 3.8852 23.9062 5.1756C25.4687 6.466 26.25 7.9408 26.25 9.6V18H28.125C28.6562 18 29.1019 18.1152 29.4619 18.3456C29.8219 18.576 30.0012 18.8608 30 19.2C30 19.54 29.82 19.8252 29.46 20.0556C29.1 20.286 28.655 20.4008 28.125 20.4H1.87501ZM15 24C13.9688 24 13.0856 23.7648 12.3506 23.2944C11.6156 22.824 11.2488 22.2592 11.25 21.6H18.75C18.75 22.26 18.3825 22.8252 17.6475 23.2956C16.9125 23.766 16.03 24.0008 15 24Z" fill="white" />
-                        </svg>
-                    </button>
-                        : <Link href="/Login" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]hover:bg-gray-100 sm:hover:bg-transparent sm:hover:text-yellow-300" onClick={() => setNav(false)}>
-                            Iniciar Sesión
-                        </Link>
+                            <span className="sr-only">Open menu</span>
+                            <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 13.2C15.5313 13.2 15.9769 13.0848 16.3369 12.8544C16.6969 12.624 16.8762 12.3392 16.875 12V8.4C16.875 8.06 16.695 7.7748 16.335 7.5444C15.975 7.314 15.53 7.1992 15 7.2C14.4688 7.2 14.0231 7.3152 13.6631 7.5456C13.3031 7.776 13.1238 8.0608 13.125 8.4V12C13.125 12.34 13.305 12.6252 13.665 12.8556C14.025 13.086 14.47 13.2008 15 13.2ZM15 16.8C15.5313 16.8 15.9769 16.6848 16.3369 16.4544C16.6969 16.224 16.8762 15.9392 16.875 15.6C16.875 15.26 16.695 14.9748 16.335 14.7444C15.975 14.514 15.53 14.3992 15 14.4C14.4688 14.4 14.0231 14.5152 13.6631 14.7456C13.3031 14.976 13.1238 15.2608 13.125 15.6C13.125 15.94 13.305 16.2252 13.665 16.4556C14.025 16.686 14.47 16.8008 15 16.8ZM1.87501 20.4C1.34376 20.4 0.898131 20.2848 0.538132 20.0544C0.178132 19.824 -0.00124351 19.5392 6.48787e-06 19.2C6.48787e-06 18.86 0.180007 18.5748 0.540006 18.3444C0.900006 18.114 1.34501 17.9992 1.87501 18H3.75001V9.6C3.75001 7.94 4.53125 6.4648 6.09375 5.1744C7.65625 3.884 9.6875 3.0392 12.1875 2.64V1.8C12.1875 1.3 12.4613 0.874803 13.0087 0.524403C13.5562 0.174003 14.22 -0.000797266 15 2.73348e-06C15.7813 2.73348e-06 16.4456 0.175203 16.9931 0.525603C17.5406 0.876002 17.8137 1.3008 17.8125 1.8V2.64C20.3125 3.04 22.3437 3.8852 23.9062 5.1756C25.4687 6.466 26.25 7.9408 26.25 9.6V18H28.125C28.6562 18 29.1019 18.1152 29.4619 18.3456C29.8219 18.576 30.0012 18.8608 30 19.2C30 19.54 29.82 19.8252 29.46 20.0556C29.1 20.286 28.655 20.4008 28.125 20.4H1.87501ZM15 24C13.9688 24 13.0856 23.7648 12.3506 23.2944C11.6156 22.824 11.2488 22.2592 11.25 21.6H18.75C18.75 22.26 18.3825 22.8252 17.6475 23.2956C16.9125 23.766 16.03 24.0008 15 24Z" fill="white" />
+                            </svg>
+                        </button>
+                        : (user !== null && user !== undefined 
+                            ?<span className="inline-block w-[180px]"><Button theme='Primary' click={signOutHandler}>Cerrar Sesión</Button></span> 
+                        :<Link href="/Login" className='inline-block w-[180px]' onClick={() => setNav(false)}>
+
+                            <Button theme='Primary'>Iniciar Sesión</Button>
+
+                        </Link>)
+
+
+                        // <Link href="/Login" className="h-[40px] flex justify-center items-center bg-[#FFF500] text-center font-medium  align-middle p-5 rounded-full hover:bg-gray-100 sm:hover:bg-transparent hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                        //     Iniciar Sesión
+                        // </Link>
                     }
                 </li>
-                
+
             </ul>
         </>
     )
@@ -223,17 +252,17 @@ export default function Navbar({ children }) {
 // <div className={`relative sm:absolute  top-0 pt-[3px] items-center justify-between   transition-all	z-50  hidden lg:flex  right-[100px]`} >
 // <ul className="flex bg-transparent p- mt-4 font-regular text-[14px]">
 //     <li>
-//         <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Remesas</Link>
+//         <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px] hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Remesas</Link>
 //     </li>
 //     <li>
-//         <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300" onClick={() => setNav(false)}>Cambios</Link>
+//         <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Cambios</Link>
 //     </li>
 //     {userDB && userDB.rol && userDB.rol === 'Cliente' &&
 //         <li>
-//             <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300 " onClick={() => setNav(false)}>Mis Transacciones</Link>
+//             <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>Mis Transacciones</Link>
 //         </li>}
 //     <li>
-//         <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500]   p-5 rounded-[25px]   sm:hover:text-yellow-300" onClick={() => setNav(false)}>Tracking</Link>
+//         <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Tracking</Link>
 //     </li>
 // </ul>
 // </div> 

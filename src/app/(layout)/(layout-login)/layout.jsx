@@ -57,7 +57,7 @@ export default function Home({children}) {
   return (
     <main className='relative w-full h-full flex flex-col items-center justify-center' >
 
-      <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] lg:h-screen flex flex-col justify-between h-[750px] pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
+      <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] lg:h-auto  lg:min-h-full flex flex-col justify-between h-[750px] pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
         <div className={`flex flex-col justify-center items-center h-[300px] lg:h-auto  `}>
           <img src="/logo.svg" className={`h-[200px] w-[200px] ${style.logo}`} alt="User" />
           <h1 className='text-[#FFF500] text-[14px] font-light'>Cambios App</h1>
@@ -68,7 +68,7 @@ export default function Home({children}) {
             <p className='text-white underline text-[14px] font-light text-center'>Politicas De Servicio</p>
           </div>
         </div>
-        <div className='lg:h-full lg:py-20 w-full flex flex-col justify-between items-center h-[350px]'>
+        <div className='relative md:h-full lg:py-12 w-full flex flex-col justify-between items-center h-[350px]'>
           {children}
         </div>
         <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>

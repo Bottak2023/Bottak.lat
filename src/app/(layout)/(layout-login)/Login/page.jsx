@@ -59,7 +59,7 @@ export default function Home() {
   }, [user]);
 
   return (
-          <form className="relative w-full max-w-[500px] h-full flex flex-col justify-between" onSubmit={signInHandler} >
+          <form className="relative w-full max-w-[500px] h-full min-h-[300px] flex flex-col justify-between" onSubmit={signInHandler} >
             <h5 className="text-[24px] font-medium text-white text-center">Iniciar Sesión</h5>
             <div>
               <label htmlFor="email" className="block mb-2 text-[14px] font-light text-left  text-white">Email</label>
