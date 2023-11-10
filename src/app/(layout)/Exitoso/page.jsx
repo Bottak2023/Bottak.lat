@@ -116,7 +116,7 @@ function Home() {
                                     Destinatario
                                 </td>
                                 <td className="px-3 py-3 text-gray-900 ">
-                                    {transactionDB.destinaraio && transactionDB.destinatario}
+                                    {transactionDB.destinatario && transactionDB.destinatario}
                                 </td>
                             </tr>
                             <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
@@ -215,7 +215,7 @@ function Home() {
                             renderAs={'canvas'}
                             viewBox={`0 0 256 256`}
                             imageSettings={{
-                                src: '/logo.png',
+                                src: '/favicon.png',
                                 width: 100,
                                 height: 100
                             }}
