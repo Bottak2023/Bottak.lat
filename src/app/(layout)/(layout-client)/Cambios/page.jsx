@@ -136,7 +136,7 @@ export default function Home() {
           <Button type="submit" theme={"Primary"}>Iniciar Sesión</Button>
         </div>
       </div>
-      <div className='lg:h-full lg:py-20 w-full flex flex-col justify-between items-center h-[350px]'>
+      <form className='lg:h-full lg:py-[30px] w-full h-[370px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
         <NavInit mobile={false} />
 
         <h3 className='text-[greenyellow] text-[14px] font-light'>Solo disponible para Bolivia</h3>
@@ -150,7 +150,7 @@ export default function Home() {
         <span className='text-[#FFF500] text-[14px] font-light'>Cambiar a:</span>
         <SelectCambio value={true} propHandlerSelect={handlerSelect2} propSelect={select2} propHandlerIsSelect={handlerIsSelect2} propIsSelect={isSelect2} />
         <Button theme='Primary' click={handlerTransfer}>   Cambiar   </Button >
-      </div>
+      </form>
     </>
   )
 }
