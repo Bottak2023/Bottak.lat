@@ -1,15 +1,15 @@
 {
     "name": "BOTTAK",
-    "short_name": "BOTTAKs",
+    "short_name": "BOTTAK",
     "icons": [
  
       {
-        "src": "/logo.png",
+        "src": "/icon_pwa.png",
         "sizes": "384x384",
         "type": "image/png"
       },
       {
-        "src": "logo.png",
+        "src": "/icon_pwa.png",
         "sizes": "512x512",
         "type": "image/png"
       }
