@@ -67,16 +67,13 @@ export default function Home() {
             {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
-            <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>                <h3 className='font-medium text-[14px]'>Destinatarios</h3>
+            <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>                
+            <h3 className='font-medium text-[14px]'>Transacciones</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
                 <br />
                 <br />
-                <div className='lg:flex hidden lg:fixed top-[100px] right-[65px] '>
-                    <div className='flex justify-center items-center h-[50px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Nuevo destinatario</div>
-                    <div className='flex justify-center items-center bg-[#0064FA] h-[50px] w-[50px]  rounded-full text-white cursor-pointer' onClick={redirect}> <span className='text-white text-[30px]'>+</span> </div>
-                </div>
-                <table className="w-full min-w-[1000px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
+                <table className="w-full min-w-[2000px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
                     <thead className="text-[14px] text-gray-700 uppercase bg-white">
                         <tr>
                             <th scope="col" className="w-[50px] px-3 py-3">
@@ -88,37 +85,37 @@ export default function Home() {
                             <th scope="col" className=" px-3 py-3">
                                 Destinatario
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 DNI
                             </th>
                             <th scope="col" className=" px-3 py-3">
                                 Dirección
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 Celular
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 Nro de cuenta
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 Banco
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 Importe
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
-                                Divisa de envio
+                            <th scope="col" className=" px-3 py-3">
+                                Divisa <br/> de <br/> envio
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
-                                Importe con el cambio aplicado
+                            <th scope="col" className=" px-3 py-3">
+                                Importe con el <br/> cambio aplicado
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
-                                Divisa de receptor
+                            <th scope="col" className=" px-3 py-3">
+                                Divisa <br/> de <br/> receptor
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 ID de transaccion
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 Fecha
                             </th>
                         </tr>
@@ -126,46 +123,46 @@ export default function Home() {
                     <tbody>
                         {userDB && userDB !== undefined && userDB.historial && userDB.historial !== undefined && Object.values(userDB.historial).map((i, index) => {
                             return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
-                                <td className="px-3 py-4  flex text-gray-900 dark:text-white">
+                                <td className="px-3 py-4  flex  ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
-                                <td className="px-3 py-4 text-gray-900 dark:text-white">
+                                <td className="px-3 py-4  ">
                                     {i['estado']}
                                 </td>
-                                <td className="px-3 py-4 text-gray-900 dark:text-white">
+                                <td className="min-w-32px-3 py-4  ">
                                     {i['destinatario']}
                                 </td>
-                                <td className="w-32 p-3">
-                                      {i['dni']}
+                                <td className="min-w-32 p-3">
+                                      {i['dni']}   
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                      {i['direccion']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                       {i['celular']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                       {i['cuenta destinatario']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                      {i['nombre de banco']}
                                 </td>
-                                <td className="px-3 py-4 text-gray-900 dark:text-white">
+                                <td className="px-3 py-4  ">
                                     {i['importe']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className=" p-3">
                                       {i['divisa de envio']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                      {i['cambio']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className=" p-3">
                                       {i['divisa de receptor']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                       {i['uuid']}
                                 </td>
-                                <td className="w-32 p-3">
+                                <td className="min-w-32 p-3">
                                      {i['fecha']}
                                 </td>
                                 
