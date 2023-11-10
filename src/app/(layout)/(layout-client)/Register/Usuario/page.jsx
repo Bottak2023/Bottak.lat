@@ -8,8 +8,7 @@ import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
 import Select from '@/components/Select'
 import Label from '@/components/Label'
-import Checkbox from '@/components/Checkbox'
-import { arrPaises } from '@/constants'
+
 
 
 import SelectCountry from '@/components/SelectCountry'
