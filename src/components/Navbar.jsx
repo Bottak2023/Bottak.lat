@@ -140,7 +140,7 @@ export default function Navbar({ children }) {
                 </div>
             </nav>
 
-            <ul className={`fixed  top-0 pt-[60px] w-[100vw]  sm:max-w-[350px] transition-all  z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} >
+            <ul className={`fixed  top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] transition-all  z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} >
 
                 {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={() => handlerNavItem('Mi cuenta')}>
                     <h3 className='text-[14px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>MI CUENTA</h3>
