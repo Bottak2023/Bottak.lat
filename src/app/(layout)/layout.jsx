@@ -10,17 +10,9 @@ import { getSpecificData } from '@/firebase/database'
 
 export default function RootLayout({ children }) {
 
-    const { user, userDB, setUserProfile, nav, setNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
-
+    const { user, userDB, setUserProfile, nav, setNav, userNav, setUserNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
     const router = useRouter()
 
-    const signOutHandler = () => {
-        handleSignOut()
-        router.push('/')
-        setUserProfile(null)
-        setNav(false)
-    }
-    console.log(user)
     console.log(userDB)
     useEffect(() => {
         onAuth(setUserProfile)
@@ -34,7 +26,7 @@ export default function RootLayout({ children }) {
     return (
         <>
             <Navbar />
-            {divisas && divisas !== undefined && <div className={`relative  w-screen px-[10px]  pt-[80px] pb-[30px] md:pb-0 flex items-center min-h-full transition-all  ${nav ? 'left-[250px]' : 'left-0'}`}>
+            {divisas && divisas !== undefined && <div className={`relative  w-screen px-[10px]  pt-[80px] pb-[30px] md:pb-0 flex items-center min-h-full transition-all  ${nav ? 'left-[100vw] sm:left-[250px]' : 'left-0'} ${userNav ? 'top-[70px]' : 'top-0'}`}>
                 {children}
             </div>}
             <Particles />

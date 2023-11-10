@@ -1,160 +1,107 @@
 'use client'
 
-
-// import { writeUserData, readUserData, updateUserData } from '@/supabase/utils'
-// import { uploadStorage } from '@/supabase/storage'
 import { writeUserData } from '@/firebase/database'
-import { useState } from 'react'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
 import SelectCountry from '@/components/SelectCountry'
 import Label from '@/components/Label'
-import Checkbox from '@/components/Checkbox'
-import { arrPaises } from '@/constants'
-
 import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
-// import { WithAuth } from '@/HOCs/WithAuth'
 import { WithAuth } from '@/HOCs/WithAuth'
-
+import { getDayMonthYear } from '@/utils/date'
 import { generateUUID } from '@/utils/UUIDgenerator'
 function Home() {
+
+    const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, isSelect3, setIsSelect3, select3, setSelect3, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, qr, setQr, QRurl, setQRurl, } = useUser()
     const router = useRouter()
-
-    // const { user, userDB, setUserData, setUserSuccess, setDestinatario, destinatario } = useUser()
-    const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, isSelect3, setIsSelect3, select3, setSelect3, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
-
-
-    const [postImage, setPostImage] = useState(null)
-    const [urlPostImage, setUrlPostImage] = useState(null)
-
-    const [account, setAccount] = useState('dependiente')
-
-
-
-
-
-    const inputRefCard = useMask({ mask: '____ ____ ____ ____', replacement: { _: /\d/ } });
-    const inputRefDate = useMask({ mask: '__/__', replacement: { _: /\d/ } });
-    const inputRefCVC = useMask({ mask: '___', replacement: { _: /\d/ } });
-    const inputRefPhone = useMask({ mask: '+ 591 _ ___ ___', replacement: { _: /\d/ } });
-    const inputRefWhatsApp = useMask({ mask: '+ 591 __ ___ ___', replacement: { _: /\d/ } });
-
-
-    function manageInputIMG(e) {
-        // const fileName = `${e.target.name}`
-        const file = e.target.files[0]
-
-        setPostImage(file)
-        setUrlPostImage(URL.createObjectURL(file))
-
-    }
-
 
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
     }
-    // function onChangeHandlerCheck(e) {
-    //     setDestinatario({ ...destinatario, [e.target.name]: e.target.checked })
-    // }
-    function onClickHandler(name, value) {
-        setDestinatario({ ...destinatario, [name]: value })
-    }
-
-
     const handlerSelect = (i) => {
         setSelect3(i)
-
     }
     const handlerIsSelect = () => {
         setIsSelect3(!isSelect3)
-
     }
-    console.log(destinatario)
+    const redirectHandler = (route, data) => {
+        setDestinatario(data)
 
-    async function handlerTransfer() {
-    
+        router.push(route)
+    }
+    function save(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const uuid = generateUUID()
+        const date = new Date().getTime()
+        const fecha = getDayMonthYear(date)
+        // const db = {
+        //     ...destinatario,
+        //     remitente: userDB && userDB.profile && userDB.profile.nombre,
+        //     ['divisa de envio']: select,
+        //     importe: transferencia,
+        //     ['divisa de receptor']: select2,
+        //     cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
+        //     fecha,
+        //     date,
+        //     estado: 'en proceso',
+        //     operacion: 'envio',
+        //     uuid,
+        // }
+        const destinatarioDB = {...destinatario, uuid}
+        writeUserData(`users/${user.uid}/destinatarios/${uuid}`, { ...destinatario, uuid }, setUserSuccess, redirectHandler('/Confirm', destinatarioDB))
+        // writeUserData(`envios/${uuid}`, db, setUserSuccess, redirectHandler('/Confirm'))
+    }
 
-        // const res = await fetch('http://localhost:3000/api')
+    async function handlerTransfer(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const body = {
+            currency: select,
+            amount: transferencia,
+            comision: ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
+                ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
+                ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
+        }
         const res = await fetch('/api', {
             method: 'POST',
             body: JSON.stringify({
                 type: 'Envio de Remesa',
-                currency: select,
-                amount: transferencia,
-                comision: ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
-                    ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
-                    ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
-
+                ...body
             }),
             headers: new Headers({
                 'Content-Type': 'application/json; charset=UTF-8'
             })
         })
         const data = await res.json()
-        console.log(data)
-
-        console.log(data.url)
         window.open(data.url, "_self")
         return
-        console.log('click')
     }
 
-
-    function save(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        const uuid = generateUUID()
-        writeUserData(`users/${user.uid}/destinatarios/${destinatario['cuenta destinario']}`, { ...destinatario, [uuid]: uuid }, setUserSuccess,)
-
-        // router.push('/Transferencias/Exitoso')
-        // e.preventDefault()
-        // writeUserData('Clinica', { ...state, uuid: user.uuid }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente', 'Perfil')
-        // uploadStorage('Clinica', postImage, user.uuid, updateUserData)
-        // router.push('/Clinica/Perfil')
-
-        setDestinatario({ ...destinatario, uuid })
-        writeUserData(`envios/${uuid}`, {
-            ...destinatario,
-            remitente: userDB && userDB.profile && userDB.profile.nombre,
-            ['divisa de envio']: select,
-            importe: transferencia,
-            ['divisa de receptor']: select2,
-            cambio: divisas && divisas[select] && divisas[select2] ? (transferencia * divisas[select2].cambio / divisas[select].cambio).toFixed(2) : '',
-            fecha,
-            estado: 'en proceso',
-            operacion: 'envio',
-            uuid
-        }, setUserSuccess, handlerTransfer)
-    }
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
-
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
-                <h3 className='text-center pb-3 text-white  text-right'>Destinatario</h3>
+                <h3 className=' pb-3 text-white  text-right'>Destinatario</h3>
             </div>
             <div className='lg:hidden'>
-                <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de tarjeta</h3>
+                <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de Bancaria</h3>
             </div>
             <div className=' space-y-5'>
-
-                <Label htmlFor="">Número de Cuenta</Label>
-                <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} reference={inputRefCard} required />
-
+                <Label htmlFor="">Numero de cuenta bancaria</Label>
+                <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} required />
             </div>
-
+            <div className=' space-y-5'>
+                <Label htmlFor="">Nombre de Banco</Label>
+                <Input type="text" name="nombre de banco" onChange={onChangeHandler} required />
+            </div>
             <div className='lg:hidden'>
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion personal</h3>
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Nombre</Label>
-
                 <Input type="text" name="destinatario" onChange={onChangeHandler} required />
-
             </div>
-
-
             <div className=' space-y-5'>
                 <Label htmlFor="">DNI</Label>
                 <Input type="text" name="dni" onChange={onChangeHandler} required />
@@ -163,19 +110,16 @@ function Home() {
                 <Label htmlFor="">Pais</Label>
                 <SelectCountry onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select3} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} />
             </div>
-
             <div className=' space-y-5'>
                 <Label htmlFor="">Dirección</Label>
                 <Input type="text" name="direccion" onChange={onChangeHandler} required />
             </div>
-
             <div className=' space-y-5'>
                 <Label htmlFor="">Numero de celular</Label>
                 <Input type="text" name="celular" onChange={onChangeHandler} required />
             </div>
             <div className='flex w-full justify-around items-end'>
                 <Button theme='Primary' >Guardar</Button>
-
             </div>
         </form>
     )
@@ -186,12 +130,5 @@ export default WithAuth(Home)
 
 
 
-{/* <div className='w-full flex justify-center'>
-                <svg width="141" height="141" viewBox="0 0 141 141" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M70.5 112.8C55.8125 112.8 42.8288 105.28 35.25 94C35.4263 82.25 58.75 75.7875 70.5 75.7875C82.25 75.7875 105.574 82.25 105.75 94C101.866 99.7834 96.6194 104.523 90.4724 107.801C84.3254 111.08 77.4666 112.796 70.5 112.8ZM70.5 29.375C75.1744 29.375 79.6574 31.2319 82.9628 34.5372C86.2681 37.8426 88.125 42.3256 88.125 47C88.125 51.6744 86.2681 56.1574 82.9628 59.4628C79.6574 62.7681 75.1744 64.625 70.5 64.625C65.8256 64.625 61.3426 62.7681 58.0372 59.4628C54.7319 56.1574 52.875 51.6744 52.875 47C52.875 42.3256 54.7319 37.8426 58.0372 34.5372C61.3426 31.2319 65.8256 29.375 70.5 29.375ZM70.5 11.75C62.7848 11.75 55.1452 13.2696 48.0173 16.2221C40.8895 19.1745 34.4129 23.502 28.9575 28.9575C17.9397 39.9752 11.75 54.9185 11.75 70.5C11.75 86.0815 17.9397 101.025 28.9575 112.043C34.4129 117.498 40.8895 121.825 48.0173 124.778C55.1452 127.73 62.7848 129.25 70.5 129.25C86.0815 129.25 101.025 123.06 112.043 112.043C123.06 101.025 129.25 86.0815 129.25 70.5C129.25 38.0113 102.813 11.75 70.5 11.75Z" fill="#FFF500" />
-                </svg>
-            </div>
-            <div>
-                <h3 className='text-center pb-3 text-[yellow] text-[24px]'>hola, Pepe.</h3>
-                <h3 className='text-center pb-3 text-green-400'>Completa los datos de tu tarjeta</h3>
-            </div> */}
+
+

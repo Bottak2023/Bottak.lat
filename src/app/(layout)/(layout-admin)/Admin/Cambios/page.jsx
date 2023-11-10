@@ -150,7 +150,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {divisas && divisas !== undefined && Object.values(divisas).sort(sortArray).map((i, index) => {
+            {divisas && divisas !== undefined && Object.values(divisas).map((i, index) => {
               return i.currency !== undefined && i.currency.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
                 <td className="px-3 py-4  flex text-gray-900 dark:text-white">
                   <span className='h-full flex py-2'>{index + 1}</span>

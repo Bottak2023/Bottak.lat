@@ -20,19 +20,6 @@ function Page() {
   const pathname = usePathname()
   const [modalInfo, setModalInfo] = useState(false)
 
-
-  // const signInHandler = (e) => {
-  //   e.preventDefault()
-  //   let email = e.target[0].value
-  //   let password = e.target[1].value
-  //   email.length !== 0 && password.length !== 0 ? signInWithEmailAndPassword(email, password, setUserSuccess) : setUserSuccess('Complete')
-  // }
-  // useEffect(() => {
-  //   user === undefined && onAuth(setUserProfile)
-  //   if (user !== undefined && user !== null) router.replace('/Cliente')
-  // }, [user]);
-
-
   function handlerMode(e, data) {
     setState(data)
     router.push(data)
@@ -78,15 +65,9 @@ function Page() {
   //   console.log('click')
   // }
 
-
-
-
-
-
   async function handlerTransfer(e) {
     e.preventDefault()
     e.stopPropagation()
-
     if (user == null && user == undefined) {
       console.log('signup')
       setModal('registrate')
@@ -98,29 +79,18 @@ function Page() {
       return
     }
     if (user && userDB) {
-      console.log('Destinatario')
-      router.push('/Register/Destinatario')
+      userDB.destinatarios && userDB.destinatarios !== undefined && Object.keys(userDB.destinatarios).length > 0 
+      ? router.push('/Destinatarios')
+      : router.push('/Register/Destinatario')
       return
     }
   }
-
-
-
-
-
-
-
   const handlerRedirect = (rute) => {
     router.push(rute)
     setModal('')
   }
-
-
-
-
   const handlerSelect = (i) => {
     setSelect(i)
-
   }
   const handlerSelect2 = (i) => {
     setSelect2(i)
@@ -133,16 +103,6 @@ function Page() {
     setIsSelect2(!isSelect2)
     setIsSelect(false)
   }
-
-  // console.log(select2)
-  // useEffect(() => {
-  //   if (user === undefined) onAuth(setUserProfile)
-  //   user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
-  //   divisas === undefined && getSpecificData('currencies', setDivisas)
-
-  // }, [user, userDB, divisas])
-  console.log(user)
-  console.log(userDB)
 
   return (
     <>

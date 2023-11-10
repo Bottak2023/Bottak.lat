@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 })
 
 const PDFView = () => {
-    const { user, userDB, setUserData, setUserSuccess, destinatario, transferencia, fecha, setFecha, QRurl} = useUser()
+    const { user, userDB, setUserData, setUserSuccess, transactionDB, transferencia, fecha, setFecha, QRurl} = useUser()
 
     const [isCliente, setisCliente] = useState(false);
 
@@ -54,12 +54,12 @@ const PDFView = () => {
                                     <Text style={{ fontSize: '12px', width: '50%'  }}>{userDB && userDB.profile && userDB.profile.nombre}</Text>
                                 </View>
                                 <View style={{ paddingTop: '12px',  display: 'flex',  flexDirection: 'row', justifyContent: 'space-between'}}>
-                                    <Text style={{ fontSize: '12px', width: '50%'  }}>Destinatario</Text>
-                                    <Text style={{ fontSize: '12px', width: '50%'  }}>{destinatario.nombre && destinatario.nombre}</Text>
+                                    <Text style={{ fontSize: '12px', width: '50%'  }}>transactionDB</Text>
+                                    <Text style={{ fontSize: '12px', width: '50%'  }}>{transactionDB.nombre && transactionDB.nombre}</Text>
                                 </View>
                                 <View style={{ paddingTop: '12px',  display: 'flex',  flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ fontSize: '12px', width: '50%'  }}>Cuenta destinatario:</Text>
-                                    <Text style={{ fontSize: '12px', width: '50%'  }}>{destinatario.tarjeta && destinatario.tarjeta}</Text>
+                                    <Text style={{ fontSize: '12px', width: '50%'  }}>Cuenta transactionDB:</Text>
+                                    <Text style={{ fontSize: '12px', width: '50%'  }}>{transactionDB.tarjeta && transactionDB.tarjeta}</Text>
                                 </View>
                                 <View style={{ paddingTop: '12px',  display: 'flex',  flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%'  }}>Divisa:</Text>

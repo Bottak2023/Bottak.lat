@@ -10,15 +10,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/favicon.png" />
         <link rel='manifest' href='/manifest.json' />
-        <link rel='apple-touch-icon' href='/logo.png' />
+        <link rel='apple-touch-icon' href='/favicon.png' />
         <meta name="theme-color" content="black" />
         <meta name="msapplication-navbutton-color" content="black" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="description" content="Tranferencias y cambios de divisas" />
-        <meta name="keywords" content="Logistics Gear" />
-        <meta name="author" content="Logistics Gear" />
+        <meta name="description" content="Remesas y cambios de divisas" />
+        <meta name="keywords" content="Bottak, bottak.lat, Remesas y cambios de divisas" />
+        <meta name="author" content="Bottak.lat" />
         <title>Bottak</title>
       </head>
       <body className={`${inter.className} relative w-screen min-h-screen`}

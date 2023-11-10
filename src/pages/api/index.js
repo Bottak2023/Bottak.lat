@@ -37,9 +37,12 @@ export default async function handler(req, res) {
       success_url: "https://bottak.lat/Transferencias/Exitoso",
       cancel_url: "https://bottak.lat/",
     });
-
+    console.log(session)
     console.log(session.url);
-    return res.json({ url: session.url });
+    return res.json({
+      id: session.id,
+      url: session.url
+    });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

@@ -13,10 +13,13 @@ export function UserProvider({ children }) {
 	const [divisas, setDivisas] = useState(undefined)
 	const [envios, setEnvios] = useState(undefined)
 	const [exchange, setExchange] = useState(undefined)
+	const [destinatario, setDestinatario] = useState(undefined)
+	const [destinatarios, setDestinatarios] = useState(undefined)
 
 	const [success, setSuccess] = useState(null)
 	const [state, setState] = useState('Remesas')
 	const [nav, setNav] = useState(false)
+	const [userNav, setUserNav] = useState(false)
 	const [modal, setModal] = useState('modal')
 	const [currency, setCurrency] = useState("BOB");
 	const [select, setSelect] = useState('BOB')
@@ -31,10 +34,10 @@ export function UserProvider({ children }) {
 	const [webScann, setWebScann] = useState(null)
 	const [filter, setFilter] = useState(null)
 	const [filterQR, setFilterQR] = useState(null)
-
+    const [transactionDB, setTransactionDB] = useState(undefined)
+	const [navItem, setNavItem] = useState(undefined)
 
 	const [transferencia, setTransferencia] = useState('')
-	const [destinatario, setDestinatario] = useState({})
 	const [item, setItem] = useState(null)
 	const [qr, setQr,] = useState(null)
 	const [QRurl, setQRurl,] = useState(null)
@@ -47,8 +50,7 @@ export function UserProvider({ children }) {
 
 	const webcamRef1 = React.useRef(null);
 	const webcamRef2 = React.useRef(null);
-	const webcamRef3 = React.useRef(null);
-
+	const webcamRef3 = React.useRef(null);      
 
 
 	const setUserProfile = (data) => {
@@ -90,7 +92,9 @@ export function UserProvider({ children }) {
 			webcamRef1, item, setItem,
 			webcamRef2,
 			webcamRef3,
-
+			navItem, setNavItem,
+			transactionDB, setTransactionDB,
+			userNav, setUserNav,
 			exchange, setExchange,
 			webScann, setWebScann,
 			filter, setFilter,
@@ -101,9 +105,10 @@ export function UserProvider({ children }) {
 			isSelect, setIsSelect,
 			isSelect2, setIsSelect2,
 			isSelect3, setIsSelect3,
-			fecha, qr, setQr, QRurl, 
+			fecha, setFecha, qr, setQr, QRurl, 
 			select3, setSelect3,
 			countries, setCountries,
+			destinatarios, setDestinatarios,
 			setQRurl, 
 
 			setDestinatario,
@@ -120,13 +125,13 @@ export function UserProvider({ children }) {
 
 		})
 
-	}, [user, userDB, success, state, nav, modal, transferencia, currency, select, select2, select3, isSelect, isSelect2, isSelect3, users, destinatario, image1, image2, image3, item, webcamRef1,
+	}, [user, userDB, success, state, nav, userNav, modal, transferencia, currency, select, select2, select3, isSelect, isSelect2, isSelect3, users, destinatario, image1, image2, image3, item, webcamRef1,
 		webcamRef2,
 		webcamRef3,
 		fecha, qr, QRurl, divisas, envios,
 		webScann,
 		filter,
-		filterQR, exchange, countries])
+		filterQR, exchange, countries, destinatarios, transactionDB, navItem])
 
 
 	return (
