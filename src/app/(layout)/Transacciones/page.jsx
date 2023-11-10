@@ -122,14 +122,14 @@ export default function Home() {
                     </thead>
                     <tbody>
                         {userDB && userDB !== undefined && userDB.historial && userDB.historial !== undefined && Object.values(userDB.historial).map((i, index) => {
-                            return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
+                            return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                                 <td className="px-3 py-4  flex  ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
-                                <td className="px-3 py-4  ">
-                                    {i['estado']}
+                                <td className="min-w-32 px-3 py-4  ">
+                                    <span className={`inline-block py-5 px-10 ${i['estado'] == 'exitoso' && 'bg-green-500'} i['estado'] == 'en proceso' && 'bg-gray-100'}`}>{i['estado']}</span>
                                 </td>
-                                <td className="min-w-32px-3 py-4  ">
+                                <td className="min-w-32 px-3 py-4  ">
                                     {i['destinatario']}
                                 </td>
                                 <td className="min-w-32 p-3">
