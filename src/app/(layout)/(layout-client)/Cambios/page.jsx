@@ -136,12 +136,12 @@ export default function Home() {
           <Button type="submit" theme={"Primary"}>Iniciar Sesión</Button>
         </div>
       </div>
-      <form className='lg:h-full lg:py-[30px] w-full h-[370px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
+      <form className='lg:h-full lg:py-[30px]  w-full h-[370px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
         <NavInit mobile={false} />
 
         <h3 className='text-[greenyellow] text-[14px] font-light'>Solo disponible para Bolivia</h3>
 
-        <div className="relative flex justify-between  w-[100%] max-w-[350px] py-1 ">
+        <div className="relative flex justify-between  w-[100%] sm:max-w-[350px] py-1 ">
           <span className="bg-transparent w-1/2 py-1 border-[1px] border-gray-200 text-gray-200 text-center">{divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined && select && select !== undefined && (divisas[select].venta / divisas[select].venta).toFixed(2)} {select}</span>
           <button className='absolute left-0 right-0 top-0 bottom-0 m-auto bg-[yellow] rounded-full w-[50px] h-[50px]'></button>
           <span className="bg-gray-200 w-1/2 py-1 border-[1px] border-gray-200 text-center">{divisas && divisas !== undefined && divisas[select2] && divisas[select2] !== undefined && select2 && select2 !== undefined && (divisas[select2].venta / divisas[select].venta).toFixed(2)} {select2}</span>
@@ -150,6 +150,24 @@ export default function Home() {
         <span className='text-[#FFF500] text-[14px] font-light'>Cambiar a:</span>
         <SelectCambio value={true} propHandlerSelect={handlerSelect2} propSelect={select2} propHandlerIsSelect={handlerIsSelect2} propIsSelect={isSelect2} />
         <Button theme='Primary' click={handlerTransfer}>   Cambiar   </Button >
+        <div className="">
+            <div className='grid grid-cols-2 gap-[15px]'>
+              <span className='text-white text-[14px] font-light'>Tasa de cambio </span>
+              <span className='text-white text-[14px] font-light'>{divisas && divisas !== undefined && divisas[select2] && divisas[select2] !== undefined && select2 && select2 !== undefined && (divisas[select2].venta / divisas[select2].venta).toFixed(2)} {select2} = {divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined  && select && select !== undefined && (divisas[select].venta / divisas[select2].venta).toFixed(2)} {select}</span>
+            </div>
+            <div className='grid grid-cols-2 gap-[15px]'>
+              <span className='text-white text-[14px] font-light'>Comisiones</span>
+              <span className='text-white text-[14px] font-light'>
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1'] + ' ' + select} 
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2'] +  ' ' + select}
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']  + ' ' + select}
+                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && 'CONTACTESE CON SOPORTE'} 
+                </span>
+            </div>
+            {/* <br />
+            <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>
+          */}
+          </div>
       </form>
     </>
   )
