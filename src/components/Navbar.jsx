@@ -145,16 +145,16 @@ export default function Navbar({ children }) {
                 {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={() => handlerNavItem('Mi cuenta')}>
                     <h3 className='text-[14px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>MI CUENTA</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[350px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
-                        {userDB && userDB.rol && userDB.rol === 'Admin' &&
+                        {/* {userDB && userDB.rol && userDB.rol === 'Admin' &&
                             <Link href="/Admin" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]  sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                                 <Profile />
                                 Admin
                             </Link>
-                        }
-                        {userDB && userDB.rol && userDB.rol === 'Cliente' && <>
-                            <Link href="/Cliente" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]  sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                        } */}
+                        {userDB && userDB.rol && userDB.rol === 'Admin' && <>
+                            <Link href="/Admin" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]  sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                                 <Profile />
-                                Perfil
+                                Admin
                             </Link>
                             <Link href="/Transacciones" className="flex flex-col justify-between items-center bg-[#FFF500] text-center font-medium   p-5 rounded-[25px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                                 <Historial />
