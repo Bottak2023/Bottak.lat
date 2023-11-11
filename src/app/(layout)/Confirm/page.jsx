@@ -30,6 +30,8 @@ function Home() {
         const db = {
             ...destinatario,
             remitente: userDB && userDB && userDB.nombre,
+            ['dni remitente']: userDB && userDB && userDB.dni,
+            ['pais remitente']: userDB && userDB && userDB.pais,
             ['divisa de envio']: select,
             importe: transferencia,
             ['divisa de receptor']: select2,
@@ -65,6 +67,22 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                DNI remitente
+                            </td>
+                            <td className="px-2 py-2  text-gray-900 ">
+                                {userDB && userDB && userDB.dni}
+                            </td>
+                        </tr>
+                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                Pais remitente
+                            </td>
+                            <td className="px-2 py-2  text-gray-900 ">
+                                {userDB && userDB && userDB.pais}
+                            </td>
+                        </tr>
+                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
                                 Destinatario
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
@@ -96,7 +114,6 @@ function Home() {
                             </td>
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
-
                             <td className="px-2 py-2  text-gray-900 ">
                                 Importe:
                             </td>
@@ -133,12 +150,9 @@ function Home() {
                 </table>
                 <div className='flex justify-center pt-5'>
                     <Button theme='Primary' click={save}>Efectuar Transacción</Button>
-
                 </div>
             </div>
         </div>
-
-
     )
 }
 

@@ -113,6 +113,22 @@ function Home() {
                             </tr>
                             <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                 <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                    DNI remitente
+                                </td>
+                                <td className="px-3 py-3 text-gray-900 ">
+                                    {transactionDB['dni remitente'] && transactionDB['dni remitente']}
+                                </td>
+                            </tr>
+                            <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                    Pais remitente
+                                </td>
+                                <td className="px-3 py-3 text-gray-900 ">
+                                    {transactionDB['pais remitente'] && transactionDB['pais remitente']}
+                                </td>
+                            </tr>
+                            <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
                                     Destinatario
                                 </td>
                                 <td className="px-3 py-3 text-gray-900 ">

@@ -31,11 +31,12 @@ export default function Home() {
     return 0
   }
   function handlerSelect(name, i, uuid) {
+   console.log(uuid) 
     setState({ ...state, [uuid]:{[name]: i} })
   }
-  function save() {
+  function save(uuid) {
     setModal('Guardando...')
-    writeUserData(`envios/${item.uuid}`, item.uuid, setUserSuccess, () => { setModal('') })
+    writeUserData(`envios/${uuid}`, state[uuid], setUserSuccess, () => { setModal('') })
   }
   function redirect() {
     router.push('/Register/Destinatario')
@@ -60,7 +61,6 @@ export default function Home() {
   useEffect(() => {
     remesasDB === undefined && getSpecificData(`/envios/`, setRemesasDB)
   }, [remesasDB])
-console.log(state)
   return (
     <main className='w-full h-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -74,7 +74,7 @@ console.log(state)
         <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
         <br />
         <br />
-        <table className="w-full min-w-[2150px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
+        <table className="w-full min-w-[2250px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
           <thead className="text-[14px] text-gray-700 uppercase bg-white">
             <tr>
               <th scope="col" className="w-[50px] px-3 py-3">
@@ -84,10 +84,19 @@ console.log(state)
                 Estado
               </th>
               <th scope="col" className=" px-3 py-3">
+                Remitente
+              </th>
+              <th scope="col" className=" px-3 py-3">
+                DNI remitente
+              </th>
+              <th scope="col" className=" px-3 py-3">
+                Pais remitente
+              </th>
+              <th scope="col" className=" px-3 py-3">
                 Destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
-                DNI
+                DNI destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
                 Dirección
@@ -125,14 +134,23 @@ console.log(state)
             </tr>
           </thead>
           <tbody>
-            {remesasDB && remesasDB !== undefined && Object.values(userDB.historial).map((i, index) => {
+            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
               return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                 <td className="px-3 py-4  flex  ">
                   <span className='h-full flex py-2'>{index + 1}</span>
                 </td>
+                {/* {console.log(i['estado'])} */}
                 <td className="min-w-32 px-3 py-4  ">
-                  <Select arr={['en proceso', 'recibido', 'exitoso', 'rechazado']} name='estado' uuid={i.uuid} click={handlerSelect}/>
-                  {/* <span className={`inline-block py-5 px-10 ${i['estado'] == 'exitoso' && 'bg-green-500'} i['estado'] == 'en proceso' && 'bg-gray-100'}`}>{i['estado']}</span> */}
+                  <Select arr={['En proceso', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect}/>
+                </td>
+                <td className="min-w-32 px-3 py-4  ">
+                  {i['remitente']}
+                </td>
+                <td className="min-w-32 px-3 py-4  ">
+                  {i['dni remitente']}
+                </td>
+                <td className="min-w-32 px-3 py-4  ">
+                  {i['pais remitente']}
                 </td>
                 <td className="min-w-32 px-3 py-4  ">
                   {i['destinatario']}
@@ -172,8 +190,8 @@ console.log(state)
                 </td>
                 <td className="px-3 py-4">
                   {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
-                    ? <Button theme={"Success"} click={() => save(i)}>Guardar</Button>
-                    : <Button theme={"Disable"} click={() => manage(i)}>Desabilitado</Button>
+                    ? <Button theme={"Success"} click={() => save(i.uuid)}>Guardar</Button>
+                    : <Button theme={"Disable"}>Desabilitado</Button>
                   }
                 </td>
               </tr>
