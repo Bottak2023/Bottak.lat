@@ -24,7 +24,7 @@ export default function Home() {
   //   email.length !== 0 && password.length !== 0 ? signInWithEmailAndPassword(email, password, setUserSuccess) : setUserSuccess('Complete')
   // }
   // useEffect(() => {
-  //   user === undefined && onAuth(setUserProfile)
+  //   user === undefined && onAuth(setUserProfile, setUserData)
   //   if (user !== undefined && user !== null) router.replace('/Cliente')
   // }, [user]);
 
@@ -118,7 +118,7 @@ export default function Home() {
 
   }
   useEffect(() => {
-    if (user === undefined) onAuth(setUserProfile)
+    if (user === undefined) onAuth(setUserProfile, setUserData)
     user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
   }, [user, userDB])
 

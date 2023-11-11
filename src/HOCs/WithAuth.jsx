@@ -14,7 +14,7 @@ export function WithAuth(Component) {
 
         useEffect(() => {
 
-            if (user === undefined) onAuth(setUserProfile)
+            if (user === undefined) onAuth(setUserProfile, setUserData)
             // if(user === null) router.push('/')
             if (user !== undefined && user !== null && userDB === undefined) getSpecificData(`/users/${user.uid}`, setUserData)
             // if(user !== undefined && user !== null ) {

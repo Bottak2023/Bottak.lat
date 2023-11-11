@@ -19,13 +19,14 @@ function getData(setUserData) {
 async function getSpecificData(query, setUserSpecificData, callback) {
   try {
     const snapshot = await get(child(dbRef, `${query}`))
-    console.log(snapshot.exists())
+    console.log(query, snapshot.exists())
     if (snapshot.exists()) {
       setUserSpecificData(snapshot.val())
       callback && callback !== undefined ? callback() : ''
       return snapshot.val()
     } else {
       callback && callback !== undefined ? callback() : ''
+      setUserSpecificData(null)
       return null
     }
   } catch (error) {

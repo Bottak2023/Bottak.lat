@@ -65,7 +65,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // user == undefined && onAuth(setUserProfile)
+    // user == undefined && onAuth(setUserProfile, setUserData)
     // user && router.push('/Register')
   }, [user, success]);
 

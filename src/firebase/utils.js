@@ -15,7 +15,8 @@ function onAuth(setUserProfile, setUserData) {
       setUserProfile(user)
       // getData(setUserData)
     } else {
-      setUserProfile(user)
+      setUserProfile(null)
+      setUserData(null)
       // getData(setUserData)
     }
   });

@@ -12,10 +12,10 @@ export default function RootLayout({ children }) {
 
     const { user, userDB, setUserProfile, nav, setNav, userNav, setUserNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
     const router = useRouter()
-
+    console.log(user)
     console.log(userDB)
     useEffect(() => {
-        onAuth(setUserProfile)
+        onAuth(setUserProfile, setUserData)
         getSpecificData('divisas', setDivisas)
         getSpecificData(`/currencies/`, setCountries)
     }, [])

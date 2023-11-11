@@ -29,7 +29,7 @@ export default function Home({ children }) {
   }
 
   useEffect(() => {
-    if (user === undefined) onAuth(setUserProfile)
+    if (user === undefined) onAuth(setUserProfile, setUserData)
     user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
     // divisas === undefined && getSpecificData('currencies', setDivisas)
   }, [user, userDB, divisas])
