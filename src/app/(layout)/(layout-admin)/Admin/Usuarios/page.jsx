@@ -16,8 +16,6 @@ import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
 import { useEffect, useState, useRef } from 'react'
 
-
-
 function Home() {
     const { user, userDB, users, setUsers, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, item, setItem, modal, setModal } = useUser()
 
@@ -31,19 +29,7 @@ function Home() {
         setFilter(e.target.value)
     }
     async function deletConfirm() {
-        // await deleteUserData('Producto', item.uuid)
-        // await readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
-        // setModal(false)
-    }
-    async function habilitarConfirm() {
-        writeUserData(`users/${item}/profile`, { habilitado: true }, setUserSuccess)
-        return getSpecificData(`/users/`, setUsers)
-    }
-    async function desabilitarConfirm() {
-        writeUserData(`users/${item}/profile`, { habilitado: false }, setUserSuccess)
-        return getSpecificData(`/users/`, setUsers)
-
-        // await deleteUserData('Producto', item.uuid)
+        // await DELETEUserData('Producto', item.uuid)
         // await readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
         // setModal(false)
     }
@@ -51,8 +37,18 @@ function Home() {
         setItem(i)
         setModal(data)
     }
-    function handlerProfileIMG(img){
-       img === profileIMG ? setProfileIMG('') : setProfileIMG(img)
+    function handlerUpdate(route, data) {
+
+        console.log(item)
+
+        // writeUserData(`users/${item}/profile`, { habilitado: false }, setUserSuccess)
+        // return getSpecificData(`/users/`, setUsers)
+        // await DELETEUserData('Producto', item.uuid)
+        // await readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
+        // setModal(false)
+    }
+    function handlerProfileIMG(img) {
+        img === profileIMG ? setProfileIMG('') : setProfileIMG(img)
     }
     function handlerWhatsapp(num) {
         window.open(`https://api.whatsapp.com/send?phone=${num}&text=Buenas%20le%20hablamos%20de%20parte%20de%20Bottak`, '_blank')
@@ -87,9 +83,11 @@ function Home() {
     return (
         <main className='w-full h-full'>
             {profileIMG.length > 0 && <div className='fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40'></div>}
-            {modal === 'Delete' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
-            {modal === 'Habilitar' && <Modal theme="Primary" button="Habilitar" funcion={habilitarConfirm}>Estas seguro de habilitar al siguiente usuario:  {item['nombre']}</Modal>}
-            {modal === 'Desabilitar' && <Modal theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}>Estas seguro de Desabilitar al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'DELETE' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'HABILITAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('habilitado', true)}>Estas seguro de HABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'DESABILITAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('habilitado', false)}>Estas seguro de DESABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'BLOQUEAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('bloqueado', true)}>Estas seguro de BLOQUEAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'DESBLOQUEAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('bloqueado', false)}>Estas seguro de DESBLOQUEAR al siguiente usuario:  {item['nombre']}</Modal>}
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
@@ -155,13 +153,13 @@ function Home() {
                                     {i['pais']}
                                 </td>
                                 <td className="w-32 p-4">
-                                    <img src={i.image1} className={`${i.image1 === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={()=>handlerProfileIMG(i.image1)} alt="Apple Watch" />
+                                    <img src={i.image1} className={`${i.image1 === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={() => handlerProfileIMG(i.image1)} alt="Apple Watch" />
                                 </td>
                                 <td className="w-32 p-4">
-                                    <img src={i.image2} className={`${i.image2 === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={()=>handlerProfileIMG(i.image2)} alt="Apple Watch" />
+                                    <img src={i.image2} className={`${i.image2 === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={() => handlerProfileIMG(i.image2)} alt="Apple Watch" />
                                 </td>
                                 <td className="w-32 p-4">
-                                    <img src={i.image3} className={`${i.image3 === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={()=>handlerProfileIMG(i.image3)} alt="Apple Watch" />
+                                    <img src={i.image3} className={`${i.image3 === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={() => handlerProfileIMG(i.image3)} alt="Apple Watch" />
                                 </td>
                                 <td className="px-3 py-4 font-semibold text-gray-900 ">
                                     {i['whatsapp']}
@@ -193,19 +191,19 @@ function Home() {
                                     </div>
                                 </td>
                                 <td className="px-3 py-4 ">
-                                    {users && i['habilitado'] === false
-                                        ? <Button theme={"Primary"} click={() => manage(i, 'Habilitar')}>Habilitar</Button>
-                                        : <Button theme={"Danger"} click={() => manage(i, 'Desabilitar')}>Desabilitar</Button>
+                                    {(i['habilitado'] === undefined || i['habilitado'] === false)
+                                        ? <Button theme={"Danger"} click={() => manage(i, 'HABILITAR')}>Desabilitado</Button>
+                                        : <Button theme={"Success"} click={() => manage(i, 'DESABILITAR')}>Habilitado</Button>
                                     }
                                 </td>
                                 <td className="px-3 py-4 ">
-                                    {users && i['habilitado'] === false
-                                        ? <Button theme={"Primary"} click={() => manage(i, 'Habilitar')}>Habilitar</Button>
-                                        : <Button theme={"Danger"} click={() => manage(i, 'Desabilitar')}>Desabilitar</Button>
+                                    {(i['bloqueado'] === undefined || i['bloqueado'] === false)
+                                        ? <Button theme={"Success"} click={() => manage(i, 'BLOQUEAR')}>No bloqueado</Button>
+                                        : <Button theme={"Danger"} click={() => manage(i, 'DESBLOQUEAR')}>Bloqueado</Button>
                                     }
-                                </td>  
+                                </td>
                                 <td className="px-3 py-4 ">
-                                    <Button theme={"Danger"} click={() => manage(i, 'Delete')}>Eliminar</Button>
+                                    <Button theme={"Danger"} click={() => manage(i, 'DELETE')}>Eliminar</Button>
                                 </td>
                             </tr>
                         })
