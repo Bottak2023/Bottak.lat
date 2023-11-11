@@ -33,7 +33,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
 
                 <div className={`relative max-w-[600px] w-full ${theme == 'Success' && 'bg-[#29802731]'}  ${theme == 'Danger' && 'bg-[#AF3D5231]'} rounded-lg shadow p-5 `}>
                    
-                    <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setModal('')}>
+                    <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white" onClick={() => setModal('')}>
                         <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
@@ -118,7 +118,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
 //                     <div className='w-full flex justify-center'>
 //                         <img src="/logo.svg" className='w-[100px]' alt="User" />
 //                     </div>
-//                     <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setModal('')}>
+//                     <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white" onClick={() => setModal('')}>
 //                         <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
 //                             <path stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
 //                         </svg>

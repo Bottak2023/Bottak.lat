@@ -7,7 +7,7 @@ export default function Button({ styled, name, change }) {
             type="checkbox"
             name={name}
             onChange={change}
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" 
+            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300  dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" 
             />
     )
 }
@@ -100,11 +100,11 @@ export default function Button({ styled, name, change }) {
 //             <h5 className="text-[24px] font-medium text-white text-center">Iniciar Sesión</h5>
 //             <div>
 //               <label htmlFor="email" className="block mb-2 text-[14px] font-light text-left  text-white">Email</label>
-//               <Input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-[14px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+//               <Input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-[14px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 " placeholder="name@company.com" required />
 //             </div>
 //             <div>
 //               <label htmlFor="password" className="block mb-2  text-left  text-[14px] font-light text-white">Contraseña</label>
-//               <Input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-[14px] font-light  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+//               <Input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-[14px] font-light  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 " required />
 //             </div>
 //             <div className="flex items-start">
 //               <a href="#" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</a>

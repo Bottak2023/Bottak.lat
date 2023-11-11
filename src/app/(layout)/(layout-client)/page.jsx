@@ -153,7 +153,7 @@ function Page() {
         </form>
         : <div className='lg:h-full lg:py-20 w-full flex flex-col justify-around items-center h-[350px]'>
           <NavInit mobile={false} />
-          <div id="alert-additional-content-5" className="p-4 lg:m-5 lg:mt-[30px] border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 dark:bg-gray-800" role="alert">
+          <div id="alert-additional-content-5" className="p-4 lg:m-5 lg:mt-[30px] border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 " role="alert">
             <div className="flex items-center">
               <svg className="flex-shrink-0 w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#030712" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" fill="#030712" />
@@ -193,7 +193,7 @@ function Page() {
                   </defs>
                 </svg>
               </button>
-              {/* <button type="button" className="text-gray-800 bg-transparent border border-gray-700 hover:bg-gray-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:ring-gray-800 dark:text-gray-300 dark:hover:text-white" data-dismiss-target="#alert-additional-content-5" aria-label="Close">
+              {/* <button type="button" className="text-gray-800 bg-transparent border border-gray-700 hover:bg-gray-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:border-gray-600  dark:focus:ring-gray-800 dark:text-gray-300 dark:hover:text-white" data-dismiss-target="#alert-additional-content-5" aria-label="Close">
                 Atención al cliente
               </button> */}
             </div>

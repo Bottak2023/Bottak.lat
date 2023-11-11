@@ -5,21 +5,19 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
+import Tag from '@/components/Tag'
 import Loader from '@/components/Loader'
 import Modal from '@/components/Modal'
 import Select from '@/components/Select'
-
-import { useRouter } from 'next/navigation';
-
-
+import { estado as estadoCONST } from '@/constants/'
 
 export default function Home() {
 
   const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario } = useUser()
-  const router = useRouter()
   const [filter, setFilter] = useState('')
   const [state, setState] = useState({})
   const [remesasDB, setRemesasDB] = useState(undefined)
+  const [estado, setEstado] = useState('')
   const refFirst = useRef(null);
 
   function onChangeFilter(e) {
@@ -31,15 +29,11 @@ export default function Home() {
     return 0
   }
   function handlerSelect(name, i, uuid) {
-   console.log(uuid) 
-    setState({ ...state, [uuid]:{[name]: i} })
+    setState({ ...state, [uuid]: { [name]: i } })
   }
   function save(uuid) {
     setModal('Guardando...')
     writeUserData(`envios/${uuid}`, state[uuid], setUserSuccess, () => { setModal('') })
-  }
-  function redirect() {
-    router.push('/Register/Destinatario')
   }
   const prev = () => {
     requestAnimationFrame(() => {
@@ -71,17 +65,25 @@ export default function Home() {
       <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
         <h3 className='font-medium text-[14px]'>Transacciones</h3>
         <br />
-        <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
+        <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar por remitente, destinatario o DNI' />
+        <div className='min-w-[1900px] flex justify-start items-center my-5 '>
+          <h3 className="flex pr-12 text-[14px]" htmlFor="">Estado</h3>
+          <div className="grid grid-cols-4 gap-4 w-[700px] ">
+            {estadoCONST.map((i, index) => {
+              return <Tag theme={estado == i ? 'Primary' : 'Secondary'} click={() => setEstado(estado == i ? '' : i)}>{i}</Tag>
+            })}
+          </div>
+        </div>
         <br />
         <br />
-        <table className="w-full min-w-[2250px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
+        <table className="w-full min-w-[2500px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
           <thead className="text-[14px] text-gray-700 uppercase bg-white">
             <tr>
               <th scope="col" className="w-[50px] px-3 py-3">
                 #
               </th>
               <th scope="col" className=" px-3 py-3">
-                Estado
+                estado
               </th>
               <th scope="col" className=" px-3 py-3">
                 Remitente
@@ -135,13 +137,18 @@ export default function Home() {
           </thead>
           <tbody>
             {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
-              return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
+              return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) || 
+              (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) || 
+              (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) || 
+              (i['dni remitente'] !== undefined && i['dni remitente'].toLowerCase().includes(filter.toLowerCase()))) && 
+              (i.estado !== undefined && i.estado.toLowerCase().includes(estado.toLowerCase())) && 
+              <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                 <td className="px-3 py-4  flex  ">
                   <span className='h-full flex py-2'>{index + 1}</span>
                 </td>
                 {/* {console.log(i['estado'])} */}
                 <td className="min-w-32 px-3 py-4  ">
-                  <Select arr={['En proceso', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect}/>
+                  <Select arr={['En proceso', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
                 </td>
                 <td className="min-w-32 px-3 py-4  ">
                   {i['remitente']}

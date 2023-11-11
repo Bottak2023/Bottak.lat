@@ -106,10 +106,10 @@ export default function Home() {
                     <tbody>
                         {userDB && userDB !== undefined && userDB.destinatarios && userDB.destinatarios !== undefined && Object.values(userDB.destinatarios).map((i, index) => {
                             return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
-                                <td className="px-3 py-4  flex text-gray-900 dark:text-white">
+                                <td className="px-3 py-4  flex text-gray-900 ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
-                                <td className="px-3 py-4 text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 text-gray-900 ">
                                     {i['destinatario']}
                                 </td>
                                 <td className="w-32 p-3">

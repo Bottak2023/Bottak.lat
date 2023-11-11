@@ -116,7 +116,7 @@ function Home() {
             </div> */}
 
                 <table className="w-full overflow-visible min-w-[1500px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400">
-                    <thead className="text-[14px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                         <tr>
                             <th scope="col" className="px-3 py-3">
                                 #
@@ -153,17 +153,17 @@ function Home() {
                     <tbody>
                         {users && users !== undefined && Object.keys(users).map((i, index) => {
 
-                            return users[i].profile['nombre'].includes(filter) && <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
-                                <td className="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
+                            return users[i].profile['nombre'].includes(filter) && <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " key={index}>
+                                <td className="px-3 py-4  flex font-semibold text-gray-900 ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
-                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 ">
                                     {users[i].profile['nombre']}
                                 </td>
-                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 ">
                                     {users[i].profile['dni']}
                                 </td>
-                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 ">
                                     {users[i].profile['pais']}
                                 </td>
                                 <td className="w-32 p-4">
@@ -175,7 +175,7 @@ function Home() {
                                 <td className="w-32 p-4">
                                     <img src={users[i].profile.image3} alt="Apple Watch" />
                                 </td>
-                                <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <td className="px-3 py-4 font-semibold text-gray-900 ">
                                     {users[i].profile['whatsapp']}
                                 </td>
                                 <td className="px-3 py-4">

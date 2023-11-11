@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
 import Select from '@/components/Select'
-import Label from '@/components/Label'
+import Tag from '@/components/Tag'
 import Checkbox from '@/components/Checkbox'
 import { getDayMonthYear } from '@/utils/date'
 import { WithAuth } from '@/HOCs/WithAuth'
@@ -92,8 +92,8 @@ function Home() {
             <Confeti />
             <div className='lg:grid lg:grid-cols-2 lg:gap-5'>
                 <div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
-                    <table className=" w-[300px] lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
-                        <thead className="text-[14px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table className="w-full sm:w-[300px] lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
+                        <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                             <tr>
                                 <th scope="col-3" className="w-1/2 px-3 py-3">
                                 </th>

@@ -221,7 +221,7 @@ export default function Home() {
 //     return (
 //         <main>
 //             <table className=" w-[300px] lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
-//                 <thead className="text-[14px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+//                 <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
 //                     <tr>
 //                         <th scope="col-3" className="w-1/2 px-3 py-3">
 //                             Datos
@@ -232,74 +232,74 @@ export default function Home() {
 //                     </tr>
 //                 </thead>
 //                 <tbody>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-//                         <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
+//                         <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 ">
 //                         Remitente
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         {userDB && userDB.profile &&userDB.profile.nombre}
 //                         </td>
 //                     </tr>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-//                         <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 dark:text-white">
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
+//                         <td className="px-3 py-4  flex flex-col text-[14px] text-gray-700 ">
 //                         Destinatario
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         {destinatario.nombre && destinatario.nombre}
 //                         </td>
 //                     </tr>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Cuenta destinatario:
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         {destinatario.tarjeta && destinatario.tarjeta}
 //                         </td>
 //                     </tr>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
 
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Divisa:
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                          BOB
 //                         </td>
 //                     </tr>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
 
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Importe: 
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                           {transferencia}
 //                         </td>
 //                     </tr>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
 
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Fecha: 
 //                         </td>
 
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         {fecha}
 //                         </td>
 //                     </tr>
                     
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
 
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Estado:
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         En proceso
 //                         </td>
 //                      </tr>
-//                     <tr className="bg-white text-[14px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+//                     <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >
 
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Operacion:
 //                         </td>
-//                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+//                         <td className="px-3 py-4 font-semibold text-gray-900 ">
 //                         Envio
 //                         </td>
 //                     </tr>
