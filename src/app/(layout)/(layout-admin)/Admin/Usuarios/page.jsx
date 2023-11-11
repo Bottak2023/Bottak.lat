@@ -86,7 +86,7 @@ function Home() {
 
     return (
         <main className='w-full h-full'>
-            <div className='fixed top-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40'></div>
+            {profileIMG.length > 0 && <div className='fixed top-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40'></div>}
             {modal === 'Delete' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
             {modal === 'Habilitar' && <Modal theme="Primary" button="Habilitar" funcion={habilitarConfirm}>Estas seguro de habilitar al siguiente usuario:  {item['nombre']}</Modal>}
             {modal === 'Desabilitar' && <Modal theme="Danger" button="Desabilitar" funcion={desabilitarConfirm}>Estas seguro de Desabilitar al siguiente usuario:  {item['nombre']}</Modal>}
