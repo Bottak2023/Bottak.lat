@@ -26,64 +26,16 @@ const InvoicePDF = dynamic(() => import("@/components/pdf"), {
 
 
 function Home() {
+    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, fecha, setFecha, qr, setQr, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
     const router = useRouter()
     const searchParams = useSearchParams()
-
     const pathname = searchParams.get('uuid')
 
-    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, fecha, setFecha, qr, setQr, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
-
-    const [state, setState] = useState({})
-
-    const [postImage, setPostImage] = useState(null)
-    const [urlPostImage, setUrlPostImage] = useState(null)
-
-    const [account, setAccount] = useState('dependiente')
-
-
-    const handlerQRUrl = (e) => {
-        const qr = e
-        setQr(qr)
-
-    };
-
-
-    const inputRefCard = useMask({ mask: '____ ____ ____ ____', replacement: { _: /\d/ } });
-    const inputRefDate = useMask({ mask: '__/__', replacement: { _: /\d/ } });
-    const inputRefCVC = useMask({ mask: '___', replacement: { _: /\d/ } });
-    const inputRefPhone = useMask({ mask: '+ 591 _ ___ ___', replacement: { _: /\d/ } });
-    const inputRefWhatsApp = useMask({ mask: '+ 591 __ ___ ___', replacement: { _: /\d/ } });
-
-
-    function manageInputIMG(e) {
-        // const fileName = `${e.target.name}`
-        const file = e.target.files[0]
-
-        setPostImage(file)
-        setUrlPostImage(URL.createObjectURL(file))
-
-    }
-
-
-    function onChangeHandler(e) {
-        setState({ ...state, [e.target.name]: e.target.value })
-    }
-    function onChangeHandlerCheck(e) {
-        setState({ ...state, [e.target.name]: e.target.checked })
-    }
-    function onClickHandler(name, value) {
-        setState({ ...state, [name]: value })
-    }
-
-    console.log(transactionDB)
-    console.log(pathname)
 
     useEffect(() => {
         document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
         const date = getDayMonthYear()
-        // userDB === undefined && getSpecificData(`/users/${user.uuid}`, setUserData)
         transactionDB === undefined && getSpecificData(`/envios/${pathname}`, setTransactionDB)
-
     }, [user, userDB, qr, QRurl])
 
 
@@ -135,7 +87,7 @@ function Home() {
                                     {transactionDB.destinatario && transactionDB.destinatario}
                                 </td>
                             </tr>
-                            <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                 <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
                                     DNI destinatario
                                 </td>
@@ -143,7 +95,7 @@ function Home() {
                                     {transactionDB.dni && transactionDB.dni}
                                 </td>
                             </tr>
-                            <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                 <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
                                     Pais destinatario
                                 </td>
@@ -235,7 +187,7 @@ function Home() {
                     </table>
                 </div>
                 <div className='flex flex-col justify-center items-center w-full'>
-                    <div className='w-[150px] h-[150px]'>
+                    <div className='w-[150px] h-[150px] my-10'>
 
                         {transactionDB.uuid && <QRCode
                             id='qr'
@@ -255,7 +207,6 @@ function Home() {
                         />}
 
                     </div>
-                    <br /> <br />
                     {qr !== '' && <a
                         className="text-white bg-emerald-400 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-[14px] w-full mx-5 py-4 text-center z-50"
                         href={QRurl} download>Guardar ImagenQR</a>}
