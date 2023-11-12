@@ -161,7 +161,6 @@ function Home() {
                                 Envio
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
                 <div className='flex justify-center pt-5'>
