@@ -13,7 +13,7 @@ export default async function webScraping(req, res) {
         //     browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
         // })
 
-        const browser = await puppeteer.launch({headless: false});
+        const browser = await puppeteer.launch({headless: 'new'});
 
         const page = await browser.newPage()
         await page.setDefaultNavigationTimeout(0);

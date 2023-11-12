@@ -33,7 +33,7 @@ const cardsDB = [
 
 function Card({i}) {
   
-  return <Link href={i.url} className='block'>
+  return <Link href={i.url} >
     <div className='w-full sm:min-w-[300px] sm:max-w-[500px] bg-[#7700ff] flex flex-col justify-center items-center rounded-[20px] p-5'>
       <img src={i.img} className='block h-[100px] mb-5' alt={i.title} />
       <Button theme='Primary' >{i.title}</Button>
