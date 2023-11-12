@@ -1,24 +1,16 @@
 'use client'
 
 
-import { writeUserData } from '@/firebase/database'
-// import { uploadStorage } from '@/supabase/storage'
+import { writeUserData, getSpecificData } from '@/firebase/database'
 import { useState } from 'react'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
-import Select from '@/components/Select'
 import Label from '@/components/Label'
-
-
-
 import SelectCountry from '@/components/SelectCountry'
-
-
 import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
-
 
 function Home() {
     const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia, countries, setCountries } = useUser()
@@ -37,8 +29,8 @@ function Home() {
     }
     function save(e) {
         e.preventDefault()
-        writeUserData(`users/${user.uid}`, { ...state, image1, image2, image3, pais: select3, rol: 'Cliente', uuid: user.uid, habilitado: false, bloqueado: false}, setUserSuccess,)
-        transferencia ? router.push('/Register/Destinatario') : router.push('/')
+        writeUserData(`users/${user.uid}`, { ...state, image1, image2, image3, rol: 'Cliente', uuid: user.uid, habilitado: false, bloqueado: false}, setUserSuccess, getSpecificData(`/users/${user.uid}`, setUserData))
+        transferencia ? router.replace('/Register/Destinatario') : router.replace('/')
     }
     return (
         <form className='relative portrait:min-h-[87vh] space-y-6 w-full  ' onSubmit={save}>

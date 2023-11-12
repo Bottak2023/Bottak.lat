@@ -120,10 +120,10 @@ export default function Navbar({ children }) {
                                     </svg>
                                 </button>
                                 : user !== null && user !== undefined
-                                    ? <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] hover:text-yellow-300 sm:hidden" onClick={handleSignOut}>
+                                    ? <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] sm:hover:text-yellow-300 sm:hidden" onClick={handleSignOut}>
                                         Cerrar Sesion
                                     </button>
-                                    : <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] hover:text-yellow-300 sm:hidden" onClick={() => router.push('/Login')}>
+                                    : <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] sm:hover:text-yellow-300 sm:hidden" onClick={() => router.push('/Login')}>
                                         Iniciar Sesión
                                     </button>
                             }
@@ -223,41 +223,12 @@ export default function Navbar({ children }) {
                     //     Iniciar Sesión
                     // </Link>
                 }
-
-
             </ul>
         </>
     )
 }
 
-{/* <button type="button" className="inline-flex items-center text-gray-100  ml-4" onClick={() => setUserNav(!userNav)}>
-    <span className="sr-only">Open menu</span>
-    <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 0C16.9891 0 18.8968 0.632141 20.3033 1.75736C21.7098 2.88258 22.5 4.4087 22.5 6C22.5 7.5913 21.7098 9.11742 20.3033 10.2426C18.8968 11.3679 16.9891 12 15 12C13.0109 12 11.1032 11.3679 9.6967 10.2426C8.29018 9.11742 7.5 7.5913 7.5 6C7.5 4.4087 8.29018 2.88258 9.6967 1.75736C11.1032 0.632141 13.0109 0 15 0ZM15 15C23.2875 15 30 17.685 30 21V24H0V21C0 17.685 6.7125 15 15 15Z" fill="white" />
-    </svg>
-</button>  */}
 
 
 
-// <div className={`relative sm:absolute h-[125px] top-0 pt-[70px]  grid grid-cols-3 gapx-3 py-3  w-[100vw]   transition-all	z-20 px-[10px]  ${userNav ? 'top-0 ' : 'top-[-100vw]'}`} >
-// <Tag theme='Primary'>Historial</Tag>  <Tag theme='Primary'>Historial</Tag>   <Tag theme='Primary'>Historial</Tag>
-// </div>
 
-
-// <div className={`relative sm:absolute  top-0 pt-[3px] items-center justify-between   transition-all	z-50  hidden lg:flex  right-[100px]`} >
-// <ul className="flex bg-transparent p- mt-4 font-regular text-[12px]">
-//     <li>
-//         <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px] sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Remesas</Link>
-//     </li>
-//     <li>
-//         <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Cambios</Link>
-//     </li>
-//     {userDB && userDB.rol && userDB.rol === 'Cliente' &&
-//         <li>
-//             <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>Mis Remesas</Link>
-//         </li>}
-//     <li>
-//         <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Tracking</Link>
-//     </li>
-// </ul>
-// </div> 
