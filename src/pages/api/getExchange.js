@@ -1,5 +1,5 @@
 // import puppeteer from "puppeteer";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 // import NextCors from 'nextjs-cors';
 
 // import chromium from "chrome-aws-lambda"
@@ -9,11 +9,11 @@ export default async function webScraping(req, res) {
     console.log(req.body.divisas)
 
     if (req.method === "POST") {
-        const browser = await puppeteer.connect({
-            browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
-        })
+        // const browser = await puppeteer.connect({
+        //     browserWSEndpoint: `wss://chrome.browserless.io?token=3f0d97ad-6529-41ea-8431-2b631bfc983d`,
+        // })
 
-        // const browser = await puppeteer.launch({headless: false});
+        const browser = await puppeteer.launch({headless: false});
 
         const page = await browser.newPage()
         await page.setDefaultNavigationTimeout(0);
