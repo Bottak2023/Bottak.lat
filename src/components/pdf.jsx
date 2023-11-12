@@ -126,7 +126,7 @@ const PDFView = () => {
                 fileName='Reporte'>
 
                 {({ blob, url, loading, error }) =>
-                    <Button theme={'Primary'}> {'Descargar PDF'}</Button>
+                    <Button theme={'Primary'}> {'Descargar PDF Baucher'}</Button>
                 }
             </PDFDownloadLink>}
         </div>
