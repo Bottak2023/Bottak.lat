@@ -15,7 +15,6 @@ export default function Page({ styled, name, change }) {
         e.preventDefault()
         setWebScann(!webScann)
     }
-console.log(filterQR)
 
     return (<div className='bg-red-500'>
         <h3>Rastrea tu dinero facilmente</h3>
