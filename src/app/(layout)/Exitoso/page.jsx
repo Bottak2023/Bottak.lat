@@ -31,7 +31,7 @@ function Home() {
             <Confeti />
             <div className='lg:grid lg:grid-cols-2 lg:gap-5'>
                 <div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
-                    <table className="w-full sm:w-[300px] lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
+                    <table className="w-full  lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
                         <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                             <tr>
                                 <th scope="col-3" className="w-1/2 px-3 py-3">
