@@ -194,7 +194,7 @@ function Home() {
                     {qr !== '' && <a
                         className="text-white bg-emerald-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px] w-full mx-5 py-3 text-center z-50"
                         href={QRurl} download>Guardar QR Baucher</a>}
-                    <div className='py-5'>
+                    <div className='w-full py-5'>
                         {qr !== '' && <InvoicePDF dbUrl={QRurl} />}
                     </div>
                 </div>
