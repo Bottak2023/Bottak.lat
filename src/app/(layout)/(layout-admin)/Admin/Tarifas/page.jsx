@@ -1,7 +1,7 @@
 'use client';
 import { useUser } from '@/context/Context'
 import { getSpecificData, writeUserData } from '@/firebase/database'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef  } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
@@ -20,6 +20,7 @@ export default function Home() {
   const [filter, setFilter] = useState('')
   const [state, setState] = useState({})
   const [temporal, setTemporal] = useState(undefined)
+  const refFirst = useRef(null);
 
   function onChangeFilter(e) {
     setFilter(e.target.value)
@@ -70,35 +71,52 @@ export default function Home() {
 
   const getCurrencyExchange = async (input, output) => {
     const arr = Object.values(divisas).filter(i => i.habilitado !== undefined && i.habilitado === true && i.code !== 'USD').map(i => i.code)
-    if(arr.length === 0){
+    if (arr.length === 0) {
       return
     }
     const res = await fetch('/api/getExchange', {
       method: 'POST',
-      body: JSON.stringify({divisas: arr}),
+      body: JSON.stringify({ divisas: arr }),
       headers: new Headers({
-          'Content-Type': 'application/json; charset=UTF-8'
-        })
+        'Content-Type': 'application/json; charset=UTF-8'
+      })
     })
-     const data = await res.json()
-     console.log(data)
+    const data = await res.json()
+    console.log(data)
 
-     setExchange(data) 
+    setExchange(data)
   }
 
-  console.log(item)
-  console.log(state)
+  const prev = () => {
+    requestAnimationFrame(() => {
+      const scrollLeft = refFirst.current.scrollLeft;
+      console.log(scrollLeft)
+      const itemWidth = screen.width - 50
+      refFirst.current.scrollLeft = scrollLeft - itemWidth;
+    });
+  };
+  const next = () => {
+    requestAnimationFrame(() => {
+      const scrollLeft = refFirst.current.scrollLeft;
+      console.log(scrollLeft)
+      const itemWidth = screen.width - 50
+      console.log(itemWidth)
+      refFirst.current.scrollLeft = scrollLeft + itemWidth;
+    });
+  };
   useEffect(() => {
     divisas !== undefined && exchange === undefined && getCurrencyExchange()
   }, [divisas]);
 
   return (
-    <main className='h-full'>
+    <main className='h-full w-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
       {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
       {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
+      <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
+      <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
 
-      <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
+      <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
         <h3 className='font-medium text-[14px]'>Lista De Cambios</h3>
         <br />
         <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />

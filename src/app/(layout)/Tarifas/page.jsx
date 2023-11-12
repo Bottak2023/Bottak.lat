@@ -1,11 +1,12 @@
 'use client';
 import { useUser } from '@/context/Context'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef  } from 'react'
 
 export default function Home() {
 
     const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, } = useUser()
     const [filter, setFilter] = useState('')
+    const refFirst = useRef(null);
 
     function onChangeFilter(e) {
         setFilter(e.target.value)
@@ -15,10 +16,28 @@ export default function Home() {
         if (x['translation']['spa']['common'].toLowerCase() > y['translation']['spa']['common'].toLowerCase()) { return 1 }
         return 0
     }
-    
+    const prev = () => {
+        requestAnimationFrame(() => {
+          const scrollLeft = refFirst.current.scrollLeft;
+          console.log(scrollLeft)
+          const itemWidth = screen.width - 50
+          refFirst.current.scrollLeft = scrollLeft - itemWidth;
+        });
+      };
+      const next = () => {
+        requestAnimationFrame(() => {
+          const scrollLeft = refFirst.current.scrollLeft;
+          console.log(scrollLeft)
+          const itemWidth = screen.width - 50
+          console.log(itemWidth)
+          refFirst.current.scrollLeft = scrollLeft + itemWidth;
+        });
+      };
     return (
-        <main className='h-full'>
-            <div className="relative left-0 h-full overflow-x-auto shadow-md p-5 lg:p-10 bg-white min-h-[80vh]">
+        <main className='w-full h-full'>
+            <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
+            <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
+            <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
                 <h3 className='font-medium text-[14px]'>Lista De Cambios</h3>
                 <br />
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
