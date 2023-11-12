@@ -17,7 +17,7 @@ export default function Page({ styled, name, change }) {
     }
 
     return (<div className='min-h-[80vh]'>
-        <h3 className='text-white text-center'>Rastrea tu dinero facilmente</h3>
+        <h3 className='text-white text-center pb-5'>Rastrea tu dinero facilmente</h3>
         <label htmlFor="qr" className='w-[90vw] relative mb-3 left-0 right-0 m-auto  max-w-[600px] lg:min-w-[600px] border-[5px] border-[#000000] flex justify-between items-center text-gray-950 text-[14px] h-[50px] bg-[#FFF500] rounded-full py-[5px] px-[10px] lg:px-[20px] z-20' >
             <span className=''>
                 <svg width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
