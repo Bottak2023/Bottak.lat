@@ -1,12 +1,7 @@
 'use client';
-import { useUser } from '@/context/Context'
-import { onAuth, signUpWithEmail } from '@/firebase/utils'
-import { useEffect } from 'react'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import Button from '@/components/Button'
-import { useRouter } from 'next/navigation';
-
 
 const cardsDB = [
   {
@@ -48,11 +43,10 @@ function Card({i}) {
 
 
 export default function Home() {
-  const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG } = useUser()
 
   return (
     <main className='w-full h-full relative flex flex-col justify-center  lg:justify-start items-center p-5 '>
-      <div className='lg:grid  lg:grid-cols-3  lg:gap-5 justify-between items-end '>
+      <div className='space-y-8 sm:space-y-0 lg:grid  lg:grid-cols-3  lg:gap-5 justify-between items-end '>
         {
           cardsDB.map((i) => <Card i={i} key={i.title} />)
         }
