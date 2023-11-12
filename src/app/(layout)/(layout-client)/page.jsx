@@ -108,7 +108,7 @@ function Page() {
     <>
       {/* {modalINFO && <ModalInfo theme="Alert">
         Nuestro sistema bottak.lat esta en matenimiento, <br />
-        de momento todas las transacciones lo estamos llevando a cabo de manera manual, <br />
+        de momento todas las Remesas lo estamos llevando a cabo de manera manual, <br />
         contactanos en soporte por favor.
       </ModalInfo>} */}
       {modal === 'registrate' && <ModalINFO theme={'Danger'} alert={false} button="Iniciar Sesión" funcion={() => handlerRedirect('/Login')} >Inicia Sesión para continuar con tu transacción</ModalINFO>}

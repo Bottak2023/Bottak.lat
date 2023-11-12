@@ -156,9 +156,9 @@ export default function Navbar({ children }) {
                                 <Profile />
                                 Admin
                             </Link>}
-                            <Link href="/Transacciones" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Link href="/Remesas" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                                 <Historial />
-                                Transacciones
+                                Remesas
                             </Link>
                             {user !== null && user !== undefined
                                 ? <button className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px] hover:bg-gray-100 sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={signOutHandler}>
@@ -262,7 +262,7 @@ export default function Navbar({ children }) {
 //     </li>
 //     {userDB && userDB.rol && userDB.rol === 'Cliente' &&
 //         <li>
-//             <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>Mis Transacciones</Link>
+//             <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>Mis Remesas</Link>
 //         </li>}
 //     <li>
 //         <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>Tracking</Link>
