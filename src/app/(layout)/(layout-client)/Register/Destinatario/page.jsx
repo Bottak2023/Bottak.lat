@@ -27,7 +27,7 @@ function Home() {
     }
     const redirectHandler = (route, data) => {
         setDestinatario(data)
-        router.push(route)
+        router.replace(route)
     }
     function save(e) {
         e.preventDefault()

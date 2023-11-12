@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <main className='w-full  relative flex flex-col justify-center items-center p-5 '>
-      <div className='w-auto bg-yellow-500  min-h-full space-y-12 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-3   '>
+      <div className='w-full bg-yellow-500  min-h-full space-y-12 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-3   '>
         {
           cardsDB.map((i) => <Card i={i} key={i.title} />)
         }

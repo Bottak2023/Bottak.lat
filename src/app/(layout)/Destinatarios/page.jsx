@@ -35,7 +35,7 @@ export default function Home() {
     }
     function save(i) {
         setDestinatario(i)
-        router.push('/Confirm/')
+        router.replace('/Confirm/')
     }
     function redirect() {
         router.push('/Register/Destinatario')

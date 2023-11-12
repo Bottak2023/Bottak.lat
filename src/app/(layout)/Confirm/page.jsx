@@ -19,7 +19,7 @@ function Home() {
 
     const inputRefWhatsApp = useMask({ mask: '+ 591 __ ___ ___', replacement: { _: /\d/ } });
     const redirectHandler = (route) => {
-        router.push(route)
+        router.replace(route)
     }
     function save(e) {
         e.preventDefault()
