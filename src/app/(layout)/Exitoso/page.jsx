@@ -29,8 +29,8 @@ function Home() {
     return (
         transactionDB && transactionDB !== undefined && <main>
             <Confeti />
-            <div className='lg:grid lg:grid-cols-2 lg:gap-5'>
-                <div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
+            <div className='left-0 right-0 mx-auto lg:grid lg:grid-cols-2 lg:gap-5'>
+                <div className='relative  sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
                     <table className="w-full  lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
                         <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                             <tr>
@@ -193,7 +193,7 @@ function Home() {
                     </div>
                     {qr !== '' && <a
                         className="text-white bg-emerald-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px] w-full sm:max-w-[250px] mx-5 py-3 text-center z-50"
-                        href={QRurl} download>Guardar QR Baucher</a>}
+                        href={QRurl} download>Decargar QR Baucher</a>}
                     <div className='w-full text-center py-5'>
                         {qr !== '' && <InvoicePDF dbUrl={QRurl} />}
                     </div>
