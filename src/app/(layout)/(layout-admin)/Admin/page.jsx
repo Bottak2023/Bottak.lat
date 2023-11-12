@@ -7,27 +7,27 @@ const cardsDB = [
   {
     title: 'Usuarios',
     img: '/usuarios.png',
-    url: '/Usuarios',
+    url: '/Admin/Usuarios',
   },
   {
     title: 'Remesas',
     img: '/remesas.png',
-    url: '/Remesas',
+    url: '/Admin/Remesas',
   },
   {
     title: 'Cambios',
     img: '/cambios.png',
-    url: '/Cambios',
+    url: '/Admin/Cambios',
   },
   {
     title: 'Tarifas y comisiones',
     img: '/tarifas.png',
-    url: '/Tarifas',
+    url: '/Admin/Tarifas',
   },
   {
     title: 'Paises',
     img: '/paises.png',
-    url: '/Paises',
+    url: '/Admin/Paises',
   },
 ]
 
@@ -45,8 +45,8 @@ function Card({i}) {
 export default function Home() {
 
   return (
-    <main className='w-full  relative flex flex-col justify-center items-center p-5 '>
-      <div className='w-full bg-yellow-500  min-h-full space-y-12 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-3   '>
+    <main className='w-full  relative flex flex-col justify-center items-center '>
+      <div className='w-full   min-h-full space-y-12 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-3   '>
         {
           cardsDB.map((i) => <Card i={i} key={i.title} />)
         }
