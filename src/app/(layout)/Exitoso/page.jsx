@@ -1,21 +1,11 @@
 'use client'
 
-
 import { writeUserData, getSpecificData } from '@/firebase/database'
-// import { uploadStorage } from '@/supabase/storage'
 import { useEffect, useState } from 'react'
 import { useUser } from '@/context/Context.js'
-import Input from '@/components/Input'
-import Select from '@/components/Select'
-import Tag from '@/components/Tag'
-import Checkbox from '@/components/Checkbox'
 import { getDayMonthYear } from '@/utils/date'
 import { WithAuth } from '@/HOCs/WithAuth'
-
-import Button from '@/components/Button'
-import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
-// import { WithAuth } from '@/HOCs/WithAuth'
 import dynamic from 'next/dynamic'
 import Confeti from '@/components/Confeti';
 import QRCode from "qrcode.react";
@@ -24,20 +14,17 @@ const InvoicePDF = dynamic(() => import("@/components/pdf"), {
     ssr: false,
 });
 
-
 function Home() {
     const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, fecha, setFecha, qr, setQr, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
     const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = searchParams.get('uuid')
 
-
     useEffect(() => {
         document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
         const date = getDayMonthYear()
         transactionDB === undefined && getSpecificData(`/envios/${pathname}`, setTransactionDB)
     }, [user, userDB, qr, QRurl])
-
 
     return (
         transactionDB && transactionDB !== undefined && <main>
@@ -188,7 +175,6 @@ function Home() {
                 </div>
                 <div className='flex flex-col justify-center items-center w-full'>
                     <div className='w-[150px] h-[150px] my-10'>
-
                         {transactionDB.uuid && <QRCode
                             id='qr'
                             size={256}
@@ -203,9 +189,7 @@ function Home() {
                                 width: 100,
                                 height: 100
                             }}
-
                         />}
-
                     </div>
                     {qr !== '' && <a
                         className="text-white bg-emerald-400 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-[14px] w-full mx-5 py-4 text-center z-50"
@@ -214,11 +198,8 @@ function Home() {
                 <div>
                     {qr !== '' && <InvoicePDF dbUrl={QRurl} />}
                 </div>
-
             </div>
         </main >
-
-
     )
 }
 
