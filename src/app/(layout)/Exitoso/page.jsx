@@ -135,6 +135,22 @@ function Home() {
                                     {transactionDB.destinatario && transactionDB.destinatario}
                                 </td>
                             </tr>
+                            <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                                <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                    DNI destinatario
+                                </td>
+                                <td className="px-2 py-2  text-gray-900 ">
+                                    {transactionDB.dni && transactionDB.dni}
+                                </td>
+                            </tr>
+                            <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                                <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                    Pais destinatario
+                                </td>
+                                <td className="px-2 py-2  text-gray-900 ">
+                                    {transactionDB.pais && transactionDB.pais}
+                                </td>
+                            </tr>
                             <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                 <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
                                     Celular de destinatario

@@ -91,6 +91,22 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                DNI destinatario
+                            </td>
+                            <td className="px-2 py-2  text-gray-900 ">
+                                {destinatario.dni && destinatario.dni}
+                            </td>
+                        </tr>
+                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                Pais destinatario
+                            </td>
+                            <td className="px-2 py-2  text-gray-900 ">
+                                {destinatario.pais && destinatario.pais}
+                            </td>
+                        </tr>
+                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
                                 Celular de destinatario
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">

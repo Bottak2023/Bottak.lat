@@ -29,7 +29,6 @@ const ParticleBackground = props => {
 
   const { settings } = props;
   const [settingsWithDefaults, setSettingsWithDefaults] = useState(merge(defaults, settings));
-  console.log(settingsWithDefaults);
 
   const updateFrequency = 1000/60;
 

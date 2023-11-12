@@ -51,7 +51,6 @@ export default function WebCamp({ takePhoto }) {
                             audio={false}
                             height={height}
                             ref={webcamRef1}
-
                             screenshotFormat="image/webp"
                             width={width}
                             videoConstraints={videoConstraints}

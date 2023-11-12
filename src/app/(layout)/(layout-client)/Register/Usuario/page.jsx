@@ -29,8 +29,8 @@ function Home() {
     function onChangeHandler(e) {
         setState({ ...state, [e.target.name]: e.target.value })
     }
-    const handlerSelect = (i) => {
-        setSelect3(i)
+    const handlerCountrySelect = (i) => {
+        setState({ ...state, ['pais']: i })
     }
     const handlerIsSelect = () => {
         setIsSelect3(!isSelect3)
@@ -56,7 +56,7 @@ function Home() {
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Pais</Label>
-                    <SelectCountry onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select3} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} />
+                    <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect}/>
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Dirección</Label>

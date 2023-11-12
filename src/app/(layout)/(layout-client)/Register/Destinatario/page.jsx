@@ -19,15 +19,14 @@ function Home() {
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
     }
-    const handlerSelect = (i) => {
-        setSelect3(i)
+    const handlerCountrySelect = (i) => {
+        setDestinatario({ ...destinatario, ['pais']: i })
     }
     const handlerIsSelect = () => {
         setIsSelect3(!isSelect3)
     }
     const redirectHandler = (route, data) => {
         setDestinatario(data)
-
         router.push(route)
     }
     function save(e) {
@@ -35,50 +34,9 @@ function Home() {
         e.stopPropagation()
         const uuid = generateUUID()
         const date = new Date().getTime()
-        const fecha = getDayMonthYear(date)
-        // const db = {
-        //     ...destinatario,
-        //     remitente: userDB && userDB.profile && userDB.profile.nombre,
-        //     ['divisa de envio']: select,
-        //     importe: transferencia,
-        //     ['divisa de receptor']: select2,
-        //     cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
-        //     fecha,
-        //     date,
-        //     estado: 'en proceso',
-        //     operacion: 'envio',
-        //     uuid,
-        // }
         const destinatarioDB = {...destinatario, uuid}
         writeUserData(`users/${user.uid}/destinatarios/${uuid}`, { ...destinatario, uuid }, setUserSuccess, redirectHandler('/Confirm', destinatarioDB))
-        // writeUserData(`envios/${uuid}`, db, setUserSuccess, redirectHandler('/Confirm'))
     }
-
-    async function handlerTransfer(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        const body = {
-            currency: select,
-            amount: transferencia,
-            comision: ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
-                ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
-                ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
-        }
-        const res = await fetch('/api', {
-            method: 'POST',
-            body: JSON.stringify({
-                type: 'Envio de Remesa',
-                ...body
-            }),
-            headers: new Headers({
-                'Content-Type': 'application/json; charset=UTF-8'
-            })
-        })
-        const data = await res.json()
-        window.open(data.url, "_self")
-        return
-    }
-
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
@@ -108,7 +66,7 @@ function Home() {
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Pais</Label>
-                <SelectCountry onChange="Transference" placeholder='Monto a transferir' propHandlerSelect={handlerSelect} propSelect={select3} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} />
+                <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect}/>
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Dirección</Label>
@@ -129,6 +87,29 @@ export default WithAuth(Home)
 
 
 
-
-
+//----------------------IMPORTANT---------------------------
+// async function handlerTransfer(e) {
+//     e.preventDefault()
+//     e.stopPropagation()
+//     const body = {
+//         currency: select,
+//         amount: transferencia,
+//         comision: ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1']) ||
+//             ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2']) ||
+//             ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']),
+//     }
+//     const res = await fetch('/api', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             type: 'Envio de Remesa',
+//             ...body
+//         }),
+//         headers: new Headers({
+//             'Content-Type': 'application/json; charset=UTF-8'
+//         })
+//     })
+//     const data = await res.json()
+//     window.open(data.url, "_self")
+//     return
+// }
 

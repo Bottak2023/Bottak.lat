@@ -29,26 +29,24 @@ function Home() {
         setFilter(e.target.value)
     }
     async function deletConfirm() {
-        // await DELETEUserData('Producto', item.uuid)
-        // await readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
-        // setModal(false)
+        await removeData(`users/${item.uuid}/`, setUserSuccess)
     }
     function manage(i, data) {
         setItem(i)
         setModal(data)
     }
-    function handlerUpdate(route, data) {
-
-        console.log(item)
-
-        // writeUserData(`users/${item}/profile`, { habilitado: false }, setUserSuccess)
-        // return getSpecificData(`/users/`, setUsers)
-        // await DELETEUserData('Producto', item.uuid)
-        // await readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
-        // setModal(false)
+    function handlerUpdate(key, data) {
+        setModal()
+        writeUserData(`users/${item.uuid}/`, { [key]: data }, setUserSuccess)
+        getSpecificData(`/users/`, setUsers)
     }
+    console.log(filter)
+
     function handlerProfileIMG(img) {
-        img === profileIMG ? setProfileIMG('') : setProfileIMG(img)
+        setProfileIMG(img)
+    }
+    function closeProfileIMG() {
+        setProfileIMG('') 
     }
     function handlerWhatsapp(num) {
         window.open(`https://api.whatsapp.com/send?phone=${num}&text=Buenas%20le%20hablamos%20de%20parte%20de%20Bottak`, '_blank')
@@ -82,7 +80,7 @@ function Home() {
 
     return (
         <main className='w-full h-full'>
-            {profileIMG.length > 0 && <div className='fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40'></div>}
+            {profileIMG.length > 0 && <div className='fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40' onClick={closeProfileIMG}></div>}
             {modal === 'DELETE' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
             {modal === 'HABILITAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('habilitado', true)}>Estas seguro de HABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
             {modal === 'DESABILITAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('habilitado', false)}>Estas seguro de DESABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
@@ -93,7 +91,7 @@ function Home() {
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
                 <h3 className='font-medium text-[14px]'>Lista De Usuarios</h3>
                 <br />
-                <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario' />
+                <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario por nombre o DNI' />
                 <br />
                 <br />
                 <table className="w-full min-w-[1800px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
@@ -139,11 +137,12 @@ function Home() {
                     </thead>
                     <tbody>
                         {users && users !== undefined && Object.values(users).map((i, index) => {
-                            return i['nombre'].toLowerCase().includes(filter.toLowerCase()) && <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " key={index}>
+                            return (i['nombre'].toLowerCase().includes(filter.toLowerCase()) || i['dni'].toLowerCase().includes(filter.toLowerCase())) &&
+                             <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " key={index}>
                                 <td className="px-3 py-4  flex font-semibold text-gray-900 ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
-                                <td className="px-3 py-4 font-semibold text-gray-900 ">
+                                <td className="min-w-[200px] px-3 py-4 font-semibold text-gray-900 ">
                                     {i['nombre']}
                                 </td>
                                 <td className="px-3 py-4 font-semibold text-gray-900 ">
