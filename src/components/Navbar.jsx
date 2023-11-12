@@ -148,7 +148,7 @@ export default function Navbar({ children }) {
                                 <Profile />
                                 Admin
                             </Link>}
-                            <Link href="/Remesas" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Link href="/Transacciones" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                                 <Historial />
                                 Transacciones
                             </Link>
