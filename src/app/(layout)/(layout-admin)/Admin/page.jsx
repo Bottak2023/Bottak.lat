@@ -46,7 +46,7 @@ export default function Home() {
       <div className='space-y-12 lg:grid  lg:grid-cols-3  lg:gap-5 justify-between items-end '>
 
         <div className='w-[350px] bg-white flex flex-col justify-center items-center rounded-[20px] p-5' onClick={()=>handlerRedirect('Admin/Usuarios')}>
-          <svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50.75 86.75C38.25 86.75 27.2 80.35 20.75 70.75C20.9 60.75 40.75 55.25 50.75 55.25C60.75 55.25 80.6 60.75 80.75 70.75C77.4444 75.672 72.9793 79.7058 67.7478 82.4959C62.5163 85.286 56.679 86.7469 50.75 86.75ZM50.75 15.75C54.7282 15.75 58.5436 17.3304 61.3566 20.1434C64.1696 22.9564 65.75 26.7718 65.75 30.75C65.75 34.7282 64.1696 38.5436 61.3566 41.3566C58.5436 44.1696 54.7282 45.75 50.75 45.75C46.7718 45.75 42.9564 44.1696 40.1434 41.3566C37.3304 38.5436 35.75 34.7282 35.75 30.75C35.75 26.7718 37.3304 22.9564 40.1434 20.1434C42.9564 17.3304 46.7718 15.75 50.75 15.75ZM50.75 0.75C44.1839 0.75 37.6821 2.04329 31.6158 4.55602C25.5495 7.06876 20.0376 10.7517 15.3947 15.3947C6.01784 24.7715 0.75 37.4892 0.75 50.75C0.75 64.0108 6.01784 76.7285 15.3947 86.1053C20.0376 90.7483 25.5495 94.4312 31.6158 96.944C37.6821 99.4567 44.1839 100.75 50.75 100.75C64.0108 100.75 76.7285 95.4822 86.1053 86.1053C95.4822 76.7285 100.75 64.0108 100.75 50.75C100.75 23.1 78.25 0.75 50.75 0.75Z" fill="black" />
           </svg>
           <br />
@@ -54,7 +54,7 @@ export default function Home() {
         </div>
 
         <div className='w-[350px] bg-white flex flex-col justify-center items-center rounded-[20px] p-5' onClick={()=>handlerRedirect('Admin/Cambios')}>
-          <svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50.6831 100.677C23.0681 100.677 0.683105 78.2916 0.683105 50.6766C0.683105 23.0616 23.0681 0.676636 50.6831 0.676636C78.2981 0.676636 100.683 23.0616 100.683 50.6766C100.683 78.2916 78.2981 100.677 50.6831 100.677ZM50.6831 35.6766H30.6831V45.6766H75.6831L50.6831 20.6766V35.6766ZM25.6831 55.6766L50.6831 80.6766V65.6766H70.6831V55.6766H25.6831Z" fill="black" />
           </svg>
           <br />
@@ -63,7 +63,7 @@ export default function Home() {
 
         <div className='w-[350px] bg-white flex flex-col justify-center items-center rounded-[20px] p-5' onClick={()=>handlerRedirect('Admin/Transacciones')}>
           <span className='bg-white'>
-            <svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50.6831 100.677C23.0681 100.677 0.683105 78.2916 0.683105 50.6766C0.683105 23.0616 23.0681 0.676636 50.6831 0.676636C78.2981 0.676636 100.683 23.0616 100.683 50.6766C100.683 78.2916 78.2981 100.677 50.6831 100.677ZM50.6831 35.6766H30.6831V45.6766H75.6831L50.6831 20.6766V35.6766ZM25.6831 55.6766L50.6831 80.6766V65.6766H70.6831V55.6766H25.6831Z" fill="black" />
           </svg>
           </span>
