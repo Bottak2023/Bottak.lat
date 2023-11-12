@@ -31,9 +31,9 @@ function Home() {
     }
 
     return (
-        <div className='space-y-6'>
-            <div className='w-full border-b-[2px] border-gray-100 lg:hidden'>
-                <h3 className='text-center pb-3 text-white  text-right'>Bienvenido {user ? user.email : 'Pepe'}</h3>
+        <div className='relative w-full h-full  flex flex-col items-center space-y-6'>
+            <div className='w-full  lg:hidden'>
+                <h3 className='text-center pb-3 text-white  '>Bienvenido {user ? user.email : 'Pepe'}</h3>
             </div>
             <Button theme="Primary">Sube una foto del reverso de tu DNI</Button>
             <WebCamp  takePhoto='Capture3' />

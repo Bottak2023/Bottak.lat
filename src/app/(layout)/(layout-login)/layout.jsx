@@ -55,7 +55,7 @@ export default function Home({children}) {
   }, [user]);
 
   return (
-    <main className='relative w-full h-full flex flex-col items-center justify-center' >
+    <main className='relative w-full h-full flex flex-col items-center justify-center ' >
 
       <div className={`lg:grid lg:grid-cols-2 w-full lg:w-full lg:px-[5vw] lg:h-auto  lg:min-h-full flex flex-col justify-between h-[750px] pb-5`} style={{ gridTemplateColumns: '40% 60%' }}>
         <div className={`flex flex-col justify-center items-center h-[300px] lg:h-auto  `}>

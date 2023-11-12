@@ -15,14 +15,6 @@ const videoConstraints = {
 export default function WebCamp({ takePhoto }) {
     const { image1, setImage1, image2, setImage2, image3, setImage3, webcamRef1, webcamRef2, webcamRef3, } = useUser()
 
-
-    // function Base64ToImage(base64img) {
-    //     var img = new Image();
-    //     img.src = base64img;
-    //     return img;
-    // }
-
-
     const height = 360
     const width = 360
 
@@ -30,10 +22,6 @@ export default function WebCamp({ takePhoto }) {
     const capture1 = React.useCallback(
         () => {
             const imageSrc = webcamRef1.current.getScreenshot();
-
-            //    const img = Base64ToImage(imageSrc)
-            //    console.log(img)
-
             setImage1(imageSrc)
         },
         [webcamRef1]
@@ -56,7 +44,7 @@ export default function WebCamp({ takePhoto }) {
     switch (takePhoto) {
         case 'Capture1':
             return <div className="relative">
-                <div className="relative rounded-[20px] overflow-hidden border-[3px] ">
+                <div className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
                     {image1 && <img src={image1} className="absolute h-full w-full z-20" alt="" />}
 
                         <Webcam
@@ -85,7 +73,7 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture2':
             return <div className="relative">
-                <div className="relative rounded-[20px] overflow-hidden border-[3px] ">
+                <div className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
                     {image2 && <img src={image2} className="absolute h-full w-full z-20" alt="" />}
                     <Webcam
                         audio={false}
@@ -111,7 +99,7 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture3':
             return <div className="relative">
-                <div className="relative rounded-[20px] overflow-hidden border-[3px] ">
+                <div className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
                     {image3 && <img src={image3} className="absolute h-full w-full z-20" alt="" />}
                     <Webcam
                         audio={false}

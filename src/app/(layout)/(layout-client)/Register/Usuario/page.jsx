@@ -41,7 +41,7 @@ function Home() {
         transferencia ? router.push('/Register/Destinatario') : router.push('/')
     }
     return (
-        <form className=' space-y-6 w-full' onSubmit={save}>
+        <form className='relative portrait:min-h-[87vh] space-y-6 w-full  ' onSubmit={save}>
             <div className='w-full border-b-[2px] border-gray-100 '>
                 <h3 className=' pb-3 text-white  text-right'>Completa tus datos</h3>
             </div>
