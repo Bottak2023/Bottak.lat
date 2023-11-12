@@ -56,7 +56,7 @@ export default function Page({ styled, name, change }) {
         </div>}
 
         {filterQR && <div className='relative h-[450px] overflow-y-auto'>
-            <table className=" w-[300px] lg:w-full  lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
+            <table className=" w-full lg:w-full  lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
                     <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                         <tr>
                             <th scope="col-3" className="w-1/2 px-3 py-3">
