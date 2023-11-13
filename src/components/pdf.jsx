@@ -47,71 +47,71 @@ const PDFView = () => {
 
                         <View style={{ display: 'flex', width: '100%', flexDirection: 'row', paddingTop: '50px', flexWrap: 'wrap' }}>
                        
-                        <Text style={{ fontSize: '12px', width: '100%', alignText: 'center' }}>BAUCHER</Text>
+                        <Text style={{ fontSize: '12px', width: '100%', textAlign: 'center' }}>BAUCHER</Text>
 
                             <View style={{ width: '50%' }}>
                                 <Text style={{ fontSize: '12px', alignText: 'center' }}>REPORTE</Text>
-                                <View style={{ paddingTop: '12px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Remitente:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.remitente && transactionDB.remitente}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>DNI remitente:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB['dni remitente'] && transactionDB['dni remitente']}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Pais remitente</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB['pais remitente'] && transactionDB['pais remitente']}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Destinatario:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.destinatario && transactionDB.destinatario}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>DNI destinatario:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.dni && transactionDB.dni}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Pais destinatario:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.pais && transactionDB.pais}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Celular de destinatario:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.celular && transactionDB.celular}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Cuenta de destinatario:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB['cuenta destinatario'] && transactionDB['cuenta destinatario']}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Divisa de envio:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB['divisa de envio'] && transactionDB['divisa de envio']}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Importe:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.importe && transactionDB.importe}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Divisa de receptor:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB['divisa de receptor'] && transactionDB['divisa de receptor']}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Importe Con el cambio aplicado:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.cambio && transactionDB.cambio}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Fecha:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.fecha && transactionDB.fecha}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Estado:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.estado && transactionDB.estado}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Operacion:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.operacion && transactionDB.operacion}</Text>
                                 </View>
-                                <View style={{ paddingTop: '12px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>ID de tracking:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.uuid}</Text>
                                 </View>

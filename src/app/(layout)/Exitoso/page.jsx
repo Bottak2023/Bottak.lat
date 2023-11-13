@@ -184,7 +184,7 @@ function Home() {
                             renderAs={'canvas'}
                             viewBox={`0 0 256 256`}
                             imageSettings={{
-                                src: '/favicon.png',
+                                src: '/qr.png',
                                 width: 100,
                                 height: 100
                             }}
