@@ -45,7 +45,7 @@ const PDFView = () => {
                 <Document>
                     <Page size='A4' style={styles.body} >
 
-                        <View style={{ display: 'flex', width: '100%', flexDirection: 'row', paddingTop: '50px' }}>
+                        <View style={{ display: 'flex', width: '100%', flexDirection: 'row', paddingTop: '50px', flexWrap: 'wrap' }}>
                        
                         <Text style={{ fontSize: '12px', width: '100%', alignText: 'center' }}>BAUCHER</Text>
 
