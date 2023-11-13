@@ -5,6 +5,7 @@ import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
 import SelectCountry from '@/components/SelectCountry'
 import Label from '@/components/Label'
+import Loader from '@/components/Loader'
 import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
@@ -38,11 +39,17 @@ function Home() {
         e.stopPropagation()
         const uuid = generateUUID()
         const date = new Date().getTime()
-        const destinatarioDB = {...destinatario, uuid, operacion: pathname}
-        writeUserData(`users/${user.uid}/destinatarios/${uuid}`, { ...destinatario, uuid }, setUserSuccess, redirectHandler('/Confirm', destinatarioDB))
+        const destinatarioDB = { ...destinatario, uuid, operacion: pathname }
+        setModal('Guardando...')
+        const callback = () => {
+            redirectHandler('/Confirm', destinatarioDB)
+            setModal('')
+        }
+        writeUserData(`users/${user.uid}/destinatarios/${uuid}`, { ...destinatario, uuid }, setUserSuccess, callback)
     }
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
+            {modal === 'Guardando...' && <Loader> {modal} </Loader>}
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
                 <h3 className=' pb-3 text-white  text-right'>Destinatario</h3>
             </div>
@@ -70,7 +77,7 @@ function Home() {
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Pais</Label>
-                <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect}/>
+                <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect} />
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Dirección</Label>

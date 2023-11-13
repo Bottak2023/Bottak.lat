@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
 import Label from '@/components/Label'
+import Loader from '@/components/Loader'
 import SelectCountry from '@/components/SelectCountry'
 import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
@@ -29,11 +30,18 @@ function Home() {
     }
     function save(e) {
         e.preventDefault()
-        writeUserData(`users/${user.uid}`, { ...state, image1, image2, image3, rol: 'Cliente', uuid: user.uid, habilitado: false, bloqueado: false}, setUserSuccess, getSpecificData(`/users/${user.uid}`, setUserData))
+        const data = { ...state, image1, image2, image3, rol: 'Cliente', uuid: user.uid, habilitado: false, bloqueado: false }
+        setModal('Guardando...')
+        const callback = () => {
+            getSpecificData(`/users/${user.uid}`, setUserData)
+            setModal('')
+        }
+        writeUserData(`users/${user.uid}`, data , setUserSuccess, callback)
         transferencia ? router.replace('/Register/Destinatario') : router.replace('/')
     }
     return (
         <form className='relative portrait:min-h-[87vh] space-y-6 w-full  ' onSubmit={save}>
+            {modal === 'Guardando...' && <Loader> {modal} </Loader>}
             <div className='w-full border-b-[2px] border-gray-100 '>
                 <h3 className=' pb-3 text-white  text-right'>Completa tus datos</h3>
             </div>
@@ -48,7 +56,7 @@ function Home() {
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Pais</Label>
-                    <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect}/>
+                    <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect} />
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Dirección</Label>
