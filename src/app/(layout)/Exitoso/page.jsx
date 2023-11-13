@@ -23,7 +23,7 @@ function Home() {
     useEffect(() => {
         document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
         transactionDB === undefined && getSpecificData(`/envios/${pathname}`, setTransactionDB)
-    }, [user, userDB,  QRurl])
+    }, [user, userDB,  QRurl, transactionDB])
 
     return (
         transactionDB && transactionDB !== undefined && <main className=''>
