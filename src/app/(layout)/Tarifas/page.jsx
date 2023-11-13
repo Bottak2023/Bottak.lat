@@ -43,7 +43,7 @@ export default function Home() {
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
                 <br />
                 <br />
-                <table className="w-full overflow-visible min-w-[1500px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
+                <table className="w-full overflow-visible min-w-[1000px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
                     <thead className="text-[14px] text-gray-700 uppercase bg-white">
                         <tr>
                             <th scope="col" className=" px-3 py-3">
@@ -54,6 +54,9 @@ export default function Home() {
                             </th>
                             <th scope="col" className=" px-3 py-3">
                                 Code
+                            </th>
+                            <th scope="col" className=" px-3 py-3">
+                                Base
                             </th>
                             <th scope="col" className="text-center px-3 py-3">
                                 Compra
@@ -77,15 +80,20 @@ export default function Home() {
                     </thead>
                     <tbody>
                         {divisas && divisas !== undefined && Object.values(divisas).map((i, index) => {
-                            return i.currency !== undefined && i.habilitado !== undefined && i.habilitado === true && i.currency.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
+                            return i.currency !== undefined && 
+                            i.habilitado !== undefined && i.habilitado === true &&
+                             (i.currency.toLowerCase().includes(filter.toLowerCase()) || i.code.toLowerCase().includes(filter.toLowerCase())) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
                                 <td className="px-3 py-4  flex text-gray-900 ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
                                 <td className="px-3 py-4 text-gray-900 ">
-                                    {i['translation']['spa']['common']}
+                                    {i.currency}
                                 </td>
                                 <td className="px-3 py-4 text-gray-900 ">
-                                    {i.code}/{i.currency}
+                                    {i.code}
+                                </td>
+                                <td className="px-3 py-4 text-gray-900 ">
+                                    1 USD
                                 </td>
                                 <td className="w-32 p-4">
                                     {i['compra'] !== undefined ? i['compra'] : '-----'}
