@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
 
 function Home() {
-    const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia, countries, setCountries } = useUser()
+    const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia, countries, setCountries, modal, setModal} = useUser()
     const [state, setState] = useState({})
     const inputRefWhatsApp = useMask({ mask: '+ 591 __ ___ ___', replacement: { _: /\d/ } });
     const router = useRouter()
