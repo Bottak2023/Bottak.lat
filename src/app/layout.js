@@ -2,7 +2,7 @@
 import { UserProvider } from '../context/Context'
 import './globals.css'
 import { Montserrat } from 'next/font/google'
-import Navbar from '@/components/Navbar'
+import Intro from '@/components/Intro'
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
           <div className="relative w-screen  h-screen min-h-[500px]  overflow-x-hidden overflow-y-auto " style={{
             backgroundImage: 'linear-gradient(#000000c7, #000000c7)',
           }}>
+            <Intro></Intro>
             {children}
           </div>
           {/* <Navbar /> */}
