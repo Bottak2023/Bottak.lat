@@ -37,7 +37,7 @@ export default function Home() {
         setState({ ...state, [i.cca3]: { ...state[i.cca3], [e.target.name]: e.target.value } })
     }
     function save(i) {
-        setDestinatario({...i, operacion: pathname})
+        setDestinatario({...i, ...state, operacion: pathname})
         router.replace('/Confirm/')
     }
     function redirect() {
