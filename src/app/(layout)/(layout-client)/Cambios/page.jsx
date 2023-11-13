@@ -76,46 +76,24 @@ export default function Home() {
     e.preventDefault()
     e.stopPropagation()
 
-    // const res = await fetch('http://localhost:3000/api')
-    const res = await fetch('/api', {
-      method: 'POST',
-      body: JSON.stringify({
-        type: 'Cambio de Divisa',
-        amount: transferencia,
-        comision: 0
-      }),
-      headers: new Headers({
-        'Content-Type': 'application/json; charset=UTF-8'
-      })
-    })
-    const data = await res.json()
-    console.log(data)
-
-    console.log(data.url)
-    window.open(data.url, "_self")
-    return
-    console.log('click')
+    e.preventDefault()
+    e.stopPropagation()
     if (user == null && user == undefined) {
       console.log('signup')
       setModal('registrate')
       return
     }
-
     if (user && userDB == null) {
       console.log('registrate')
-
-
       router.push('/Register')
       return
     }
-
     if (user && userDB) {
-
-      console.log('Destinatario')
-      router.push('/Register/Destinatario')
+      userDB.destinatarios && userDB.destinatarios !== undefined && Object.keys(userDB.destinatarios).length > 0 
+      ? router.push('/Destinatarios')
+      : router.push('/Register/Destinatario')
       return
     }
-
   }
   useEffect(() => {
     if (user === undefined) onAuth(setUserProfile, setUserData)
@@ -172,6 +150,54 @@ export default function Home() {
     </>
   )
 }
+
+
+
+
+    // // const res = await fetch('http://localhost:3000/api')
+    // const res = await fetch('/api', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     type: 'Cambio de Divisa',
+    //     amount: transferencia,
+    //     comision: 0
+    //   }),
+    //   headers: new Headers({
+    //     'Content-Type': 'application/json; charset=UTF-8'
+    //   })
+    // })
+    // const data = await res.json()
+    // console.log(data)
+
+    // console.log(data.url)
+    // window.open(data.url, "_self")
+    // return
+    // console.log('click')
+    // if (user == null && user == undefined) {
+    //   console.log('signup')
+    //   setModal('registrate')
+    //   return
+    // }
+
+    // if (user && userDB == null) {
+    //   console.log('registrate')
+
+
+    //   router.push('/Register')
+    //   return
+    // }
+
+    // if (user && userDB) {
+
+    //   console.log('Destinatario')
+    //   router.push('/Register/Destinatario')
+    //   return
+    // }
+
+
+
+
+
 
 
 
