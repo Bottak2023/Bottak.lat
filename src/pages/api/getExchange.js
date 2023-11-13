@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+// import puppeteer from "puppeteer";
 export default async function webScraping(req, res) {
 
     if (req.method === "POST") {
