@@ -15,7 +15,7 @@ const InvoicePDF = dynamic(() => import("@/components/pdf"), {
 });
 
 function Home() {
-    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
+    const { nav, setNav, user, userDB, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
     const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = searchParams.get('uuid')
