@@ -60,20 +60,20 @@ export default function Home() {
 
   return (
           <form className="relative w-full max-w-[500px] h-full min-h-[300px] flex flex-col justify-between" onSubmit={signInHandler} >
-            <h5 className="text-[24px] font-medium text-white text-center">Iniciar Sesión</h5>
+            <h5 className="text-[24px] font-medium text-white text-center">Restablecer Contraseña</h5>
             <div>
-              <label htmlFor="email" className="block mb-2 text-[14px] font-light text-left  text-white">Email</label>
+              <label htmlFor="email" className="block mb-2 text-[14px] font-light text-left  text-white">Ingresa tu email</label>
               <Input type="email" name="email" id="email" placeholder="name@company.com" required />
             </div>
             <div>
-              <label htmlFor="password" className="block mb-2  text-left  text-[14px] font-light text-white">Contraseña</label>
-              <Input type="password" name="password" id="password" placeholder="••••••••••••" styled='font-sans' required />
+              <label htmlFor="email" className="block mb-2 text-[14px] font-light text-left  text-white">Ingresa nuevamente tu email</label>
+              <Input type="email" name="email" id="email" placeholder="name@company.com" required />
             </div>
             <div className="flex items-start">
-              <a href="/Resset" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</a>
+              <a href="#" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Se te enviara un correo</a>
             </div>
             <div className="w-full flex justify-center">
-              <Button type="submit" theme={"Primary"}>Iniciar Sesión</Button>
+              <Button type="submit" theme={"Primary"}>Restablecer</Button>
             </div>
             <div className="text-[14px] font-light  text-gray-500 dark:text-gray-300 text-center">No tienes una cuenta? <Link href="/SignUp" className="text-green-400 text-[14px] font-light  hover:underline">Registrate</Link ></div>
       </form>

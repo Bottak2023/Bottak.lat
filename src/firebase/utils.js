@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './config'
 
-import { onAuthStateChanged, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { onAuthStateChanged, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, sendPasswordResetEmail } from "firebase/auth";
 
 import { getData, writeUserData, removeData, } from "./database";
 
@@ -52,6 +52,15 @@ async function signInWithEmail(email, password, setUserProfile) {
   }
 }
 
+sendPasswordResetEmail(auth, email)
+  .then(() => {
+    // Password reset email sent!
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
 function handleSignOut() {
   signOut(auth).then(() => {
 
@@ -63,7 +72,7 @@ function handleSignOut() {
 }
 
 
-export { onAuth, signUpWithEmail, signInWithEmail, handleSignOut }
+export { onAuth, signUpWithEmail, signInWithEmail, handleSignOut, sendPasswordResetEmail }
 
 
 
