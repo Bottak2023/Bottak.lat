@@ -84,7 +84,7 @@ export default function Home() {
             <Input type="password" name="password" id="password" placeholder="••••••••••••" styled='font-sans'  required />
           </div>
           <div className="flex items-start">
-            <a href="/Resset" className="ml-auto text-green-400 text-[14px]  hover:underline">Olvidaste tu contraseña?</a>
+          <Link href="/Resset" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</Link>
           </div>
           <div className="w-full flex justify-center">
 
