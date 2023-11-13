@@ -47,7 +47,7 @@ const PDFView = () => {
 
                         <View style={{ display: 'flex', width: '100%', flexDirection: 'row', padding: '2.5mm', flexWrap: 'wrap' }}>
                        
-                        <Text style={{ fontSize: '12px', width: '100%', textAlign: 'center', paddingBottom: '12px' }}>BAUCHER</Text>
+                        <Text style={{ fontSize: '12px', width: '100%', textAlign: 'center', paddingBottom: '12px' }}>BAUCHER BOTTAK</Text>
 
                             <View style={{ width: '50%' }}>
                                 <Text style={{ fontSize: '12px', alignText: 'center' }}>REPORTE</Text>
