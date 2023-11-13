@@ -184,7 +184,7 @@ function Home() {
                             renderAs={'canvas'}
                             viewBox={`0 0 256 256`}
                             imageSettings={{
-                                src: '/qr.png',
+                                src: '/logo.png',
                                 width: 100,
                                 height: 100
                             }}
