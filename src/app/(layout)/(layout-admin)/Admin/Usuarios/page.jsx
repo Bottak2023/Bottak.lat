@@ -30,7 +30,7 @@ function Home() {
     }
     async function deletConfirm() {
         const callback = () => {
-            getSpecificData(`/users/`, setUsers)
+            getSpecificData(`/users/`, setUsers, () => { setModal('') })
         }
         await removeData(`users/${item.uuid}/`, setUserSuccess, callback)
     }

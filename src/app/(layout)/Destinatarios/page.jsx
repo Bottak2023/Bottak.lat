@@ -49,7 +49,7 @@ export default function Home() {
     }
     async function deletConfirm() {
         const callback = () =>{
-            getSpecificData(`/users/${user.uid}`, setUserData)
+            getSpecificData(`/users/${user.uid}`, setUserData, () => { setModal('') })
         }
         await removeData(`users/${user.uuid}/destinatarios/${item.uuid}`, setUserSuccess, callback)
     }
