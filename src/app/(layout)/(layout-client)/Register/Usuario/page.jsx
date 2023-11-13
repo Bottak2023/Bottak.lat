@@ -64,7 +64,7 @@ function Home() {
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Whatsapp</Label>
-                    <Input type="text" name="whatsapp" onChange={onChangeHandler} reference={inputRefWhatsApp} required />
+                    <Input type="text" name="whatsapp" onChange={onChangeHandler} required />
                 </div>
             </div>
             <div className='flex w-full justify-around'>
