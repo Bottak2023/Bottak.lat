@@ -51,15 +51,17 @@ async function signInWithEmail(email, password, setUserProfile) {
     return null
   }
 }
+function sendPasswordReset(email, callback) {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      callback()
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+}
 
-sendPasswordResetEmail(auth, email)
-  .then(() => {
-    // Password reset email sent!
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
 
 function handleSignOut() {
   signOut(auth).then(() => {
@@ -72,7 +74,7 @@ function handleSignOut() {
 }
 
 
-export { onAuth, signUpWithEmail, signInWithEmail, handleSignOut, sendPasswordResetEmail }
+export { onAuth, signUpWithEmail, signInWithEmail, handleSignOut, sendPasswordReset }
 
 
 
@@ -81,20 +83,20 @@ export { onAuth, signUpWithEmail, signInWithEmail, handleSignOut, sendPasswordRe
 
 
 
-  // .then((userCredential) => {
-  //   // Signed in
-  //   const user = userCredential.user;
+// .then((userCredential) => {
+//   // Signed in
+//   const user = userCredential.user;
 
-  //   setUserProfile(user)
-  //   //  userProfile = user
-  //   // ...
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   console.log(error)
+//   setUserProfile(user)
+//   //  userProfile = user
+//   // ...
+// })
+// .catch((error) => {
+//   const errorCode = error.code;
+//   const errorMessage = error.message;
+//   console.log(error)
 
-  //   // setUserSuccess(false)
-  // });
+//   // setUserSuccess(false)
+// });
 
-  // return console.log(userProfile)
+// return console.log(userProfile)

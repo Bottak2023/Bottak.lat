@@ -1,6 +1,6 @@
 'use client'
 import { useUser } from '@/context/Context'
-import { onAuth, signInWithEmail } from '@/firebase/utils'
+import { onAuth, sendPasswordReset } from '@/firebase/utils'
 import { getSpecificData } from '@/firebase/database'
 
 import { useEffect } from 'react'
@@ -20,33 +20,20 @@ export default function Home() {
   const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, transferencia } = useUser()
   const router = useRouter()
 
-  const signInHandler = async (e) => {
+  const signInHandler =  (e) => {
     e.preventDefault()
     let email = e.target[0].value
-    let password = e.target[1].value
+    let email2 = e.target[1].value
 
-    if (email.length == 0 || password.length == 0) {
+    if (email.length == 0 || email2.length == 0) {
       return setUserSuccess('Complete')
     }
-    const res = await signInWithEmail(email, password, setUserProfile)
-
-    if (res == null) {
-
-      setUserSuccess('Intente')
-      return
-    }
-    console.log(res)
-
-    if (res && (userDB == null || userDB == undefined)) {
-      console.log(res)
-      const data = await getSpecificData(`/users/${res.uid}`, setUserData)
-      console.log(data)
-      if (data == null) {
-        router.push('/Register') 
-      } else {
-        transferencia ? router.push('/Register/Destinatario') : router.push('/')
+    if (email !== email2) {
+        return setUserSuccess('Repeat')
       }
-    }
+    setModal('Te enviamos un correo...')
+    const callback = () => {setModal('')}
+    sendPasswordReset(email, callback)
   }
 
 
