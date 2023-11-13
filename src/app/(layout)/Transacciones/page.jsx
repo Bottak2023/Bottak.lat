@@ -83,6 +83,9 @@ export default function Home() {
                                 Estado
                             </th>
                             <th scope="col" className=" px-3 py-3">
+                                Operacion
+                            </th>
+                            <th scope="col" className=" px-3 py-3">
                                 Destinatario
                             </th>
                             <th scope="col" className=" px-3 py-3">
@@ -127,7 +130,10 @@ export default function Home() {
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
                                 <td className="min-w-32 px-3 py-4  ">
-                                    <span className={`inline-block py-5 px-10 ${i['estado'] == 'exitoso' && 'bg-green-500'} i['estado'] == 'en proceso' && 'bg-gray-100'}`}>{i['estado']}</span>
+                                    <span className={`inline-block py-5 px-10 ${i.estado == 'En proceso' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i['estado']}</span>
+                                </td>
+                                <td className="min-w-32 px-3 py-4  ">
+                                    {i['operacion']}
                                 </td>
                                 <td className="min-w-32 px-3 py-4  ">
                                     {i['destinatario']}

@@ -20,7 +20,6 @@ export default function isSelect3({ arr, name, click, defaul, uuid }) {
         setState(i)
         click(name, i, uuid)
     }
-console.log(defaul)
     return (
         <div className={`relative w-[100%] sm:min-w-[150px] sm:max-w-[350px] bg-transparent border-[.5px] border-gray-300 text-gray-900 text-[14px] rounded-xl block  p-0 `} >
             <div
