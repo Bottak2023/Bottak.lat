@@ -1,16 +1,15 @@
 'use client'
 
-
 import { writeUserData, getSpecificData } from '@/firebase/database'
 import { useState } from 'react'
 import { useUser } from '@/context/Context.js'
 import { getDayMonthYear } from '@/utils/date'
 import { WithAuth } from '@/HOCs/WithAuth'
 import Button from '@/components/Button'
+import Loader from '@/components/Loader'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 import { generateUUID } from '@/utils/UUIDgenerator'
-
 
 function Home() {
     const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
