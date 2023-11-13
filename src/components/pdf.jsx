@@ -51,11 +51,11 @@ const PDFView = () => {
 
                             <View style={{ width: '70%' }}>
                                 <Text style={{ fontSize: '12px', alignText: 'center' }}>REPORTE</Text>
-                                <View style={{ paddingTop: '8px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Remitente:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB.remitente && transactionDB.remitente}</Text>
                                 </View>
-                                <View style={{ paddingTop: '8px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>DNI remitente:</Text>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>{transactionDB['dni remitente'] && transactionDB['dni remitente']}</Text>
                                 </View>
@@ -117,7 +117,7 @@ const PDFView = () => {
                                 </View>
                                 <View style={{ height: '50px' }}></View>
                             </View>
-                            <Image src={QRurl} style={{ height: '100px', width: '100px' }}></Image>
+                            <Image src={QRurl} style={{ height: '150px', width: '150px' }}></Image>
 
                         </View>
                     </Page>
