@@ -15,19 +15,18 @@ const InvoicePDF = dynamic(() => import("@/components/pdf"), {
 });
 
 function Home() {
-    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, fecha, setFecha, qr, setQr, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
+    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, QRurl, setQRurl, transactionDB, setTransactionDB } = useUser()
     const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = searchParams.get('uuid')
 
     useEffect(() => {
         document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
-        const date = getDayMonthYear()
         transactionDB === undefined && getSpecificData(`/envios/${pathname}`, setTransactionDB)
-    }, [user, userDB, qr, QRurl])
+    }, [user, userDB,  QRurl])
 
     return (
-        transactionDB && transactionDB !== undefined && <main className='bg-red-500'>
+        transactionDB && transactionDB !== undefined && <main className=''>
             {/* <Confeti /> */}
             <div className='left-0 right-0 mx-auto lg:grid lg:grid-cols-2 lg:gap-5'>
                 <div className='relative  sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
@@ -173,7 +172,7 @@ function Home() {
                         </tbody>
                     </table>
                 </div>
-                <div className='flex flex-col justify-center items-center w-full bg-green-500'>
+                <div className='flex flex-col justify-center items-center w-full '>
                     <div className='w-[150px] h-[150px] my-10'>
                         {transactionDB.uuid && <QRCode
                             id='qr'
@@ -191,11 +190,11 @@ function Home() {
                             }}
                         />}
                     </div>
-                    {qr !== '' && <a
+                    {QRurl !== '' && <a
                         className="text-white bg-emerald-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px] w-full sm:max-w-[250px] mx-5 py-3 text-center z-50"
                         href={QRurl} download>Decargar QR Baucher</a>}
                     <div className='w-full text-center py-5 z-50'>
-                        {qr !== '' && <InvoicePDF dbUrl={QRurl} />}
+                        {QRurl !== '' && <InvoicePDF dbUrl={QRurl} />}
                     </div>
                 </div>
 
