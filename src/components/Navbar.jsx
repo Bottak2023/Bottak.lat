@@ -89,10 +89,10 @@ export default function Navbar({ children }) {
 
     const signOutHandler = () => {
         handleSignOut()
-        router.push('/')
         setUserProfile(null)
         setUserData(null)
         setNav(false)
+        router.push('/')
     }
     console.log(userDB)
 
@@ -123,7 +123,7 @@ export default function Navbar({ children }) {
                                     ? <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] sm:hover:text-yellow-300 sm:hidden" onClick={handleSignOut}>
                                         Cerrar Sesion
                                     </button>
-                                    : <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] sm:hover:text-yellow-300 sm:hidden" onClick={() => router.push('/Login')}>
+                                    : <button type="button" className="inline-flex h-[20px] justify-center items-center bg-[#FFF500] text-[12px] text-center font-medium  align-middle px-3 py-3 rounded-full  sm:hover:bg-transparent  border-[2px] border-[#FFF500] sm:hover:text-yellow-300 sm:hidden" onClick={() => {setNav(false);router.push('/Login')}}>
                                         Iniciar Sesión
                                     </button>
                             }
