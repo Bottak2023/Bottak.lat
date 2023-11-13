@@ -80,8 +80,8 @@ function Page() {
     }
     if (user && userDB) {
       userDB.destinatarios && userDB.destinatarios !== undefined && Object.keys(userDB.destinatarios).length > 0 
-      ? router.push('/Destinatarios')
-      : router.push('/Register/Destinatario')
+      ? router.push('/Destinatarios?operacion=Envio')
+      : router.push('/Register/Destinatario?operacion=Envio')
       return
     }
   }

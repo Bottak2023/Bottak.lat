@@ -8,8 +8,8 @@ import Button from '@/components/Button'
 import Loader from '@/components/Loader'
 // import { getCurrencyExchange } from '@/currency';
 import Modal from '@/components/Modal'
-
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'
 
 
 
@@ -21,6 +21,9 @@ export default function Home() {
     const [state, setState] = useState({})
     const [temporal, setTemporal] = useState(undefined)
     const refFirst = useRef(null);
+
+    const searchParams = useSearchParams()
+    const pathname = searchParams.get('operacion')
 
     function onChangeFilter(e) {
         setFilter(e.target.value)
@@ -34,7 +37,7 @@ export default function Home() {
         setState({ ...state, [i.cca3]: { ...state[i.cca3], [e.target.name]: e.target.value } })
     }
     function save(i) {
-        setDestinatario(i)
+        setDestinatario({...i, operacion: pathname})
         router.replace('/Confirm/')
     }
     function redirect() {

@@ -90,8 +90,8 @@ export default function Home() {
     }
     if (user && userDB) {
       userDB.destinatarios && userDB.destinatarios !== undefined && Object.keys(userDB.destinatarios).length > 0 
-      ? router.push('/Destinatarios')
-      : router.push('/Register/Destinatario')
+      ? router.push('/Destinatarios?operacion=Cambio')
+      : router.push('/Register/Destinatario?operacion=Cambio')
       return
     }
   }

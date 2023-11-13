@@ -39,7 +39,6 @@ function Home() {
             fecha,
             date,
             estado: 'en proceso',
-            operacion: 'envio',
             uuid
         }
         writeUserData(`users/${user.uid}/historial/${uuid}`, db, setUserSuccess)

@@ -11,10 +11,14 @@ import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
 import { getDayMonthYear } from '@/utils/date'
 import { generateUUID } from '@/utils/UUIDgenerator'
+import { useSearchParams } from 'next/navigation'
+
 function Home() {
 
     const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, isSelect3, setIsSelect3, select3, setSelect3, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, qr, setQr, QRurl, setQRurl, } = useUser()
     const router = useRouter()
+    const searchParams = useSearchParams()
+    const pathname = searchParams.get('operacion')
 
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
@@ -34,7 +38,7 @@ function Home() {
         e.stopPropagation()
         const uuid = generateUUID()
         const date = new Date().getTime()
-        const destinatarioDB = {...destinatario, uuid}
+        const destinatarioDB = {...destinatario, uuid, operacion: pathname}
         writeUserData(`users/${user.uid}/destinatarios/${uuid}`, { ...destinatario, uuid }, setUserSuccess, redirectHandler('/Confirm', destinatarioDB))
     }
     return (
