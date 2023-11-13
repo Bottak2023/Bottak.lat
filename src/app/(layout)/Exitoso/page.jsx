@@ -27,7 +27,7 @@ function Home() {
     }, [user, userDB, qr, QRurl])
 
     return (
-        transactionDB && transactionDB !== undefined && <main>
+        transactionDB && transactionDB !== undefined && <main className='bg-red-500'>
             {/* <Confeti /> */}
             <div className='left-0 right-0 mx-auto lg:grid lg:grid-cols-2 lg:gap-5'>
                 <div className='relative  sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
@@ -173,7 +173,7 @@ function Home() {
                         </tbody>
                     </table>
                 </div>
-                <div className='flex flex-col justify-center items-center w-full'>
+                <div className='flex flex-col justify-center items-center w-full bg-green-500'>
                     <div className='w-[150px] h-[150px] my-10'>
                         {transactionDB.uuid && <QRCode
                             id='qr'
