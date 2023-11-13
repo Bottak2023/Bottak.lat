@@ -44,8 +44,14 @@ function writeUserData(rute, object, setUserSuccess, callback) {
     .catch((err) => console.log(err))
 }
 
-async function removeData(rute, setUserSuccess) {
-  await remove(ref(db, rute)).then(() => setUserSuccess('save')).catch(() => setUserSuccess('repeat'));
+async function removeData(rute, setUserSuccess, callback) {
+  await remove(ref(db, rute))
+    .then(() => {
+      setUserSuccess !== null ? setUserSuccess('save') : ''
+      callback !== null ? callback() : ''
+    })
+    .catch(() =>
+      setUserSuccess('repeat'));
 }
 
 

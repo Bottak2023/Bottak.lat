@@ -37,11 +37,21 @@ export default function Home() {
         setState({ ...state, [i.cca3]: { ...state[i.cca3], [e.target.name]: e.target.value } })
     }
     function save(i) {
-        setDestinatario({...i, ...state, operacion: pathname})
+        setDestinatario({ ...i, ...state, operacion: pathname })
         router.replace('/Confirm/')
     }
     function redirect() {
         router.push('/Register/Destinatario')
+    }
+    function manage(i, data) {
+        setItem(i)
+        setModal(data)
+    }
+    async function deletConfirm() {
+        const callback = () =>{
+            getSpecificData(`/users/${user.uid}`, setUserData)
+        }
+        await removeData(`users/${user.uuid}/destinatarios/${item.uuid}`, setUserSuccess, callback)
     }
     const prev = () => {
         requestAnimationFrame(() => {
@@ -66,6 +76,7 @@ export default function Home() {
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
             {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
             {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
+            {modal === 'DELETE' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente destinatario:  {item['destinatario']}</Modal>}
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>                <h3 className='font-medium text-[14px]'>Destinatarios</h3>
@@ -104,6 +115,9 @@ export default function Home() {
                             <th scope="col" className="text-center px-3 py-3">
                                 Enviar
                             </th>
+                            <th scope="col" className="text-center px-3 py-3">
+                                Eliminar
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -132,6 +146,9 @@ export default function Home() {
                                 </td>
                                 <td className="px-3 py-4 w-32 text-center">
                                     <Button theme={"Danger"} click={() => save(i)}>Continuar</Button>
+                                </td>
+                                <td className="px-3 py-4 ">
+                                    <Button theme={"Danger"} click={() => manage(i, 'DELETE')}>Eliminar</Button>
                                 </td>
                             </tr>
                         })

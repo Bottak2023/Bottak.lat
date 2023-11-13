@@ -45,11 +45,11 @@ const PDFView = () => {
                 <Document>
                     <Page size='A4' style={styles.body} >
 
-                        <View style={{ display: 'flex', width: '100%', flexDirection: 'row', paddingTop: '50px', flexWrap: 'wrap' }}>
+                        <View style={{ display: 'flex', width: '100%', flexDirection: 'row', padding: '30px', flexWrap: 'wrap' }}>
                        
-                        <Text style={{ fontSize: '12px', width: '100%', textAlign: 'center' }}>BAUCHER</Text>
+                        <Text style={{ fontSize: '12px', width: '100%', textAlign: 'center', paddingBottom: '12px' }}>BAUCHER</Text>
 
-                            <View style={{ width: '50%' }}>
+                            <View style={{ width: '70%' }}>
                                 <Text style={{ fontSize: '12px', alignText: 'center' }}>REPORTE</Text>
                                 <View style={{ paddingTop: '8px', width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Remitente:</Text>
@@ -117,7 +117,7 @@ const PDFView = () => {
                                 </View>
                                 <View style={{ height: '50px' }}></View>
                             </View>
-                            <Image src={QRurl} style={{ height: '150px', width: '150px' }}></Image>
+                            <Image src={QRurl} style={{ height: '100px', width: '100px' }}></Image>
 
                         </View>
                     </Page>
