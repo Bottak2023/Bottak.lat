@@ -21,7 +21,7 @@ function Home() {
     const pathname = searchParams.get('uuid')
 
     useEffect(() => {
-        document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
+        transactionDB !== undefined && QRurl === null && document.getElementById('qr') && setQRurl(document.getElementById('qr').toDataURL())
         transactionDB === undefined && getSpecificData(`/envios/${pathname}`, setTransactionDB)
     }, [user, userDB,  QRurl, transactionDB])
 
