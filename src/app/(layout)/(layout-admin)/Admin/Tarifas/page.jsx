@@ -130,7 +130,7 @@ export default function Home() {
                 #
               </th>
               <th scope="col" className=" px-3 py-3">
-                Divisa
+                Pais
               </th>
               <th scope="col" className=" px-3 py-3">
                 Code
