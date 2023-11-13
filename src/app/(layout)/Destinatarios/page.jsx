@@ -83,7 +83,7 @@ export default function Home() {
                 <br />
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
                 
-                <div className='w-full flex justify-end'>
+                <div className='w-full min-w-[1000px] flex justify-end'>
                     <div className='w-[180px] flex  justify-center items-center h-[50px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Nuevo destinatario</div>
                 </div>
                 <br />
