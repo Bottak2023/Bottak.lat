@@ -162,7 +162,7 @@ function Home() {
                                 Operacion:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                Envio
+                                {destinatario.operacion}
                             </td>
                         </tr>
                     </tbody>

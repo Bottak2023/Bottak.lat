@@ -37,7 +37,7 @@ function Home() {
             setModal('')
         }
         writeUserData(`users/${user.uid}`, data , setUserSuccess, callback)
-        transferencia ? router.replace('/Register/Destinatario') : router.replace('/')
+        transferencia ? router.replace('/') : router.replace('/')
     }
     return (
         <form className='relative portrait:min-h-[87vh] space-y-6 w-full  ' onSubmit={save}>
