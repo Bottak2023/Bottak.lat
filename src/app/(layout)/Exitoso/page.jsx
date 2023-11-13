@@ -177,14 +177,14 @@ function Home() {
                         {transactionDB.uuid && <QRCode
                             id='qr'
                             size={256}
-                            style={{ height: "auto", maxWidth: "100%", width: "100%", border: 'none', backgroundColor: 'red' }}
+                            style={{ height: "auto", maxWidth: "100%", width: "100%", border: 'none', }}
                             value={transactionDB.uuid}
                             level={'H'}
                             includeMargin={true}
                             renderAs={'canvas'}
                             viewBox={`0 0 256 256`}
                             imageSettings={{
-                                src: '/logo.png',
+                                src: '/favicon.png',
                                 width: 100,
                                 height: 100
                             }}

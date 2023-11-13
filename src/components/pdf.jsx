@@ -45,11 +45,11 @@ const PDFView = () => {
                 <Document>
                     <Page size='A4' style={styles.body} >
 
-                        <View style={{ display: 'flex', width: '100%', flexDirection: 'row', padding: '30px', flexWrap: 'wrap' }}>
+                        <View style={{ display: 'flex', width: '100%', flexDirection: 'row', padding: '2.5mm', flexWrap: 'wrap' }}>
                        
                         <Text style={{ fontSize: '12px', width: '100%', textAlign: 'center', paddingBottom: '12px' }}>BAUCHER</Text>
 
-                            <View style={{ width: '70%' }}>
+                            <View style={{ width: '50%' }}>
                                 <Text style={{ fontSize: '12px', alignText: 'center' }}>REPORTE</Text>
                                 <View style={{ paddingTop: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ fontSize: '12px', width: '50%' }}>Remitente:</Text>

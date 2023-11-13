@@ -115,9 +115,9 @@ export default function Home() {
                             <th scope="col" className="text-center px-3 py-3">
                                 Enviar
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            {/* <th scope="col" className="text-center px-3 py-3">
                                 Eliminar
-                            </th>
+                            </th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -147,9 +147,9 @@ export default function Home() {
                                 <td className="px-3 py-4 w-32 text-center">
                                     <Button theme={"Success"} click={() => save(i)}>Continuar</Button>
                                 </td>
-                                <td className="px-3 py-4 ">
+                                {/* <td className="px-3 py-4 ">
                                     <Button theme={"Danger"} click={() => manage(i, 'DELETE')}>Eliminar</Button>
-                                </td>
+                                </td> */}
                             </tr>
                         })
                         }
