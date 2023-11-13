@@ -29,7 +29,7 @@ function Home() {
         transactionDB && transactionDB !== undefined && <main className=''>
             {/* <Confeti /> */}
             <div className='left-0 right-0 mx-auto lg:grid lg:grid-cols-2 lg:gap-5'>
-                {/* <div className='relative  sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
+                <div className='relative  sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
                     <table className="w-full  lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
                         <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                             <tr>
@@ -171,7 +171,7 @@ function Home() {
                             </tr>
                         </tbody>
                     </table>
-                </div> */}
+                </div>
                 <div className='flex flex-col justify-center items-center w-full '>
                     <div className='w-[150px] h-[150px] my-10'>
                         {transactionDB.uuid && <QRCode
