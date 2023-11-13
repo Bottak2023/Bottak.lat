@@ -35,22 +35,20 @@ export default function Home() {
   function onChangeHandler(e, i) {
     setState({ ...state, [i.cca3]: { ...state[i.cca3], [e.target.name]: e.target.value } })
   }
-  function manage(i) {
+  function manage(i, data, operacion) {
     setItem(i)
-    setModal('Disable')
+    setModal(operacion)
   }
   function save(i) {
     setItem(i)
     setModal('Save')
   }
-  function disableConfirm() {
+  function disableConfirm(operacion) {
     function callback() {
       getSpecificData('currencies', setCountries, () => { setModal('') })
     }
-
     setModal('Guardando...')
-    writeUserData(`currencies/${item.cca3}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true : false }, setUserSuccess, callback)
-    return
+    writeUserData(`currencies/${item.cca3}`, { [operacion]: item[operacion] === undefined || item[operacion] === false ? true : false }, setUserSuccess, callback)
   }
   async function saveConfirm() {
     function callback() {
@@ -63,13 +61,7 @@ export default function Home() {
     delete obj[item.cca3]
     setState(obj)
     return
-  }
-  function round(num) {
-    var m = Number((Math.abs(num) * 100).toPrecision(15));
-    return Math.round(m) / 100 * Math.sign(num);
-  }
-
- 
+  } 
 
   const prev = () => {
     requestAnimationFrame(() => {
@@ -94,7 +86,8 @@ export default function Home() {
     <main className='h-full w-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
       {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
-      {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
+      {modal === 'recepcion' && <Modal funcion={()=>disableConfirm('recepcion')}>Estas seguro de {item.recepcion !== undefined && item.recepcion !== false ? 'DESABILITAR' : 'HABILITAR'} la RECEPCIÓN para el siguiente pais:  {item['currency']}</Modal>}
+      {modal === 'envio' && <Modal funcion={()=>disableConfirm('envio')}>Estas seguro de {item.envio !== undefined && item.envio !== false ? 'DESABILITAR' : 'HABILITAR'} el ENVIO para el siguiente pais:   {item['currency']}</Modal>}
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
 
@@ -118,7 +111,10 @@ export default function Home() {
                 Code
               </th>
               <th scope="col" className="text-center px-3 py-3">
-                Guardar
+                Recepción
+              </th>
+              <th scope="col" className="text-center px-3 py-3">
+                Envio
               </th>
             </tr>
           </thead>
@@ -135,9 +131,15 @@ export default function Home() {
                   {i.code}/{i.currency}
                 </td>
                 <td className="px-3 py-4">
-                  {i.habilitado !== undefined && i.habilitado !== false
-                    ? <Button theme={"Success"} click={() => manage(i, 'Desabilitar')}>Habilitado</Button>
-                    : <Button theme={"Danger"} click={() => manage(i, 'Habilitar')}>Desabilitado</Button>
+                  {i.recepcion !== undefined && i.recepcion !== false
+                    ? <Button theme={"Success"} click={() => manage(i, 'Desabilitar', 'recepcion')}>Habilitado</Button>
+                    : <Button theme={"Danger"} click={() => manage(i, 'Habilitar', 'recepcion')}>Desabilitado</Button>
+                  }
+                </td>
+                <td className="px-3 py-4">
+                  {i.envio !== undefined && i.envio !== false
+                    ? <Button theme={"Success"} click={() => manage(i, 'Desabilitar', 'envio')}>Habilitado</Button>
+                    : <Button theme={"Danger"} click={() => manage(i, 'Habilitar', 'envio')}>Desabilitado</Button>
                   }
                 </td>
               </tr>

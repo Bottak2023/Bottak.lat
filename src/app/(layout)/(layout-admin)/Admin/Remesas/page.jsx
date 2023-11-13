@@ -96,7 +96,7 @@ export default function Home() {
               </th>
               <th scope="col" className=" px-3 py-3">
                 Destinatario
-              </th>
+              </th >
               <th scope="col" className=" px-3 py-3">
                 DNI destinatario
               </th>
@@ -104,7 +104,7 @@ export default function Home() {
                 Dirección
               </th>
               <th scope="col" className=" px-3 py-3">
-                Celular
+                 Celular
               </th>
               <th scope="col" className=" px-3 py-3">
                 Nro de cuenta

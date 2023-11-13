@@ -1,7 +1,7 @@
 'use client';
 import { useUser } from '@/context/Context'
-import { getSpecificData, writeUserData } from '@/firebase/database'
-import { useState, useRef } from 'react'
+import { getSpecificData, writeUserData, getSpecificDataEq } from '@/firebase/database'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Home() {
 
-    const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario } = useUser()
+    const { user, userDB, setUserProfile, modal,  setUserData,  item,  setDestinatario } = useUser()
     const router = useRouter()
     const [filter, setFilter] = useState('')
     const [state, setState] = useState({})
@@ -56,9 +56,11 @@ export default function Home() {
             refFirst.current.scrollLeft = scrollLeft + itemWidth;
         });
     };
+console.log(remesasDB)
 
-
-  
+    useEffect(() => {
+      user && user !== undefined && getSpecificDataEq(`/envios/`, 'user uuid', user.uid, setRemesasDB )
+    }, [user])
 
     return (
         <main className='w-full h-full'>
@@ -124,7 +126,7 @@ export default function Home() {
                         </tr>
                     </thead>
                     <tbody>
-                        {userDB && userDB !== undefined && userDB.historial && userDB.historial !== undefined && Object.values(userDB.historial).map((i, index) => {
+                        {remesasDB && remesasDB !== undefined &&  Object.values(remesasDB).map((i, index) => {
                             return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                                 <td className="px-3 py-4  flex  ">
                                     <span className='h-full flex py-2'>{index + 1}</span>

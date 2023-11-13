@@ -38,14 +38,15 @@ function Home() {
             fecha,
             date,
             estado: 'en proceso',
-            uuid
+            uuid,
+            ['user uuid']: user.uid,
         }
         setModal('Guardando...')
         const callback = () => {
             redirectHandler(`/Exitoso?uuid=${uuid}`)
             setModal('')
         }
-        writeUserData(`users/${user.uid}/historial/${uuid}`, db, setUserSuccess)
+        // writeUserData(`users/${user.uid}/historial/${uuid}`, db, setUserSuccess)
         writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
     }
 

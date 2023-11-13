@@ -81,12 +81,15 @@ export default function Navbar({ children }) {
 
     const router = useRouter()
 
-    function handlerNavItem(item) {
+    function handlerNavItem(e, item) {
+        e.stopPropagation()
         navItem === item
             ? setNavItem('')
             : setNavItem(item)
     }
-
+    function mainHandler () {
+        setNavItem('')
+    }
     const signOutHandler = () => {
         handleSignOut()
         setUserProfile(null)
@@ -98,7 +101,7 @@ export default function Navbar({ children }) {
 
     return (
         <>
-            <nav className="w-screen fixed top-0 z-40 " >
+            <nav className="w-screen fixed top-0 z-40 " onClick={mainHandler}>
                 <div className="absolute top-0 w-screen  h-[70px]" style={{
                     backgroundImage: 'url(/background.png)',
                     backgroundAttachment: 'fixed',
@@ -108,9 +111,9 @@ export default function Navbar({ children }) {
                     <div className="absolute top-0 w-screen  flex flex-wrap items-center justify-between mx-auto p-[10px] z-50" style={{
                         backgroundImage: 'linear-gradient(#000000c7, #000000c7)',
                     }}>
-                        <a className="flex items-center">
+                        <Link href='/' className="flex items-center">
                             <img src="/logo.svg" className="h-[50px]" alt="Flowbite Logo" />
-                        </a>
+                        </Link>
                         <div className=' flex items-center'>
                             {user !== null && user !== undefined && userDB !== null && userDB !== undefined
                                 ? <button type="button" className=" items-center text-gray-100 ml-4 hidden" onClick={() => setNav(!nav)}>
@@ -138,7 +141,7 @@ export default function Navbar({ children }) {
                 </div>
             </nav>
             <ul className={`fixed  top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] transition-all  z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} >
-                {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={() => handlerNavItem('Mi cuenta')}>
+                {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={(e) => handlerNavItem(e, 'Mi cuenta')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>MI CUENTA</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
 
@@ -166,7 +169,7 @@ export default function Navbar({ children }) {
                     </div>
                 </li>}
 
-                <li onClick={() => handlerNavItem('Servicios')}>
+                <li onClick={(e) => handlerNavItem(e, 'Servicios')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>SERVICIOS</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Servicios' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
                         <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px] sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
@@ -188,7 +191,7 @@ export default function Navbar({ children }) {
                     </div>
                 </li>
 
-                <li onClick={() => handlerNavItem('Acerca')}>
+                <li onClick={(e) => handlerNavItem(e, 'Acerca')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>ACERCA DE</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20   ${navItem === 'Acerca' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
                         <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>

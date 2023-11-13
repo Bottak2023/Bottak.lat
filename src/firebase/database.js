@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './config'
-import { getDatabase, ref, onValue, set, child, get, remove, update } from "firebase/database";
+import { getDatabase, ref, onValue, set, child, get, remove, update, query, orderByChild, equalTo } from "firebase/database";
 
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app);
@@ -34,6 +34,27 @@ async function getSpecificData(query, setUserSpecificData, callback) {
   }
 }
 
+
+function getSpecificDataEq(route, children, eq, setUserData, callback) {
+
+  get(query(ref(db, route), orderByChild(children), equalTo(eq)))
+    .then(async (snapshot) => {
+
+      if (snapshot.exists()) {
+        let snap = snapshot.val()
+        console.log(snap)
+        setUserData(snap)
+        callback && callback()
+      }
+
+    })
+
+}
+
+
+
+
+
 function writeUserData(rute, object, setUserSuccess, callback) {
   console.log(rute)
   update(ref(db, rute), object)
@@ -55,4 +76,4 @@ async function removeData(rute, setUserSuccess, callback) {
 }
 
 
-export { getData, writeUserData, removeData, getSpecificData }
+export { getData, writeUserData, removeData, getSpecificData, getSpecificDataEq }

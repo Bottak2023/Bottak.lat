@@ -10,10 +10,16 @@ import { getSpecificData } from '@/firebase/database'
 
 export default function RootLayout({ children }) {
 
-    const { user, userDB, setUserProfile, nav, setNav, userNav, setUserNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
+    const { user, userDB, setUserProfile, nav, setNav, userNav, setNavItem, setUserNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
     const router = useRouter()
     console.log(user)
     console.log(userDB)
+
+    function mainHandler () {
+        setNavItem('')
+    }
+
+
     useEffect(() => {
         onAuth(setUserProfile, setUserData)
         getSpecificData('divisas', setDivisas)
@@ -21,13 +27,12 @@ export default function RootLayout({ children }) {
     }, [])
     useEffect(() => {
         user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
-        
     }, [user, userDB])
 
     return (
         user !== undefined && userDB !== undefined && divisas !== undefined && <>
-            <Navbar />
-            <div className={`relative  w-screen px-[20px]  pt-[80px] pb-[30px] md:pb-0 flex items-center min-h-full transition-all  ${nav ? 'left-[100vw] sm:left-[250px]' : 'left-0'} ${userNav ? 'top-[70px]' : 'top-0'}`}>
+            <Navbar/>
+            <div className={`relative  w-screen px-[20px]  pt-[80px] pb-[30px] md:pb-0 flex items-center min-h-full transition-all  ${nav ? 'left-[100vw] sm:left-[250px]' : 'left-0'} ${userNav ? 'top-[70px]' : 'top-0'}`} onClick={mainHandler}>
                 {children}
             </div>
             <Particles />
