@@ -25,7 +25,7 @@ function Home() {
             <Button theme="Primary">Sube una foto frontal de tu DNI</Button>
             <WebCamp  takePhoto='Capture2' />
             <div className='flex w-full justify-around py-2'>
-                <Button theme={image1 ? 'Primary' : 'Disable'} click={save}>Continuar</Button>
+                <Button theme={image2 ? 'Primary' : 'Disable'} click={save}>Continuar</Button>
             </div>
             {success == 'Capture' && <Error>ERROR: Debe tomar una foto</Error>}
         </div>
