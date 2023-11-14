@@ -1,6 +1,7 @@
 'use client';
 import { useUser } from '@/context/Context'
 import { getSpecificData, writeUserData } from '@/firebase/database'
+import { uploadStorage } from '@/firebase/storage'
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -47,29 +48,30 @@ export default function Home() {
   }
   function disableConfirm(operacion) {
     function callback() {
-      getSpecificData('currencies', setCountries, () => { setModal('') })
+      getSpecificData('divisas', setCountries, () => { setModal('') })
     }
     setModal('Guardando...')
-    writeUserData(`currencies/${item.cca3}`, { [operacion]: item[operacion] === undefined || item[operacion] === false ? true : false }, setUserSuccess, callback)
+    writeUserData(`divisas/${item.cca3}`, { [operacion]: item[operacion] === undefined || item[operacion] === false ? true : false }, setUserSuccess, callback)
   }
   async function saveConfirm() {
     function callback() {
-      getSpecificData('currencies', setCountries, () => { setModal('') })
+      getSpecificData('divisas', setCountries, () => { setModal('') })
     }
 
     setModal('Guardando...')
-    await writeUserData(`currencies/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
+    postImage[item.cca3] 
+    ? await uploadStorage(`divisas/${item.cca3}`, postImage[item.cca3], state[item.cca3], callback)
+    : await writeUserData(`divisas/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
     const obj = { ...state }
     delete obj[item.cca3]
     setState(obj)
     return
   }
-  function manageInputIMG(e, uuid) {
+  function manageInputIMG(e, name) {
     const file = e.target.files[0]
-    setPostImage({ ...postImage, [uuid]: file })
-    setUrlPostImage({ ...urlPostImage, [uuid]: URL.createObjectURL(file) })
-    setState({ ...state, [uuid]: { ...state[uuid], uuid } })
-}
+    setPostImage({ ...postImage, [name]: file })
+    setUrlPostImage({ ...urlPostImage, [name]: URL.createObjectURL(file) })
+  }
   const prev = () => {
     requestAnimationFrame(() => {
       const scrollLeft = refFirst.current.scrollLeft;
@@ -88,11 +90,12 @@ export default function Home() {
     });
   };
 
+  console.log(postImage)
 
   return (
     <main className='h-full w-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
-      {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
+      {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar los datos de:  {item['currency']}</Modal>}
       {modal === 'recepcion' && <Modal funcion={() => disableConfirm('recepcion')}>Estas seguro de {item.recepcion !== undefined && item.recepcion !== false ? 'DESABILITAR' : 'HABILITAR'} la RECEPCIÓN para el siguiente pais:  {item['currency']}</Modal>}
       {modal === 'envio' && <Modal funcion={() => disableConfirm('envio')}>Estas seguro de {item.envio !== undefined && item.envio !== false ? 'DESABILITAR' : 'HABILITAR'} el ENVIO para el siguiente pais:   {item['currency']}</Modal>}
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
@@ -115,6 +118,7 @@ export default function Home() {
                 Pais
               </th>
               <th scope="col" className=" px-3 py-3">
+                Divisa <br/>
                 Code
               </th>
               <th scope="col" className="text-center px-3 py-3">
@@ -132,6 +136,9 @@ export default function Home() {
               <th scope="col" className="text-center px-3 py-3">
                 Envio
               </th>
+              <th scope="col" className="text-center px-3 py-3">
+                Guardar
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -144,18 +151,18 @@ export default function Home() {
                   {i['translation']['spa']['common']}
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
-                  <input type="text" name="dni" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                {i.code}
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
-                  <input type="text" name="cuenta de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                  <input type="text" name="cuenta de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['cuenta de cobro'] !== undefined ? i['cuenta de cobro'] : 0} />
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
-                  <input type="text" name="banco de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                  <input type="text" name="banco de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['banco de cobro'] !== undefined ? i['banco de cobro'] : 0} />
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
                   <label htmlFor={`img${index}`}>
-                    <img src={urlPostImage[i['translation']['spa']['common']] ? urlPostImage[i['translation']['spa']['common']] : i.url} alt="Subir QR" />
-                    <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i['translation']['spa']['common'])} className='hidden' />
+                    <img src={urlPostImage[i.cca3] ? urlPostImage[i.cca3] : i.url} alt="Subir QR" />
+                    <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i.cca3)} className='hidden' />
                   </label>
                 </td>
                 <td className="px-3 py-4">
@@ -168,6 +175,12 @@ export default function Home() {
                   {i.envio !== undefined && i.envio !== false
                     ? <Button theme={"Success"} click={() => manage(i, 'Desabilitar', 'envio')}>Habilitado</Button>
                     : <Button theme={"Danger"} click={() => manage(i, 'Habilitar', 'envio')}>Desabilitado</Button>
+                  }
+                </td>
+                <td className="px-3 py-4">
+                  {(state && state[i.cca3] !== undefined) || (postImage && postImage[i.cca3] !== undefined)
+                    ? <Button theme={"Success"} click={() => save(i)}>Guardar</Button>
+                    : <Button theme={"Disable"} >Disable</Button>
                   }
                 </td>
               </tr>
