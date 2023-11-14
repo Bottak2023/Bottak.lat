@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import { generateUUID } from '@/utils/UUIDgenerator'
 
 function Home() {
-    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
+    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, setDestinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
     const [state, setState] = useState({})
     const router = useRouter()
 
@@ -23,9 +23,6 @@ function Home() {
     function save(e) {
         e.preventDefault()
         e.stopPropagation()
-        const uuid = generateUUID()
-        const date = new Date().getTime()
-        const fecha = getDayMonthYear(date)
         const db = {
             ...destinatario,
             remitente: userDB && userDB && userDB.nombre,
@@ -35,29 +32,23 @@ function Home() {
             importe: transferencia,
             ['divisa de receptor']: select2,
             cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
-            fecha,
-            date,
             estado: 'en proceso',
-            uuid,
             ['user uuid']: user.uid,
         }
-        setModal('Guardando...')
-        const callback = () => {
-            redirectHandler(`/Exitoso?uuid=${uuid}`)
-            setModal('')
-        }
+        setDestinatario(db)
+        router.push('/Transferir')
         // writeUserData(`users/${user.uid}/historial/${uuid}`, db, setUserSuccess)
-        writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
+        // writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
     }
 
-    useEffect(()=>{
-         destinatario === undefined && router.replace('/') 
+    useEffect(() => {
+        destinatario === undefined && router.replace('/')
     })
     return (
         <div className='w-full'>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
-            {destinatario !== undefined && transferencia !== '' &&<div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
-                 <table className="relative sm:left-0 sm:right-0 mx-auto lg:left-auto lg:right-auto w-full overflow-hidden sm:w-[500px] lg:min-w-auto text-[14px] text-left text-gray-500 bg-white rounded-[20px]" style={{ height: '100px' }}>
+            {destinatario !== undefined && transferencia !== '' && <div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
+                <table className="relative sm:left-0 sm:right-0 mx-auto lg:left-auto lg:right-auto w-full overflow-hidden sm:w-[500px] lg:min-w-auto text-[14px] text-left text-gray-500 bg-white rounded-[20px]" style={{ height: '100px' }}>
                     <thead className="w-full text-[14px] text-gray-700 uppercase bg-gray-50">
                         <tr className="w-full text-[14px] text-center font-semibold border-b hover:bg-gray-50 ">
                             <th></th>
@@ -180,3 +171,33 @@ function Home() {
 }
 
 export default WithAuth(Home)
+
+// function save(e) {
+//     e.preventDefault()
+//     e.stopPropagation()
+//     const uuid = generateUUID()
+//     const date = new Date().getTime()
+//     const fecha = getDayMonthYear(date)
+//     const db = {
+//         ...destinatario,
+//         remitente: userDB && userDB && userDB.nombre,
+//         ['dni remitente']: userDB && userDB && userDB.dni,
+//         ['pais remitente']: userDB && userDB && userDB.pais,
+//         ['divisa de envio']: select,
+//         importe: transferencia,
+//         ['divisa de receptor']: select2,
+//         cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
+//         fecha,
+//         date,
+//         estado: 'en proceso',
+//         uuid,
+//         ['user uuid']: user.uid,
+//     }
+//     setModal('Guardando...')
+//     const callback = () => {
+//         redirectHandler(`/Exitoso?uuid=${uuid}`)
+//         setModal('')
+//     }
+//     // writeUserData(`users/${user.uid}/historial/${uuid}`, db, setUserSuccess)
+//     writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
+// }

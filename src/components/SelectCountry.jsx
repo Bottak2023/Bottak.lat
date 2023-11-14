@@ -12,7 +12,7 @@ export default function App({ propIsSelect, propHandlerIsSelect, operation, clic
     function handlerUserSelect(e, i) {
         setSelect(i.translation.spa.common)
         setFlag(i.flagPNG)
-        click(i.translation.spa.common)
+        click(i.translation.spa.common, i.cca3)
     }
     function handlerIsSelect(e, i) {
         e.stopPropagation()

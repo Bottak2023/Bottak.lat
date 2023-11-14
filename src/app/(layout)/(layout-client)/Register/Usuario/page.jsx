@@ -22,8 +22,8 @@ function Home() {
     function onChangeHandler(e) {
         setState({ ...state, [e.target.name]: e.target.value })
     }
-    const handlerCountrySelect = (i) => {
-        setState({ ...state, ['pais']: i })
+    const handlerCountrySelect = (pais, cca3) => {
+        setState({ ...state, pais, cca3 })
     }
     const handlerIsSelect = () => {
         setIsSelect3(!isSelect3)
