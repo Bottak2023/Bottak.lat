@@ -48,10 +48,10 @@ export default function Home() {
   }
   function disableConfirm(operacion) {
     function callback() {
-      getSpecificData('divisas', setCountries, () => { setModal('') })
+      getSpecificData('currencies', setCountries, () => { setModal('') })
     }
     setModal('Guardando...')
-    writeUserData(`divisas/${item.cca3}`, { [operacion]: item[operacion] === undefined || item[operacion] === false ? true : false }, setUserSuccess, callback)
+    writeUserData(`currencies/${item.cca3}`, { [operacion]: item[operacion] === undefined || item[operacion] === false ? true : false }, setUserSuccess, callback)
   }
   async function saveConfirm() {
 
@@ -66,13 +66,13 @@ export default function Home() {
     }
 
     function callback() {
-      getSpecificData('divisas', setCountries, callback2)
+      getSpecificData('currencies', setCountries, callback2)
     }
 
     setModal('Guardando...')
     postImage[item.cca3] 
-    ? await uploadStorage(`divisas/${item.cca3}`, postImage[item.cca3], state[item.cca3], callback)
-    : await writeUserData(`divisas/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
+    ? await uploadStorage(`currencies/${item.cca3}`, postImage[item.cca3], state[item.cca3], callback)
+    : await writeUserData(`currencies/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
   
     return
   }
