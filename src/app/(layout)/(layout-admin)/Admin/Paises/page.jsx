@@ -162,7 +162,7 @@ export default function Home() {
                 <td className="px-3 py-4 text-gray-900 ">
                   <label htmlFor={`img${index}`}>
                     <img src={urlPostImage[i.cca3] ? urlPostImage[i.cca3] : i.url} alt="Subir QR" />
-                    <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i.cca3)} className='hidden' />
+                    <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i.cca3)} className='hidden' accept='image/*' />
                   </label>
                 </td>
                 <td className="px-3 py-4">
