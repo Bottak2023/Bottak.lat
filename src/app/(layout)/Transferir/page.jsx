@@ -74,12 +74,12 @@ function Home() {
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Elija una opcion de deposito Bancario</h3>
             </div>
             <div className=' space-y-5'>
-                <Label htmlFor="">Cuenta bancaria</Label>
+                <Label htmlFor="">Cuenta bancaria para transferencía</Label>
                 <span>{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
                     {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
             </div>
             <div className=' space-y-5'>
-                <Label htmlFor="">Nombre de Banco</Label>
+                <Label htmlFor="">QR de Banco para transferencía</Label> <br />
                 <img src={countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3].url} className='inline-block relative left-0 right-0 mx-auto w-[100px] h-[100px]' alt="" />
             </div>
             <div className='lg:hidden'>

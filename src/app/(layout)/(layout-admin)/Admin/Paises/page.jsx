@@ -54,21 +54,26 @@ export default function Home() {
     writeUserData(`divisas/${item.cca3}`, { [operacion]: item[operacion] === undefined || item[operacion] === false ? true : false }, setUserSuccess, callback)
   }
   async function saveConfirm() {
+
+    function callback2() {
+      const obj = { ...state }
+      delete obj[item.cca3]
+      setState(obj)
+  
+      const obj2 = { ...postImage }
+      delete obj2[item.cca3]
+      setState(obj2)
+    }
+
     function callback() {
-      getSpecificData('divisas', setCountries, () => { setModal('') })
+      getSpecificData('divisas', setCountries, callback2)
     }
 
     setModal('Guardando...')
     postImage[item.cca3] 
     ? await uploadStorage(`divisas/${item.cca3}`, postImage[item.cca3], state[item.cca3], callback)
     : await writeUserData(`divisas/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
-    const obj = { ...state }
-    delete obj[item.cca3]
-    setState(obj)
-
-    const obj2 = { ...postImage }
-    delete obj2[item.cca3]
-    setState(obj2)
+  
     return
   }
   function manageInputIMG(e, name) {
