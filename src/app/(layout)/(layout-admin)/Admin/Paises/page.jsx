@@ -63,6 +63,8 @@ export default function Home() {
       const obj2 = { ...postImage }
       delete obj2[item.cca3]
       setState(obj2)
+
+      setModal('')
     }
 
     function callback() {
