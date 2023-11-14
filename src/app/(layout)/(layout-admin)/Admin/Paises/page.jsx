@@ -1,7 +1,7 @@
 'use client';
 import { useUser } from '@/context/Context'
 import { getSpecificData, writeUserData } from '@/firebase/database'
-import { useEffect, useState, useRef  } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
@@ -20,6 +20,8 @@ export default function Home() {
   const [filter, setFilter] = useState('')
   const [state, setState] = useState({})
   const [temporal, setTemporal] = useState(undefined)
+  const [postImage, setPostImage] = useState({})
+  const [urlPostImage, setUrlPostImage] = useState({})
   const refFirst = useRef(null);
 
   function onChangeFilter(e) {
@@ -61,8 +63,13 @@ export default function Home() {
     delete obj[item.cca3]
     setState(obj)
     return
-  } 
-
+  }
+  function manageInputIMG(e, uuid) {
+    const file = e.target.files[0]
+    setPostImage({ ...postImage, [uuid]: file })
+    setUrlPostImage({ ...urlPostImage, [uuid]: URL.createObjectURL(file) })
+    setState({ ...state, [uuid]: { ...state[uuid], uuid } })
+}
   const prev = () => {
     requestAnimationFrame(() => {
       const scrollLeft = refFirst.current.scrollLeft;
@@ -86,8 +93,8 @@ export default function Home() {
     <main className='h-full w-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
       {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
-      {modal === 'recepcion' && <Modal funcion={()=>disableConfirm('recepcion')}>Estas seguro de {item.recepcion !== undefined && item.recepcion !== false ? 'DESABILITAR' : 'HABILITAR'} la RECEPCIÓN para el siguiente pais:  {item['currency']}</Modal>}
-      {modal === 'envio' && <Modal funcion={()=>disableConfirm('envio')}>Estas seguro de {item.envio !== undefined && item.envio !== false ? 'DESABILITAR' : 'HABILITAR'} el ENVIO para el siguiente pais:   {item['currency']}</Modal>}
+      {modal === 'recepcion' && <Modal funcion={() => disableConfirm('recepcion')}>Estas seguro de {item.recepcion !== undefined && item.recepcion !== false ? 'DESABILITAR' : 'HABILITAR'} la RECEPCIÓN para el siguiente pais:  {item['currency']}</Modal>}
+      {modal === 'envio' && <Modal funcion={() => disableConfirm('envio')}>Estas seguro de {item.envio !== undefined && item.envio !== false ? 'DESABILITAR' : 'HABILITAR'} el ENVIO para el siguiente pais:   {item['currency']}</Modal>}
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
 
@@ -111,6 +118,15 @@ export default function Home() {
                 Code
               </th>
               <th scope="col" className="text-center px-3 py-3">
+                Cuenta de cobro
+              </th>
+              <th scope="col" className="text-center px-3 py-3">
+                Banco de cobro
+              </th>
+              <th scope="col" className="text-center px-3 py-3">
+                QR de cobro
+              </th>
+              <th scope="col" className="text-center px-3 py-3">
                 Recepción
               </th>
               <th scope="col" className="text-center px-3 py-3">
@@ -128,7 +144,19 @@ export default function Home() {
                   {i['translation']['spa']['common']}
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
-                  {i.code}/{i.currency}
+                  <input type="text" name="dni" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                </td>
+                <td className="px-3 py-4 text-gray-900 ">
+                  <input type="text" name="cuenta de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                </td>
+                <td className="px-3 py-4 text-gray-900 ">
+                  <input type="text" name="banco de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                </td>
+                <td className="px-3 py-4 text-gray-900 ">
+                  <label htmlFor={`img${index}`}>
+                    <img src={urlPostImage[i['translation']['spa']['common']] ? urlPostImage[i['translation']['spa']['common']] : i.url} alt="Subir QR" />
+                    <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i['translation']['spa']['common'])} className='hidden' />
+                  </label>
                 </td>
                 <td className="px-3 py-4">
                   {i.recepcion !== undefined && i.recepcion !== false
