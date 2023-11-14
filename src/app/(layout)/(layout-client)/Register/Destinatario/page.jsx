@@ -7,6 +7,7 @@ import SelectCountry from '@/components/SelectCountry'
 import Label from '@/components/Label'
 import Loader from '@/components/Loader'
 import Button from '@/components/Button'
+import Msg from '@/components/Msg'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
@@ -37,9 +38,15 @@ function Home() {
     function save(e) {
         e.preventDefault()
         e.stopPropagation()
+
+        if (destinatario.pais === null || destinatario.pais === undefined){
+            setUserSuccess('CompletePais')
+            return
+        }
+
         const uuid = generateUUID()
         const date = new Date().getTime()
-        const destinatarioDB = { ...destinatario, uuid, operacion: pathname }
+        const destinatarioDB = { ...destinatario, uuid, operacion: pathname ? pathname : destinatario.operacion}
         setModal('Guardando...')
         const callback = () => {
             redirectHandler('/Confirm', destinatarioDB)
@@ -47,6 +54,7 @@ function Home() {
         }
         writeUserData(`users/${user.uid}/destinatarios/${uuid}`, { ...destinatario, uuid }, setUserSuccess, callback)
     }
+    console.log(destinatario)
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -90,6 +98,7 @@ function Home() {
             <div className='flex w-full justify-around items-end'>
                 <Button theme='Primary' >Guardar</Button>
             </div>
+            {success == 'CompletePais' && <Msg>Seleccione un pais</Msg>}
         </form>
     )
 }

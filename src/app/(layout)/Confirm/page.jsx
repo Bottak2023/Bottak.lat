@@ -1,7 +1,7 @@
 'use client'
 
 import { writeUserData, getSpecificData } from '@/firebase/database'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useUser } from '@/context/Context.js'
 import { getDayMonthYear } from '@/utils/date'
 import { WithAuth } from '@/HOCs/WithAuth'
@@ -50,11 +50,14 @@ function Home() {
         writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
     }
 
+    useEffect(()=>{
+         destinatario === undefined && router.replace('/') 
+    })
     return (
         <div className='w-full'>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
-            <div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
-                <table className="relative sm:left-0 sm:right-0 mx-auto lg:left-auto lg:right-auto w-full overflow-hidden sm:w-[500px] lg:min-w-auto text-[14px] text-left text-gray-500 bg-white rounded-[20px]" style={{ height: '100px' }}>
+            {destinatario !== undefined && transferencia !== '' &&<div className='relative left-0 right-0 mx-0 sm:max-h-[80vh] overflow-y-auto rounded-[20px]'>
+                 <table className="relative sm:left-0 sm:right-0 mx-auto lg:left-auto lg:right-auto w-full overflow-hidden sm:w-[500px] lg:min-w-auto text-[14px] text-left text-gray-500 bg-white rounded-[20px]" style={{ height: '100px' }}>
                     <thead className="w-full text-[14px] text-gray-700 uppercase bg-gray-50">
                         <tr className="w-full text-[14px] text-center font-semibold border-b hover:bg-gray-50 ">
                             <th></th>
@@ -171,7 +174,7 @@ function Home() {
                 <div className='flex justify-center pt-5'>
                     <Button theme='Primary' click={save}>Efectuar Transacción</Button>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

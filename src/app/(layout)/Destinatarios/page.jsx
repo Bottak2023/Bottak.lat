@@ -1,7 +1,7 @@
 'use client';
 import { useUser } from '@/context/Context'
 import { getSpecificData, writeUserData } from '@/firebase/database'
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
@@ -15,7 +15,7 @@ import { useSearchParams } from 'next/navigation'
 
 export default function Home() {
 
-    const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario } = useUser()
+    const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario, transferencia} = useUser()
     const router = useRouter()
     const [filter, setFilter] = useState('')
     const [state, setState] = useState({})
@@ -38,9 +38,10 @@ export default function Home() {
     }
     function save(i) {
         setDestinatario({ ...i, ...state, operacion: pathname })
-        router.replace('/Confirm/')
+        router.push('/Confirm/')
     }
     function redirect() {
+        setDestinatario({ operacion: pathname })
         router.push('/Register/Destinatario')
     }
     function manage(i, data) {
@@ -71,6 +72,10 @@ export default function Home() {
         });
     };
 
+    useEffect(()=>{
+        transferencia === '' && router.replace('/')
+    })
+
     return (
         <main className='w-full h-full'>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -82,7 +87,6 @@ export default function Home() {
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>                <h3 className='font-medium text-[14px]'>Destinatarios</h3>
                 <br />
                 <input type="text" className='borde  vbr-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
-                  vb
                 <div className='w-full min-w-[1000px] flex justify-end'>
                     <div className='w-[180px] flex    vbjustify-center items-center h-[50px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Nuevo destinatario</div>
                 </div>
