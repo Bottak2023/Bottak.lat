@@ -6,7 +6,7 @@ import { writeUserData, getSpecificData } from "@/firebase/database"
 
 export default function App({ propIsSelect, propHandlerIsSelect, operation, click }) {
     const { countries } = useUser()
-    const [countrie, setCountrie] = useState({})
+    const [countrie, setCountrie] = useState(undefined)
     const [select, setSelect] = useState('Seleccionar')
     const [flag, setFlag] = useState('')
 
@@ -28,7 +28,7 @@ export default function App({ propIsSelect, propHandlerIsSelect, operation, clic
                 <span className='w-[auto] flex items-center rounded-[20px] '><img src={flag} className="max-w-[50px] h-[30px]" alt="" /></span>
                 <span className={propIsSelect ? 'text-white text-center w-[10%] right-5 rotate-[270deg] p-3 ' : 'text-white text-center w-[10%] right-5 rotate-90 p-3 '} onClick={(e) => handlerIsSelect(e)}>{'>'}</span>
             </div>
-            {propIsSelect === false && operation === 'recepcion' && countrie.translation.spa.common === select && i['envio'] !== true && <span className=" text-green-400 text-[14px] font-light">{countrie.translation.spa.common} esta habilitado unicamente para recepciones de dinero</span>}
+            {propIsSelect === false && operation === 'recepcion' && countrie && countrie !== undefined && countrie.translation.spa.common === select && i['envio'] !== true && <span className=" text-green-400 text-[14px] font-light">{countrie.translation.spa.common} esta habilitado unicamente para recepciones de dinero</span>}
             <ul className={`absolute left-0 top-10 bg-gray-100 flex flex-col justify-center items-center  text-gray-900 text-[14px] rounded-b-xl focus:ring-blue-500 focus:outline-blue-500 w-full   z-30 overflow-y-auto transition-all ${propIsSelect ? 'h-[150px] outline outline-1 outline-gray-300' : 'h-0 overflow-y-hidden'}`} >
                 {Object.values(countries).map((i, index) => ((i[operation] !== undefined && i[operation] !== false && i[operation] !== null) || (i['envio'] !== undefined && i['envio'] !== false && i['envio'] !== null))  &&
                 <li className='w-[200px] h-[50px] flex justify-start items-center' key={index} onClick={(e) => handlerUserSelect(e, i)}>
