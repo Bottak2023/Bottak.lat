@@ -85,7 +85,7 @@ function Home() {
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Pais</Label>
-                <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} click={handlerCountrySelect} />
+                <SelectCountry name="pais" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} operation="envio" click={handlerCountrySelect} />
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Dirección</Label>

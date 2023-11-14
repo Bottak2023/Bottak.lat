@@ -88,7 +88,7 @@ console.log(remesasDB)
                                 Operacion
                             </th>
                             <th scope="col" className=" px-3 py-3">
-                                Destinatario
+                                Nombre
                             </th>
                             <th scope="col" className=" px-3 py-3">
                                 DNI

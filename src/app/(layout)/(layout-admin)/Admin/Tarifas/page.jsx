@@ -137,16 +137,13 @@ export default function Home() {
               </th>
               <th scope="col" className=" px-3 py-3">
                 Tasa de <br /> cambio USD
-
               </th>
-
               <th scope="col" className="text-center px-3 py-3">
                 Compra
               </th>
               <th scope="col" className="text-center px-3 py-3">
                 Venta
               </th>
-
               <th scope="col" className="text-center px-3 py-3">
                 Tarifa de Envio<br />
                 1 - 1000 USD
