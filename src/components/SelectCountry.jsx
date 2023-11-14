@@ -31,9 +31,9 @@ export default function App({ propIsSelect, propHandlerIsSelect, operation, clic
                 <li className='w-[200px] h-[50px] flex justify-start items-center' key={index} onClick={(e) => handlerUserSelect(e, i)}>
                     <span className="inline-block w-30px] h-[20px]"><img src={i.flagPNG} className="w-[30px] h-[20px]" alt="" /></span>
                     <span className="pl-5"> {i.translation.spa.common}</span>
+                    {propIsSelect === false && operation === 'recepcion' && i.translation.spa.common === select && i['envio'] !== true && <span className="absolute bottom-[-16px] text-green-400 text-[14px] font-light">{i.translation.spa.common} esta habilitado unicamente para recepciones de dinero</span>}
                 </li>)}
             </ul>
-            {propIsSelect === false && operation === 'recepcion' && i.translation.spa.common === select && i['envio'] !== true && <span className="text-green-400 text-[14px] font-light">{i.translation.spa.common} esta habilitado unicamente para recepciones de dinero</span>}
         </div>
     );
 }             
