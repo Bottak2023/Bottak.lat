@@ -33,7 +33,7 @@ export default function App({ propIsSelect, propHandlerIsSelect, operation, clic
                     <span className="pl-5"> {i.translation.spa.common}</span>
                 </li>)}
             </ul>
-            {operation === 'recepcion' && i.translation.spa.common === select && i['envio'] !== true && <span>{i.translation.spa.common} esta habilitado unicamente para recepciones de dinero</span>}
+            {propIsSelect === false && operation === 'recepcion' && i.translation.spa.common === select && i['envio'] !== true && <span className="text-green-400 text-[14px] font-light">{i.translation.spa.common} esta habilitado unicamente para recepciones de dinero</span>}
         </div>
     );
 }             
