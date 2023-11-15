@@ -95,22 +95,28 @@ export default function Home() {
                 Pais remitente
               </th>
               <th scope="col" className=" px-3 py-3">
+                Cuenta remitente
+              </th>
+              <th scope="col" className=" px-3 py-3">
+                Banco remitente
+              </th>
+              <th scope="col" className=" px-3 py-3">
                 Destinatario
               </th >
               <th scope="col" className=" px-3 py-3">
                 DNI destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
-                Dirección
+                Dirección destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
-                 Celular
+                 Celular destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
-                Nro de cuenta
+                Cuenta destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
-                Banco
+                Banco destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
                 Importe
@@ -125,7 +131,7 @@ export default function Home() {
                 Divisa <br /> de <br /> receptor
               </th>
               <th scope="col" className=" px-3 py-3">
-                ID de transaccion
+                ID de transacción
               </th>
               <th scope="col" className=" px-3 py-3">
                 Fecha
@@ -158,6 +164,12 @@ export default function Home() {
                 </td>
                 <td className="min-w-32 px-3 py-4  ">
                   {i['pais remitente']}
+                </td>
+                <td className="min-w-32 px-3 py-4  ">
+                  {i['cuenta transferidora']}
+                </td>
+                <td className="min-w-32 px-3 py-4  ">
+                  {i['banco de transferencia']}
                 </td>
                 <td className="min-w-32 px-3 py-4  ">
                   {i['destinatario']}
@@ -194,6 +206,9 @@ export default function Home() {
                 </td>
                 <td className="min-w-32 p-3">
                   {i['fecha']}
+                </td>
+                <td className="min-w-32 p-3">
+                  <img src={i['baucher']} alt="" />
                 </td>
                 <td className="px-3 py-4">
                   {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined

@@ -28,7 +28,15 @@ function Home() {
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
     }
+
     function onChangeHandlerIMG(e) {
+        const file = e.target.files[0]
+        setPostImage(file)
+        setUrlPostImage(URL.createObjectURL(file))
+    }
+
+    function manageInputIMG(e) {
+        // const fileName = `${e.target.name}`
         const file = e.target.files[0]
         setPostImage(file)
         setUrlPostImage(URL.createObjectURL(file))
@@ -53,6 +61,7 @@ function Home() {
             fecha,
             date,
             uuid,
+            baucher: file
         }
  
         setModal('Guardando...')
@@ -75,7 +84,7 @@ function Home() {
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Cuenta bancaria</Label>
-                <span>{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
+                <span className="block text-white text-center" >{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
                     {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
             </div>
             <div className=' space-y-5'>
@@ -90,6 +99,16 @@ function Home() {
             </div>
             <div className='lg:hidden'>
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
+            </div>
+            <div className=' space-y-5'>
+                <Label htmlFor="">Baucher de transferencia</Label>
+                <div className="w-full flex justify-center">
+                    <label htmlFor="file" className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
+                        {urlPostImage ? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[100px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
+                            : 'Subir baucher'}
+                    </label>
+                    <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" required/>
+                </div>
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Banco de transferencia</Label>
