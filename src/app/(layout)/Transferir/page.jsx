@@ -35,13 +35,14 @@ function Home() {
     }
 
     function save(e) {
+
         e.preventDefault()
         e.stopPropagation()
 
         const reader = new FileReader();
         reader.onloadend = () => {
             console.log(reader.result);
-        };
+        } 
         reader.readAsDataURL(postImage);
 
         const uuid = generateUUID()
@@ -54,16 +55,15 @@ function Home() {
             uuid,
         }
  
-        console.log(reader)
+        setModal('Guardando...')
+        const callback = () => {
+            redirectHandler(`/Exitoso?uuid=${uuid}`)
+            setModal('')
+        }
+        writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
 
-        // setModal('Guardando...')
-        // const callback = () => {
-        //     redirectHandler(`/Exitoso?uuid=${uuid}`)
-        //     setModal('')
-        // }
-        // writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
     }
-    console.log(countries[userDB.cca3].url)
+
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -92,11 +92,6 @@ function Home() {
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
             </div>
             <div className=' space-y-5'>
-                <Label htmlFor="">Nombre</Label>
-                <Input type="text" name="remitente de transaccion" onChange={onChangeHandler} required />
-
-            </div>
-            <div className=' space-y-5'>
                 <Label htmlFor="">Banco de transferencia</Label>
                 <Input type="text" name="banco de transferencia" onChange={onChangeHandler} required />
             </div>
@@ -104,10 +99,10 @@ function Home() {
                 <Label htmlFor="">Numero de cuenta transferidora</Label>
                 <Input type="text" name="cuenta transferidora" onChange={onChangeHandler} required />
             </div>
-            <div className=' space-y-5'>
+            {/* <div className=' space-y-5'>
                 <Label htmlFor="">Titular de banco de transferencia</Label>
                 <Input type="text" name="titular de banco" onChange={onChangeHandler} required />
-            </div>
+            </div> */}
             <div className='flex w-full justify-around items-end'>
                 <Button theme='Primary' >Guardar</Button>
             </div>
