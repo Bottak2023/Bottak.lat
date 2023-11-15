@@ -59,7 +59,9 @@ function Home() {
             redirectHandler(`/Exitoso?uuid=${uuid}`)
             setModal('')
         }
-        uploadStorage(`envios/${uuid}`, postImage, db, callback)
+        destinatario.operacion === 'Cambio' 
+        ? uploadStorage(`cambios/${uuid}`, postImage, db, callback)
+        : uploadStorage(`envios/${uuid}`, postImage, db, callback)
         // writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
 
     }
