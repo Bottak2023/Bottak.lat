@@ -87,9 +87,9 @@ export default function Home() {
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
                 <h3 className='font-medium text-[14px]'>Destinatarios</h3>
                 <br />
-                <div className="w-[400px] grid grid-cols-2 gap-[5px]" >
+                <div className="w-[405px] grid grid-cols-2 gap-[5px]" >
                     <input type="text" className='border-b-[1px] text-[14px] outline-none w-[200px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
-                    <button className='w-[180px] flex justify-center items-center h-[50px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Nuevo destinatario</button>
+                    <button className='w-[200px] flex justify-center items-center h-[40px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-5 cursor-pointer' onClick={redirect}>Nuevo destinatario</button>
                 </div>
                 <br />
                 <table className="w-full min-w-[1000px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
@@ -101,8 +101,11 @@ export default function Home() {
                             <th scope="col" className=" px-3 py-3">
                                 Nombre
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 DNI
+                            </th>
+                            <th scope="col" className=" px-3 py-3">
+                                Pais
                             </th>
                             <th scope="col" className=" px-3 py-3">
                                 Dirección
@@ -113,7 +116,7 @@ export default function Home() {
                             <th scope="col" className="text-center px-3 py-3">
                                 Nro de cuenta
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Banco
                             </th>
                             <th scope="col" className="text-center px-3 py-3">
@@ -134,7 +137,11 @@ export default function Home() {
                                     {i['destinatario']}
                                 </td>
                                 <td className="w-32 p-3">
-                                    <input type="text" name="dni" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} />
+                                {i['dni']}
+                                    {/* <input type="text" name="dni" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['dni'] !== undefined ? i['dni'] : 0} /> */}
+                                </td>
+                                <td className="w-32 p-3">
+                                    <input type="text" name="pais" className='min-w-[100px] text-left p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['pais'] !== undefined ? i['pais'] : 0} />
                                 </td>
                                 <td className="w-32 p-3">
                                     <input type="text" name="direccion" className='min-w-[100px] text-left p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['direccion'] !== undefined ? i['direccion'] : 0} />
@@ -143,10 +150,12 @@ export default function Home() {
                                     <input type="text" name="celular" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['celular'] !== undefined ? i['celular'] : 0} />
                                 </td>
                                 <td className="w-32 p-3">
-                                    <input type="text" name="cuenta destinatario" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['cuenta destinatario'] !== undefined ? i['cuenta destinatario'] : 0} />
+                                {i['cuenta destinatario']}
+                                    {/* <input type="text" name="cuenta destinatario" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['cuenta destinatario'] !== undefined ? i['cuenta destinatario'] : 0} /> */}
                                 </td>
                                 <td className="w-32 p-3">
-                                    <input type="text" name="nombre de banco" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['nombre de banco'] !== undefined ? i['nombre de banco'] : 0} />
+                                {i['nombre de banco']}
+                                    {/* <input type="text" name="nombre de banco" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['nombre de banco'] !== undefined ? i['nombre de banco'] : 0} /> */}
                                 </td>
                                 <td className="px-3 py-4 w-32 text-center">
                                     <Button theme={"Success"} click={() => save(i)}>Continuar</Button>
