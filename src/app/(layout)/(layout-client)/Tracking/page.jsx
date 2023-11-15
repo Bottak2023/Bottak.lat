@@ -145,7 +145,7 @@ export default function Page({ styled, name, change }) {
                                 Estado:
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 ">
-                                En proceso
+                                En verficación
                             </td>
                         </tr>
                         <tr className="bg-white text-[14px] border-b   hover:bg-gray-50 " >

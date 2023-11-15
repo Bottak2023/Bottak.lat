@@ -27,7 +27,6 @@ function Home() {
     }
 
     function manageInputIMG(e) {
-        // const fileName = `${e.target.name}`
         const file = e.target.files[0]
         setPostImage(file)
         setUrlPostImage(URL.createObjectURL(file))
@@ -60,7 +59,8 @@ function Home() {
             redirectHandler(`/Exitoso?uuid=${uuid}`)
             setModal('')
         }
-        writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
+        uploadStorage(`envios/${uuid}`, postImage, db, callback)
+        // writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
 
     }
 
@@ -98,7 +98,7 @@ function Home() {
                         {urlPostImage !== undefined? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
                             : 'Subir baucher'}
                     </label>
-                    <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" require/>
+                    <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" required/>
                 </div>
             </div>
             <div className=' space-y-5'>

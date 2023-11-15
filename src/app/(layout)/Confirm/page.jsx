@@ -32,7 +32,7 @@ function Home() {
             importe: transferencia,
             ['divisa de receptor']: select2,
             cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
-            estado: 'en proceso',
+            estado: 'En verficación',
             ['user uuid']: user.uid,
         }
         setDestinatario(db)
@@ -189,7 +189,7 @@ export default WithAuth(Home)
 //         cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
 //         fecha,
 //         date,
-//         estado: 'en proceso',
+//         estado: 'En verficación',
 //         uuid,
 //         ['user uuid']: user.uid,
 //     }

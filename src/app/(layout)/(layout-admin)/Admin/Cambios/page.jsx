@@ -148,7 +148,7 @@ export default function Home() {
                 </td>
                 {/* {console.log(i['estado'])} */}
                 <td className="min-w-32 px-3 py-4  ">
-                  <Select arr={['En proceso', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
+                  <Select arr={['En verficación', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
                 </td>
                 <td className="min-w-32 px-3 py-4  ">
                   {i['remitente']}
