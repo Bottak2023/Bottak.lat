@@ -89,13 +89,13 @@ function Home() {
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">QR bancario</Label> 
-                <div className="w-full flex flex-col justify-center items-center">
+                <a href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
                     <label htmlFor="baucher" className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
                         {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
-                            : 'Subir Imagen'}
+                            : 'Subir baucher'}
                     </label>
                     <input type="file" id='baucher' className="hidden" onChange={onChangeHandlerIMG} accept=".jpg, .jpeg, .png, .mp4, webm" required />
-                </div>
+                </a>
             </div>
             <div className='lg:hidden'>
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
@@ -104,7 +104,7 @@ function Home() {
                 <Label htmlFor="">Baucher de transferencia</Label>
                 <div className="w-full flex justify-center">
                     <label htmlFor="file" className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                        {urlPostImage ? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[100px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
+                        {urlPostImage ? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
                             : 'Subir baucher'}
                     </label>
                     <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" required/>
