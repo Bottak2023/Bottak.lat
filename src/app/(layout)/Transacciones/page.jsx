@@ -132,7 +132,7 @@ console.log(remesasDB)
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
                                 <td className="min-w-32 px-3 py-4  ">
-                                    <span className={`inline-block py-5 px-10 ${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i['estado']}</span>
+                                    <span className={`w-full block py-5 px-10 rounded-[10px] ${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i['estado']}</span>
                                 </td>
                                 <td className="min-w-32 px-3 py-4  ">
                                     {i['operacion']}
