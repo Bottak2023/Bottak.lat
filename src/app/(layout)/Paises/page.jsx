@@ -147,9 +147,6 @@ export default function Home() {
               <th scope="col" className="text-center px-3 py-3">
                 Envio
               </th>
-              <th scope="col" className="text-center px-3 py-3">
-                Guardar
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -178,20 +175,14 @@ export default function Home() {
                 </td>
                 <td className="px-3 py-4">
                   {i.recepcion !== undefined && i.recepcion !== false
-                    ? <Button theme={"Success"} click={() => manage(i, 'Desabilitar', 'recepcion')}>Habilitado</Button>
-                    : <Button theme={"Danger"} click={() => manage(i, 'Habilitar', 'recepcion')}>Desabilitado</Button>
+                    ? <Button theme={"Success"} >Habilitado</Button>
+                    : <Button theme={"Danger"} >Desabilitado</Button>
                   }
                 </td>
                 <td className="px-3 py-4">
                   {i.envio !== undefined && i.envio !== false
-                    ? <Button theme={"Success"} click={() => manage(i, 'Desabilitar', 'envio')}>Habilitado</Button>
-                    : <Button theme={"Danger"} click={() => manage(i, 'Habilitar', 'envio')}>Desabilitado</Button>
-                  }
-                </td>
-                <td className="px-3 py-4">
-                  {(state && state[i.cca3] !== undefined) || (postImage && postImage[i.cca3] !== undefined)
-                    ? <Button theme={"Success"} click={() => save(i)}>Guardar</Button>
-                    : <Button theme={"Disable"} >Disable</Button>
+                    ? <Button theme={"Success"} >Habilitado</Button>
+                    : <Button theme={"Danger"} >Desabilitado</Button>
                   }
                 </td>
               </tr>

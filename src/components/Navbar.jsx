@@ -45,6 +45,11 @@ function Tracking() {
         </svg>
     </span>
 }
+function Paises() {
+    return <span className='inline-block px-2 py-2 rounded-full bg-[black]'>
+        <img src="/paises.png" className='w-[26px]' alt=""  />
+    </span>
+}
 function Tarifas() {
     return <span className='inline-block px-2 py-2 rounded-full bg-[black]'>
         <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,6 +192,10 @@ export default function Navbar({ children }) {
                         <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                             <Tracking />
                             Tracking
+                        </Link>
+                        <Link href="/Paises" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Paises />
+                            Paises habilitados
                         </Link>
                     </div>
                 </li>
