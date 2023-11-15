@@ -14,7 +14,7 @@ import { WithAuth } from '@/HOCs/WithAuth'
 import { getDayMonthYear } from '@/utils/date'
 import { generateUUID } from '@/utils/UUIDgenerator'
 import { useSearchParams } from 'next/navigation'
-
+import Link from 'next/link'
 function Home() {
 
     const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, qr, setQr, QRurl, setQRurl, countries } = useUser()
@@ -89,13 +89,13 @@ function Home() {
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">QR bancario</Label> 
-                <a href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
+                <Link href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
                     <label  className=" flex flex-col justify-center items-center w-[100px] h-[120px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
                         {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
                             : 'QR no disponible'}
                             Descargar
                     </label>
-                </a>
+                </Link>
             </div>
             <div className='lg:hidden'>
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
