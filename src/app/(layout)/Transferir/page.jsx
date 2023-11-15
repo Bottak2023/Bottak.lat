@@ -90,11 +90,11 @@ function Home() {
             <div className=' space-y-5'>
                 <Label htmlFor="">QR bancario</Label> 
                 <a href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
-                    <label htmlFor="baucher" className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
+                    <label  className=" flex flex-col justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
                         {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
-                            : 'Subir baucher'}
+                            : 'QR no disponible'}
+                            Descargar
                     </label>
-                    <input type="file" id='baucher' className="hidden" onChange={onChangeHandlerIMG} accept=".jpg, .jpeg, .png, .mp4, webm" required />
                 </a>
             </div>
             <div className='lg:hidden'>

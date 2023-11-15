@@ -86,10 +86,8 @@ export default function Home() {
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>                <h3 className='font-medium text-[14px]'>Destinatarios</h3>
                 <br />
-                <input type="text" className='borde  vbr-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
-                <div className='w-full min-w-[1000px] flex justify-end'>
-                    <div className='w-[180px] flex    vbjustify-center items-center h-[50px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Nuevo destinatario</div>
-                </div>
+                <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Destinatario' />
+                <button className='w-[180px] flex    vbjustify-center items-center h-[50px] text-white text-[14px] font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Nuevo destinatario</button>
                 <br />
                 <table className="w-full min-w-[1000px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
                     <thead className="text-[14px] text-gray-700 uppercase bg-white">
