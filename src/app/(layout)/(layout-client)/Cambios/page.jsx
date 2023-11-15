@@ -76,8 +76,6 @@ export default function Home() {
     e.preventDefault()
     e.stopPropagation()
 
-    e.preventDefault()
-    e.stopPropagation()
     if (user == null && user == undefined) {
       console.log('signup')
       setModal('registrate')
@@ -88,12 +86,9 @@ export default function Home() {
       router.push('/Register')
       return
     }
-    if (user && userDB) {
-      userDB.destinatarios && userDB.destinatarios !== undefined && Object.keys(userDB.destinatarios).length > 0 
-      ? router.push('/Destinatarios?operacion=Cambio')
+    user && userDB
+      ? router.push('/ConfirmCambio?operacion=Cambio')
       : router.push('/Register/Destinatario?operacion=Cambio')
-      return
-    }
   }
   useEffect(() => {
     if (user === undefined) onAuth(setUserProfile, setUserData)
@@ -127,25 +122,25 @@ export default function Home() {
         <SelectCambio onChange="Transference" placeholder='Monto a cambiar' propHandlerSelect={handlerSelect} propSelect={select} propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect} defaultValue={transferencia} />
         <span className='text-[#FFF500] text-[14px] font-light'>Cambiar a:</span>
         <SelectCambio value={true} propHandlerSelect={handlerSelect2} propSelect={select2} propHandlerIsSelect={handlerIsSelect2} propIsSelect={isSelect2} />
-        <Button theme='Primary' click={handlerTransfer}>   Cambiar   </Button >
+        <Button theme='Primary' click={handlerTransfer}> Cambiar </Button >
         <div className="">
-            <div className='grid grid-cols-2 gap-[15px]'>
-              <span className='text-white text-[14px] font-light'>Tasa de cambio </span>
-              <span className='text-white text-[14px] font-light'>{divisas && divisas !== undefined && divisas[select2] && divisas[select2] !== undefined && select2 && select2 !== undefined && (divisas[select2].venta / divisas[select2].venta).toFixed(2)} {select2} = {divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined  && select && select !== undefined && (divisas[select].venta / divisas[select2].venta).toFixed(2)} {select}</span>
-            </div>
-            <div className='grid grid-cols-2 gap-[15px]'>
-              <span className='text-white text-[14px] font-light'>Comisiones</span>
-              <span className='text-white text-[14px] font-light'>
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1'] + ' ' + select} 
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2'] +  ' ' + select}
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3']  + ' ' + select}
-                {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && 'CONTACTESE CON SOPORTE'} 
-                </span>
-            </div>
-            {/* <br />
+          <div className='grid grid-cols-2 gap-[15px]'>
+            <span className='text-white text-[14px] font-light'>Tasa de cambio </span>
+            <span className='text-white text-[14px] font-light'>{divisas && divisas !== undefined && divisas[select2] && divisas[select2] !== undefined && select2 && select2 !== undefined && (divisas[select2].venta / divisas[select2].venta).toFixed(2)} {select2} = {divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined && select && select !== undefined && (divisas[select].venta / divisas[select2].venta).toFixed(2)} {select}</span>
+          </div>
+          <div className='grid grid-cols-2 gap-[15px]'>
+            <span className='text-white text-[14px] font-light'>Comisiones</span>
+            <span className='text-white text-[14px] font-light'>
+              {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && divisas[select]['tarifa 1'] + ' ' + select}
+              {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && divisas[select]['tarifa 2'] + ' ' + select}
+              {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && divisas[select]['tarifa 3'] + ' ' + select}
+              {(divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && 'CONTACTESE CON SOPORTE'}
+            </span>
+          </div>
+          {/* <br />
             <p className='text-white underline text-[14px] font-light text-center lg:hidden'>Politicas De Servicio</p>
           */}
-          </div>
+        </div>
       </form>
     </>
   )
@@ -154,45 +149,45 @@ export default function Home() {
 
 
 
-    // // const res = await fetch('http://localhost:3000/api')
-    // const res = await fetch('/api', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     type: 'Cambio de Divisa',
-    //     amount: transferencia,
-    //     comision: 0
-    //   }),
-    //   headers: new Headers({
-    //     'Content-Type': 'application/json; charset=UTF-8'
-    //   })
-    // })
-    // const data = await res.json()
-    // console.log(data)
+// // const res = await fetch('http://localhost:3000/api')
+// const res = await fetch('/api', {
+//   method: 'POST',
+//   body: JSON.stringify({
+//     type: 'Cambio de Divisa',
+//     amount: transferencia,
+//     comision: 0
+//   }),
+//   headers: new Headers({
+//     'Content-Type': 'application/json; charset=UTF-8'
+//   })
+// })
+// const data = await res.json()
+// console.log(data)
 
-    // console.log(data.url)
-    // window.open(data.url, "_self")
-    // return
-    // console.log('click')
-    // if (user == null && user == undefined) {
-    //   console.log('signup')
-    //   setModal('registrate')
-    //   return
-    // }
+// console.log(data.url)
+// window.open(data.url, "_self")
+// return
+// console.log('click')
+// if (user == null && user == undefined) {
+//   console.log('signup')
+//   setModal('registrate')
+//   return
+// }
 
-    // if (user && userDB == null) {
-    //   console.log('registrate')
+// if (user && userDB == null) {
+//   console.log('registrate')
 
 
-    //   router.push('/Register')
-    //   return
-    // }
+//   router.push('/Register')
+//   return
+// }
 
-    // if (user && userDB) {
+// if (user && userDB) {
 
-    //   console.log('Destinatario')
-    //   router.push('/Register/Destinatario')
-    //   return
-    // }
+//   console.log('Destinatario')
+//   router.push('/Register/Destinatario')
+//   return
+// }
 
 
 

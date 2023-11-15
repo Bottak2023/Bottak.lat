@@ -63,6 +63,14 @@ function Home() {
                     <Input type="text" name="direccion" onChange={onChangeHandler} required />
                 </div>
                 <div className=' space-y-5'>
+                    <Label htmlFor="">Numero de cuenta bancaria</Label>
+                    <Input type="text" name="cuenta bancaria" onChange={onChangeHandler} required />
+                </div>
+                <div className=' space-y-5'>
+                    <Label htmlFor="">Nombre de banco</Label>
+                    <Input type="text" name="banco" onChange={onChangeHandler} required />
+                </div>
+                <div className=' space-y-5'>
                     <Label htmlFor="">Whatsapp</Label>
                     <Input type="text" name="whatsapp" onChange={onChangeHandler} required />
                 </div>
