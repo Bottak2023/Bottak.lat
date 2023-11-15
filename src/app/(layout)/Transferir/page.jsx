@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { writeUserData } from '@/firebase/database'
+import { uploadStorage } from '@/firebase/storage'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
 import SelectCountry from '@/components/SelectCountry'
