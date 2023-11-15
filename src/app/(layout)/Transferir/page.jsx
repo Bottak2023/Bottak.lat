@@ -63,7 +63,7 @@ function Home() {
         // }
         // writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
     }
-    console.log(destinatario)
+    console.log(countries[userDB.cca3].url)
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -74,15 +74,15 @@ function Home() {
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Elija una opcion de deposito Bancario</h3>
             </div>
             <div className=' space-y-5'>
-                <Label htmlFor="">Cuenta bancaria para transferencía</Label>
+                <Label htmlFor="">Cuenta bancaria</Label>
                 <span>{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
                     {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
             </div>
             <div className=' space-y-5'>
-                <Label htmlFor="">QR de Banco para transferencía</Label> 
+                <Label htmlFor="">QR bancario</Label> 
                 <div className="w-full flex flex-col justify-center items-center">
                     <label htmlFor="baucher" className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                        {urlPostImage ? <img className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
+                        {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
                             : 'Subir Imagen'}
                     </label>
                     <input type="file" id='baucher' className="hidden" onChange={onChangeHandlerIMG} accept=".jpg, .jpeg, .png, .mp4, webm" required />
