@@ -13,26 +13,17 @@ import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
 import { getDayMonthYear } from '@/utils/date'
 import { generateUUID } from '@/utils/UUIDgenerator'
-import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 function Home() {
 
     const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, qr, setQr, QRurl, setQRurl, countries } = useUser()
     const router = useRouter()
-    const searchParams = useSearchParams()
-    const pathname = searchParams.get('operacion')
 
-    const [postImage, setPostImage] = useState({})
-    const [urlPostImage, setUrlPostImage] = useState({})
+    const [postImage, setPostImage] = useState(undefined)
+    const [urlPostImage, setUrlPostImage] = useState(undefined)
 
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
-    }
-
-    function onChangeHandlerIMG(e) {
-        const file = e.target.files[0]
-        setPostImage(file)
-        setUrlPostImage(URL.createObjectURL(file))
     }
 
     function manageInputIMG(e) {
@@ -77,7 +68,7 @@ function Home() {
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
-                <h3 className=' pb-3 text-white  text-right'>Efectuar</h3>
+                <h3 className=' pb-3 text-white  text-right'>Efectuar transacción</h3>
             </div>
             <div className='lg:hidden'>
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Elija una opcion de deposito Bancario</h3>
@@ -104,10 +95,10 @@ function Home() {
                 <Label htmlFor="">Baucher de transferencia</Label>
                 <div className="w-full flex justify-center">
                     <label htmlFor="file" className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                        {urlPostImage ? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
+                        {urlPostImage !== undefined? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
                             : 'Subir baucher'}
                     </label>
-                    <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" required/>
+                    <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" require/>
                 </div>
             </div>
             <div className=' space-y-5'>
