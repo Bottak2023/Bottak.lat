@@ -137,6 +137,9 @@ export default function Home() {
                 Fecha
               </th>
               <th scope="col" className=" px-3 py-3">
+                Baucher
+              </th>
+              <th scope="col" className=" px-3 py-3">
                 Actualizar
               </th>
             </tr>

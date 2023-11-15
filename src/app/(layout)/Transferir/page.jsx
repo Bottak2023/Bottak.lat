@@ -96,7 +96,7 @@ function Home() {
             <div className=' space-y-5'>
                 <Label htmlFor="">Baucher de transferencia</Label>
                 <div className="w-full flex justify-center">
-                    <label htmlFor="file" className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
+                    <label htmlFor="file" className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-center text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
                         {urlPostImage !== undefined? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
                             : 'Subir baucher'}
                     </label>

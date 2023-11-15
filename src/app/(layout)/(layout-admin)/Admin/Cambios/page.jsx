@@ -53,7 +53,7 @@ export default function Home() {
     });
   };
   useEffect(() => {
-    remesasDB === undefined && getSpecificData(`/envios/`, setRemesasDB)
+    remesasDB === undefined && getSpecificData(`/cambios/`, setRemesasDB)
   }, [remesasDB])
   return (
     <main className='w-full h-full'>
@@ -86,43 +86,34 @@ export default function Home() {
                 estado
               </th>
               <th scope="col" className=" px-3 py-3">
-                Remitente
+                Usuario
               </th>
               <th scope="col" className=" px-3 py-3">
-                DNI remitente
+                DNI de usuario
               </th>
               <th scope="col" className=" px-3 py-3">
-                Pais remitente
+                Pais de usuario
               </th>
               <th scope="col" className=" px-3 py-3">
-                Destinatario
+                Whatsapp de usuario
               </th>
               <th scope="col" className=" px-3 py-3">
-                DNI destinatario
+                Cuenta de usuario
               </th>
               <th scope="col" className=" px-3 py-3">
-                Dirección
+                Nombre de banco
               </th>
               <th scope="col" className=" px-3 py-3">
-                Celular
-              </th>
-              <th scope="col" className=" px-3 py-3">
-                Nro de cuenta
-              </th>
-              <th scope="col" className=" px-3 py-3">
-                Banco
+                Divisa de envio
               </th>
               <th scope="col" className=" px-3 py-3">
                 Importe
               </th>
               <th scope="col" className=" px-3 py-3">
-                Divisa <br /> de <br /> envio
+                Divisa de cambio
               </th>
               <th scope="col" className=" px-3 py-3">
                 Importe con el <br /> cambio aplicado
-              </th>
-              <th scope="col" className=" px-3 py-3">
-                Divisa <br /> de <br /> receptor
               </th>
               <th scope="col" className=" px-3 py-3">
                 ID de transaccion
@@ -131,77 +122,80 @@ export default function Home() {
                 Fecha
               </th>
               <th scope="col" className=" px-3 py-3">
+                Baucher
+              </th>
+              <th scope="col" className=" px-3 py-3">
                 Actualizar
               </th>
             </tr>
           </thead>
           <tbody>
             {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
-              return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) || 
-              (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) || 
-              (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) || 
-              (i['dni remitente'] !== undefined && i['dni remitente'].toLowerCase().includes(filter.toLowerCase()))) && 
-              (i.estado !== undefined && i.estado.toLowerCase().includes(estado.toLowerCase())) &&  i.operacion === 'Cambio' &&
-              <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
-                <td className="px-3 py-4  flex  ">
-                  <span className='h-full flex py-2'>{index + 1}</span>
-                </td>
-                {/* {console.log(i['estado'])} */}
-                <td className="min-w-32 px-3 py-4  ">
-                  <Select arr={['En verficación', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['remitente']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['dni remitente']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['pais remitente']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['destinatario']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['dni']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['direccion']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['celular']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['cuenta destinatario']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['nombre de banco']}
-                </td>
-                <td className="px-3 py-4  ">
-                  {i['importe']}
-                </td>
-                <td className=" p-3">
-                  {i['divisa de envio']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['cambio']}
-                </td>
-                <td className=" p-3">
-                  {i['divisa de receptor']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['uuid']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['fecha']}
-                </td>
-                <td className="px-3 py-4">
-                  {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
-                    ? <Button theme={"Success"} click={() => save(i.uuid)}>Guardar</Button>
-                    : <Button theme={"Disable"}>Desabilitado</Button>
-                  }
-                </td>
-              </tr>
+              return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) ||
+                (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) ||
+                (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
+                (i['dni remitente'] !== undefined && i['dni remitente'].toLowerCase().includes(filter.toLowerCase()))) &&
+                (i.estado !== undefined && i.estado.toLowerCase().includes(estado.toLowerCase())) && i.operacion === 'Cambio' &&
+                <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
+                  <td className="px-3 py-4  flex  ">
+                    <span className='h-full flex py-2'>{index + 1}</span>
+                  </td>
+                  {/* {console.log(i['estado'])} */}
+                  <td className="min-w-32 px-3 py-4  ">
+                    <Select arr={['En verficación', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['remitente']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['dni remitente']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['pais remitente']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['destinatario']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['dni']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['direccion']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['celular']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['cuenta destinatario']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['nombre de banco']}
+                  </td>
+                  <td className="px-3 py-4  ">
+                    {i['importe']}
+                  </td>
+                  <td className=" p-3">
+                    {i['divisa de envio']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['cambio']}
+                  </td>
+                  <td className=" p-3">
+                    {i['divisa de receptor']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['uuid']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['fecha']}
+                  </td>
+                  <td className="px-3 py-4">
+                    {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
+                      ? <Button theme={"Success"} click={() => save(i.uuid)}>Guardar</Button>
+                      : <Button theme={"Disable"}>Desabilitado</Button>
+                    }
+                  </td>
+                </tr>
             })
             }
           </tbody>
