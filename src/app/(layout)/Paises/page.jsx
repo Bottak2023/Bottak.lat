@@ -151,7 +151,8 @@ export default function Home() {
           </thead>
           <tbody>
             {countries && countries !== undefined && Object.values(countries).sort(sortArray).map((i, index) => {
-              return i.currency !== undefined && i.currency.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
+              return i['translation']['spa']['common'] !== undefined && i['translation']['spa']['common'].toLowerCase().includes(filter.toLowerCase()) &&
+               ((i['recepcion'] !== undefined && i['recepcion'] !== false && i['recepcion'] !== null) || (i['envio'] !== undefined && i['envio'] !== false && i['envio'] !== null)) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                 <td className="px-3 py-4  flex text-gray-900 ">
                   <span className='h-full flex py-2'>{index + 1}</span>
                 </td>
