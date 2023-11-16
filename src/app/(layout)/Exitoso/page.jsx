@@ -115,10 +115,18 @@ function Home() {
                             </tr>
                             <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                 <td className="px-3 py-3 text-gray-900 ">
-                                    Importe:
+                                    Importe mas comision:
                                 </td>
                                 <td className="px-3 py-3 text-gray-900 ">
-                                    {transactionDB.importe && transactionDB.importe}
+                                    {transactionDB.importe && transactionDB.importe + transactionDB.comision}
+                                </td>
+                            </tr>
+                            <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                <td className="px-3 py-3 text-gray-900 ">
+                                    Comision:
+                                </td>
+                                <td className="px-3 py-3 text-gray-900 ">
+                                    {transactionDB.comision}
                                 </td>
                             </tr>
                             <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >

@@ -8,7 +8,7 @@ import { writeUserData, getSpecificData } from "@/firebase/database"
 import divisasJSON from '@/utils/divisas'
 
 export default function App({ placeholder, value, onChange, propHandlerSelect, propSelect, propIsSelect, propHandlerIsSelect, defaultValue }) {
-  const { userDB, currency, setCurrency, setUserSuccess, select,  setSelect, select2, setSelect2, transferencia, setTransferencia, success, setuserSuccess, divisas, setDivisas, isSelect, setIsSelect, isSelect2, setIsSelect2, } = useUser()
+  const { userDB, currency, setCurrency, setUserSuccess, select,  setSelect, select2, setSelect2, transferencia, setTransferencia, comision, setComision, success, setuserSuccess, divisas, setDivisas, isSelect, setIsSelect, isSelect2, setIsSelect2, } = useUser()
 
 
 
@@ -18,7 +18,6 @@ export default function App({ placeholder, value, onChange, propHandlerSelect, p
     // e.nativeEvent.stopImmediatePropagation()
   // e.stopPropagation()
 
-    console.log('child')
     propHandlerSelect(i.code)
   }
   function handlerIsSelect(e, i) {
@@ -30,8 +29,13 @@ export default function App({ placeholder, value, onChange, propHandlerSelect, p
   
 
   const handlerOnChange = (e) => {
-    console.log(e.target.value)
     onChange == 'Transference' && setTransferencia(e.target.value)
+
+    (divisas && divisas[select] && divisas[select2] && (e.target.value * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 1000 && setComision(divisas[select]['tarifa 1'])
+    (divisas && divisas[select] && divisas[select2] && (e.target.value * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 10000 && (divisas && divisas[select] && divisas[select2] && (e.target.value * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 1000 && setComision(divisas[select]['tarifa 2'])
+    (divisas && divisas[select] && divisas[select2] && (e.target.value * divisas['USD'].compra / divisas[select].venta).toFixed(2)) <= 100000 && (divisas && divisas[select] && divisas[select2] && (e.target.value * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 10000 && setComision(divisas[select]['tarifa 3'])
+    (divisas && divisas[select] && divisas[select2] && (e.target.value * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000 && setComision('CONTACTESE CON SOPORTE') 
+
   }
 
   // console.log(Object.values(divisasJSON))

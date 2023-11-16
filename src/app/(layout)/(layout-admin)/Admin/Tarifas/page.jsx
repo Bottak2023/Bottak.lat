@@ -150,11 +150,11 @@ export default function Home() {
               </th>
               <th scope="col" className="text-center px-3 py-3">
                 Tarifa de Envio <br />
-                10 000 - 100 000 USD
+                1 001 - 10 000 USD
               </th>
               <th scope="col" className="text-center px-3 py-3">
                 Tarifa de Envio<br />
-                100 000 - ... USD
+                10 001 - 100 000 USD
               </th>
               <th scope="col" className="text-center px-3 py-3">
                 Guardar

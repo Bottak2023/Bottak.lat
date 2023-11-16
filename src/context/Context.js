@@ -38,6 +38,7 @@ export function UserProvider({ children }) {
 	const [navItem, setNavItem] = useState(undefined)
 
 	const [transferencia, setTransferencia] = useState('')
+	const [comision, setComision] = useState('')
 	const [item, setItem] = useState(null)
 	const [qr, setQr,] = useState(null)
 	const [QRurl, setQRurl,] = useState(null)
@@ -94,6 +95,7 @@ export function UserProvider({ children }) {
 			webcamRef3,
 			navItem, setNavItem,
 			transactionDB, setTransactionDB,
+			comision, setComision,
 			userNav, setUserNav,
 			exchange, setExchange,
 			webScann, setWebScann,
@@ -131,7 +133,7 @@ export function UserProvider({ children }) {
 		fecha, qr, QRurl, divisas, envios,
 		webScann,
 		filter,
-		filterQR, exchange, countries, destinatarios, transactionDB, navItem])
+		filterQR, exchange, countries, destinatarios, transactionDB, navItem, comision])
 
 
 	return (

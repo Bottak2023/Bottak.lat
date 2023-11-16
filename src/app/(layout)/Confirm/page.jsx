@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import { generateUUID } from '@/utils/UUIDgenerator'
 
 function Home() {
-    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, setDestinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
+    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, comision, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, setDestinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
     const [state, setState] = useState({})
     const router = useRouter()
 
@@ -29,7 +29,8 @@ function Home() {
             ['dni remitente']: userDB && userDB && userDB.dni,
             ['pais remitente']: userDB && userDB && userDB.pais,
             ['divisa de envio']: select,
-            importe: transferencia,
+            importe: transferencia + comision,
+            comision,
             ['divisa de receptor']: select2,
             cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
             estado: 'En verficación',
@@ -130,10 +131,18 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Importe:
+                                Importe mas comision:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                {transferencia}
+                                {transferencia + comision}
+                            </td>
+                        </tr>
+                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <td className="px-2 py-2  text-gray-900 ">
+                                comision:
+                            </td>
+                            <td className="px-2 py-2  text-gray-900 ">
+                                {comision}
                             </td>
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
