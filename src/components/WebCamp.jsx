@@ -61,7 +61,7 @@ export default function WebCamp({ takePhoto }) {
         case 'Capture1':
             return <div className="relative">
                 <label htmlFor="Capture1" className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]" >
-                    {image1 && <img src={image1} className="absolute h-full w-full z-20" alt="" />}
+                    {image1 && <img src={image1} className="absolute h-full w-full z-20 object-contain" alt="" />}
 
                     <Webcam
                         audio={false}
@@ -90,7 +90,7 @@ export default function WebCamp({ takePhoto }) {
         case 'Capture2':
             return <div className="relative">
                 <label htmlFor="Capture2" className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
-                    {image2 && <img src={image2} className="absolute h-full w-full z-20" alt="" />}
+                    {image2 && <img src={image2} className="absolute h-full w-full z-20 object-contain" alt="" />}
                     <Webcam
                         audio={false}
                         height={height}
@@ -118,7 +118,7 @@ export default function WebCamp({ takePhoto }) {
         case 'Capture3':
             return <div className="relative">
                 <label htmlFor="Capture3" className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
-                    {image3 && <img src={image3} className="absolute h-full w-full z-20" alt="" />}
+                    {image3 && <img src={image3} className="absolute h-full w-full z-20 object-contain" alt="" />}
                     <Webcam
                         audio={false}
                         height={height}
