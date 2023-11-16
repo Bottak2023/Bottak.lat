@@ -1,11 +1,8 @@
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './config'
-
+import { app } from './config'
 import { onAuthStateChanged, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, sendPasswordResetEmail } from "firebase/auth";
 
 import { getData, writeUserData, removeData, } from "./database";
 
-const app = initializeApp(firebaseConfig)
 
 const auth = getAuth();
 
