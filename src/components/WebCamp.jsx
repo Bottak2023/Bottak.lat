@@ -18,7 +18,23 @@ export default function WebCamp({ takePhoto }) {
     const height = 360
     const width = 360
 
+    const captureHandler = (e) => {
 
+        const file = e.target.files[0];
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            console.log(reader.result);
+            switch (e.target.name) {
+                case 'Capture1':
+                    return setImage1(reader.result)
+                case 'Capture2':
+                    return setImage1(reader.result)
+                case 'Capture3':
+                    return setImage1(reader.result)
+            }        };
+        reader.readAsDataURL(file);
+    };
     const capture1 = React.useCallback(
         () => {
             const imageSrc = webcamRef1.current.getScreenshot();
@@ -44,26 +60,27 @@ export default function WebCamp({ takePhoto }) {
     switch (takePhoto) {
         case 'Capture1':
             return <div className="relative">
-                <div className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
+                <label htmlFor="Capture1" className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]" >
                     {image1 && <img src={image1} className="absolute h-full w-full z-20" alt="" />}
 
-                        <Webcam
-                            audio={false}
-                            height={height}
-                            ref={webcamRef1}
-                            screenshotFormat="image/webp"
-                            width={width}
-                            videoConstraints={videoConstraints}
-                            mirrored={true}
-                        />
-
-                </div>
+                    <Webcam
+                        audio={false}
+                        height={height}
+                        ref={webcamRef1}
+                        screenshotFormat="image/webp"
+                        width={width}
+                        videoConstraints={videoConstraints}
+                        mirrored={true}
+                    />
+                    <span className="absolute h-full w-full flex justify-center items-center text-white">Click para subir foto</span>
+                    <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
+                </label>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
                     onClick={capture1}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 hover:bg-[#FFF500] inline-block"></span>
                 </button>
-                {image1 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => setImage1(null)}>
+                {image1 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={(e) => { e.stopPropagation(); setImage1(null) }}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
@@ -72,7 +89,7 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture2':
             return <div className="relative">
-                <div className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
+                <label htmlFor="Capture2" className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
                     {image2 && <img src={image2} className="absolute h-full w-full z-20" alt="" />}
                     <Webcam
                         audio={false}
@@ -83,7 +100,9 @@ export default function WebCamp({ takePhoto }) {
                         videoConstraints={videoConstraints}
                         mirrored={true}
                     />
-                </div>
+                    <span className="absolute h-full w-full flex justify-center items-center text-white">Click para subir foto</span>
+                    <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
+                </label>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
                     onClick={capture2}>
@@ -98,7 +117,7 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture3':
             return <div className="relative">
-                <div className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
+                <label htmlFor="Capture3" className="relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] ">
                     {image3 && <img src={image3} className="absolute h-full w-full z-20" alt="" />}
                     <Webcam
                         audio={false}
@@ -110,7 +129,9 @@ export default function WebCamp({ takePhoto }) {
                         mirrored={true}
 
                     />
-                </div>
+                    <span className="absolute h-full w-full flex justify-center items-center text-white">Click para subir foto</span>
+                    <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
+                </label>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
                     onClick={capture3}>

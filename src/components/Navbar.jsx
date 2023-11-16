@@ -146,7 +146,7 @@ export default function Navbar({ children }) {
                                         Iniciar Sesión
                                     </button>
                             }
-                            {(pathname === '/' || pathname === '/Admin' || pathname === '/Cambios')
+                            {(pathname === '/' || pathname === '/Admin' || pathname === '/Cambios' || nav === true)
                                 ? <button type="button" className="inline-flex items-center text-gray-100 ml-4 sm:hidden" onClick={() => setNav(!nav)}>
                                     <span className="sr-only">Open menu</span>
                                     <svg width="30" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">

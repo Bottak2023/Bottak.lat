@@ -31,7 +31,7 @@ export default function Button({ theme, styled, click, children }) {
         case 'Secondary':
             return <button
                 type="submit"
-                className="nhn text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-[14px] w-full sm:w-[250px] px-5 py-3 text-center"
+                className="nhn text-white bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-[14px] w-full sm:w-[250px] px-5 py-3 text-center"
                 // className="text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[14px] w-full sm:w-auto px-5 py-3.5 text-center 
                 // dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={click}
