@@ -1,8 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './config'
+import { app } from './config'
 import { getDatabase, ref, onValue, set, child, get, remove, update, query, orderByChild, equalTo } from "firebase/database";
 
-const app = initializeApp(firebaseConfig)
 const db = getDatabase(app);
 const dbRef = ref(getDatabase());
 
