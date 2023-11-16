@@ -115,7 +115,7 @@ export default function Home() {
       <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
         <h3 className='font-medium text-[14px]'>Lista de paises y operaciones habilitadas por BOTTAK</h3>
         <br />
-        <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
+        <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar pais' />
         <br />
         <br />
         <table className="w-full overflow-visible min-w-[500px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" >
@@ -169,9 +169,8 @@ export default function Home() {
                   <input type="text" name="banco de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['banco de cobro'] !== undefined ? i['banco de cobro'] : 0} />
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
-                  <label htmlFor={`img${index}`}>
-                    <img src={urlPostImage[i.cca3] ? urlPostImage[i.cca3] : i.url} alt="Subir QR" />
-                    <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i.cca3)} className='hidden' accept='image/*' />
+                  <label >
+                    <img src={urlPostImage[i.cca3] ? urlPostImage[i.cca3] : i.url} alt="Sin QR" />
                   </label>
                 </td>
                 <td className="px-3 py-4">

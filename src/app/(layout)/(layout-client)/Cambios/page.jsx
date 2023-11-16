@@ -112,7 +112,7 @@ export default function Home() {
       <form className='lg:h-full lg:py-[30px]  w-full h-[370px] flex flex-col justify-between items-center  ' onSubmit={handlerTransfer}>
         <NavInit mobile={false} />
 
-        <h3 className='text-[greenyellow] text-[14px] font-light'>Solo disponible para Bolivia</h3>
+        {/* <h3 className='text-[greenyellow] text-[14px] font-light'>Solo disponible para Bolivia</h3> */}
 
         <div className="relative flex justify-between  w-[100%] sm:max-w-[350px] py-1 ">
           <span className="bg-transparent w-1/2 py-1 border-[1px] border-gray-200 text-gray-200 text-center">{divisas && divisas !== undefined && divisas[select] && divisas[select] !== undefined && select && select !== undefined && (divisas[select].venta / divisas[select].venta).toFixed(2)} {select}</span>
