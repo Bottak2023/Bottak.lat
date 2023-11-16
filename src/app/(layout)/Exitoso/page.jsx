@@ -195,138 +195,98 @@ function Home() {
                             <tbody>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
-                                        Remitente
+                                        Usuario
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.remitente && transactionDB.remitente}
+                                        {transactionDB.usuario && transactionDB.usuario}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
-                                        DNI remitente
+                                        DNI de usuario
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['dni remitente'] && transactionDB['dni remitente']}
+                                        {transactionDB['dni'] && transactionDB['dni']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
-                                        Pais remitente
+                                        Pais de usuario
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['pais remitente'] && transactionDB['pais remitente']}
+                                        {transactionDB['pais'] && transactionDB['pais']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
-                                        Destinatario
+                                        Whatsapp de usuario
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.destinatario && transactionDB.destinatario}
+                                        {transactionDB.whatsapp && transactionDB.whatsapp}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
-                                        DNI destinatario
+                                    Cuenta de usuario
                                     </td>
                                     <td className="px-2 py-2  text-gray-900 ">
-                                        {transactionDB.dni && transactionDB.dni}
+                                        {transactionDB['cuenta bancaria'] && transactionDB['cuenta bancaria']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
-                                        Pais destinatario
+                                    Nombre de banco
                                     </td>
                                     <td className="px-2 py-2  text-gray-900 ">
-                                        {transactionDB.pais && transactionDB.pais}
+                                        {transactionDB.banco && transactionDB.banco}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
-                                        Celular de destinatario
+                                    Divisa de envio
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.celular && transactionDB.celular}
-                                    </td>
-                                </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        Cuenta de destinatario:
-                                    </td>
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['cuenta destinatario'] && transactionDB['cuenta destinatario']}
+                                        {transactionDB['divisa de usuario'] && transactionDB['divisa de usuario'] }
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        Divisa de envio:
+                                    Importe mas comision
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['divisa de envio'] && transactionDB['divisa de envio']}
-                                    </td>
-                                </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        Importe mas comision:
-                                    </td>
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.importe && transactionDB.importe + transactionDB.comision}
+                                        {transactionDB['importe'] && transactionDB['importe'] + transactionDB['comision']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        Comision:
+                                    Comision
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.comision}
-                                    </td>
-                                </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        Divisa de receptor:
-                                    </td>
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['divisa de receptor'] && transactionDB['divisa de receptor']}
+                                        {transactionDB['comision']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        Importe Con el cambio aplicado:
+                                    Divisa de cambio
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.cambio && transactionDB.cambio}
-                                    </td>
-                                </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        Fecha:
-                                    </td>
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.fecha && transactionDB.fecha}
+                                        {transactionDB['divisa de cambio'] && transactionDB['divisa de cambio']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        Estado:
+                                    Importe Con el cambio aplicado
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.estado && transactionDB.estado}
-                                    </td>
-                                </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        Operacion:
-                                    </td>
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.operacion && transactionDB.operacion}
+                                        {transactionDB.cambio}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        ID de tracking:
+                                    Operacion:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.uuid}
+                                        {transactionDB.operacion}
                                     </td>
                                 </tr>
                             </tbody>

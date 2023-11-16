@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import { generateUUID } from '@/utils/UUIDgenerator'
 
 function Home() {
-    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, setDestinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, } = useUser()
+    const { nav, setNav, user, userDB, setUserProfile, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, modal, setModal, setTransferencia, transferencia, divisas, setDivisas, destinatario, setDestinatario, fecha, setFecha, qr, setQr, QRurl, setQRurl, comision } = useUser()
     const [state, setState] = useState({})
     const router = useRouter()
 
@@ -35,7 +35,8 @@ function Home() {
             ['divisa de usuario']: select,
             importe: transferencia,
             ['divisa de cambio']: select2,
-            ['cambio']: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
+            ['cambio']: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2): '',
+            comision,
             operacion: 'Cambio',
             estado: 'En verficación',
             ['user uuid']: user.uid,
@@ -95,7 +96,7 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Cuenta de usuario:
+                                Cuenta de usuario
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {userDB && userDB['cuenta bancaria']}
@@ -103,7 +104,7 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Nombre de banco:
+                                Nombre de banco
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {userDB && userDB['banco']}
@@ -111,7 +112,7 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Divisa de envio:
+                                Divisa de envio
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {select}
@@ -119,15 +120,23 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Importe:
+                                Importe mas comision
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                {transferencia}
+                                {transferencia + comision}
                             </td>
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Divisa de cambio:
+                                Comision
+                            </td>
+                            <td className="px-2 py-2  text-gray-900 ">
+                                {comision}
+                            </td>
+                        </tr>
+                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                            <td className="px-2 py-2  text-gray-900 ">
+                                Divisa de cambio
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {select2}
@@ -135,7 +144,7 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Importe Con el cambio aplicado:
+                                Importe Con el cambio aplicado
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : ''}
@@ -143,7 +152,7 @@ function Home() {
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Operacion:
+                                Operacion
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 Cambio

@@ -49,6 +49,7 @@ export default function App({ placeholder, value, onChange, propHandlerSelect, p
          <ul className={`absolute left-0 top-10 bg-gray-100 flex flex-col justify-center items-center  text-gray-900 text-[14px] rounded-b-xl focus:ring-blue-500 focus:outline-blue-500 w-full   z-30 overflow-y-scroll transition-all ${propIsSelect ? 'h-[150px] outline outline-1 outline-gray-300' : 'h-0 overflow-y-hidden'}`} >
         {divisas !== undefined && Object.values(divisas).map((i, index) => i.habilitado !== undefined && i.habilitado !== false && i.habilitado !== null && <li className='w-[200px] h-[50px] flex justify-start items-center' key={index} onClick={(e) => handlerUserSelect(e, i)}>
           {/* <span className="inline-block w-[30px]"><CurrencyFlag currency={i.code} size="lg" /></span> */}
+          <span className="inline-block w-30px] h-[20px] "><img src={i.flagPNG} className="inline-block w-[30px] h-[20px]" alt="" /></span>
           <span className="pl-5"> {i.code}, {i.currency}</span>
         </li>)}
       </ul>

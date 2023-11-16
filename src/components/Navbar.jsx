@@ -147,16 +147,16 @@ export default function Navbar({ children }) {
                                     </button>)
                                     :'')
                             }
-                            {(pathname === '/' || pathname === '/Admin' || pathname === '/Cambios' || nav === false)
-                                ? <button type="button" className="inline-flex items-center text-gray-100 ml-4 sm:hidden" onClick={() => setNav(!nav)}>
+                            {pathname !== '/' && pathname !== '/Admin' || pathname !== '/Cambios' || nav !== false
+                                ? <button type="button" className="inline-flex items-center lg:hidden p-2 text-[14px] text-white rounded-lg  dark:hover:bg-gray-700 dark:focus:ring-gray-600" onClick={handlerBack}>
+                                    <svg width="19" height="34" viewBox="0 0 19 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 32L2 17L17 2" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
+                                : <button type="button" className="inline-flex items-center text-gray-100 ml-4 sm:hidden" onClick={() => setNav(!nav)}>
                                     <span className="sr-only">Open menu</span>
                                     <svg width="30" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 22H32M2 12H32M2 2H32" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                                : <button type="button" className="inline-flex items-center lg:hidden p-2 text-[14px] text-white rounded-lg  dark:hover:bg-gray-700 dark:focus:ring-gray-600" onClick={handlerBack}>
-                                    <svg width="19" height="34" viewBox="0 0 19 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 32L2 17L17 2" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </button>
 
