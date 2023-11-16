@@ -72,7 +72,7 @@ export default function WebCamp({ takePhoto }) {
                         videoConstraints={videoConstraints}
                         mirrored={true}
                     />
-                    <span className="absolute h-full w-full flex justify-center items-center text-white z-30">Click para subir foto</span>
+                    <span className="absolute h-full w-full flex justify-center items-center text-white z-50">Click para subir foto</span>
                     <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
                 </label>
                 <button
@@ -100,7 +100,7 @@ export default function WebCamp({ takePhoto }) {
                         videoConstraints={videoConstraints}
                         mirrored={true}
                     />
-                    <span className="absolute h-full w-full flex justify-center items-center text-white z-30">Click para subir foto</span>
+                    <span className="absolute h-full w-full flex justify-center items-center text-white z-50">Click para subir foto</span>
                     <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
                 </label>
                 <button
@@ -129,7 +129,7 @@ export default function WebCamp({ takePhoto }) {
                         mirrored={true}
 
                     />
-                    <span className="absolute h-full w-full flex justify-center items-center text-white z-30">Click para subir foto</span>
+                    <span className="absolute h-full w-full flex justify-center items-center text-white z-50">Click para subir foto</span>
                     <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
                 </label>
                 <button
