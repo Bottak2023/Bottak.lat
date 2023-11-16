@@ -146,13 +146,13 @@ function Home() {
                                 Operacion:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                {destinatario.operacion}
+                                Cambio
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div className='flex justify-center pt-5'>
-                    <Button theme='Primary' click={save}>Efectuar Transacción</Button>
+                    <Button theme='Primary' click={save}>Confirmar datos</Button>
                 </div>
             </div>}
         </div>

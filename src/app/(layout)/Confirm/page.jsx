@@ -172,7 +172,7 @@ function Home() {
                     </tbody>
                 </table>
                 <div className='flex justify-center pt-5'>
-                    <Button theme='Primary' click={save}>Efectuar Transacción</Button>
+                    <Button theme='Primary' click={save}>Confirmar datos</Button>
                 </div>
             </div>}
         </div>
