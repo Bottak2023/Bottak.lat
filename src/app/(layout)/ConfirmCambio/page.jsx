@@ -35,7 +35,7 @@ function Home() {
             ['divisa de usuario']: select,
             importe: transferencia,
             ['divisa de cambio']: select2,
-            ['importe Con el cambio aplicado']: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
+            ['cambio']: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
             operacion: 'Cambio',
             estado: 'En verficación',
             ['user uuid']: user.uid,
