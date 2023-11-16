@@ -121,16 +121,10 @@ export default function Home() {
               <th scope="col" className=" px-3 py-3">
                 Fecha
               </th>
-              <th scope="col" className=" px-3 py-3">
-                Baucher
-              </th>
-              <th scope="col" className=" px-3 py-3">
-                Actualizar
-              </th>
             </tr>
           </thead>
           <tbody>
-            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
+            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).sort(sortArray).map((i, index) => {
               return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
@@ -179,12 +173,6 @@ export default function Home() {
                   </td>
                   <td className="min-w-32 p-3">
                     {i['fecha']}
-                  </td>
-                  <td className="px-3 py-4">
-                    {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
-                      ? <Button theme={"Success"} click={() => save(i.uuid)}>Guardar</Button>
-                      : <Button theme={"Disable"}>Desabilitado</Button>
-                    }
                   </td>
                 </tr>
             })

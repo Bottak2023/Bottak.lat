@@ -24,8 +24,8 @@ export default function Home() {
     setFilter(e.target.value)
   }
   function sortArray(x, y) {
-    if (x['translation']['spa']['common'].toLowerCase() < y['translation']['spa']['common'].toLowerCase()) { return -1 }
-    if (x['translation']['spa']['common'].toLowerCase() > y['translation']['spa']['common'].toLowerCase()) { return 1 }
+    if (x,usuario.toLowerCase() < y,usuario.toLowerCase()) { return -1 }
+    if (x,usuario.toLowerCase() > y,usuario.toLowerCase()) { return 1 }
     return 0
   }
   function handlerSelect(name, i, uuid) {
@@ -33,7 +33,7 @@ export default function Home() {
   }
   function save(uuid) {
     setModal('Guardando...')
-    writeUserData(`envios/${uuid}`, state[uuid], setUserSuccess, () => { setModal('') })
+    writeUserData(`cambios/${uuid}`, state[uuid], setUserSuccess, () => { setModal('') })
   }
   const prev = () => {
     requestAnimationFrame(() => {
@@ -130,7 +130,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
+            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).sort(sortArray).map((i, index) => {
               return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
@@ -179,6 +179,9 @@ export default function Home() {
                   </td>
                   <td className="min-w-32 p-3">
                     {i['fecha']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i.url}
                   </td>
                   <td className="px-3 py-4">
                     {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined

@@ -31,6 +31,9 @@ export default function RootLayout({ children }) {
 
     return (
         user !== undefined && userDB !== undefined && divisas !== undefined && <>
+        {(userDB && user.bloqueado === true) || (userDB && userDB.bloqueado === true) ? <Modal funcion={soporte} close={true} cancel={signOutConfirm} cancelText="Cerrar sesión" successText="Contactar">
+            Esta cuenta esta bloqueada, <br />por favor comuniquese con soporte.<br />
+          </Modal> : ''}
             <Navbar/>
             <div className={`relative  w-screen px-[20px]  pt-[80px] pb-[30px] md:pb-0 flex items-center min-h-full transition-all  ${nav ? 'left-[100vw] sm:left-[250px]' : 'left-0'} ${userNav ? 'top-[70px]' : 'top-0'}`} onClick={mainHandler}>
                 {children}

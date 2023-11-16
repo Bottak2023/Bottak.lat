@@ -85,9 +85,6 @@ console.log(remesasDB)
                                 Estado
                             </th>
                             <th scope="col" className=" px-3 py-3">
-                                Operacion
-                            </th>
-                            <th scope="col" className=" px-3 py-3">
                                 Nombre
                             </th>
                             <th scope="col" className=" px-3 py-3">
@@ -133,9 +130,6 @@ console.log(remesasDB)
                                 </td>
                                 <td className="min-w-32 px-3 py-4  ">
                                     <span className={`w-full block py-5 px-10 rounded-[10px] ${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i['estado']}</span>
-                                </td>
-                                <td className="min-w-32 px-3 py-4  ">
-                                    {i['operacion']}
                                 </td>
                                 <td className="min-w-32 px-3 py-4  ">
                                     {i['destinatario']}
