@@ -131,11 +131,8 @@ export default function Home() {
           </thead>
           <tbody>
             {remesasDB && remesasDB !== undefined && Object.values(remesasDB).sort(sortArray).map((i, index) => {
-              return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) ||
-                (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) ||
-                (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
-                (i['dni remitente'] !== undefined && i['dni remitente'].toLowerCase().includes(filter.toLowerCase()))) &&
-                (i.estado !== undefined && i.estado.toLowerCase().includes(estado.toLowerCase())) && i.operacion === 'Cambio' &&
+              return ((i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
+              (i.usuario !== undefined && i.usuario.toLowerCase().includes(filter.toLowerCase()))) &&
                 <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                   <td className="px-3 py-4  flex  ">
                     <span className='h-full flex py-2'>{index + 1}</span>
