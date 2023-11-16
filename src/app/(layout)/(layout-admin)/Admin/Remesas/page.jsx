@@ -211,7 +211,7 @@ export default function Home() {
                   {i['fecha']}
                 </td>
                 <td className="min-w-32 p-3">
-                  <img src={i['baucher']} alt="" />
+                  <img src={i.url} alt="" />
                 </td>
                 <td className="px-3 py-4">
                   {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined

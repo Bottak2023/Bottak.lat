@@ -110,10 +110,10 @@ export default function Home() {
                             <th scope="col" className=" px-3 py-3">
                                 Dirección
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className="px-3 py-3">
                                 Celular
                             </th>
-                            <th scope="col" className="text-center px-3 py-3">
+                            <th scope="col" className=" px-3 py-3">
                                 Nro de cuenta
                             </th>
                             <th scope="col" className="px-3 py-3">

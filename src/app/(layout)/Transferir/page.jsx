@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { uploadStorage } from '@/firebase/storage'
 import { useUser } from '@/context/Context.js'
 import Input from '@/components/Input'
@@ -37,6 +37,8 @@ function Home() {
         e.preventDefault()
         e.stopPropagation()
 
+        console.log('button')
+
         const reader = new FileReader();
         reader.onloadend = () => {
             console.log(reader.result);
@@ -51,13 +53,12 @@ function Home() {
             fecha,
             date,
             uuid,
-            baucher: file
         }
  
         setModal('Guardando...')
         const callback = () => {
-            redirectHandler(`/Exitoso?uuid=${uuid}`)
-            setModal('')
+            router.push(`/Exitoso?uuid=${uuid}`)
+            setModal('')  
         }
         destinatario.operacion === 'Cambio' 
         ? uploadStorage(`cambios/${uuid}`, postImage, db, callback)
@@ -65,6 +66,14 @@ function Home() {
         // writeUserData(`envios/${uuid}`, db, setUserSuccess, callback)
 
     }
+
+
+
+
+    useEffect(() => {
+        transferencia === '' && router.replace('/')
+    })
+
 
     return (
         <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
