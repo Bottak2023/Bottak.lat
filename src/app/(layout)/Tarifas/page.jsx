@@ -43,7 +43,7 @@ export default function Home() {
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
                 <br />
                 <br />
-                <table className="w-full overflow-visible min-w-[800px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
+                <table className="w-full overflow-visible min-w-[1000px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400">
                     <thead className="text-[14px] text-gray-700 uppercase bg-white">
                         <tr>
                             <th scope="col" className=" px-3 py-3">
@@ -79,10 +79,8 @@ export default function Home() {
                         </tr>
                     </thead>
                     <tbody>
-                        {divisas && divisas !== undefined && Object.values(divisas).sort(sortArray).map((i, index) => {
-                            return i.currency !== undefined && 
-                            i.habilitado !== undefined && i.habilitado === true &&
-                             (i.currency.toLowerCase().includes(filter.toLowerCase()) || i.code.toLowerCase().includes(filter.toLowerCase())) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
+                        {divisas && divisas !== undefined && Object.values(divisas).filter((i)=> i.currency !== undefined &&  i.habilitado !== undefined && i.habilitado === true).sort(sortArray).map((i, index) => {
+                            return (i.currency.toLowerCase().includes(filter.toLowerCase()) || i.code.toLowerCase().includes(filter.toLowerCase())) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
                                 <td className="px-3 py-4  flex text-gray-900 ">
                                     <span className='h-full flex py-2'>{index + 1}</span>
                                 </td>
@@ -95,19 +93,19 @@ export default function Home() {
                                 <td className="px-3 py-4 text-gray-900 ">
                                     1 USD
                                 </td>
-                                <td className="w-32 p-4 text-center">
+                                <td className="min-w-32 p-4 text-center">
                                     {i['compra'] !== undefined ? i['compra'] + ' ' + i.code : '-----'} 
                                 </td>
-                                <td className="w-32 p-4 text-center">
+                                <td className="min-w-32 p-4 text-center">
                                     {i['venta'] !== undefined ? i['venta'] + ' ' + i.code : '-----'}
                                 </td>
-                                <td className="w-32 p-4 text-center">
+                                <td className="min-w-32 p-4 text-center">
                                     {i['tarifa 1'] !== undefined ? i['tarifa 1'] + ' ' + i.code : '-----'}
                                 </td>
-                                <td className="w-32 p-4 text-center">
+                                <td className="min-w-32 p-4 text-center">
                                     {i['tarifa 2'] !== undefined ? i['tarifa 2'] + ' ' + i.code : '-----'}
                                 </td>
-                                <td className="w-32 p-4 text-center">
+                                <td className="min-w-32 p-4 text-center">
                                     {i['tarifa 3'] !== undefined ? i['tarifa 3'] + ' ' + i.code : '-----'}
                                 </td>
                             </tr>

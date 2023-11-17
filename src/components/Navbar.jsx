@@ -168,7 +168,7 @@ export default function Navbar({ children }) {
                     </div>
                 </div>
             </nav>
-            <ul className={`fixed top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} style={{transition: 'all .04s linear'}} onClick={(e)=>e.stopPropagation()} >
+            <ul className={`fixed top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} style={{transition: 'all .02s linear'}} onClick={(e)=>e.stopPropagation()} >
                 {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={(e) => handlerNavItem(e, 'Mi cuenta')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>MI CUENTA</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
