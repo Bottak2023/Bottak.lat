@@ -19,10 +19,14 @@ export default function Home() {
   const [remesasDB, setRemesasDB] = useState(undefined)
   const [estado, setEstado] = useState('')
   const refFirst = useRef(null);
+  const [profileIMG, setProfileIMG] = useState('')
 
   function onChangeFilter(e) {
     setFilter(e.target.value)
   }
+  function handlerProfileIMG(img) {
+    setProfileIMG(img)
+}
   function sortArray(x, y) {
     if (x.usuario.toLowerCase() < y.usuario.toLowerCase()) { return -1 }
     if (x.usuario.toLowerCase() > y.usuario.toLowerCase()) { return 1 }
@@ -60,6 +64,8 @@ export default function Home() {
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
       {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar la tasa de cambio de:  {item['currency']}</Modal>}
       {modal === 'Disable' && <Modal funcion={disableConfirm}>Estas seguro de {item.habilitado !== undefined && item.habilitado !== false ? 'DESABILITAR' : 'HABILITAR'} el siguiente item:  {item['currency']}</Modal>}
+      {profileIMG.length > 0 && <div className='fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40' onClick={closeProfileIMG}></div>}
+
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
       <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
@@ -190,7 +196,7 @@ export default function Home() {
                     {i['banco de transferencia']}
                   </td>
                   <td className="min-w-32 p-3">
-                    <img src={i.url} className='w-[150px] h-[150px] object-contain' alt="" />
+                    <img src={i.url} className={`${i.url === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`}  onClick={() => handlerProfileIMG(i.url)} alt="" />
                   </td>
                   <td className="px-3 py-4">
                     {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
