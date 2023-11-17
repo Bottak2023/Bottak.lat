@@ -11,12 +11,12 @@ import style from '@/components/ModatMSG.module.css'
 export default function Modal({ children, theme, button, funcion, alert }) {
     const { nav, setNav, user, userDB, setUserProfile, state, setState, modal, setUserSuccess, setModal } = useUser()
 
-    const [textEditor, setTextEditor] = useState("")
+    const [textEditor, setTextEditor] = useState("Redactar")
 
 
     function handlerTextEditorOnChange(content, delta, source, editor) {
-        console.log(editor.getHTML())
-        setTextEditor(editor.getHTML())
+        // console.log(editor.getHTML())
+        // setTextEditor(editor.getHTML())
 
     }
     function save(route) {
@@ -27,12 +27,12 @@ export default function Modal({ children, theme, button, funcion, alert }) {
         writeUserData(route, textEditor, setUserSuccess, callback)
     }
 
-    return (<div className={`h-screen w-screen flex justify-center items-center  fixed top-0 left-0  z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-[#000000c7]`}>
+    return (<div className={`h-screen w-screen flex justify-center items-center  fixed top-0 left-0  z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 `}>
 
 {modal === 'Guardando...' && <Loader> {modal} </Loader>}
 
 
-        <div className={`relative max-w-[600px] w-full ${theme == 'Success' && 'bg-[#29802731]'}  ${theme == 'Danger' && 'bg-[#AF3D5231]'} rounded-lg shadow p-5 `}>
+        <div className={`relative max-w-[600px] w-full  rounded-lg shadow p-5 `}>
 
             <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white" onClick={() => setModal('')}>
                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

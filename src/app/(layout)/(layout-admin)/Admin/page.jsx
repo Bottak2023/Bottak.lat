@@ -29,6 +29,11 @@ const cardsDB = [
     img: '/paises.png',
     url: '/Admin/Paises',
   },
+  {
+    title: 'Acerca de',
+    img: '/acerca_de.png',
+    url: '/Admin/AcercaDe',
+  },
 ]
 
 function Card({i}) {
