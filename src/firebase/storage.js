@@ -1,5 +1,5 @@
 import { app } from './config'
-import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL, listAll, getBlob } from "firebase/storage";
 import { writeUserData } from './database'
 
 import imageCompression from 'browser-image-compression';
@@ -8,7 +8,7 @@ const storage = getStorage(app)
 
 //--------------------------- Firebase Storage ---------------------------
 async function uploadStorage(ruteDB, file, db, callback) {
-   
+
     const imagesRef = ref(storage, ruteDB);
 
     const options = {
@@ -20,19 +20,29 @@ async function uploadStorage(ruteDB, file, db, callback) {
         fileType: 'image/webp'
     }
 
-    const compressedFile = file.type != 'image/gif'  ? await imageCompression(file, options) : file
-    uploadBytes(imagesRef, compressedFile).then(async (snapshot) => {
+    const compressedFile = file.type != 'image/gif' ? await imageCompression(file, options) : file
+    uploadBytes(`${imagesRef}.webp`, compressedFile).then(async (snapshot) => {
         getDownloadURL(ref(storage, snapshot.metadata.fullPath))
             .then((url) => {
                 let obj = {
                     url,
-                } 
+                }
                 console.log(obj)
-                return writeUserData(ruteDB, {...db, ...obj, }, null, callback)
+                return writeUserData(ruteDB, { ...db, ...obj, }, null, callback)
             })
             .catch((error) => {
             });
     });
 }
 
-export { uploadStorage }
+function downloadFile(path) {
+    console.log('ejecutando')
+    getBlob(ref(storage, path))
+        .then((blob) => {
+           return console.log(blob)
+        })
+        .catch((err) => {
+           return console.log(err)
+        })
+}
+export { uploadStorage, downloadFile }
