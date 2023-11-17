@@ -72,7 +72,7 @@ export default function WebCamp({ takePhoto }) {
                         videoConstraints={videoConstraints}
                         mirrored={true}
                     />
-                    <span className="absolute h-full w-full flex justify-center items-center text-white z-50">Click para subir foto</span>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white z-50">Click para subir foto</div>
                     <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
                 </label>
                 <button
