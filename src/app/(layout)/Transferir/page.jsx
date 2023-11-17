@@ -75,7 +75,10 @@ function Home() {
 
 downloadFile(`/currencies/${userDB.cca3.toUpperCase()}`)
 
+function handlerDownload(url){
+   
 
+}
 
 
 
@@ -96,13 +99,13 @@ downloadFile(`/currencies/${userDB.cca3.toUpperCase()}`)
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">QR bancario</Label> 
-                <Link href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
+                <a href={countries[userDB.cca3].url ? handlerDownload(countries[userDB.cca3].url) : ''} className="w-full flex flex-col justify-center items-center" download >
                     <label  className=" flex flex-col justify-start items-center w-[200px] h-[230px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
                         {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
                             : 'QR no disponible'}
                             {destinatario && destinatario.importe} {destinatario && destinatario['divisa de envio']}
                     </label>
-                </Link>
+                </a>
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Cuenta bancaria</Label>

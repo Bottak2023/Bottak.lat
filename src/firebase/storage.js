@@ -21,7 +21,7 @@ async function uploadStorage(ruteDB, file, db, callback) {
     }
 
     const compressedFile = file.type != 'image/gif' ? await imageCompression(file, options) : file
-    uploadBytes(`${imagesRef}.webp`, compressedFile).then(async (snapshot) => {
+    uploadBytes(imagesRef, compressedFile).then(async (snapshot) => {
         getDownloadURL(ref(storage, snapshot.metadata.fullPath))
             .then((url) => {
                 let obj = {
@@ -36,13 +36,40 @@ async function uploadStorage(ruteDB, file, db, callback) {
 }
 
 function downloadFile(path) {
-    console.log('ejecutando')
-    getBlob(ref(storage, path))
-        .then((blob) => {
-           return console.log(blob)
-        })
-        .catch((err) => {
-           return console.log(err)
-        })
+console.log('getIMG')
+
+    getDownloadURL(ref(storage, path))
+    .then((url) => {
+      // `url` is the download URL for 'images/stars.jpg'
+  
+      // This can be downloaded directly:
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = (event) => {
+        const blob = xhr.response;
+        console.log(blob)
+      };
+      xhr.open('GET', url);
+      xhr.send();
+  
+    })
+    .catch((error) => {
+      // Handle any errors
+    });
+
+
+
+
+    // getBlob(ref(storage, path))
+    //     .then((blob) => {
+    //        return console.log(blob)
+    //     })
+    //     .catch((err) => {
+    //        return console.log(err)
+    //     })
 }
+
+
+
+
 export { uploadStorage, downloadFile }
