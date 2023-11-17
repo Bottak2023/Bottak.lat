@@ -122,6 +122,12 @@ export default function Home() {
                 Fecha
               </th>
               <th scope="col" className=" px-3 py-3">
+                Cuenta de <br /> transferencia
+              </th>
+              <th scope="col" className=" px-3 py-3">
+                Banco de <br /> transferencia
+              </th>
+              <th scope="col" className=" px-3 py-3">
                 Baucher
               </th>
               <th scope="col" className=" px-3 py-3">
@@ -178,7 +184,13 @@ export default function Home() {
                     {i['fecha']}
                   </td>
                   <td className="min-w-32 p-3">
-                    {i.url}
+                    {i['cuenta transferidora']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['banco de transferencia']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    <img src={i.url} className='w-[150px] h-[150px] object-contain' alt="" />
                   </td>
                   <td className="px-3 py-4">
                     {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined

@@ -110,7 +110,7 @@ export default function Home() {
                 Dirección destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
-                 Celular destinatario
+                Celular destinatario
               </th>
               <th scope="col" className=" px-3 py-3">
                 Cuenta destinatario
@@ -137,6 +137,12 @@ export default function Home() {
                 Fecha
               </th>
               <th scope="col" className=" px-3 py-3">
+                Cuenta de <br /> transferencia
+              </th>
+              <th scope="col" className=" px-3 py-3">
+                Banco de <br /> transferencia
+              </th>
+              <th scope="col" className=" px-3 py-3">
                 Baucher
               </th>
               <th scope="col" className=" px-3 py-3">
@@ -146,80 +152,86 @@ export default function Home() {
           </thead>
           <tbody>
             {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
-              return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) || 
-              (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) || 
-              (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) || 
-              (i['dni remitente'] !== undefined && i['dni remitente'].toLowerCase().includes(filter.toLowerCase()))) && 
-              (i.estado !== undefined && i.estado.toLowerCase().includes(estado.toLowerCase())) && i.operacion === 'Envio' &&
-              <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
-                <td className="px-3 py-4  flex  ">
-                  <span className='h-full flex py-2'>{index + 1}</span>
-                </td>
-                {/* {console.log(i['estado'])} */}
-                <td className="min-w-32 px-3 py-4  ">
-                  <Select arr={['En verficación', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['remitente']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['dni remitente']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['pais remitente']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['cuenta transferidora']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['banco de transferencia']}
-                </td>
-                <td className="min-w-32 px-3 py-4  ">
-                  {i['destinatario']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['dni']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['direccion']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['celular']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['cuenta destinatario']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['nombre de banco']}
-                </td>
-                <td className="px-3 py-4  ">
-                  {i['importe']}
-                </td>
-                <td className=" p-3">
-                  {i['divisa de envio']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['cambio']}
-                </td>
-                <td className=" p-3">
-                  {i['divisa de receptor']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['uuid']}
-                </td>
-                <td className="min-w-32 p-3">
-                  {i['fecha']}
-                </td>
-                <td className="min-w-32 p-3">
-                  <img src={i.url} alt="" />
-                </td>
-                <td className="px-3 py-4">
-                  {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
-                    ? <Button theme={"Success"} click={() => save(i.uuid)}>Guardar</Button>
-                    : <Button theme={"Disable"}>Desabilitado</Button>
-                  }
-                </td>
-              </tr>
+              return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) ||
+                (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) ||
+                (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
+                (i['dni remitente'] !== undefined && i['dni remitente'].toLowerCase().includes(filter.toLowerCase()))) &&
+                (i.estado !== undefined && i.estado.toLowerCase().includes(estado.toLowerCase())) && i.operacion === 'Envio' &&
+                <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
+                  <td className="px-3 py-4  flex  ">
+                    <span className='h-full flex py-2'>{index + 1}</span>
+                  </td>
+                  {/* {console.log(i['estado'])} */}
+                  <td className="min-w-32 px-3 py-4  ">
+                    <Select arr={['En verficación', 'Transfiriendo', 'Exitoso', 'Rechazado']} name='estado' uuid={i.uuid} defaul={i.estado} click={handlerSelect} />
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['remitente']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['dni remitente']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['pais remitente']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['cuenta transferidora']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['banco de transferencia']}
+                  </td>
+                  <td className="min-w-32 px-3 py-4  ">
+                    {i['destinatario']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['dni']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['direccion']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['celular']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['cuenta destinatario']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['nombre de banco']}
+                  </td>
+                  <td className="px-3 py-4  ">
+                    {i['importe']}
+                  </td>
+                  <td className=" p-3">
+                    {i['divisa de envio']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['cambio']}
+                  </td>
+                  <td className=" p-3">
+                    {i['divisa de receptor']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['uuid']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['fecha']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['cuenta transferidora']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    {i['banco de transferencia']}
+                  </td>
+                  <td className="min-w-32 p-3">
+                    <img src={i.url} alt="" />
+                  </td>
+                  <td className="px-3 py-4">
+                    {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
+                      ? <Button theme={"Success"} click={() => save(i.uuid)}>Guardar</Button>
+                      : <Button theme={"Disable"}>Desabilitado</Button>
+                    }
+                  </td>
+                </tr>
             })
             }
           </tbody>
