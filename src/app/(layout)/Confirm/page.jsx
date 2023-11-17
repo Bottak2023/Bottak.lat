@@ -32,7 +32,7 @@ function Home() {
             importe: transferencia + comision,
             comision,
             ['divisa de receptor']: select2,
-            cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
+            cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && ((transferencia + comision) * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
             estado: 'En verficación',
             ['user uuid']: user.uid,
         }
@@ -121,20 +121,20 @@ function Home() {
                                 {destinatario['cuenta destinatario'] && destinatario['cuenta destinatario']}
                             </td>
                         </tr>
-                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                        {/* <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
                                 Divisa de envio:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {select}
                             </td>
-                        </tr>
+                        </tr> */}
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
                                 Importe mas comision:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                {transferencia + comision}
+                                {transferencia + comision} {select}
                             </td>
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
@@ -142,23 +142,23 @@ function Home() {
                                 comision:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                {comision}
+                                {comision} {select}
                             </td>
                         </tr>
-                        <tr className=" text-[14px] border-b hover:bg-gray-50 " >
+                        {/* <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
                                 Divisa de receptor:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
                                 {select2}
                             </td>
-                        </tr>
+                        </tr> */}
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >
                             <td className="px-2 py-2  text-gray-900 ">
-                                Importe Con el cambio aplicado:
+                                Importe mas comision <br /> con el cambio aplicado:
                             </td>
                             <td className="px-2 py-2  text-gray-900 ">
-                                {divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && (transferencia * divisas[select2].venta / divisas[select].venta).toFixed(2) : ''}
+                                {divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && ((transferencia + comision) * divisas[select2].venta / divisas[select].venta).toFixed(2) : ''} {select2}
                             </td>
                         </tr>
                         <tr className=" text-[14px] border-b hover:bg-gray-50 " >

@@ -106,20 +106,20 @@ function Home() {
                                         {transactionDB['cuenta destinatario'] && transactionDB['cuenta destinatario']}
                                     </td>
                                 </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                {/* <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
                                         Divisa de envio:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
                                         {transactionDB['divisa de envio'] && transactionDB['divisa de envio']}
                                     </td>
-                                </tr>
+                                </tr> */}
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
                                         Importe mas comision:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.importe && transactionDB.importe + transactionDB.comision}
+                                        {transactionDB.importe && transactionDB.importe + transactionDB.comision} {transactionDB['divisa de envio'] && transactionDB['divisa de envio']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
@@ -127,23 +127,23 @@ function Home() {
                                         Comision:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.comision}
+                                        {transactionDB.comision} {transactionDB['divisa de envio'] && transactionDB['divisa de envio']}
                                     </td>
                                 </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                {/* <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
                                         Divisa de receptor:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
                                         {transactionDB['divisa de receptor'] && transactionDB['divisa de receptor']}
                                     </td>
-                                </tr>
+                                </tr> */}
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        Importe Con el cambio aplicado:
+                                        Importe mas comision con el cambio aplicado:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.cambio && transactionDB.cambio}
+                                        {transactionDB.cambio && transactionDB.cambio} {transactionDB['divisa de receptor'] && transactionDB['divisa de receptor']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
@@ -254,7 +254,7 @@ function Home() {
                                     Importe mas comision
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['importe'] && transactionDB['importe'] + transactionDB['comision']}
+                                        {transactionDB['importe'] && transactionDB['importe'] + transactionDB['comision']} {transactionDB['divisa de usuario'] && transactionDB['divisa de usuario'] }
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
@@ -262,7 +262,7 @@ function Home() {
                                     Comision
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB['comision']}
+                                        {transactionDB['comision']} {transactionDB['divisa de usuario'] && transactionDB['divisa de usuario'] }
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
@@ -275,10 +275,10 @@ function Home() {
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                    Importe Con el cambio aplicado
+                                    Importe mas comision con el cambio aplicado
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.cambio}
+                                        {transactionDB.cambio} {transactionDB['divisa de cambio'] && transactionDB['divisa de cambio']}
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >

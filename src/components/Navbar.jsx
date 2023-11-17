@@ -47,8 +47,8 @@ function Tracking() {
     </span>
 }
 function Paises() {
-    return <span className='inline-block  h-[35px] w-[35px] rounded-full bg-[black]'>
-        <img src="/paises.png" className='inline-block w-full px-1 py-2' alt="" />
+    return <span className='flex justify-center items-center h-[42px] w-[42px] rounded-full bg-[black]'>
+        <img src="/paises.png" className='inline-block w-full px-1 py-2 object-contain' alt="" />
     </span>
 }
 function Tarifas() {
