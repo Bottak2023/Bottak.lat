@@ -150,13 +150,6 @@ export default function Navbar({ children }) {
                                     </button>)
                                     : '')
                             }
-                            {/* {pathname !== '/' && pathname !== '/Admin' && pathname !== '/Cambios' && nav === false
-                                ? <button type="button" className="inline-flex items-center lg:hidden p-2 text-[14px] text-white rounded-lg  dark:hover:bg-gray-700 dark:focus:ring-gray-600" onClick={handlerBack}>
-                                    <svg width="19" height="34" viewBox="0 0 19 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17 32L2 17L17 2" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </button>
-                                :     } */}
 
                             {(pathname !== '/' && pathname !== '/Admin' && pathname !== '/Cambios') || nav === true
                                 ? <button type="button" className="inline-flex items-center lg:hidden p-2 text-[14px] text-white rounded-lg  dark:hover:bg-gray-700 dark:focus:ring-gray-600" onClick={handlerBack}>
@@ -171,22 +164,11 @@ export default function Navbar({ children }) {
                                     </svg>
                                 </button>}
 
-
-
-
-                            {/* <button type="button" className="inline-flex items-center text-gray-100 ml-4 sm:hidden" onClick={() => setNav(!nav)}>
-                                    <span className="sr-only">Open menu</span>
-                                    <svg width="30" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 22H32M2 12H32M2 2H32" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button> */}
-
-
                         </div>
                     </div>
                 </div>
             </nav>
-            <ul className={`fixed top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] transition-all  z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} onClick={(e)=>e.stopPropagation()} >
+            <ul className={`fixed top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[10px]'}`} style={{transition: 'all .04s linear'}} onClick={(e)=>e.stopPropagation()} >
                 {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={(e) => handlerNavItem(e, 'Mi cuenta')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>MI CUENTA</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
