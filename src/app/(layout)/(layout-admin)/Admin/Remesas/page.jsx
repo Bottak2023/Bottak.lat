@@ -27,6 +27,9 @@ export default function Home() {
   function handlerProfileIMG(img) {
     setProfileIMG(img)
 }
+function closeProfileIMG() {
+  setProfileIMG('')
+}
   function sortArray(x, y) {
     if (x['translation']['spa']['common'].toLowerCase() < y['translation']['spa']['common'].toLowerCase()) { return -1 }
     if (x['translation']['spa']['common'].toLowerCase() > y['translation']['spa']['common'].toLowerCase()) { return 1 }
@@ -228,7 +231,7 @@ export default function Home() {
                     {i['banco de transferencia']}
                   </td>
                   <td className="min-w-32 p-3">
-                    <img src={i.url} className={`${i.url === profileIMG && 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50'}`} onClick={() => handlerProfileIMG(i.url)} alt="" />
+                    <img src={i.url} className={`${i.url === profileIMG ? 'fixed right-0 left-0 top-0 bottom-0 m-auto portrait:w-[100vw] landscape:h-[100vh] z-50' : 'h-[150px] w-[150px] object-contain'}`} onClick={() => handlerProfileIMG(i.url)} alt="" />
                   </td>
                   <td className="px-3 py-4">
                     {state && state !== undefined && state[i.uuid] && state[i.uuid] !== undefined
