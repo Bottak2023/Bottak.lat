@@ -151,7 +151,7 @@ export default function Navbar({ children }) {
                                     : '')
                             }
 
-                            {(pathname !== '/' && pathname !== '/Admin' && pathname !== '/Cambios') || nav === true
+                            {(pathname !== '/' && pathname !== '/Admin' && pathname !== '/Cambios' && pathname !== '/Tracking' && pathname !== '/Paises' && pathname !== '/Tarifas' && pathname !== '/Transacciones' && pathname !== '/MisCambios' && pathname !== '/Nosotros' && pathname !== '/Politicas' ) || nav === true
                                 ? <button type="button" className="inline-flex items-center lg:hidden p-2 text-[14px] text-white rounded-lg  dark:hover:bg-gray-700 dark:focus:ring-gray-600" onClick={handlerBack}>
                                     <svg width="19" height="34" viewBox="0 0 19 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M17 32L2 17L17 2" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
