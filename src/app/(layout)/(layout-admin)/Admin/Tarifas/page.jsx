@@ -49,7 +49,7 @@ export default function Home() {
     }
 
     setModal('Guardando...')
-    writeUserData(`divisas/${item.cca3}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true : false }, setUserSuccess, callback)
+    writeUserData(`divisas/${item.code}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true : false }, setUserSuccess, callback)
     return
   }
   async function saveConfirm() {
@@ -58,9 +58,9 @@ export default function Home() {
     }
 
     setModal('Guardando...')
-    await writeUserData(`divisas/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
+    await writeUserData(`divisas/${item.code}`, state[item.code], setUserSuccess, callback)
     const obj = { ...state }
-    delete obj[item.cca3]
+    delete obj[item.code]
     setState(obj)
     return
   }
