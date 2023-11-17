@@ -45,20 +45,20 @@ export default function Home() {
   }
   function disableConfirm() {
     function callback() {
-      getSpecificData('currencies', setDivisas, () => { setModal('') })
+      getSpecificData('divisas', setDivisas, () => { setModal('') })
     }
 
     setModal('Guardando...')
-    writeUserData(`currencies/${item.cca3}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true : false }, setUserSuccess, callback)
+    writeUserData(`divisas/${item.cca3}`, { habilitado: item.habilitado === undefined || item.habilitado === false ? true : false }, setUserSuccess, callback)
     return
   }
   async function saveConfirm() {
     function callback() {
-      getSpecificData('currencies', setDivisas, () => { setModal('') })
+      getSpecificData('divisas', setDivisas, () => { setModal('') })
     }
 
     setModal('Guardando...')
-    await writeUserData(`currencies/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
+    await writeUserData(`divisas/${item.cca3}`, state[item.cca3], setUserSuccess, callback)
     const obj = { ...state }
     delete obj[item.cca3]
     setState(obj)
