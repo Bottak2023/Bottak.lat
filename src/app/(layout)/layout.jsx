@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
 
     function mainHandler () {
         setNavItem('')
+        
     }
 
 
