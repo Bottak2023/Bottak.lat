@@ -1,10 +1,10 @@
 'use client'
 import { useUser } from '@/context/Context'
 import Navbar from '@/components/Navbar'
+import Modal from '@/components/Modal'
 import { onAuth, handleSignOut } from '@/firebase/utils'
 import { useRouter } from 'next/navigation';
 import Particles from '@/components/Particles'
-
 import { useEffect } from 'react'
 import { getSpecificData } from '@/firebase/database'
 
@@ -19,7 +19,17 @@ export default function RootLayout({ children }) {
         setNavItem('')
         
     }
-
+    const signOutHandler = () => {
+        handleSignOut()
+        setUserProfile(null)
+        setUserData(null)
+        setNav(false)
+        router.push('/')
+    }
+    function soporte(e) {
+        e.preventDefault()
+        window.open('https://api.whatsapp.com/send?phone=+59177455743&text=Hola%20BOTTAK,%20necesito%20hacer%20una%20transacci%C3%B3n...', '_blank')
+      }
 
     useEffect(() => {
         onAuth(setUserProfile, setUserData)
@@ -32,7 +42,7 @@ export default function RootLayout({ children }) {
 
     return (
         user !== undefined && userDB !== undefined && divisas !== undefined && <>
-        {(userDB && user.bloqueado === true) || (userDB && userDB.bloqueado === true) ? <Modal funcion={soporte} close={true} cancel={signOutConfirm} cancelText="Cerrar sesión" successText="Contactar">
+        {userDB && userDB.bloqueado === true ? <Modal funcion={soporte} cancel={signOutHandler} cancelText="Cerrar sesión" successText="Soporte">
             Esta cuenta esta bloqueada, <br />por favor comuniquese con soporte.<br />
           </Modal> : ''}
             <Navbar/>
