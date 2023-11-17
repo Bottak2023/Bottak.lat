@@ -95,20 +95,20 @@ export default function Home() {
                                 <td className="px-3 py-4 text-gray-900 ">
                                     1 USD
                                 </td>
-                                <td className="w-32 p-4">
-                                    {i['compra'] !== undefined ? i['compra'] : '-----'}
+                                <td className="w-32 p-4 text-center">
+                                    {i['compra'] !== undefined ? i['compra'] + ' ' + i.code : '-----'} 
                                 </td>
-                                <td className="w-32 p-4">
-                                    {i['venta'] !== undefined ? i['venta'] : '-----'}
+                                <td className="w-32 p-4 text-center">
+                                    {i['venta'] !== undefined ? i['venta'] + ' ' + i.code : '-----'}
                                 </td>
-                                <td className="w-32 p-4">
-                                    {i['tarifa 1'] !== undefined ? i['tarifa 1'] : '-----'}
+                                <td className="w-32 p-4 text-center">
+                                    {i['tarifa 1'] !== undefined ? i['tarifa 1'] + ' ' + i.code : '-----'}
                                 </td>
-                                <td className="w-32 p-4">
-                                    {i['tarifa 2'] !== undefined ? i['tarifa 2'] : '-----'}
+                                <td className="w-32 p-4 text-center">
+                                    {i['tarifa 2'] !== undefined ? i['tarifa 2'] + ' ' + i.code : '-----'}
                                 </td>
-                                <td className="w-32 p-4">
-                                    {i['tarifa 3'] !== undefined ? i['tarifa 3'] : '-----'}
+                                <td className="w-32 p-4 text-center">
+                                    {i['tarifa 3'] !== undefined ? i['tarifa 3'] + ' ' + i.code : '-----'}
                                 </td>
                             </tr>
                         })

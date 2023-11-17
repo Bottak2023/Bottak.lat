@@ -24,8 +24,8 @@ export default function Home() {
     setFilter(e.target.value)
   }
   function sortArray(x, y) {
-    if (x,usuario.toLowerCase() < y,usuario.toLowerCase()) { return -1 }
-    if (x,usuario.toLowerCase() > y,usuario.toLowerCase()) { return 1 }
+    if (x.usuario.toLowerCase() < y.usuario.toLowerCase()) { return -1 }
+    if (x.usuario.toLowerCase() > y.usuario.toLowerCase()) { return 1 }
     return 0
   }
   function handlerSelect(name, i, uuid) {

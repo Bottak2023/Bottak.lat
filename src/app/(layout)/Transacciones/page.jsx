@@ -81,7 +81,7 @@ console.log(remesasDB)
                             <th scope="col" className="w-[50px] px-3 py-3">
                                 #
                             </th>
-                            <th scope="col" className=" px-3 py-3">
+                            <th scope="col" className=" px-3 py-3 text-center">
                                 Estado
                             </th>
                             <th scope="col" className=" px-3 py-3">
@@ -103,16 +103,13 @@ console.log(remesasDB)
                                 Banco
                             </th>
                             <th scope="col" className=" px-3 py-3">
-                                Importe
+                                Importe mas comisión
                             </th>
                             <th scope="col" className=" px-3 py-3">
-                                Divisa <br/> de <br/> envio
+                                Comisión
                             </th>
                             <th scope="col" className=" px-3 py-3">
                                 Importe con el <br/> cambio aplicado
-                            </th>
-                            <th scope="col" className=" px-3 py-3">
-                                Divisa <br/> de <br/> receptor
                             </th>
                             <th scope="col" className=" px-3 py-3">
                                 ID de transaccion
@@ -150,16 +147,13 @@ console.log(remesasDB)
                                      {i['nombre de banco']}
                                 </td>
                                 <td className="px-3 py-4  ">
-                                    {i['importe']}
+                                    {i['importe']} {i['divisa de envio']}
                                 </td>
-                                <td className=" p-3">
-                                      {i['divisa de envio']}
+                                <td className="px-3 py-4  ">
+                                    {i['comision']}
                                 </td>
                                 <td className="min-w-32 p-3">
-                                     {i['cambio']}
-                                </td>
-                                <td className=" p-3">
-                                      {i['divisa de receptor']}
+                                     {i['cambio']} {i['divisa de receptor']}
                                 </td>
                                 <td className="min-w-32 p-3">
                                       {i['uuid']}
