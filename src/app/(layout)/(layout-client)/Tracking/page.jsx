@@ -54,9 +54,159 @@ export default function Page({ styled, name, change }) {
         {webScann && <div className={`lg:hidden`}>
             <QRscanner></QRscanner>
         </div>}
+        {filterQR && filterQR !== undefined && filterQR.operacion === 'Envio'
+                        && <table className="w-full  lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
+                            <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
+                                <tr>
+                                    <th scope="col-3" className="w-1/2 px-3 py-3">
+                                    </th>
+                                    <th scope="col" className="px-3 py-3">
+                                        Datos
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                        Remitente
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.remitente && filterQR.remitente}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                        DNI remitente
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR['dni remitente'] && filterQR['dni remitente']}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                        Pais remitente
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR['pais remitente'] && filterQR['pais remitente']}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                        Destinatario
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.destinatario && filterQR.destinatario}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                        DNI destinatario
+                                    </td>
+                                    <td className="px-2 py-2  text-gray-900 ">
+                                        {filterQR.dni && filterQR.dni}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-2 py-2 flex flex-col text-[14px] text-gray-700 ">
+                                        Pais destinatario
+                                    </td>
+                                    <td className="px-2 py-2  text-gray-900 ">
+                                        {filterQR.pais && filterQR.pais}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 flex flex-col text-[14px] text-gray-700 ">
+                                        Celular de destinatario
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.celular && filterQR.celular}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Cuenta de destinatario:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR['cuenta destinatario'] && filterQR['cuenta destinatario']}
+                                    </td>
+                                </tr>
+                                {/* <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Divisa de envio:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR['divisa de envio'] && filterQR['divisa de envio']}
+                                    </td>
+                                </tr> */}
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Importe mas comision:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.importe && filterQR.importe + filterQR.comision} {filterQR['divisa de envio'] && filterQR['divisa de envio']}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Comision:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.comision} {filterQR['divisa de envio'] && filterQR['divisa de envio']}
+                                    </td>
+                                </tr>
+                                {/* <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Divisa de receptor:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR['divisa de receptor'] && filterQR['divisa de receptor']}
+                                    </td>
+                                </tr> */}
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Importe mas comision con el cambio aplicado:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.cambio && filterQR.cambio} {filterQR['divisa de receptor'] && filterQR['divisa de receptor']}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Fecha:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.fecha && filterQR.fecha}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Estado:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.estado && filterQR.estado}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Operacion:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.operacion && filterQR.operacion}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        ID de tracking:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.uuid}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
 
-
-        {filterQR.operacion === 'Cambio'
+        {filterQR && filterQR !== undefined && filterQR.operacion === 'Cambio'
                         && <table className="w-full  lg:w-full lg:min-w-auto text-[14px] text-left text-gray-500 rounded-[20px]">
                             <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                                 <tr>
