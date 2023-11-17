@@ -120,7 +120,7 @@ console.log(remesasDB)
                         </tr>
                     </thead>
                     <tbody>
-                        {remesasDB && remesasDB !== undefined &&  Object.values(remesasDB).sort((a,b)=>a-b).map((i, index) => {
+                        {remesasDB && remesasDB !== undefined &&  Object.values(remesasDB).sort((a,b)=>a.date-b.date).map((i, index) => {
                             return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                                 <td className="px-3 py-4  flex  ">
                                     <span className='h-full flex py-2'>{index + 1}</span>

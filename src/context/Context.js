@@ -16,6 +16,9 @@ export function UserProvider({ children }) {
 	const [destinatario, setDestinatario] = useState(undefined)
 	const [destinatarios, setDestinatarios] = useState(undefined)
 
+	const [enviosDB, setEnviosDB] = useState(undefined)
+	const [cambiosDB, setCambiosDB] = useState(undefined)
+
 	const [success, setSuccess] = useState(null)
 	const [state, setState] = useState('Remesas')
 	const [nav, setNav] = useState(false)
@@ -111,6 +114,8 @@ export function UserProvider({ children }) {
 			select3, setSelect3,
 			countries, setCountries,
 			destinatarios, setDestinatarios,
+			enviosDB, setEnviosDB,
+			cambiosDB, setCambiosDB,
 			setQRurl, 
 
 			setDestinatario,
@@ -133,7 +138,9 @@ export function UserProvider({ children }) {
 		fecha, qr, QRurl, divisas, envios,
 		webScann,
 		filter,
-		filterQR, exchange, countries, destinatarios, transactionDB, navItem, comision])
+		filterQR, exchange, countries, destinatarios, transactionDB, navItem, comision,
+		enviosDB,
+		cambiosDB,])
 
 
 	return (

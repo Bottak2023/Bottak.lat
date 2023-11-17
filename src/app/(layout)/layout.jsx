@@ -6,11 +6,11 @@ import { onAuth, handleSignOut } from '@/firebase/utils'
 import { useRouter } from 'next/navigation';
 import Particles from '@/components/Particles'
 import { useEffect } from 'react'
-import { getSpecificData } from '@/firebase/database'
+import { getSpecificData, getSpecificDataEq} from '@/firebase/database'
 
 export default function RootLayout({ children }) {
 
-    const { user, userDB, setUserProfile, nav, setNav, userNav, setNavItem, setUserNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries } = useUser()
+    const { user, userDB, setUserProfile, nav, setNav, userNav, setNavItem, setUserNav, state, setState, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, setCountries, setEnviosDB, setCambiosDB } = useUser()
     const router = useRouter()
     console.log(user)
     console.log(userDB)
@@ -38,6 +38,8 @@ export default function RootLayout({ children }) {
     }, [])
     useEffect(() => {
         user && userDB === undefined && getSpecificData(`/users/${user.uid}`, setUserData)
+        user && user !== undefined && getSpecificDataEq(`/envios/`, 'user uuid', user.uid, setEnviosDB )
+        user && user !== undefined && getSpecificDataEq(`/cambios/`, 'user uuid', user.uid, setCambiosDB )
     }, [user, userDB])
 
     return (
