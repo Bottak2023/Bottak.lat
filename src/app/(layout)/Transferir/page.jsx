@@ -67,12 +67,19 @@ function Home() {
 
     }
 
+    function handlerDownload(e) {
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = (event) => {
+      const blob = xhr.response;
+    };
+    xhr.open('GET', countries && countries[userDB.cca3].url ? countries && countries[userDB.cca3].url: '');
+    xhr.send();
+}
 
-
-
-    useEffect(() => {
-        transferencia === '' && router.replace('/')
-    })
+    // useEffect(() => {
+    //     transferencia === '' && router.replace('/')
+    // })
 
 
     return (
@@ -85,28 +92,29 @@ function Home() {
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Elija una opcion de deposito Bancario</h3>
             </div>
             <div className=' space-y-5'>
+                <Label htmlFor="">QR bancario</Label> 
+                <Link href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download onClick={handlerDownload}>
+                    <label  className=" flex flex-col justify-start items-center w-[200px] h-[230px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
+                        {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
+                            : 'QR no disponible'}
+                            {destinatario && destinatario.importe} {destinatario && destinatario['divisa de envio']}
+                    </label>
+                </Link>
+            </div>
+            <div className=' space-y-5'>
                 <Label htmlFor="">Cuenta bancaria</Label>
                 <span className="block text-white text-center" >{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
                     {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
             </div>
-            <div className=' space-y-5'>
-                <Label htmlFor="">QR bancario</Label> 
-                <Link href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
-                    <label  className=" flex flex-col justify-center items-center w-[100px] h-[120px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                        {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
-                            : 'QR no disponible'}
-                            Descargar
-                    </label>
-                </Link>
-            </div>
+           
             <div className='lg:hidden'>
                 <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Baucher de transferencia</Label>
                 <div className="w-full flex justify-center">
-                    <label htmlFor="file" className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-center text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                        {urlPostImage !== undefined? <img className="flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
+                    <label htmlFor="file" className="flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-center text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
+                        {urlPostImage !== undefined? <img className="flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={urlPostImage} alt="" />
                             : 'Subir baucher'}
                     </label>
                     <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" required/>
