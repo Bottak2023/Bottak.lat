@@ -76,13 +76,13 @@ export default function Home() {
         </div>
         <br />
         <br />
-        <table className="w-full min-w-[2500px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
+        <table className="w-full min-w-[2700px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
           <thead className="text-[14px] text-gray-700 uppercase bg-white">
             <tr>
               <th scope="col" className="w-[50px] px-3 py-3">
                 #
               </th>
-              <th scope="col" className=" px-3 py-3">
+              <th scope="col" className=" px-3 py-3 text-center">
                 estado
               </th>
               <th scope="col" className=" px-3 py-3">

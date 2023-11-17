@@ -12,8 +12,8 @@ export default function Home() {
         setFilter(e.target.value)
     }
     function sortArray(x, y) {
-        if (x['translation']['spa']['common'].toLowerCase() < y['translation']['spa']['common'].toLowerCase()) { return -1 }
-        if (x['translation']['spa']['common'].toLowerCase() > y['translation']['spa']['common'].toLowerCase()) { return 1 }
+        if (x['currency'].toLowerCase() < y['currency'].toLowerCase()) { return -1 }
+        if (x['currency'].toLowerCase() > y['currency'].toLowerCase()) { return 1 }
         return 0
     }
     const prev = () => {
@@ -43,7 +43,7 @@ export default function Home() {
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeFilter} placeholder='Buscar Divisa' />
                 <br />
                 <br />
-                <table className="w-full overflow-visible min-w-[1000px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
+                <table className="w-full overflow-visible min-w-[800px]  text-[14px] text-left text-gray-500 border-t-4 border-gray-400" style={{ minWidth: '1500px' }}>
                     <thead className="text-[14px] text-gray-700 uppercase bg-white">
                         <tr>
                             <th scope="col" className=" px-3 py-3">
@@ -79,7 +79,7 @@ export default function Home() {
                         </tr>
                     </thead>
                     <tbody>
-                        {divisas && divisas !== undefined && Object.values(divisas).map((i, index) => {
+                        {divisas && divisas !== undefined && Object.values(divisas).sort(sortArray).map((i, index) => {
                             return i.currency !== undefined && 
                             i.habilitado !== undefined && i.habilitado === true &&
                              (i.currency.toLowerCase().includes(filter.toLowerCase()) || i.code.toLowerCase().includes(filter.toLowerCase())) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-100'} `} key={index}>
