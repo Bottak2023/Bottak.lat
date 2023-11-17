@@ -33,7 +33,7 @@ export default function Home() {
     return 0
   }
   function onChangeHandler(e, i) {
-    setState({ ...state, [i.cca3]: { ...state[i.cca3], [e.target.name]: e.target.value } })
+    setState({ ...state, [i.code]: { ...state[i.code], [e.target.name]: e.target.value } })
   }
   function manage(i) {
     setItem(i)
@@ -195,7 +195,7 @@ export default function Home() {
                   <input type="number" name="tarifa 3" className='w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['tarifa 3'] !== undefined ? i['tarifa 3'] : 0} />
                 </td>
                 <td className="px-3 py-4">
-                  {state && state[i.cca3] !== undefined
+                  {state && state[i.code] !== undefined
                     ? <Button theme={"Success"} click={() => save(i)}>Guardar</Button>
                     : <Button theme={"Disable"} >Disable</Button>
                   }
