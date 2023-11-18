@@ -63,9 +63,9 @@ export default function WebCamp({ takePhoto }) {
     switch (takePhoto) {
         case 'Capture1':
             return <div className="relative">
-                <label htmlFor="Capture1" className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  onClick={(e) => { e.stopPropagation() }}>
+                <label className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  onClick={(e) => { e.stopPropagation() }}>
                     {image1 && <img src={image1} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50">Click para subir foto <br/>desde galería</div>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture1"> <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label></div>
                     <Webcam
                         audio={false}
                         height={height}
@@ -91,9 +91,9 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture2':
             return <div className="relative">
-                <label htmlFor="Capture2" className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  onClick={(e) => { e.stopPropagation() }}>
+                <label className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  onClick={(e) => { e.stopPropagation() }}>
                     {image2 && <img src={image2} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50">Click para subir foto <br/>desde galería</div>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2"> <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label></div>
                     <Webcam
                         audio={false}
                         height={height}
@@ -119,9 +119,9 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture3':
             return <div className="relative">
-                <label htmlFor="Capture3" className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  onClick={(e) => { e.stopPropagation() }}>
+                <label className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  onClick={(e) => { e.stopPropagation() }}>
                     {image3 && <img src={image3} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50">Click para subir foto <br/>desde galería</div>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture3"> <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label></div>
 
                     <Webcam
                         audio={false}
