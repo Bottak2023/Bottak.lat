@@ -81,7 +81,6 @@ export default function WebCamp({ takePhoto }) {
                         videoConstraints={videoConstraints}
                         mirrored={true}
                     />
-                    <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
                 </div>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
@@ -102,7 +101,6 @@ export default function WebCamp({ takePhoto }) {
                     <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2">
                         <Button theme="Transparent">Click para subir foto <br />desde galería</Button>
                         <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
-
                     </label>
                     </div>
                     <Webcam
@@ -134,7 +132,6 @@ export default function WebCamp({ takePhoto }) {
                     <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture3">
                         <Button theme="Transparent">Click para subir foto <br />desde galería</Button></label>
                         <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
-
                     </div>
 
                     <Webcam
