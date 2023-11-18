@@ -107,7 +107,7 @@ export default function WebCamp({ takePhoto }) {
                     onClick={capture2}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
                 </button>
-                {image2 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => setImage2(null)}>
+                {image2 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => {e.stopPropagation(); setImage2(null)}}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
@@ -137,7 +137,7 @@ export default function WebCamp({ takePhoto }) {
                     onClick={capture3}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
                 </button>
-                {image3 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => setImage3(null)}>
+                {image3 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => { e.stopPropagation(); setImage3(null)}}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>

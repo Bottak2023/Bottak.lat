@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 // import 'react-quill/dist/quill.Bubble.css';
 import dynamic from 'next/dynamic'
 
-const ReactQuill =  dynamic(async () => await import("react-quill"), { ssr: false })
+const ReactQuill = dynamic(async () => await import("react-quill"), { ssr: false })
 // import ReactQuill from 'react-quill';
 // var FontAttributor = Quill.import('attributors/class/font');
 // FontAttributor.whitelist = [
@@ -41,7 +41,7 @@ export default function TextEditor({ value, setValue, edit }) {
             [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
             // [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
 
-         
+
 
 
             ['clean']                                         // remove formatting button
@@ -83,12 +83,15 @@ export default function TextEditor({ value, setValue, edit }) {
     useEffect(() => {
         setIsLoading(true)
     }, []);
-    return  isLoading && <div className='bg-white z-50'>
+    return isLoading && <div className='bg-white z-50'>
+   
         {
-            edit ?
+            edit
+                ?
                 <ReactQuill theme="snow" modules={modules}
-                    formats={formats} value={value} onChange={setValue} /> :
-                <ReactQuill theme="bubble"
+                    formats={formats} value={value} onChange={setValue} />
+                :
+                <ReactQuill theme="snow"
                     formats={formats} value={value} />
         }
     </div>
