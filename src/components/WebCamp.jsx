@@ -62,7 +62,7 @@ export default function WebCamp({ takePhoto }) {
             return <div className="relative">
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image1 && <img src={image1} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50">
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-40">
                         <label htmlFor="Capture1">
                             Click para subir foto <br />desde galería
                             <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
@@ -79,7 +79,7 @@ export default function WebCamp({ takePhoto }) {
                     />
                 </div>
                 <button
-                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
+                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-50"
                     onClick={capture1}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 hover:bg-[#FFF500] inline-block"></span>
                 </button>
@@ -94,7 +94,7 @@ export default function WebCamp({ takePhoto }) {
             return <div className="relative">
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  >
                     {image2 && <img src={image2} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2">
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-40"><label htmlFor="Capture2">
                         Click para subir foto <br />desde galería
                         <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
                     </label>
@@ -110,7 +110,7 @@ export default function WebCamp({ takePhoto }) {
                     />
                 </div>
                 <button
-                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
+                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-50"
                     onClick={capture2}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
                 </button>
@@ -125,7 +125,7 @@ export default function WebCamp({ takePhoto }) {
             return <div className="relative">
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image3 && <img src={image3} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50">
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-40">
                         <label htmlFor="Capture3">
                             Click para subir foto <br />desde galería
                             <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
@@ -144,7 +144,7 @@ export default function WebCamp({ takePhoto }) {
                     />
                 </div>
                 <button
-                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
+                    className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-50"
                     onClick={capture3}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
                 </button>
