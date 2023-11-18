@@ -32,7 +32,8 @@ export default function WebCamp({ takePhoto }) {
                     return setImage1(reader.result)
                 case 'Capture3':
                     return setImage1(reader.result)
-            }        };
+            }
+        };
         reader.readAsDataURL(file);
     };
     const capture1 = React.useCallback(
@@ -65,10 +66,11 @@ export default function WebCamp({ takePhoto }) {
             return <div className="relative">
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image1 && <img src={image1} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture1"> 
-                    <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label>
-                    <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
-
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50">
+                        <label htmlFor="Capture1">
+                            <Button theme="Transparent">Click para subir foto <br />desde galería</Button>
+                            <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
+                        </label>
                     </div>
                     <Webcam
                         audio={false}
@@ -97,11 +99,12 @@ export default function WebCamp({ takePhoto }) {
             return <div className="relative">
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  >
                     {image2 && <img src={image2} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2"> 
-                    <Button theme="Transparent">Click para subir foto <br/>desde galería</Button>
-                    <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2">
+                        <Button theme="Transparent">Click para subir foto <br />desde galería</Button>
+                        <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
 
-                    </label></div>
+                    </label>
+                    </div>
                     <Webcam
                         audio={false}
                         height={height}
@@ -117,7 +120,7 @@ export default function WebCamp({ takePhoto }) {
                     onClick={capture2}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
                 </button>
-                {image2 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => {e.stopPropagation(); setImage2(null)}}>
+                {image2 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => { e.stopPropagation(); setImage2(null) }}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
@@ -129,10 +132,10 @@ export default function WebCamp({ takePhoto }) {
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image3 && <img src={image3} className="absolute h-full w-full z-20 object-contain" alt="" />}
                     <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture3">
-                         <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label>
-                         <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
+                        <Button theme="Transparent">Click para subir foto <br />desde galería</Button></label>
+                        <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
 
-                         </div>
+                    </div>
 
                     <Webcam
                         audio={false}
@@ -150,7 +153,7 @@ export default function WebCamp({ takePhoto }) {
                     onClick={capture3}>
                     <span className="  w-[30px] h-[30px] rounded-full bg-gray-800 inline-block"></span>
                 </button>
-                {image3 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => { e.stopPropagation(); setImage3(null)}}>
+                {image3 && <button type="button" className="absolute top-3 right-2.5 text-gray-900  bg-[#FFF500] hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white z-50" onClick={() => { e.stopPropagation(); setImage3(null) }}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
