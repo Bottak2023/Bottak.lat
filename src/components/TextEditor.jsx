@@ -91,7 +91,7 @@ export default function TextEditor({ value, setValue, edit }) {
                 <ReactQuill theme="snow" modules={modules}
                     formats={formats} value={value} onChange={setValue} />
                 :
-                <ReactQuill theme="snow"
+                <ReactQuill theme="bubble"
                     formats={formats} value={value} />
         }
     </div>
