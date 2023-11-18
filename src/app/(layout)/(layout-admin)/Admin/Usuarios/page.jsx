@@ -97,7 +97,7 @@ function Home() {
                 <input type="text" className='border-b-[1px] text-[14px] outline-none w-[400px]' onChange={onChangeHandler} placeholder='Buscar Usuario por nombre o DNI' />
                 <br />
                 <br />
-                <table className="w-full min-w-[1800px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
+                <table className="w-full min-w-[1900px] border-[1px] bg-white text-[14px] text-left text-gray-500 border-t-4 border-t-gray-400">
                     <thead className="text-[14px] text-gray-700 uppercase bg-gray-50  ">
                         <tr>
                             <th scope="col" className="px-3 py-3">
@@ -126,6 +126,9 @@ function Home() {
                             </th>
                             <th scope="col" className="px-8 py-3 text-center">
                                 WhatsApp
+                            </th>
+                            <th scope="col" className="px-8 py-3 text-center">
+                                Notificar
                             </th>
                             <th scope="col" className="text-center px-3 py-3 ">
                                 Habilitar
@@ -191,6 +194,10 @@ function Home() {
                                                 </svg>
                                             </span>
                                         </div>
+                                    </td>
+                                    <td className="px-3 py-4 ">
+                                            <Button theme={"Success"} click={() => router.push(`Admin/Notificar?uuid=${i.uuid}`)}>Notificar</Button>
+                                 
                                     </td>
                                     <td className="px-3 py-4 ">
                                         {(i['habilitado'] === undefined || i['habilitado'] === false)

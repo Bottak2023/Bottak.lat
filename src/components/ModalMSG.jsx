@@ -41,7 +41,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
                     </button>
                     <div className=" text-center">
                         <div className={style.editor}>
-                            <TextEditor value={handlerTextEditorOnChange} setValue={textEditor ? textEditor : 'nada'} edit={true} />
+                            <TextEditor setValue={handlerTextEditorOnChange} value={textEditor ? textEditor : 'nada'} edit={true} />
                         </div>
                         {/* <Button theme='Blank' click={() => setModal('')}></Button> */}
                         <br /> <br />

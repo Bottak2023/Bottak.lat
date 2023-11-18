@@ -33,7 +33,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
             setModal('')
         }
         setModal('Guardando...')
-        writeUserData(route, route !== '/politicas' ? textEditor : textEditor2 , setUserSuccess, callback)
+        writeUserData(route, {content: route !== '/politicas' ? textEditor : textEditor2} , setUserSuccess, callback)
     }
 
     return (<div className={`h-full w-full flex flex-col justify-center items-center  p-4 overflow-x-hidden overflow-y-auto `}>

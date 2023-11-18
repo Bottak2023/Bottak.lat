@@ -289,11 +289,11 @@ export default function Navbar({ children }) {
                 <li onClick={(e) => handlerNavItem(e, 'Acerca')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>ACERCA DE</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20   ${navItem === 'Acerca' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
-                        <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                        <Link href="/Nosotros" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                             <Nosotros />
                             Nosotros
                         </Link>
-                        <Link href="#" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px] hover:bg-gray-100  sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                        <Link href="/Politicas" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px] hover:bg-gray-100  sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
                             <Politicas />
                             Politicas
                         </Link>
