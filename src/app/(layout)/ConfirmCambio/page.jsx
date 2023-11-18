@@ -40,6 +40,7 @@ function Home() {
             operacion: 'Cambio',
             estado: 'En verficación',
             ['user uuid']: user.uid,
+            notificaciones: true,
 
         }
         setDestinatario(db)

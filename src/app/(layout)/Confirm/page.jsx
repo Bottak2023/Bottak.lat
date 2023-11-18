@@ -35,6 +35,8 @@ function Home() {
             cambio: divisas && divisas[select] && divisas[select2] ? divisas && divisas[select] && divisas[select2] && ((transferencia + comision) * divisas[select2].venta / divisas[select].venta).toFixed(2) : '',
             estado: 'En verficación',
             ['user uuid']: user.uid,
+            notificaciones: true,
+
         }
         setDestinatario(db)
         router.push('/Transferir')

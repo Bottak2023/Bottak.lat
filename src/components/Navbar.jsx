@@ -113,7 +113,10 @@ export default function Navbar({ children }) {
         setNav(false)
         router.push('/')
     }
+    const handlerNotificaciones = (i) => {
+        writeUserData(`cambios/${uuid}`, {...state[i.uuid], notificaciones: false}, setUserSuccess, () => { setModal('') })
 
+    }
 
     // pathname !== '/' && pathname !== '/Admin' || pathname !== '/Cambios'
     console.log(notificaciones)
@@ -182,7 +185,37 @@ export default function Navbar({ children }) {
                     </div>
                 </div>
             </nav>
-            <ul className={`fixed top-0 pt-[60px] w-[100vw]  sm:max-w-[400px] z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[80px]'}`} style={{ transition: 'all .02s linear' }} onClick={(e) => e.stopPropagation()} >
+            <ul className={`fixed top-0 pt-[60px] w-[100vw]  sm:max-w-[500px] z-20 px-[30px]  sm:flex  sm:items-center sm:justify-between sm:h-[70px] sm:min-h-auto sm:pt-[10px] sm:z-50  ${nav ? 'left-0 ' : 'left-[-100vw] sm:left-auto sm:right-[70px]'}`} style={{ transition: 'all .02s linear' }} onClick={(e) => e.stopPropagation()} >
+          
+            <li onClick={(e) => handlerNavItem(e, 'Servicios')}>
+                    <Link href="/"  className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>INICIO</Link>
+                    
+                </li>
+                <li onClick={(e) => handlerNavItem(e, 'Servicios')}>
+                    <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>SERVICIOS</h3>
+                    <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Servicios' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
+                        <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px] sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                            <Remesas />
+                            Remesas
+                        </Link>
+                        <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                            <Cambios />
+                            Cambios
+                        </Link>
+                        <Link href="/Tarifas" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
+                            <Tarifas />
+                            Tarifas
+                        </Link>
+                        <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Tracking />
+                            Tracking
+                        </Link>
+                        <Link href="/Paises" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                            <Paises />
+                            Paises habilitados
+                        </Link>
+                    </div>
+                </li>
                 {userDB && userDB.rol && (userDB.rol === 'Admin' || userDB.rol === 'Cliente') && <li onClick={(e) => handlerNavItem(e, 'Mi cuenta')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>MI CUENTA</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Mi cuenta' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
@@ -214,33 +247,6 @@ export default function Navbar({ children }) {
                         </>}
                     </div>
                 </li>}
-
-                <li onClick={(e) => handlerNavItem(e, 'Servicios')}>
-                    <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>SERVICIOS</h3>
-                    <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20  ${navItem === 'Servicios' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
-                        <Link href="/" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px] sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
-                            <Remesas />
-                            Remesas
-                        </Link>
-                        <Link href="/Cambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
-                            <Cambios />
-                            Cambios
-                        </Link>
-                        <Link href="/Tarifas" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={() => setNav(false)}>
-                            <Tarifas />
-                            Tarifas
-                        </Link>
-                        <Link href="/Tracking" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
-                            <Tracking />
-                            Tracking
-                        </Link>
-                        <Link href="/Paises" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px] text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
-                            <Paises />
-                            Paises habilitados
-                        </Link>
-                    </div>
-                </li>
-
                 <li onClick={(e) => handlerNavItem(e, 'Acerca')}>
                     <h3 className='text-[12px] font-bold sm:text-[12px] sm:font-normal text-white py-5 cursor-pointer'>ACERCA DE</h3>
                     <div className={`relative sm:absolute sm:top-[80px] sm:right-[20px]  sm:w-[300px]  sm:bg-black  grid grid-cols-2 gap-[20px]  rounded-2xl z-20   ${navItem === 'Acerca' ? 'h-auto sm:p-[20px]' : 'h-auto sm:h-0 sm:overflow-hidden'}`}>
@@ -277,18 +283,15 @@ export default function Navbar({ children }) {
                     // </Link>
                 }
             </ul>
-            <div className={` ${notificaciones === true ? 'bg-white absolute top-[70px] h-[200px] w-full sm:w-[500px] p-5 z-40 sm-right-[10px]' : 'h-[0px] w-full sm:w-[500px]'}`}>
+            <div className={` ${notificaciones === true ? 'bg-white absolute top-[70px] h-[400px] w-full sm:w-[500px] p-5 z-40 sm:right-[10px] rounded-[10px]' : 'h-[0px] w-full sm:w-[500px]'}`}>
                 {enviosDB && enviosDB !== undefined && cambiosDB && cambiosDB !== undefined ? <ul> {Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificacion !== undefined && i.notificacion === true).sort((a, b) => a.date - b.date).map((i, index) => {
-                    return <li className='pb-4 border-b-[1px] border-gray-300'>Tu {i.operacion} de dinero {i.estado === 'En verificacion' && 'esta en verificación'}{i.estado === 'Transfiriendo' && 'ya se esta transfiriendo'}{i.estado === 'Exitoso' && 'ha sido exitoso'} {i.estado === 'Rechazado' && 'ha sido rechazado'}</li>
+                    return <li className='pb-4 border-b-[1px] border-gray-300' onClick={()=>handlerNotificaciones(i)}>Tu {i.operacion} de dinero {i.estado === 'En verificacion' && 'esta en verificación'}{i.estado === 'Transfiriendo' && 'ya se esta transfiriendo'}{i.estado === 'Exitoso' && 'ha sido exitoso'} {i.estado === 'Rechazado' && 'ha sido rechazado'}</li>
                 })
                 }</ul>
                     : <ul>
-                        <li className='pb-4 border-b-[1px] border-gray-300'>Sin notificaciones</li>
+                        <li className='pb-4 border-b-[1px] border-gray-300 text-[14px]' >Sin notificaciones</li>
                     </ul>}
             </div>
-
-
-
         </>
     )
 }
