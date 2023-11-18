@@ -178,12 +178,20 @@ export default function Page({ styled, name, change }) {
                                         {filterQR.fecha && filterQR.fecha}
                                     </td>
                                 </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                {/* <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
                                         Estado:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
                                         {filterQR.estado && filterQR.estado}
+                                    </td>
+                                </tr> */}
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Estado:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                    <span className={`w-full block py-1 px-2 rounded-[10px] ${filterQR.estado == 'En verficación' && 'bg-gray-100'}   ${filterQR.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${filterQR.estado == 'Exitoso' && 'bg-green-400'} ${filterQR.estado == 'Rechazado' && 'bg-red-400'}`}>{filterQR.estado}</span>
                                     </td>
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
@@ -308,10 +316,26 @@ export default function Page({ styled, name, change }) {
                                 </tr>
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
-                                    Operacion:
+                                        Estado:
                                     </td>
                                     <td className="px-3 py-3 text-gray-900 ">
-                                        {filterQR.operacion}
+                                    <span className={`w-full block py-1 px-2 rounded-[10px] ${filterQR.estado == 'En verficación' && 'bg-gray-100'}   ${filterQR.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${filterQR.estado == 'Exitoso' && 'bg-green-400'} ${filterQR.estado == 'Rechazado' && 'bg-red-400'}`}>{filterQR.estado}</span>
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        Operacion:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.operacion && filterQR.operacion}
+                                    </td>
+                                </tr>
+                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        ID de tracking:
+                                    </td>
+                                    <td className="px-3 py-3 text-gray-900 ">
+                                        {filterQR.uuid}
                                     </td>
                                 </tr>
                             </tbody>

@@ -281,14 +281,7 @@ function Home() {
                                         {transactionDB.cambio} {transactionDB['divisa de cambio'] && transactionDB['divisa de cambio']}
                                     </td>
                                 </tr>
-                                <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                    Operacion:
-                                    </td>
-                                    <td className="px-3 py-3 text-gray-900 ">
-                                        {transactionDB.operacion}
-                                    </td>
-                                </tr>
+                                
                                 <tr className="bg-white text-[14px] border-b hover:bg-gray-50 " >
                                     <td className="px-3 py-3 text-gray-900 ">
                                         Estado:
