@@ -19,7 +19,6 @@ export default function WebCamp({ takePhoto }) {
     const width = 360
 
     const captureHandler = (e) => {
-        e.stopPropagation()
         const file = e.target.files[0];
 
         const reader = new FileReader();
