@@ -40,7 +40,7 @@ function closeProfileIMG() {
   }
   function save(uuid) {
     setModal('Guardando...')
-    writeUserData(`cambios/${uuid}`, {...state[uuid], notificaciones: true}, setUserSuccess, () => { setModal('') })
+    writeUserData(`cambios/${uuid}`, {...state[uuid], notificaciones: true, date: new Date().getTime()}, setUserSuccess, () => { setModal('') })
   }
   const prev = () => {
     requestAnimationFrame(() => {

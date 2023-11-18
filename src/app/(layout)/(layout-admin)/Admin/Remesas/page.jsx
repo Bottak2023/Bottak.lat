@@ -39,8 +39,12 @@ function closeProfileIMG() {
     setState({ ...state, [uuid]: { [name]: i } })
   }
   function save(uuid) {
+    function callback () {
+      setModal('')
+    }
+
     setModal('Guardando...')
-    writeUserData(`envios/${uuid}`, {...state[uuid], notificaciones: true}, setUserSuccess, () => { setModal('') })
+    writeUserData(`envios/${uuid}`, {...state[uuid], notificaciones: true, date: new Date().getTime()}, setUserSuccess, callback)
   }
   const prev = () => {
     requestAnimationFrame(() => {
