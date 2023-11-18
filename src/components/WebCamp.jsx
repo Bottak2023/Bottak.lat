@@ -38,7 +38,6 @@ export default function WebCamp({ takePhoto }) {
     };
     const capture1 = React.useCallback(
         (e) => {
-            e.stopPropagation()
             const imageSrc = webcamRef1.current.getScreenshot();
             setImage1(imageSrc)
         },
@@ -46,7 +45,6 @@ export default function WebCamp({ takePhoto }) {
     );
     const capture2 = React.useCallback(
         (e) => {
-            e.stopPropagation()
             const imageSrc = webcamRef2.current.getScreenshot();
             setImage2(imageSrc)
         },
@@ -54,7 +52,6 @@ export default function WebCamp({ takePhoto }) {
     );
     const capture3 = React.useCallback(
         (e) => {
-            e.stopPropagation()
             const imageSrc = webcamRef3.current.getScreenshot();
             setImage3(imageSrc)
         },
