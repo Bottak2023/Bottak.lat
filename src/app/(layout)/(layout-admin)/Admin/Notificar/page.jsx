@@ -42,7 +42,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
             <p>Para: {cliente && cliente !== undefined && cliente.nombre}</p>
             <div className=" text-center">
                 <div className={style.editor}>
-                    <TextEditor setValue={handlerTextEditorOnChange} value={textEditor ? textEditor : 'nada'} edit={false} />
+                    <TextEditor setValue={handlerTextEditorOnChange} value={textEditor ? textEditor : 'nada'} edit={true} />
                 </div>
                 <br />
                 <Button theme="Primary" click={() => save('/notificaciones')}>Enviar</Button>
