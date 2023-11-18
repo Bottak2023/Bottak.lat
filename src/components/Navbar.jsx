@@ -167,7 +167,7 @@ export default function Navbar({ children }) {
                                     </svg>
                                 </button>
                                 : <>
-                                    <button type="button" className="relative inline-flex items-center text-gray-100 ml-4" onClick={() => setNotificaciones(!notificaciones)}>
+                                    <button type="button" className="relative inline-flex items-center text-gray-100 ml-4" onClick={(e) => {e.stopPropagation(); setNotificaciones(!notificaciones)}}>
                                         {Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).length > 0 && <Ping />}
                                         <span className="sr-only">Open menu</span>
                                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
