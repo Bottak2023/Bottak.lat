@@ -63,7 +63,7 @@ export default function WebCamp({ takePhoto }) {
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image1 && <img src={image1} className="absolute h-full w-full z-20 object-contain" alt="" />}
                     <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-40">
-                        <label htmlFor="Capture1" className=" bg-transparent border-[1px] border-gray-50 text-white  hover:bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px] w-[100%] sm:max-w-[380px] px-5 py-3 text-center">
+                        <label htmlFor="Capture1" className=" bg-transparent border-[1px] border-gray-50 text-white  hover:bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px]  px-5 py-3 text-center">
                             Click para subir foto <br />desde galería
                             <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
                         </label>
@@ -95,7 +95,7 @@ export default function WebCamp({ takePhoto }) {
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  >
                     {image2 && <img src={image2} className="absolute h-full w-full z-20 object-contain" alt="" />}
                     <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-40">
-                        <label htmlFor="Capture2" className=" bg-transparent border-[1px] border-gray-50 text-white  hover:bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px] w-[100%] sm:max-w-[380px] px-5 py-3 text-center">
+                        <label htmlFor="Capture2" className=" bg-transparent border-[1px] border-gray-50 text-white  hover:bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px]  px-5 py-3 text-center">
                         Click para subir foto <br />desde galería
                         <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
                     </label>
@@ -127,7 +127,7 @@ export default function WebCamp({ takePhoto }) {
                 <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image3 && <img src={image3} className="absolute h-full w-full z-20 object-contain" alt="" />}
                     <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-40">
-                        <label htmlFor="Capture3" className=" bg-transparent border-[1px] border-gray-50 text-white  hover:bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px] w-[100%] sm:max-w-[380px] px-5 py-3 text-center">
+                        <label htmlFor="Capture3" className=" bg-transparent border-[1px] border-gray-50 text-white  hover:bg-transparent hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px]  px-3 py-2 text-center">
                             Click para subir foto <br />desde galería
                             <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
                         </label>
