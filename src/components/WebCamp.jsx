@@ -63,9 +63,13 @@ export default function WebCamp({ takePhoto }) {
     switch (takePhoto) {
         case 'Capture1':
             return <div className="relative">
-                <label className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  onClick={(e) => { e.stopPropagation() }}>
+                <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image1 && <img src={image1} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture1"> <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label></div>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture1"> 
+                    <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label>
+                    <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
+
+                    </div>
                     <Webcam
                         audio={false}
                         height={height}
@@ -76,7 +80,7 @@ export default function WebCamp({ takePhoto }) {
                         mirrored={true}
                     />
                     <input type="file" id="Capture1" name="Capture1" className="hidden" onChange={captureHandler} accept="image/*" />
-                </label>
+                </div>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
                     onClick={capture1}>
@@ -91,9 +95,13 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture2':
             return <div className="relative">
-                <label className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  onClick={(e) => { e.stopPropagation() }}>
+                <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px] "  >
                     {image2 && <img src={image2} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2"> <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label></div>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture2"> 
+                    <Button theme="Transparent">Click para subir foto <br/>desde galería</Button>
+                    <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
+
+                    </label></div>
                     <Webcam
                         audio={false}
                         height={height}
@@ -103,8 +111,7 @@ export default function WebCamp({ takePhoto }) {
                         videoConstraints={videoConstraints}
                         mirrored={true}
                     />
-                    <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
-                </label>
+                </div>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
                     onClick={capture2}>
@@ -119,9 +126,13 @@ export default function WebCamp({ takePhoto }) {
             </div>
         case 'Capture3':
             return <div className="relative">
-                <label className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  onClick={(e) => { e.stopPropagation() }}>
+                <div className="block relative min-h-[360px] rounded-[20px] overflow-hidden border-[3px]"  >
                     {image3 && <img src={image3} className="absolute h-full w-full z-20 object-contain" alt="" />}
-                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture3"> <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label></div>
+                    <div className="absolute h-full w-full flex justify-center items-center text-white text-center z-50"><label htmlFor="Capture3">
+                         <Button theme="Transparent">Click para subir foto <br/>desde galería</Button></label>
+                         <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
+
+                         </div>
 
                     <Webcam
                         audio={false}
@@ -133,8 +144,7 @@ export default function WebCamp({ takePhoto }) {
                         mirrored={true}
 
                     />
-                    <input type="file" id="Capture3" name="Capture3" className="hidden" onChange={captureHandler} accept="image/*" />
-                </label>
+                </div>
                 <button
                     className="absolute bottom-[-20px] left-0 right-0 mx-auto flex justify-center items-center bg-[#FFF500] block h-[60px] w-[60px] hover:bg-transparent border-[1px] border-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-center border-[3px] z-30"
                     onClick={capture3}>
