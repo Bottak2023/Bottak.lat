@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 // import 'react-quill/dist/quill.Bubble.css';
 import dynamic from 'next/dynamic'
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false })
+const ReactQuill =  dynamic(async () => await import("react-quill"), { ssr: false })
 // import ReactQuill from 'react-quill';
 // var FontAttributor = Quill.import('attributors/class/font');
 // FontAttributor.whitelist = [
@@ -46,10 +46,10 @@ export default function TextEditor({ value, setValue, edit }) {
 
             ['clean']                                         // remove formatting button
         ],
-        clipboard: {
-            // toggle to add extra line breaks when pasting HTML:
-            matchVisual: false,
-        },
+        // clipboard: {
+        //     // toggle to add extra line breaks when pasting HTML:
+        //     matchVisual: false,
+        // },
 
     }
     );
