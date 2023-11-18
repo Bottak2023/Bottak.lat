@@ -13,9 +13,10 @@ import { estado as estadoCONST } from '@/constants/'
 
 export default function Home() {
 
-  const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario, enviosDB } = useUser()
+  const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario } = useUser()
   const [filter, setFilter] = useState('')
   const [state, setState] = useState({})
+  const [remesasDB, setRemesasDB] = useState(undefined)
   const [estado, setEstado] = useState('')
   const refFirst = useRef(null);
   const [profileIMG, setProfileIMG] = useState('')
@@ -58,7 +59,9 @@ function closeProfileIMG() {
       refFirst.current.scrollLeft = scrollLeft + itemWidth;
     });
   };
-
+  useEffect(() => {
+    remesasDB === undefined && getSpecificData(`/envios/`, setRemesasDB)
+  }, [remesasDB])
   return (
     <main className='w-full h-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -156,7 +159,7 @@ function closeProfileIMG() {
             </tr>
           </thead>
           <tbody>
-            {enviosDB && enviosDB !== undefined && Object.values(enviosDB).sort((a,b)=>a.date-b.date).map((i, index) => {
+            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).map((i, index) => {
               return ((i.destinatario !== undefined && i.destinatario.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.remitente !== undefined && i.remitente.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||

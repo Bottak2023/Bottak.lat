@@ -14,11 +14,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Home() {
 
-    const { user, userDB, setUserProfile, modal,  setUserData,  item,  setDestinatario } = useUser()
+    const { user, userDB, setUserProfile, modal,  setUserData,  item,  setDestinatario, enviosDB } = useUser()
     const router = useRouter()
     const [filter, setFilter] = useState('')
     const [state, setState] = useState({})
-    const [remesasDB, setRemesasDB] = useState(undefined)
     const refFirst = useRef(null);
 
     function onChangeFilter(e) {
@@ -56,11 +55,7 @@ export default function Home() {
             refFirst.current.scrollLeft = scrollLeft + itemWidth;
         });
     };
-console.log(remesasDB)
 
-    useEffect(() => {
-      user && user !== undefined && getSpecificDataEq(`/envios/`, 'user uuid', user.uid, setRemesasDB )
-    }, [user])
 
     return (
         <main className='w-full h-full'>
@@ -120,7 +115,7 @@ console.log(remesasDB)
                         </tr>
                     </thead>
                     <tbody>
-                        {remesasDB && remesasDB !== undefined &&  Object.values(remesasDB).sort((a,b)=>a.date-b.date).map((i, index) => {
+                        {enviosDB && enviosDB !== undefined &&  Object.values(enviosDB).sort((a,b)=>a.date-b.date).map((i, index) => {
                             return i.destinatario.toLowerCase().includes(filter.toLowerCase()) && <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>
                                 <td className="px-3 py-4  flex  ">
                                     <span className='h-full flex py-2'>{index + 1}</span>

@@ -13,10 +13,9 @@ import { estado as estadoCONST } from '@/constants/'
 
 export default function Home() {
 
-  const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario } = useUser()
+  const { user, userDB, setUserProfile, modal, setModal, users, setUsers, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, divisas, setDivisas, item, setItem, exchange, setExchange, destinatario, setDestinatario, cambiosDB } = useUser()
   const [filter, setFilter] = useState('')
   const [state, setState] = useState({})
-  const [remesasDB, setRemesasDB] = useState(undefined)
   const [estado, setEstado] = useState('')
   const refFirst = useRef(null);
 
@@ -52,9 +51,7 @@ export default function Home() {
       refFirst.current.scrollLeft = scrollLeft + itemWidth;
     });
   };
-  useEffect(() => {
-    remesasDB === undefined && getSpecificData(`/cambios/`, setRemesasDB)
-  }, [remesasDB])
+
   return (
     <main className='w-full h-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -124,7 +121,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {remesasDB && remesasDB !== undefined && Object.values(remesasDB).sort(sortArray).map((i, index) => {
+            {cambiosDB && cambiosDB !== undefined && Object.values(cambiosDB).sort((a,b)=>a.date-b.date).map((i, index) => {
               return ((i.dni !== undefined && i.dni.toLowerCase().includes(filter.toLowerCase())) ||
                 (i.usuario !== undefined && i.usuario.toLowerCase().includes(filter.toLowerCase()))) &&
                 <tr className={`text-[14px] border-b hover:bg-gray-100  ${index % 2 === 0 ? '' : ''} `} key={index}>

@@ -33,7 +33,7 @@ export function UserProvider({ children }) {
 	const [isSelect, setIsSelect] = useState(false)
 	const [isSelect2, setIsSelect2] = useState(false)
 	const [isSelect3, setIsSelect3] = useState(false)
-
+	const [notificaciones, setNotificaciones] = useState(false)
 	const [webScann, setWebScann] = useState(null)
 	const [filter, setFilter] = useState(null)
 	const [filterQR, setFilterQR] = useState(null)
@@ -96,6 +96,7 @@ export function UserProvider({ children }) {
 			webcamRef1, item, setItem,
 			webcamRef2,
 			webcamRef3,
+			notificaciones, setNotificaciones,
 			navItem, setNavItem,
 			transactionDB, setTransactionDB,
 			comision, setComision,
@@ -140,7 +141,8 @@ export function UserProvider({ children }) {
 		filter,
 		filterQR, exchange, countries, destinatarios, transactionDB, navItem, comision,
 		enviosDB,
-		cambiosDB,])
+		cambiosDB,
+		notificaciones])
 
 
 	return (
