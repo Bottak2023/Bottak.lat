@@ -32,7 +32,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
     }
     console.log(cliente)
     useEffect(() => {
-        transactionDB === undefined && getSpecificData(`/users/${pathname}`, setCliente)
+        getSpecificData(`/users/${pathname}`, setCliente)
     }, [pathname])
 
     return (<div className={`h-full w-full flex flex-col justify-center items-center  p-4 overflow-x-hidden overflow-y-auto `}>
@@ -42,7 +42,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
             <p>Para: { cliente.nombre}</p>
             <div className=" text-center">
                 <div className={style.editor}>
-                    <TextEditor setValue={handlerTextEditorOnChange} value={textEditor ? textEditor : 'nada'} edit={true} />
+                    <TextEditor setValue={handlerTextEditorOnChange} value={textEditor ? textEditor : 'nada'} edit={false} />
                 </div>
                 <br />
                 <Button theme="Primary" click={() => save('/notificaciones')}>Enviar</Button>

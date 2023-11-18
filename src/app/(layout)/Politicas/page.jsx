@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from 'react'
 import TextEditor from '@/components/TextEditor'
 import style from '@/components/ModatMSG.module.css'
+import { getSpecificData } from '@/firebase/database'
 
 export default function Home() {
 

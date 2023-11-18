@@ -92,6 +92,10 @@ function Page() {
       router.push('/Register')
       return
     }
+    if ((divisas && divisas[select] && divisas[select2] && (transferencia * divisas['USD'].compra / divisas[select].venta).toFixed(2)) > 100000) {
+      window.open('https://api.whatsapp.com/send?phone=+59177455743&text=Hola%20BOTTAK,%20necesito%20hacer%20una%20transacci%C3%B3n...', '_blank')
+    return
+    }
     if (user && userDB) {
       userDB.destinatarios && userDB.destinatarios !== undefined && Object.keys(userDB.destinatarios).length > 0
         ? router.push('/Destinatarios?operacion=Envio')
