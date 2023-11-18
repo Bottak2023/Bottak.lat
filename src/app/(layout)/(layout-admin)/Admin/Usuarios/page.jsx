@@ -196,7 +196,7 @@ function Home() {
                                         </div>
                                     </td>
                                     <td className="px-3 py-4 ">
-                                            <Button theme={"Success"} click={() => router.push(`/Notificar?uuid=${i.uuid}`)}>Notificar</Button>
+                                            <Button theme={"Success"} click={() => router.push(`/Admin/Notificar?uuid=${i.uuid}`)}>Notificar</Button>
                                  
                                     </td>
                                     <td className="px-3 py-4 ">
