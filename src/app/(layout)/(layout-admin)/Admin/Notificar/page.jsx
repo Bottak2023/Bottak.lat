@@ -39,7 +39,7 @@ export default function Modal({ children, theme, button, funcion, alert }) {
         {modal === 'Guardando...' && <Loader> {modal} </Loader>}
         <div className={`relative bg-white max-w-[1000px] w-full  rounded-lg shadow p-5 `}>
             <h3 className='text-center py-10'>Notificaciòn</h3>
-            <p>Para: { cliente.nombre}</p>
+            <p>Para: {cliente && cliente !== undefined && cliente.nombre}</p>
             <div className=" text-center">
                 <div className={style.editor}>
                     <TextEditor setValue={handlerTextEditorOnChange} value={textEditor ? textEditor : 'nada'} edit={false} />
