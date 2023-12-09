@@ -1,10 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {}
-
-// module.exports = nextConfig
-
-
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -13,7 +6,6 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // matching all API routes
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
@@ -35,3 +27,22 @@ module.exports = withPWA({
 })
 
 
+// module.exports = {
+//   experimental: {
+//     turbo: {
+//       rules: {
+//         // Option format
+//         '*.md': [
+//           {
+//             loader: '@mdx-js/loader',
+//             options: {
+//               format: 'md',
+//             },
+//           },
+//         ],
+//         // Option-less format
+//         '*.mdx': ['@mdx-js/loader'],
+//       },
+//     },
+//   },
+// }

@@ -48,7 +48,9 @@ export default function Home() {
     if (email.length == 0 || password.length == 0) {
       return setUserSuccess('Complete')
     }
-
+    if (email.length !== 0 || password.length < 8) {
+      return setUserSuccess('CompletePassword')
+    }
     const res = await signUpWithEmail(email, password, setUserProfile)
 
     if (res == null) {
@@ -81,7 +83,7 @@ export default function Home() {
           </div>
           <div>
             <label htmlFor="password" className="block mb-2 text-[14px] text-left  font-medium text-white">Contraseña</label>
-            <Input type="password" name="password" id="password" placeholder="••••••••••••" styled='font-sans'  required />
+            <Input type="password" name="password" id="password" placeholder="••••••••••••" styled='font-sans' minLength={8}  required />
           </div>
           <div className="flex items-start">
           <Link href="/Resset" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</Link>

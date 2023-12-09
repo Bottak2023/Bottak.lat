@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 
-export default function Button({click, type, name, onChange,reference, placeholder, styled, required}) {
+export default function Button({click, type, name, onChange,reference, minLength, placeholder, styled, required}) {
 
     const router = useRouter()
 
@@ -25,6 +25,7 @@ export default function Button({click, type, name, onChange,reference, placehold
             // style={{...styled}}
             required={required}
             ref={reference}
+            minLength={minLength}
             placeholder={placeholder}
           />
     )

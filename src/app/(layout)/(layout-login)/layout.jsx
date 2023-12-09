@@ -76,6 +76,7 @@ export default function Home({children}) {
         {success == 'Intente' && <Msg>Cuenta inexistente</Msg>}
         {success == 'Existe' && <Msg>Cuenta ya registrada</Msg>}
         {success == 'Complete' && <Msg>Llene todo el formulario</Msg>}
+        {success == 'CompletePassWord' && <Msg>Contraseña muy corta</Msg>}
 
       </div>
     </main>
