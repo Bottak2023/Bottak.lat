@@ -55,7 +55,7 @@ export default function Home() {
     // console.log(user)
     // if (user) {
     //   transferencia ? router.push('/') : router.push('/Register')
-    // }
+    // }  
   }, [user]);
 
   return (
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
             <div>
               <label htmlFor="password" className="block mb-2  text-left  text-[14px] font-light text-white">Contraseña</label>
-              <Input type="password" name="password" id="password" placeholder="••••••••••••" styled='font-sans' required />
+              <Input type="password" name="password" id="password" placeholder="••••••••••••"  minLength={8} styled='font-sans' required />
             </div>
             <div className="flex items-start">
               <Link href="/Resset" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</Link>
