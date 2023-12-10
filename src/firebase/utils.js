@@ -22,19 +22,18 @@ function onAuth(setUserProfile, setUserData) {
 // ---------------------------Login, Sign Up and Sign In------------------------------------
 
 
-async function signUpWithEmail(email, password, setUserProfile) {
+async function signUpWithEmail(email, password, setUserProfile, setUserSuccess, callback) {
   try {
 
     const res = await createUserWithEmailAndPassword(auth, email, password)
 
     const user = res.user;
     setUserProfile(user)
-    return res.user
+    callback()
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(error.code, error.message)
-    return null
+    errorCode ==='auth/email-already-in-use' && setUserSuccess('La cuenta ya esta en uso')
   }
 
 }

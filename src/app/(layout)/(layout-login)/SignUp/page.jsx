@@ -48,20 +48,15 @@ export default function Home() {
     if (email.length == 0 || password.length == 0) {
       return setUserSuccess('Complete')
     }
-
-     signUpWithEmail(email, password, setUserProfile)
+    const callback = () => {
+      router.push('/Register')
+    }
+     signUpWithEmail(email, password, setUserProfile, setUserSuccess, callback)
 
     // if (res == null) {
     //   setUserSuccess('Existe')
     //   return
     // }
-
-    router.push('/Register')
-
-
-
-
-
   }
 
   useEffect(() => {
@@ -83,11 +78,18 @@ export default function Home() {
             <label htmlFor="password" className="block mb-2 text-[14px] text-left  font-medium text-white">Contraseña</label>
             <Input type="password" name="password" id="password" placeholder="••••••••••••" styled='font-sans' minLength={8} pattern='^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,15}$' title='8 a 15 caracteres, mayusculas, minusculas, numeros, caracteres especiales, no espacios' required />
           </div>
-          <div className="flex items-start">
+          {/* <div className="flex items-start">
           <Link href="/Resset" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</Link>
+          </div> */}
+          <div className="w-full flex justify-end items-start">
+                        <div className="flex justify-end items-center">
+                            <div className="flex items-center h-5">
+                                <input id="remember" type="checkbox" onInvalid={(e)=>e.target.setCustomValidity('Debe aceptar las politicas de srvicio')} onInput={e => e.target.setCustomValidity('')} className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                            </div>
+                            <Link href="/Politicas" className="ml-3 text-[12px] font-medium  text-green-400 underline  underline-green-400">Políticas de Servicio</Link>
+                        </div>
           </div>
           <div className="w-full flex justify-center">
-
           <Button type="submit" theme="Primary">Continuar</Button>
           </div>
 
