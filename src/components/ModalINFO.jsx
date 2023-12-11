@@ -2,7 +2,7 @@
 // import style from '../styles/Loader.module.css' 
 import { useUser } from '@/context/Context.js'
 import Button from '@/components/Button'
-export default function Modal({ children, theme, button, funcion, alert }) {
+export default function Modal({ children, theme, button, funcion, alert, close }) {
     const { nav, setNav, user, userDB, setUserProfile, state, setState, modal, setModal } = useUser()
 
 
@@ -19,12 +19,12 @@ export default function Modal({ children, theme, button, funcion, alert }) {
                     <div className='w-full flex justify-center'>
                         <img src="/logo.svg" className='w-[100px]' alt="User" />
                     </div>
-                    <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white" onClick={() => setModal('')}>
+                    {close !== true && <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-[#FFF500] hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center  dark:hover:text-white" onClick={() => setModal('')}>
                         <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span className="sr-only">Close modal</span>
-                    </button>
+                    </button>}
                     <div className="p-6 text-center">
                         <h3 className="mb-2 text-[14px] font-normal text-gray-50  pb-3">{children}</h3>
                         {!alert && <>

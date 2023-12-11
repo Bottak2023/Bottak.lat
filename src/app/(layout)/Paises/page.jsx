@@ -106,9 +106,9 @@ export default function Home() {
   return (
     <main className='h-full w-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
-      {modal === 'Save' && <Modal funcion={saveConfirm}>Estas seguro de modificar los datos de:  {item['currency']}</Modal>}
-      {modal === 'recepcion' && <Modal funcion={() => disableConfirm('recepcion')}>Estas seguro de {item.recepcion !== undefined && item.recepcion !== false ? 'DESABILITAR' : 'HABILITAR'} la RECEPCIÓN para el siguiente pais:  {item['currency']}</Modal>}
-      {modal === 'envio' && <Modal funcion={() => disableConfirm('envio')}>Estas seguro de {item.envio !== undefined && item.envio !== false ? 'DESABILITAR' : 'HABILITAR'} el ENVIO para el siguiente pais:   {item['currency']}</Modal>}
+      {modal === 'Save' && <Modal funcion={saveConfirm}>Estas por modificar los datos de:  {item['currency']}</Modal>}
+      {modal === 'recepcion' && <Modal funcion={() => disableConfirm('recepcion')}>Estas por {item.recepcion !== undefined && item.recepcion !== false ? 'DESABILITAR' : 'HABILITAR'} la RECEPCIÓN para el siguiente pais:  {item['currency']}</Modal>}
+      {modal === 'envio' && <Modal funcion={() => disableConfirm('envio')}>Estas por {item.envio !== undefined && item.envio !== false ? 'DESABILITAR' : 'HABILITAR'} el ENVIO para el siguiente pais:   {item['currency']}</Modal>}
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
       <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
 

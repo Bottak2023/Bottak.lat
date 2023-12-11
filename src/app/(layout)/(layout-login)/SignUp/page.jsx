@@ -67,7 +67,6 @@ export default function Home() {
 
   console.log(user)
   return (
-
         <form className="relative w-full max-w-[500px] h-full flex flex-col justify-between" onSubmit={signUpHandler} >
           <h5 className="text-[24px] font-medium text-white text-center">Registrate</h5>
           <div>
@@ -84,7 +83,7 @@ export default function Home() {
           <div className="w-full flex justify-end items-start">
                         <div className="flex justify-end items-center">
                             <div className="flex items-center h-5">
-                                <input id="remember" type="checkbox" onInvalid={(e)=>e.target.setCustomValidity('Debe aceptar las politicas de srvicio')} onInput={e => e.target.setCustomValidity('')} className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                                <input id="remember" type="checkbox" onInvalid={(e)=>e.target.setCustomValidity('Debe aceptar las politicas de servicio')} onInput={e => e.target.setCustomValidity('')} className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
                             </div>
                             <Link href="/Politicas" className="ml-3 text-[12px] font-medium  text-green-400 underline  underline-green-400">Políticas de Servicio</Link>
                         </div>
@@ -96,10 +95,8 @@ export default function Home() {
           <div className="text-[14px] font-medium text-gray-500 dark:text-gray-300 text-center">Ya tienes una cuenta? <Link href="/Login" className="text-green-400 hover:underline">Inicia Sessión</Link >
           </div>
         </form>
-
   )
 }
-{/*    {success == 'complete' && <Error>Llene todo el formulario</Error>} */ }
 
 
 

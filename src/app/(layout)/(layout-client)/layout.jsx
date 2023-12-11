@@ -15,7 +15,7 @@ import style from '@/app/(layout)/style.module.css'
 
 export default function Home({ children }) {
 
-  const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, transferencia, divisas, setDivisas, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setIsSelect3 } = useUser()
+  const { user, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, transferencia, divisas, setDivisas, select, setSelect, select2, setSelect2, isSelect, setIsSelect, isSelect2, setIsSelect2, setIsSelect3, setIsSelect4 } = useUser()
   const router = useRouter()
   const pathname = usePathname()
 
@@ -26,6 +26,8 @@ export default function Home({ children }) {
     setIsSelect(false)
     setIsSelect2(false)
     setIsSelect3(false)
+    setIsSelect4(false)
+
   }
 
   useEffect(() => {

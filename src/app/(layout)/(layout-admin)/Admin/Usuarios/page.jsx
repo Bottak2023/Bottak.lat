@@ -84,11 +84,11 @@ function Home() {
     return (
         <main className='w-full h-full'>
             {profileIMG.length > 0 && <div className='fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#000000c7] z-40' onClick={closeProfileIMG}></div>}
-            {modal === 'DELETE' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas seguro de eliminar al siguiente usuario:  {item['nombre']}</Modal>}
-            {modal === 'HABILITAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('habilitado', true)}>Estas seguro de HABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
-            {modal === 'DESABILITAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('habilitado', false)}>Estas seguro de DESABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
-            {modal === 'BLOQUEAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('bloqueado', true)}>Estas seguro de BLOQUEAR al siguiente usuario:  {item['nombre']}</Modal>}
-            {modal === 'DESBLOQUEAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('bloqueado', false)}>Estas seguro de DESBLOQUEAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'DELETE' && <Modal theme="Danger" button="Eliminar" funcion={deletConfirm}>Estas por eliminar al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'HABILITAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('habilitado', true)}>Estas por HABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'DESABILITAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('habilitado', false)}>Estas por DESABILITAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'BLOQUEAR' && <Modal theme="Primary" button="Habilitar" funcion={() => handlerUpdate('bloqueado', true)}>Estas por BLOQUEAR al siguiente usuario:  {item['nombre']}</Modal>}
+            {modal === 'DESBLOQUEAR' && <Modal theme="Danger" button="Desabilitar" funcion={() => handlerUpdate('bloqueado', false)}>Estas por DESBLOQUEAR al siguiente usuario:  {item['nombre']}</Modal>}
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block left-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:left-[20px]' onClick={prev}>{'<'}</button>
             <button className='fixed text-[20px] text-gray-500 h-[50px] w-[50px] rounded-full inline-block right-[0px] top-0 bottom-0 my-auto bg-[#00000010] z-20 lg:right-[20px]' onClick={next}>{'>'}</button>
             <div className="w-full   relative h-full overflow-auto shadow-2xl p-5 bg-white min-h-[80vh] scroll-smooth" ref={refFirst}>
