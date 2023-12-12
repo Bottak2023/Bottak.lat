@@ -66,7 +66,7 @@ function Home() {
     }
     console.log(destinatario)
     return (
-        <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
+        <form className='w-full min-h-[80vh] space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
                 <h3 className=' pb-3 text-white  text-right'>Destinatario</h3>
@@ -100,13 +100,13 @@ function Home() {
                     <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de Bancaria</h3>
                 </div>
                 <div className=' space-y-5'>
-                    <Label htmlFor="">Numero de cuenta bancaria</Label>
-                    <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} required />
-                </div>
-                <div className=' space-y-5'>
                     <Label htmlFor="">Seleccionar Banco</Label>
                     <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect4} propIsSelect={isSelect4} operation="envio" click={handlerBankSelect} arr={Object.values(countries[cca3].countries)}/>
                     {/* <Input type="text" name="nombre de banco" onChange={onChangeHandler} required /> */}
+                </div>
+                <div className=' space-y-5'>
+                    <Label htmlFor="">Numero de cuenta bancaria</Label>
+                    <Input type="text" name="cuenta destinatario" onChange={onChangeHandler} required />
                 </div>
                 <div className='flex w-full justify-around items-end'>
                     <Button theme='Primary' >Guardar</Button>
