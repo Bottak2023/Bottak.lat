@@ -19,7 +19,7 @@ export default function Button({ theme, styled, click, children }) {
             return <button
                 type="submit"
 
-                className={`inline-block hover:bg-gray-950 border-[1px] border-gray-50  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px]  w-[100%] sm:max-w-[380px] px-5 py-3 text-center ${style.buttonPrimary}`} 
+                className={`inline-block hover:bg-gray-950 border-[1px] border-gray-50  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[14px]  w-[100%] sm:max-w-[380px] px-5 py-3 text-center cursor-pointer ${style.buttonPrimary}`} 
 
                 // className="text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[14px] w-full sm:w-auto px-5 py-3.5 text-center 
                 // dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -55,7 +55,7 @@ export default function Button({ theme, styled, click, children }) {
             case 'Disable':
                 return <button
                     type="submit"
-                    className={`bg-transparent text-gray-400 border-[1px] border-gray-400 font-medium rounded-full text-[14px]  w-full min-w-[180px]  sm:max-w-[380px] px-5 py-3 text-center`} 
+                    className={`bg-transparent text-gray-400 border-[1px] border-gray-400 font-medium rounded-full text-[14px]  w-full min-w-[180px]  sm:max-w-[380px] px-5 py-3 text-center cursor-pointer `} 
                     // className="text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[14px] w-full sm:w-auto px-5 py-3.5 text-center 
                     // dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     onClick={click}

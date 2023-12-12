@@ -74,19 +74,7 @@ function Home() {
 
     }
 
-
-
-
-
-
-
     downloadFile(`/currencies/${userDB.cca3.toUpperCase()}`)
-
-    function handlerDownload(url) {
-
-
-    }
-
 
     console.log(userDB)
     console.log(user)
@@ -157,7 +145,6 @@ function Home() {
             {success == 'CompletePais' && <Msg>Seleccione un pais</Msg>}
         </form>
         : <ModalINFO theme={'Danger'} alert={false} button="Volver" funcion={() => router.replace('/')} close={true} >Por el momento no hay bancos disponibles para tu pais</ModalINFO>
-
     )
 }
 

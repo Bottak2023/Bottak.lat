@@ -12,9 +12,10 @@ import Button from '@/components/Button'
 import { useMask } from '@react-input/mask';
 import { useRouter } from 'next/navigation';
 import { WithAuth } from '@/HOCs/WithAuth'
+import SelectBank from '@/components/SelectBank'
 
 function Home() {
-    const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, image1, setImage1, image2, setImage2, image3, transferencia, countries, setCountries, modal, setModal} = useUser()
+    const { user, userDB, setUserData, setUserSuccess, select3, setSelect3, isSelect3, setIsSelect3, isSelect4, setIsSelect4, image1, setImage1, image2, setImage2, image3, transferencia, countries, setCountries, modal, setModal } = useUser()
     const [state, setState] = useState({})
     const inputRefWhatsApp = useMask({ mask: '+ 591 __ ___ ___', replacement: { _: /\d/ } });
     const router = useRouter()
@@ -28,6 +29,13 @@ function Home() {
     const handlerIsSelect = () => {
         setIsSelect3(!isSelect3)
     }
+    const handlerBankSelect = (i) => {
+        setState({ ...state, ['nombre de banco']: i })
+    }
+    const handlerIsSelect4 = () => {
+        setIsSelect4(!isSelect4)
+    }
+    console.log(state)
     function save(e) {
         e.preventDefault()
         const data = { ...state, image1, image2, image3, rol: 'Cliente', uuid: user.uid, habilitado: false, bloqueado: false }
@@ -36,7 +44,7 @@ function Home() {
             getSpecificData(`/users/${user.uid}`, setUserData)
             setModal('')
         }
-        writeUserData(`users/${user.uid}`, data , setUserSuccess, callback)
+        writeUserData(`users/${user.uid}`, data, setUserSuccess, callback)
         transferencia ? router.replace('/') : router.replace('/')
     }
     return (
@@ -63,21 +71,29 @@ function Home() {
                     <Input type="text" name="direccion" onChange={onChangeHandler} required />
                 </div>
                 <div className=' space-y-5'>
-                    <Label htmlFor="">Numero de cuenta bancaria</Label>
-                    <Input type="text" name="cuenta bancaria" onChange={onChangeHandler} required />
-                </div>
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Nombre de banco</Label>
-                    <Input type="text" name="banco" onChange={onChangeHandler} required />
-                </div>
-                <div className=' space-y-5'>
                     <Label htmlFor="">Whatsapp</Label>
                     <Input type="text" name="whatsapp" onChange={onChangeHandler} required />
                 </div>
+                {countries !== undefined && state.cca3 !== undefined && countries[state.cca3] !== undefined && countries[state.cca3].countries
+                    ?
+                    <>
+                        <div className=' space-y-5'>
+                            <Label htmlFor="">Nombre de banco</Label>
+                            <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect4} propIsSelect={isSelect4} operation="envio" click={handlerBankSelect} arr={Object.values(countries[state.cca3].countries)} />
+                            {/* <Input type="text" name="nombre de banco" onChange={onChangeHandler} required /> */}
+                        </div>
+                        <div className=' space-y-5'>
+                            <Label htmlFor="">Numero de cuenta bancaria</Label>
+                            <Input type="text" name="cuenta bancaria" onChange={onChangeHandler} required />
+                        </div>
+                        <div className='flex w-full justify-around items-end'>
+                            <Button theme='Primary'>Guardar</Button>
+                        </div>
+                    </>
+                    : state.pais !== undefined && <div className='flex w-full justify-around items-end text-white'>El pais que selecciono no cuenta con bancos disponibles.</div>
+                }
             </div>
-            <div className='flex w-full justify-around'>
-                <Button theme='Primary'>Guardar</Button>
-            </div>
+
         </form>
     )
 }
