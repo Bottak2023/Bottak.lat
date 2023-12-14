@@ -97,7 +97,7 @@ function Home() {
 
             {destinatario !== undefined && destinatario.pais !== undefined && countries[cca3].countries !== undefined && cca3 && <>
                 <div className='lg:hidden'>
-                    <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de Bancaria</h3>
+                    <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion Bancaria</h3>
                 </div>
                 <div className=' space-y-5'>
                     <Label htmlFor="">Seleccionar Banco</Label>

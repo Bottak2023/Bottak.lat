@@ -29,9 +29,12 @@ export default function Home() {
   const [bankDB, setBankDB] = useState(null)
   const [routeCountry, setRouteCountry] = useState(null)
   const [bank, setBank] = useState(null)
+
   const [postImageBank, setPostImageBank] = useState({})
   const [urlPostImageBank, setUrlPostImageBank] = useState({})
 
+  const [postImageQR, setPostImageQR] = useState({})
+  const [urlPostImageQR, setUrlPostImageQR] = useState({})
 
   function onChangeFilter(e) {
     setFilter(e.target.value)
@@ -100,18 +103,24 @@ export default function Home() {
 
   function saveBank(e) {
     e.preventDefault()
-    const callback = () => {
+    const callback2 = () => {
       getSpecificData(`/currencies/`, setCountries)
       setRouteCountry(null)
     }
-    uploadStorage(`currencies/${routeCountry.cca3}/countries/${e.target[2].value}`, postImageBank, { banco: e.target[2].value }, callback)
-    //  writeUserData(`currencies/${routeCountry.cca3}/countries/${e.target[2].value}`, {banco: e.target[2].value}, setUserSuccess, callback)
-    // console.log(e.target[2].value)
+    const callback = () => {
+      uploadStorage(`currencies/${routeCountry.cca3}/countries/${e.target[3].value}`, postImageQR, { banco: e.target[3].value, ['cta bancaria']: e.target[4].value }, callback2, 'qrURL')
+    }
+    uploadStorage(`currencies/${routeCountry.cca3}/countries/${e.target[3].value}`, postImageBank, { banco: e.target[3].value, ['cta bancaria']: e.target[4].value }, callback)
   }
   function manageInputIMGbank(e, name) {
     const file = e.target.files[0]
     setPostImageBank(file)
     setUrlPostImageBank(URL.createObjectURL(file))
+  }
+  function manageInputQRbank(e, name) {
+    const file = e.target.files[0]
+    setPostImageQR(file)
+    setUrlPostImageQR(URL.createObjectURL(file))
   }
   function handlerBankRemove(i, e) {
     setModal('DELETE')
@@ -129,7 +138,6 @@ export default function Home() {
     }
     removeData(`${bankDB.route}`, setUserSuccess, callback)
   }
-
   const prev = () => {
     requestAnimationFrame(() => {
       const scrollLeft = refFirst.current.scrollLeft;
@@ -147,9 +155,7 @@ export default function Home() {
       refFirst.current.scrollLeft = scrollLeft + itemWidth;
     });
   };
-
   console.log(postImage)
-
   return (
     <main className='h-full w-full'>
       {modal === 'Guardando...' && <Loader> {modal} </Loader>}
@@ -181,7 +187,7 @@ export default function Home() {
                 Divisa <br />
                 Code
               </th>
-              <th scope="col" className="text-center px-3 py-3">
+              {/* <th scope="col" className="text-center px-3 py-3">
                 Cuenta de cobro
               </th>
               <th scope="col" className="text-center px-3 py-3">
@@ -189,7 +195,7 @@ export default function Home() {
               </th>
               <th scope="col" className="text-center px-3 py-3">
                 QR de cobro
-              </th>
+              </th> */}
               <th scope="col" className="text-center px-3 py-3">
                 Bancos admitidos
               </th>
@@ -216,7 +222,7 @@ export default function Home() {
                 <td className="px-3 py-4 text-gray-900 ">
                   {i.code}
                 </td>
-                <td className="px-3 py-4 text-gray-900 ">
+                {/* <td className="px-3 py-4 text-gray-900 ">
                   <input type="text" name="cuenta de cobro" className='min-w-[100px] text-center p-2 outline-blue-200 rounded-xl' onChange={(e) => onChangeHandler(e, i)} defaultValue={i['cuenta de cobro'] !== undefined ? i['cuenta de cobro'] : 0} />
                 </td>
                 <td className="px-3 py-4 text-gray-900 ">
@@ -227,11 +233,13 @@ export default function Home() {
                     <img src={urlPostImage[i.cca3] ? urlPostImage[i.cca3] : i.url} alt="Subir QR" />
                     <input id={`img${index}`} type="file" onChange={(e) => manageInputIMG(e, i.cca3)} className='hidden' accept='image/*' />
                   </label>
-                </td>
+                </td> */}
                 <td className="w-[500px] px-3 py-4 text-gray-900 ">
-                  {i.countries !== undefined && Object.values(i.countries).map((e, index) => <div className='flex items-center border-b-[1px] border-gray-400 py-2'>
-                    <img src={e.url} className='w-[30px]' alt="Subir QR" />
-                    <span className='inline-block w-full pl-[10px]'>{e.banco}</span>
+                  {i.countries !== undefined && Object.values(i.countries).map((e, index) => <div className='flex items-center justify-between border-b-[1px] border-gray-400 py-2'>
+                    <img src={e.url} className='w-[30px]' alt="Subir QR" /> 
+                    <img src={e.qrURL} className='w-[30px]' alt="Subir QR" />
+                    <span className='inline-block  pl-[10px]'>{e.banco}</span>
+                    <span className='inline-block  pl-[10px]'>{e['cta bancaria']}</span>
                     <svg className='cursor-pointer' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48" onClick={() => handlerBankRemove(i, e)}>
                       <path fill="#f44336" d="M44,24c0,11-9,20-20,20S4,35,4,24S13,4,24,4S44,13,44,24z"></path><line x1="16.9" x2="31.1" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line><line x1="31.1" x2="16.9" y1="16.9" y2="31.1" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"></line>
                     </svg>
@@ -283,30 +291,57 @@ export default function Home() {
               <h3 className='text-center text-[16px] pb-3 font-bold'>Agregar Banco</h3>
               <h3 className='text-center text-[16px] pb-3'>{countries[routeCountry.cca3].translation.spa.common}</h3>
 
-              <div className="min-w-full flex justify-center ">
-                <label htmlFor="fileUpload" className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 md:w-[250px] md:h-[200px]" style={{ backgroundImage: `url(${urlPostImageBank === null && countries[routeCountry].countries !== undefined && countries[routeCountry].countries[bank] !== undefined ? countries[routeCountry].countries[bank] : urlPostImageBank})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
-                  <div className="text-center">
-                    <svg className="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clipRule="evenodd" />
-                    </svg>
-                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                      <label htmlFor="fileUpload" className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                        <span>Cargar Imagen QR</span>
-                        <input id="fileUpload" name="frontPage" onChange={manageInputIMGbank} type="file" className="sr-only" accept="image/*" />
-                      </label>
-                      <p className="pl-1">{' '} puede ser:</p>
-                    </div>
-                    <p className="text-xs leading-5 text-gray-600">PNG, JPG, max 10MB</p>
-                  </div>
-                </label>
-              </div>
 
-              <div className="grid gap-6 my-6 md:grid-cols-2 h-[100px]">
+              <div className="grid gap-6 my-6 md:grid-cols-2">
+
+
+                <div className="min-w-full flex justify-center ">
+                  <label htmlFor="fileUpload" className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 md:w-[250px] md:h-[200px]" style={{ backgroundImage: `url(${urlPostImageBank === null && countries[routeCountry].countries !== undefined && countries[routeCountry].countries[bank] !== undefined ? countries[routeCountry].countries[bank] : urlPostImageBank})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
+                    <div className="text-center">
+                      <svg className="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clipRule="evenodd" />
+                      </svg>
+                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                        <label htmlFor="fileUpload" className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                          <span>Cargar Icono de Banco</span>
+                          <input id="fileUpload" name="frontPage" onChange={manageInputIMGbank} type="file" className="sr-only" accept="image/*" />
+                        </label>
+                        <p className="pl-1">{' '} puede ser:</p>
+                      </div>
+                      <p className="text-xs leading-5 text-gray-600">PNG, JPG, max 10MB</p>
+                    </div>
+                  </label>
+                </div>
+                <div className="min-w-full flex justify-center ">
+                  <label htmlFor="fileUpload" className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 md:w-[250px] md:h-[200px]" style={{ backgroundImage: `url(${urlPostImageQR === null && countries[routeCountry].countries !== undefined && countries[routeCountry].countries[bank] !== undefined ? countries[routeCountry].countries[bank] : urlPostImageQR})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
+                    <div className="text-center">
+                      <svg className="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clipRule="evenodd" />
+                      </svg>
+                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                        <label htmlFor="fileUploadQR" className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                          <span>Cargar QR de cobro</span>
+                          <input id="fileUploadQR" name="frontPage" onChange={manageInputQRbank} type="file" className="sr-only" accept="image/*" />
+                        </label>
+                        <p className="pl-1">{' '} puede ser:</p>
+                      </div>
+                      <p className="text-xs leading-5 text-gray-600">PNG, JPG, max 10MB</p>
+                    </div>
+                  </label>
+                </div>
+
                 <div className='space-y-5'>
                   <Label htmlFor="">Banco</Label>
-                  <Input type="text" name="banco" defValue={'banco'} require />
+                  <Input type="text" name="nombre de banco" defValue={'banco'} require />
                 </div>
+
+                <div className='space-y-5'>
+                  <Label htmlFor="">Cta. bancaria</Label>
+                  <Input type="text" name="cta bancaria" defValue={'banco'} require />
+                </div>
+
               </div>
+
               <div className='flex w-full justify-around'>
                 <Button type="submit" theme='Primary'>Guardar</Button>
               </div>

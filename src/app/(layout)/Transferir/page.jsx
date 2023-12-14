@@ -76,7 +76,7 @@ function Home() {
 
     downloadFile(`/currencies/${userDB.cca3.toUpperCase()}`)
 
-    console.log(userDB)
+    console.log(countries[userDB.cca3])
     console.log(user)
     // useEffect(() => {
     //     transferencia === '' && router.replace('/')
@@ -85,19 +85,19 @@ function Home() {
 
     return (
         countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries !== undefined 
-        ? <form className='w-full space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
+        ? <form className='w-full min-h-[80vh] space-y-6 lg:grid lg:grid-cols-2 lg:gap-5' onSubmit={save}>
             {modal === 'Guardando...' && <Loader> {modal} </Loader>}
             <div className='w-full border-b-[2px] border-gray-100 col-span-2'>
                 <h3 className=' pb-3 text-white  text-right'>Efectuar transacción</h3>
             </div>
             <div className='lg:hidden'>
-                <h3 className='text-center pb-3  text-green-400 lg:hidden'>Elija una opcion de deposito Bancario</h3>
+                <h3 className='text-center pb-3  text-green-400 lg:hidden'>QR y cuenta para deposito Bancario</h3>
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">QR bancario</Label>
                 <Link href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
                     <label className=" flex flex-col justify-start items-center w-[200px] h-[230px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                        {countries && countries[userDB.cca3].url ? <img className=" flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} alt="" />
+                        {countries && countries[userDB.cca3] && countries[userDB.cca3].countries !== undefined && countries[userDB.cca3].countries[userDB.banco] !== undefined ? <img className=" flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].countries[userDB.banco] !== undefined ? countries[userDB.cca3].countries[userDB.banco].qrURL : ''} alt="" />
                             : 'QR no disponible'}
                         {destinatario && destinatario.importe} {destinatario && destinatario['divisa de envio']}
                     </label>
@@ -126,20 +126,19 @@ function Home() {
                     <input className="hidden" id='file' name='name' onChange={manageInputIMG} accept=".jpg, .jpeg, .png, .mp4, webm" type="file" required />
                 </div>
             </div>
-            <div className=' space-y-5'>
+            {/* <div className=' space-y-5'>
                 <Label htmlFor="">Banco de transferencia</Label>
                  <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect4} propIsSelect={isSelect4} operation="envio" click={handlerBankSelect} arr={Object.values(countries[userDB.cca3].countries)} />
-                {/* <Input type="text" name="banco de transferencia" onChange={onChangeHandler} required /> */}
             </div>
             <div className=' space-y-5'>
                 <Label htmlFor="">Numero de cuenta transferidora</Label>
                 <Input type="text" name="cuenta transferidora" onChange={onChangeHandler} required />
-            </div>
+            </div> */}
             {/* <div className=' space-y-5'>
                 <Label htmlFor="">Titular de banco de transferencia</Label>
                 <Input type="text" name="titular de banco" onChange={onChangeHandler} required />
             </div> */}
-            {countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries !== undefined && <div className='flex w-full justify-around items-end'>
+            {countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries !== undefined && <div className='flex w-full justify-around items-end col-span-2'>
                 <Button theme='Primary' >Guardar</Button>
             </div>}
             {success == 'CompletePais' && <Msg>Seleccione un pais</Msg>}

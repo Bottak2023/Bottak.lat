@@ -32,35 +32,30 @@ async function getSpecificData(query, setUserSpecificData, callback) {
   }
 }
 
-
 function getSpecificDataEq(route, children, eq, setUserData, callback) {
-
   get(query(ref(db, route), orderByChild(children), equalTo(eq)))
     .then(async (snapshot) => {
-
       if (snapshot.exists()) {
         let snap = snapshot.val()
         console.log(snap)
         setUserData(snap)
         callback && callback()
       }
-
     })
-
 }
-
-
-
-
 
 function writeUserData(rute, object, setUserSuccess, callback) {
   console.log(rute)
   update(ref(db, rute), object)
     .then(() => {
+      console.log('Success')
       setUserSuccess !== null ? setUserSuccess('save') : ''
       callback !== null ? callback() : ''
     })
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      console.log('error')
+      console.log(err)
+    })
 }
 
 async function removeData(rute, setUserSuccess, callback) {
@@ -72,6 +67,5 @@ async function removeData(rute, setUserSuccess, callback) {
     .catch(() =>
       setUserSuccess('repeat'));
 }
-
 
 export { getData, writeUserData, removeData, getSpecificData, getSpecificDataEq }

@@ -7,9 +7,9 @@ import imageCompression from 'browser-image-compression';
 const storage = getStorage(app)
 
 //--------------------------- Firebase Storage ---------------------------
-async function uploadStorage(ruteDB, file, db, callback) {
+async function uploadStorage(ruteDB, file, db, callback, name) {
 
-    const imagesRef = ref(storage, ruteDB);
+    const imagesRef = ref(storage, `${ruteDB}${name ? name : ''}`);
 
     const options = {
         maxWidthOrHeight: 500,
@@ -25,7 +25,7 @@ async function uploadStorage(ruteDB, file, db, callback) {
         getDownloadURL(ref(storage, snapshot.metadata.fullPath))
             .then((url) => {
                 let obj = {
-                    url,
+                    [name ? name : 'url']: url
                 }
                 console.log(obj)
                 return writeUserData(ruteDB, { ...db, ...obj, }, null, callback)
