@@ -9,6 +9,7 @@ import Button from '@/components/Button'
 import Ping from '@/components/Ping'
 import { usePathname } from 'next/navigation'
 import { getDayMonthYear } from '@/utils/date'
+
 function Profile() {
     return <span className='inline-block px-2 py-2 rounded-full bg-[black]'>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,6 +22,13 @@ function Historial() {
     return <span className='inline-block px-2 py-2 rounded-full bg-[black]'>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M23.7544 6.79529L15.9405 0.207059C15.7836 0.0746424 15.5708 0.000164755 15.3488 0H1.95349C1.43539 0 0.938514 0.173529 0.572164 0.482412C0.205813 0.791296 0 1.21023 0 1.64706V22.3529C0 22.7898 0.205813 23.2087 0.572164 23.5176C0.938514 23.8265 1.43539 24 1.95349 24H22.0465C22.5646 24 23.0615 23.8265 23.4278 23.5176C23.7942 23.2087 24 22.7898 24 22.3529V7.29412C23.9998 7.10697 23.9115 6.92755 23.7544 6.79529ZM16.186 2.40941L21.1423 6.58824H16.186V2.40941ZM22.0465 22.5882H1.95349C1.87947 22.5882 1.80849 22.5634 1.75616 22.5193C1.70382 22.4752 1.67442 22.4153 1.67442 22.3529V1.64706C1.67442 1.58465 1.70382 1.52481 1.75616 1.48068C1.80849 1.43655 1.87947 1.41176 1.95349 1.41176H14.5116V7.29412C14.5116 7.48133 14.5998 7.66087 14.7568 7.79325C14.9138 7.92563 15.1268 8 15.3488 8H22.3256V22.3529C22.3256 22.4153 22.2962 22.4752 22.2438 22.5193C22.1915 22.5634 22.1205 22.5882 22.0465 22.5882ZM17.3023 12.9412C17.3023 13.1284 17.2141 13.3079 17.0571 13.4403C16.9001 13.5727 16.6872 13.6471 16.4651 13.6471H7.53488C7.31284 13.6471 7.0999 13.5727 6.94289 13.4403C6.78588 13.3079 6.69767 13.1284 6.69767 12.9412C6.69767 12.754 6.78588 12.5744 6.94289 12.442C7.0999 12.3097 7.31284 12.2353 7.53488 12.2353H16.4651C16.6872 12.2353 16.9001 12.3097 17.0571 12.442C17.2141 12.5744 17.3023 12.754 17.3023 12.9412ZM17.3023 16.7059C17.3023 16.8931 17.2141 17.0726 17.0571 17.205C16.9001 17.3374 16.6872 17.4118 16.4651 17.4118H7.53488C7.31284 17.4118 7.0999 17.3374 6.94289 17.205C6.78588 17.0726 6.69767 16.8931 6.69767 16.7059C6.69767 16.5187 6.78588 16.3391 6.94289 16.2067C7.0999 16.0744 7.31284 16 7.53488 16H16.4651C16.6872 16 16.9001 16.0744 17.0571 16.2067C17.2141 16.3391 17.3023 16.5187 17.3023 16.7059Z" fill="white" />
+        </svg>
+    </span>
+}
+function Notificaciones() {
+    return <span className='inline-block px-2 py-2 rounded-full bg-[black]'>
+        <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 13.2C15.5313 13.2 15.9769 13.0848 16.3369 12.8544C16.6969 12.624 16.8762 12.3392 16.875 12V8.4C16.875 8.06 16.695 7.7748 16.335 7.5444C15.975 7.314 15.53 7.1992 15 7.2C14.4688 7.2 14.0231 7.3152 13.6631 7.5456C13.3031 7.776 13.1238 8.0608 13.125 8.4V12C13.125 12.34 13.305 12.6252 13.665 12.8556C14.025 13.086 14.47 13.2008 15 13.2ZM15 16.8C15.5313 16.8 15.9769 16.6848 16.3369 16.4544C16.6969 16.224 16.8762 15.9392 16.875 15.6C16.875 15.26 16.695 14.9748 16.335 14.7444C15.975 14.514 15.53 14.3992 15 14.4C14.4688 14.4 14.0231 14.5152 13.6631 14.7456C13.3031 14.976 13.1238 15.2608 13.125 15.6C13.125 15.94 13.305 16.2252 13.665 16.4556C14.025 16.686 14.47 16.8008 15 16.8ZM1.87501 20.4C1.34376 20.4 0.898131 20.2848 0.538132 20.0544C0.178132 19.824 -0.00124351 19.5392 6.48787e-06 19.2C6.48787e-06 18.86 0.180007 18.5748 0.540006 18.3444C0.900006 18.114 1.34501 17.9992 1.87501 18H3.75001V9.6C3.75001 7.94 4.53125 6.4648 6.09375 5.1744C7.65625 3.884 9.6875 3.0392 12.1875 2.64V1.8C12.1875 1.3 12.4613 0.874803 13.0087 0.524403C13.5562 0.174003 14.22 -0.000797266 15 2.73348e-06C15.7813 2.73348e-06 16.4456 0.175203 16.9931 0.525603C17.5406 0.876002 17.8137 1.3008 17.8125 1.8V2.64C20.3125 3.04 22.3437 3.8852 23.9062 5.1756C25.4687 6.466 26.25 7.9408 26.25 9.6V18H28.125C28.6562 18 29.1019 18.1152 29.4619 18.3456C29.8219 18.576 30.0012 18.8608 30 19.2C30 19.54 29.82 19.8252 29.46 20.0556C29.1 20.286 28.655 20.4008 28.125 20.4H1.87501ZM15 24C13.9688 24 13.0856 23.7648 12.3506 23.2944C11.6156 22.824 11.2488 22.2592 11.25 21.6H18.75C18.75 22.26 18.3825 22.8252 17.6475 23.2956C16.9125 23.766 16.03 24.0008 15 24Z" fill="white" />
         </svg>
     </span>
 }
@@ -167,7 +175,7 @@ export default function Navbar({ children }) {
                                     </svg>
                                 </button>
                                 : <>
-                                    <button type="button" className="relative inline-flex items-center text-gray-100 ml-4" onClick={(e) => {e.stopPropagation(); setNotificaciones(!notificaciones)}}>
+                                    <button type="button" className="relative inline-flex items-center text-gray-100 ml-4" onClick={(e) => { e.stopPropagation(); setNotificaciones(!notificaciones) }}>
                                         {Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).length > 0 && <Ping />}
                                         <span className="sr-only">Open menu</span>
                                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -214,7 +222,11 @@ export default function Navbar({ children }) {
                             <Link href="/MisCambios" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
                                 <Historial />
                                 Mis cambios
-                            </Link>
+                            </Link> 
+                            <Link href="/Notificaciones" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                                    <Notificaciones />
+                                    Notificaciones
+                                </Link>
                             {user !== null && user !== undefined
                                 ? <button className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px] hover:bg-gray-100 sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={signOutHandler}>
                                     <Logout />
@@ -225,6 +237,7 @@ export default function Navbar({ children }) {
                                     Iniciar Sesión
                                 </Link>
                             }
+                            
                         </>}
                     </div>
                 </li>}
@@ -272,6 +285,10 @@ export default function Navbar({ children }) {
                                     <Historial />
                                     Mis cambios
                                 </Link>
+                                <Link href="/Notificaciones" className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px]   sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300 " onClick={() => setNav(false)}>
+                                    <Notificaciones />
+                                    Notificaciones
+                                </Link>
                                 {user !== null && user !== undefined
                                     ? <button className="flex flex-col justify-between items-center bg-[#FFF500] text-[12px]  text-center font-medium   px-3 py-3 rounded-[15px] hover:bg-gray-100 sm:hover:bg-transparent border-[2px] border-[#FFF500] sm:hover:text-yellow-300" onClick={signOutHandler}>
                                         <Logout />
@@ -282,6 +299,7 @@ export default function Navbar({ children }) {
                                         Iniciar Sesión
                                     </Link>
                                 }
+
                             </>}
                         </div>
                     </li>}
@@ -321,17 +339,22 @@ export default function Navbar({ children }) {
                     // </Link>
                 }
             </ul>
-            <div className={` ${notificaciones === true ? 'bg-white absolute top-[70px] left-0 right-0 sm:left-auto mx-auto h-[400px] w-[90%] sm:w-[500px] p-5 z-40 sm:right-[10px] rounded-[10px]' : 'h-0 w-0 overflow-hidden'}`} onClick={(e)=>e.stopPropagation()}>
-                {enviosDB && enviosDB !== undefined && cambiosDB && cambiosDB !== undefined && Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).length > 0 ? <ul> {Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).sort((a, b) => a.date - b.date).map((i, index) => {
+            <div className={` ${notificaciones === true ? 'bg-white absolute top-[70px] left-0 right-0 sm:left-auto mx-auto h-[400px] w-[90%] sm:w-[500px] p-5 z-40 sm:right-[10px] rounded-[10px]' : 'h-0 w-0 overflow-hidden'}`} onClick={(e) => e.stopPropagation()}>
+                {enviosDB && enviosDB !== undefined && cambiosDB && cambiosDB !== undefined && Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).length > 0 ? <ul> {Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).sort((a, b) => b.date - a.date).map((i, index) => {
                     return <li className='relative pb-4 border-b-[1px] border-gray-300' >
-                        <span className='w-full pr-[10px]'>Tu {i.operacion} de dinero de {i['divisa de envio']} {i.importe} {i.estado === 'En verficación' && 'esta en verificación'}{i.estado === 'Transfiriendo' && 'ya se esta transfiriendo'}{i.estado === 'Exitoso' && 'ha sido exitoso'} {i.estado === 'Rechazado' && 'ha sido rechazado'}</span>
-                        <span className="absolute bottom-[3px] right-0 text-[10px]">{getDayMonthYear(i.date)}</span>
+                        <span className='w-full pr-[10px]'>Tu {i.operacion} de dinero de
+                            <b>{i['divisa de envio']} {i.importe}</b>  {i.destinatario !== undefined ? `a ${i.destinatario}, ` : ''}
+                            <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'En verficación' && 'esta en verificación'}</span>
+                            <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'Transfiriendo' && 'ya se esta transfiriendo'}</span>
+                            <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'Exitoso' && 'ha sido exitoso'}</span>
+                            <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'Rechazado' && 'ha sido rechazado'}</span>
+                        </span>                        <span className="absolute bottom-[3px] right-0 text-[10px]">{getDayMonthYear(i.date)}</span>
                         <button type="button" className="absolute top-[-5px] right-[-5px] text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center" onClick={() => handlerNotificaciones(i)}>
-                        <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span className="sr-only">Close modal</span>
-                    </button>
+                            <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span className="sr-only">Close modal</span>
+                        </button>
                     </li>
                 })
                 }</ul>
