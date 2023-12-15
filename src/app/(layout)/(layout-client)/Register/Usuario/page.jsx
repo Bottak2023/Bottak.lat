@@ -30,7 +30,7 @@ function Home() {
         setIsSelect3(!isSelect3)
     }
     const handlerBankSelect = (i) => {
-        setState({ ...state, ['nombre de banco']: i })
+        setState({ ...state, ['banco']: i })
     }
     const handlerIsSelect4 = () => {
         setIsSelect4(!isSelect4)
