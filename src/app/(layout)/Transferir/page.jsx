@@ -81,9 +81,9 @@ function Home() {
 
     console.log(countries[userDB.cca3])
     console.log(user)
-    // useEffect(() => {
-    //     transferencia === '' && router.replace('/')
-    // })
+    useEffect(() => {
+        (destinatario === null || destinatario === undefined) && router.replace('/')
+    })
 
 
     return (
