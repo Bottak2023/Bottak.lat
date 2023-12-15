@@ -81,19 +81,17 @@ export default function Home() {
           <Link href="/Resset" className="ml-auto text-green-400 text-[14px] font-light hover:underline">Olvidaste tu contraseña?</Link>
           </div> */}
           <div className="w-full flex justify-end items-start">
-                        <div className="flex justify-end items-center">
-                            <div className="flex items-center h-5">
-                                <input id="remember" type="checkbox" onInvalid={(e)=>e.target.setCustomValidity('Debe aceptar las politicas de servicio')} onInput={e => e.target.setCustomValidity('')} className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
-                            </div>
-                            <Link href="/Politicas" className="ml-3 text-[12px] font-medium  text-green-400 underline  underline-green-400">Políticas de Servicio</Link>
-                        </div>
+            <div className="flex justify-end items-center">
+                <div className="flex items-center h-5">
+                  <input id="remember" type="checkbox" onInvalid={(e)=>e.target.setCustomValidity('Debe aceptar las politicas de servicio')} onInput={e => e.target.setCustomValidity('')} className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required />
+                </div>
+                <Link href="/Politicas" className="ml-3 text-[12px] font-medium  text-green-400 underline  underline-green-400">Políticas de Servicio</Link>
+            </div>
           </div>
           <div className="w-full flex justify-center">
-          <Button type="submit" theme="Primary">Continuar</Button>
+            <Button type="submit" theme="Primary">Continuar</Button>
           </div>
-
-          <div className="text-[14px] font-medium text-gray-500 dark:text-gray-300 text-center">Ya tienes una cuenta? <Link href="/Login" className="text-green-400 hover:underline">Inicia Sessión</Link >
-          </div>
+          <div className="text-[14px] font-medium text-gray-500 dark:text-gray-300 text-center">Ya tienes una cuenta? <Link href="/Login" className="text-green-400 hover:underline">Inicia Sessión</Link ></div>
         </form>
   )
 }

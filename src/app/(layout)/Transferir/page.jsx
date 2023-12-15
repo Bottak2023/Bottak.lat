@@ -15,6 +15,7 @@ import { getDayMonthYear } from '@/utils/date'
 import { generateUUID } from '@/utils/UUIDgenerator'
 import SelectBank from '@/components/SelectBank'
 import ModalINFO from '@/components/ModalINFO'
+import { getSpecificDataEq, getSpecificData, writeUserData, removeData } from '@/firebase/database'
 
 import Link from 'next/link'
 function Home() {
