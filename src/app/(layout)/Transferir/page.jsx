@@ -105,8 +105,8 @@ function Home() {
                         </label>
                     </Link>
 
-                    <span className="block text-white text-center" >Cta. {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
-                        {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
+                    <span className="block text-white text-center" >Cta. {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries[userDB.banco]['cta bancaria']} <br />
+                        {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries[userDB.banco].banco}</span>
 
                 </div>
                 {/* <div className=' space-y-5'>
