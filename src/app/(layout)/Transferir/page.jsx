@@ -104,7 +104,7 @@ function Home() {
                         </label>
                     </Link>
 
-                    <span className="block text-white text-center" >Cta. {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries[userDB.banco] !== undefined && countries[userDB.cca3].countries[userDB.banco]['cta bancaria']} <br />
+                    <span className="block text-white text-center" >Cta. {userDB !== undefined && userDB.cca3 !== undefined && countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries !== undefined && countries[userDB.cca3].countries[userDB.banco] !== undefined && countries[userDB.cca3].countries[userDB.banco]['cta bancaria']} <br />
                         {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries[userDB.banco].banco}</span>
 
                 </div>
