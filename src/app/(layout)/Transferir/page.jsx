@@ -140,7 +140,7 @@ function Home() {
                 <span className="block text-white text-center" >{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
                     {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
             </div> */}
-
+  
                 <div className='lg:hidden'>
                     <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
                 </div>
