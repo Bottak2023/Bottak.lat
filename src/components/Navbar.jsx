@@ -342,8 +342,8 @@ export default function Navbar({ children }) {
             <div className={` ${notificaciones === true ? 'bg-white absolute top-[70px] left-0 right-0 sm:left-auto mx-auto h-[400px] w-[90%] sm:w-[500px] p-5 z-40 sm:right-[10px] rounded-[10px]' : 'h-0 w-0 overflow-hidden'}`} onClick={(e) => e.stopPropagation()}>
                 {enviosDB && enviosDB !== undefined && cambiosDB && cambiosDB !== undefined && Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).length > 0 ? <ul> {Object.values({ ...enviosDB, ...cambiosDB }).filter((i) => i.notificaciones !== undefined && i.notificaciones === true).sort((a, b) => b.date - a.date).map((i, index) => {
                     return <li className='relative pb-4 border-b-[1px] border-gray-300' >
-                        <span className='w-full pr-[10px]'>Tu {i.operacion} de dinero de
-                            <b>{i['divisa de envio']} {i.importe}</b>  {i.destinatario !== undefined ? `a ${i.destinatario}, ` : ''}
+                        <span className='w-full pr-[10px]'>Tu {i.operacion} de dinero de 
+                            <b> {i['divisa de envio']} {i.importe}</b>  {i.destinatario !== undefined ? `a ${i.destinatario}, ` : ''}
                             <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'En verficación' && 'esta en verificación'}</span>
                             <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'Transfiriendo' && 'ya se esta transfiriendo'}</span>
                             <span className={`${i.estado == 'En verficación' && 'bg-gray-100'}   ${i.estado == 'Transfiriendo' && 'bg-yellow-300'}   ${i.estado == 'Exitoso' && 'bg-green-400'} ${i.estado == 'Rechazado' && 'bg-red-400'}`}>{i.estado === 'Exitoso' && 'ha sido exitoso'}</span>
