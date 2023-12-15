@@ -19,13 +19,13 @@ import { getSpecificDataEq, getSpecificData, writeUserData, removeData } from '@
 
 import Link from 'next/link'
 function Home() {
-
+    
     const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, success, setUserData, postsIMG, setUserPostsIMG, isSelect3, setIsSelect3, isSelect4, setIsSelect4, modal, setModal, destinatario, qr, setQr, QRurl, setQRurl, countries, setEnviosDB, setCambiosDB } = useUser()
     const router = useRouter()
-
+      
     const [postImage, setPostImage] = useState(undefined)
     const [urlPostImage, setUrlPostImage] = useState(undefined)
-
+      
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
     }
