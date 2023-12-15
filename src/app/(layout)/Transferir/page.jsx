@@ -81,9 +81,7 @@ function Home() {
 
     console.log(countries[userDB.cca3])
     console.log(user)
-    useEffect(() => {
-        (destinatario === null || destinatario === undefined) && router.replace('/')
-    })
+
 
 
     return (
