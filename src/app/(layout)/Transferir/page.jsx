@@ -20,7 +20,7 @@ import { getSpecificDataEq, getSpecificData, writeUserData, removeData } from '@
 import Link from 'next/link'
 function Home() {
 
-    const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, success, setUserData, postsIMG, setUserPostsIMG, isSelect3, setIsSelect3, isSelect4, setIsSelect4, modal, setModal, destinatario, qr, setQr, QRurl, setQRurl, countries, setEnviosDB, setCambiosDB } = useUser()
+    const { nav, setNav, user, userDB, setUserProfile, select, setDestinatario, success, setUserData, postsIMG, setUserPostsIMG, isSelect3, setIsSelect3, isSelect4, setIsSelect4, modal, setModal, destinatario, qr, setQr, QRurl, setQRurl, countries, setEnviosDB, setCambiosDB, setIsSelect5, isSelect5 } = useUser()
     const router = useRouter()
 
     const [postImage, setPostImage] = useState(undefined)
@@ -29,6 +29,16 @@ function Home() {
     function onChangeHandler(e) {
         setDestinatario({ ...destinatario, [e.target.name]: e.target.value })
     }
+    const handlerCountrySelect = (pais, cca3) => {
+        setDestinatario({ ...destinatario, ['pais cuenta bancaria']: pais, cca3 })
+    }
+    const handlerIsSelect = () => {
+        setIsSelect3(!isSelect3)
+    }
+    const handlerBankSelect2 = (i) => {
+        setDestinatario({ ...destinatario, ['banco remitente']: i })
+    }
+
     const handlerBankSelect = (i) => {
         setDestinatario({ ...destinatario, ['banco de transferencia']: i })
     }
@@ -39,6 +49,9 @@ function Home() {
     }
     const handlerIsSelect4 = () => {
         setIsSelect4(!isSelect4)
+    }
+    const handlerIsSelect5 = () => {
+        setIsSelect5(!isSelect5)
     }
     function save(e) {
 
@@ -92,15 +105,28 @@ function Home() {
                     <h3 className=' pb-3 text-white  text-right'>Efectuar transacción</h3>
                 </div>
                 <div className='lg:hidden'>
+                    <h3 className='text-center pb-3  text-green-400 lg:hidden'>Datos de cuenta remitente</h3>
+                </div>
+                <div className=' space-y-5'>
+                    <Label htmlFor="">Pais de cuenta bancaria</Label>
+                    <SelectCountry name="pais cuenta bancaria" propHandlerIsSelect={handlerIsSelect} propIsSelect={isSelect3} operation="recepcion" click={handlerCountrySelect} />
+                </div>
+                {destinatario !== undefined && destinatario['pais cuenta bancaria'] !== undefined && <div className=' space-y-5'>
+                    <Label htmlFor="">Nombre de banco</Label>
+                    <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect5} propIsSelect={isSelect5} operation="envio" click={handlerBankSelect2} arr={Object.values(countries[destinatario.cca3].countries)} />
+                </div>}
+                <div className=' space-y-5'>
+                    <Label htmlFor="">Numero de cuenta bancaria</Label>
+                    <Input type="text" name="cuenta bancaria" onChange={onChangeHandler} required />
+                </div>
+                {destinatario !== undefined && destinatario['pais cuenta bancaria'] !== undefined && <> <div className='lg:hidden'>
                     <h3 className='text-center pb-3  text-green-400 lg:hidden'>QR y cuenta para deposito Bancario</h3>
                 </div>
-
-
-
-                <div className=' space-y-5'>
-                    <Label htmlFor="">Elige una banco para deposito QR</Label>
-                    <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect4} propIsSelect={isSelect4} operation="envio" click={handlerBankSelect} arr={Object.values(countries[userDB.cca3].countries)} />
-                </div>
+                    <div className=' space-y-5'>
+                        <Label htmlFor="">Elige una banco para deposito QR</Label>
+                        <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect4} propIsSelect={isSelect4} operation="envio" click={handlerBankSelect} arr={Object.values(countries[destinatario.cca3].countries)} />
+                    </div>
+                </>}
                 {/* <div className=' space-y-5'>
                 <Label htmlFor="">Numero de cuenta transferidora</Label>
                 <Input type="text" name="cuenta transferidora" onChange={onChangeHandler} required />
@@ -110,37 +136,24 @@ function Home() {
                 <Input type="text" name="titular de banco" onChange={onChangeHandler} required />
             </div> */}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {destinatario['banco de transferencia'] !== undefined && <div className=' space-y-5'>
+                {destinatario !== undefined && destinatario['banco de transferencia'] !== undefined && <div className=' space-y-5'>
                     <Label htmlFor="">QR bancario</Label>
-                    <Link href={countries[userDB.cca3].url ? countries[userDB.cca3].url : ''} className="w-full flex flex-col justify-center items-center" download >
+                    <Link href='#' className="w-full flex flex-col justify-center items-center" download >
                         <label className=" flex flex-col justify-start items-center w-[200px] h-[230px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
-                            {countries && countries[userDB.cca3] && countries[userDB.cca3].countries !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia'] ] !== undefined ? <img className=" flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].countries[destinatario['banco de transferencia'] ] !== undefined ? countries[userDB.cca3].countries[destinatario['banco de transferencia'] ].qrURL : ''} alt="" />
+                            {countries && countries[userDB.cca3] && countries[userDB.cca3].countries !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia']] !== undefined ? <img className=" flex justify-center items-center w-[200px] h-[200px] bg-white border border-gray-300 text-gray-900 text-[12px]  focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" style={{ objectPosition: 'center' }} src={countries[userDB.cca3].countries[destinatario['banco de transferencia']] !== undefined ? countries[userDB.cca3].countries[destinatario['banco de transferencia']].qrURL : ''} alt="" />
                                 : 'QR no disponible'}
                             {destinatario && destinatario.importe} {destinatario && destinatario['divisa de envio']}
                         </label>
                     </Link>
-                    <span className="block text-white text-center" >Cta. {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia'] ] !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia']]['cta bancaria']} <br />
-                        {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia'] ].banco}</span>
+                    <span className="block text-white text-center" >Cta. {countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia']] !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia']]['cta bancaria']} <br />
+                        {destinatario !== undefined && destinatario['banco de transferencia'] !== undefined && countries && countries !== undefined && countries[userDB.cca3] !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia']] !== undefined && countries[userDB.cca3].countries[destinatario['banco de transferencia']].banco}</span>
                 </div>}
                 {/* <div className=' space-y-5'>
                 <Label htmlFor="">Cuenta bancaria</Label>
                 <span className="block text-white text-center" >{countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['cuenta de cobro']} <br />
                     {countries && countries !== undefined && countries[userDB.cca3]['cuenta de cobro'] !== undefined && countries[userDB.cca3]['banco de cobro']}</span>
             </div> */}
-  
+
                 <div className='lg:hidden'>
                     <h3 className='text-center pb-3  text-green-400 lg:hidden'>Informacion de transferencia</h3>
                 </div>

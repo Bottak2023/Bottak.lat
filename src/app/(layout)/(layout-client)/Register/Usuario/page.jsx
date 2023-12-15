@@ -74,13 +74,12 @@ function Home() {
                     <Label htmlFor="">Whatsapp</Label>
                     <Input type="text" name="whatsapp" onChange={onChangeHandler} required />
                 </div>
-                {countries !== undefined && state.cca3 !== undefined && countries[state.cca3] !== undefined && countries[state.cca3].countries
+                {/* {countries !== undefined && state.cca3 !== undefined && countries[state.cca3] !== undefined && countries[state.cca3].countries
                     ?
                     <>
                         <div className=' space-y-5'>
                             <Label htmlFor="">Nombre de banco</Label>
                             <SelectBank name="nombre de banco" propHandlerIsSelect={handlerIsSelect4} propIsSelect={isSelect4} operation="envio" click={handlerBankSelect} arr={Object.values(countries[state.cca3].countries)} />
-                            {/* <Input type="text" name="nombre de banco" onChange={onChangeHandler} required /> */}
                         </div>
                         <div className=' space-y-5'>
                             <Label htmlFor="">Numero de cuenta bancaria</Label>
@@ -91,7 +90,10 @@ function Home() {
                         </div>
                     </>
                     : state.pais !== undefined && <div className='flex w-full justify-around items-end text-white'>El pais que selecciono no cuenta con bancos disponibles.</div>
-                }
+                } */}
+                <div className='flex w-full justify-around items-end'>
+                    <Button theme='Primary'>Guardar</Button>
+                </div>
             </div>
 
         </form>
